@@ -85,10 +85,75 @@
             <li></li>
             <li><span class="keyword">fn</span>
                 <span class="fn">main</span><span class="punct">()</span>
-                <span class="keyword">-&gt;</span>
+                <span class="sigil">-&gt;</span>
                 <span class="type">Result</span><span class="punct">&lt;()&gt; {</span></li>
+            <li><span class="tab">→</span><span class="keyword">let</span>
+                <span class="binding">config</span>
+                <span class="punct">=</span>
+                <span class="type">ConfigBuilder</span><span class="punct">::</span><span class="fn">default</span><span class="punct">()</span></li>
+            <li><span class="tab">→</span><span class="tab">→</span><span class="punct">.</span><span class="fn">clear_screen</span><span class="punct">(</span><span class="bool">true</span><span class="punct">)</span></li>
+            <li><span class="tab">→</span><span class="tab">→</span><span class="punct">.</span><span class="fn">run_initially</span><span class="punct">(</span><span class="bool">true</span><span class="punct">)</span></li>
+            <li><span class="tab">→</span><span class="tab">→</span><span class="punct">.</span><span class="fn">paths</span><span class="punct">(</span><span class="macro">vec!</span><span class="punct">[</span>
+                <span class="string">"/path/to/dir"</span><span class="punct">.</span><span class="fn">into</span><span class="punct">()</span>
+                <span class="punct">])</span></li>
+            <li><span class="tab">→</span><span class="tab">→</span><span class="punct">.</span><span class="fn">cmd</span><span class="punct">(</span><span class="macro">vec!</span><span class="punct">[</span>
+                <span class="string">"date; seq 1 10"</span><span class="punct">.</span><span class="fn">into</span><span class="punct">()</span>
+                <span class="punct">])</span></li>
+            <li><span class="tab">→</span><span class="tab">→</span><span class="punct">.</span><span class="fn">build</span><span class="punct">(</span><span class="punct">)<span class="sigil">?</span>;</span></li>
+            <li></li>
+            <li><span class="tab">→</span><span class="keyword">let</span>
+                <span class="binding">handler</span>
+                <span class="punct">=</span>
+                <span class="type">MyHandler</span
+                ><span class="punct">(<span class="type">ExecHandler</span
+                  ><span class="punct">::</span><span class="fn">new</span
+                  ><span class="punct">(</span><span class="binding"
+                    >options</span><span class="punct"
+                  >)</span><span class="sigil">?</span
+                ><span class="punct">);</span></li>
+            <li><span class="tab">→</span><span class="fn">watch</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="binding">handler</span><span class="punct">)</span></li>
+            <li><span class="punct">}</span></li>
+            <li></li>
+            <li><span class="keyword">struct</span>
+                <span class="type">MyHandler</span><span class="punct">(</span><span class="type">ExecHandler</span><span class="punct">);</span></li>
+            <li></li>
+            <li><span class="keyword">impl</span>
+                <span class="type">Handler</span>
+                <span class="keyword">for</span>
+                <span class="type">MyHandler</span>
+                <span class="punct">{</span></li>
+            <li><span class="tab">→</span><span class=keyword">fn</span>
+                <span class="fn">args</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">)</span>
+                <span class="sigil">-&gt;</span>
+                <span class="type">Config</span>
+                <span class="punct">{</span></li>
+            <li><span class="tab">→</span><span class="tab">→</span
+                ><span class="keyword">self</span><span class="punct">.</span
+                ><span class="field">0</span><span class="punct">.</span
+                ><span class="fn">args</span><span class="punct">()</span></li>
+            <li><span class="tab">→</span><span class="punct">}</span></li>
+            <li></li>
+            <li><span class="punct">}</span></li>
         </ol>
     </code>
+
+<!--
+impl Handler for MyHandler {
+    fn args(&self) -> Config {
+        self.0.args()
+    }
+
+    fn on_manual(&self) -> Result<bool> {
+        println!("Running manually!");
+        self.0.on_manual()
+    }
+
+    fn on_update(&self, ops: &[PathOp]) -> Result<bool> {
+        println!("Running because of {:?}", ops);
+        self.0.on_update(ops)
+    }
+}
+-->
 
     <p class="pitch">
         Create your own watching tool. From presenting different options,
