@@ -69,7 +69,7 @@
 </section>
 
 <section>
-    <h2>The library</h2>
+    <h2>Watchexec library</h2>
 
     <code class="rust">
         <ol class="codeblock">
@@ -133,27 +133,42 @@
                 ><span class="fn">args</span><span class="punct">()</span></li>
             <li><span class="tab">→</span><span class="punct">}</span></li>
             <li></li>
+            <li><span class="tab">→</span><span class=keyword">fn</span>
+                <span class="fn">on_manual</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">)</span>
+                <span class="sigil">-&gt;</span>
+                <span class="type">Result</span><span class="punct">&lt;</span><span class="keyword">bool</span><span class="punct">&gt;</span>
+                <span class="punct">{</span></li>
+            <li><span class="tab">→</span><span class="tab">→</span
+                ><span class="macro">println!</span><span class="punct"
+                >(</span><span class="string">"Running manually!"</span
+                ><span class="punct">);</span></li>
+            <li><span class="tab">→</span><span class="tab">→</span
+                ><span class="keyword">self</span><span class="punct">.</span
+                ><span class="field">0</span><span class="punct">.</span
+                ><span class="fn">on_manual</span><span class="punct">()</span></li>
+            <li><span class="tab">→</span><span class="punct">}</span></li>
+            <li></li>
+            <li><span class="tab">→</span><span class=keyword">fn</span>
+                <span class="fn">on_update</span><span class="punct">(</span
+                    ><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">,</span>
+                    <span class="binding">ops</span><span class="punct">:</span>
+                    <span class="sigil">&amp;</span><span class="punct">[</span><span class="type">PathOp</span><span class="punct">]</span
+                ><span class="punct">)</span>
+                <span class="sigil">-&gt;</span>
+                <span class="type">Result</span><span class="punct">&lt;</span><span class="keyword">bool</span><span class="punct">&gt;</span>
+                <span class="punct">{</span></li>
+            <li><span class="tab">→</span><span class="tab">→</span
+                ><span class="macro">println!</span><span class="punct"
+                >(</span><span class="string">"Running manually <span class="sigil">{:?}"</span></span><span class="punct">,</span>
+                <span class="binding">ops</span><span class="punct">);</span></li>
+            <li><span class="tab">→</span><span class="tab">→</span
+                ><span class="keyword">self</span><span class="punct">.</span
+                ><span class="field">0</span><span class="punct">.</span
+                ><span class="fn">on_update</span><span class="punct">(</span><span class="binding">ops</span><span class="punct">)</span></li>
+            <li><span class="tab">→</span><span class="punct">}</span></li>
             <li><span class="punct">}</span></li>
         </ol>
     </code>
-
-<!--
-impl Handler for MyHandler {
-    fn args(&self) -> Config {
-        self.0.args()
-    }
-
-    fn on_manual(&self) -> Result<bool> {
-        println!("Running manually!");
-        self.0.on_manual()
-    }
-
-    fn on_update(&self, ops: &[PathOp]) -> Result<bool> {
-        println!("Running because of {:?}", ops);
-        self.0.on_update(ops)
-    }
-}
--->
 
     <p class="pitch">
         Create your own watching tool. From presenting different options,
