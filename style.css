@@ -1,16 +1,12 @@
 /** COLOURS **/
 
-:root {
-  --indigo: hsl(270 100% 50%);
-}
-
 html {
-  background: white;
-  color: black;
+  background: hsl(0 0% 98%);
+  color: hsl(0 0% 5%);
 }
 
 :root {
-  --code-border: var(--indigo);
+  --code-border: hsl(270 100% 50%);
   --code-linenum: hsl(0 0% 60%);
   --code-tab: hsl(0 0% 85%);
 
@@ -40,12 +36,12 @@ html {
 
 @media (prefers-color-scheme: dark) {
   html {
-    background: hsl(0 15% 5%);
+    background: hsl(0 5% 10%);
     color: hsl(120 100% 98%);
   }
 
   :root {
-    --code-border: var(--indigo);
+    --code-border: hsl(90 80% 40%);
     --code-linenum: hsl(0 0% 30%);
     --code-tab: hsl(0 0% 15%);
 
