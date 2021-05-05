@@ -2,7 +2,14 @@
 
 :root {
   --indigo: hsl(270 100% 50%);
+}
 
+html {
+  background: white;
+  color: black;
+}
+
+:root {
   --code-border: var(--indigo);
   --code-linenum: hsl(0 0% 60%);
   --code-tab: hsl(0 0% 85%);
@@ -17,7 +24,7 @@
   --syn-fn: hsl(32 52% 40%);
   --syn-keyword: hsl(214 45% 47%);
   --syn-macro: hsl(117 100% 25%);
-  --syn-path: hsl(0 0% 10%);
+  --syn-path: hsl(0 0% 30%);
   --syn-prompt: hsl(320 100% 30%);
   --syn-punct: hsl(0 0% 40%);
   --syn-sigil: hsl(191 54% 37%);
@@ -25,6 +32,42 @@
   --syn-subcommand: hsl(200 100% 40%);
   --syn-trait: hsl(253 86% 65%);
   --syn-type: hsl(318 44% 47%);
+}
+
+
+
+/* Dark mode */
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background: hsl(0 100% 2%);
+    color: hsl(120 100% 98%);
+  }
+
+  :root {
+    --code-border: var(--indigo);
+    --code-linenum: hsl(0 0% 30%);
+    --code-tab: hsl(0 0% 15%);
+
+    --syn-argument: hsl(275 70% 70%);
+    --syn-binding: hsl(36 100% 60%);
+    --syn-binding-line: hsl(36 100% 35%);
+    --syn-bool: hsl(180 80% 55%);
+    --syn-command: hsl(213 100% 70%);
+    --syn-escape: hsl(190 70% 66%);
+    --syn-field: hsl(360 70% 60%);
+    --syn-fn: hsl(32 70% 70%);
+    --syn-keyword: hsl(214 65% 55%);
+    --syn-macro: hsl(117 100% 40%);
+    --syn-path: hsl(0 0% 60%);
+    --syn-prompt: hsl(320 100% 45%);
+    --syn-punct: hsl(0 0% 70%);
+    --syn-sigil: hsl(191 55% 65%);
+    --syn-string: hsl(72 75% 55%);
+    --syn-subcommand: hsl(200 100% 80%);
+    --syn-trait: hsl(253 60% 73%);
+    --syn-type: hsl(318 90% 75%);
+  }
 }
 
 
@@ -51,7 +94,7 @@ code {
 
 code.oneline {
   display: block;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 1rem;
   font-size: 2rem;
   border: 0.4rem double var(--code-border);
   margin: 2rem;
@@ -88,6 +131,8 @@ code .tab::after {
 
 
 /* Shell */
+
+.oneline.shell { padding-left: 0.5rem; }
 
 .shell .argument { color: var(--syn-argument); }
 .shell .command { color: var(--syn-command); }
