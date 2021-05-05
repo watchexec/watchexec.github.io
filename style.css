@@ -40,7 +40,7 @@ html {
 
 @media (prefers-color-scheme: dark) {
   html {
-    background: hsl(0 100% 2%);
+    background: hsl(0 15% 5%);
     color: hsl(120 100% 98%);
   }
 
