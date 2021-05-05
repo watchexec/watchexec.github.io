@@ -1,11 +1,30 @@
 /** COLOURS **/
 
 :root {
-  --indigo: rgb(130, 4, 255);
+  --indigo: hsl(270 100% 50%);
 
   --code-border: var(--indigo);
-  --code-linenum: rgb(150, 150, 150);
-  --code-tab: rgb(200, 200, 200);
+  --code-linenum: hsl(0 0% 60%);
+  --code-tab: hsl(0 0% 85%);
+
+  --syn-argument: hsl(275 18% 45%);
+  --syn-binding: hsl(36 100% 42%);
+  --syn-binding-line: hsl(36 100% 80%);
+  --syn-bool: hsl(180 100% 35%);
+  --syn-command: hsl(213 100% 35%);
+  --syn-escape: hsl(190 100% 26%);
+  --syn-field: hsl(360 57% 47%);
+  --syn-fn: hsl(32 52% 40%);
+  --syn-keyword: hsl(214 45% 47%);
+  --syn-macro: hsl(117 100% 25%);
+  --syn-path: hsl(0 0% 10%);
+  --syn-prompt: hsl(320 100% 30%);
+  --syn-punct: hsl(0 0% 40%);
+  --syn-sigil: hsl(191 54% 37%);
+  --syn-string: hsl(72 100% 27%);
+  --syn-subcommand: hsl(200 100% 40%);
+  --syn-trait: hsl(253 86% 65%);
+  --syn-type: hsl(318 44% 47%);
 }
 
 
@@ -66,4 +85,33 @@ code .tab::after {
   content: '→';
   color: var(--code-tab);
 }
+
+
+/* Shell */
+
+.shell .argument { color: var(--syn-argument); }
+.shell .command { color: var(--syn-command); }
+.shell .prompt { color: var(--syn-prompt); }
+.shell .subcommand { color: var(--syn-subcommand); }
+
+
+/* Rust */
+
+.rust .binding {
+  color: var(--syn-binding);
+  text-decoration: underline var(--syn-binding-line) 2px;
+}
+
+.rust .bool { color: var(--syn-bool); }
+.rust .escape { color: var(--syn-escape); }
+.rust .field { color: var(--syn-field); }
+.rust .fn { color: var(--syn-fn); }
+.rust .keyword { color: var(--syn-keyword); }
+.rust .macro { color: var(--syn-macro); }
+.rust .path { color: var(--syn-path); }
+.rust .punct { color: var(--syn-punct); }
+.rust .sigil { color: var(--syn-sigil); }
+.rust .string { color: var(--syn-string); }
+.rust .trait { color: var(--syn-trait); }
+.rust .type { color: var(--syn-type); }
 

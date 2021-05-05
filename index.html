@@ -79,7 +79,8 @@
             <li><span class="tab">&#9;</span><span class="path">pathop</span><span class="punct">::</span><span class="type">PathOp</span><span class="punct">,</span></li>
             <li><span class="tab">&#9;</span><span class="path">run</span><span class="punct">::{</span></li>
             <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="type">ExecHandler</span><span class="punct">,</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="type">Handler</span><span class="punct">,</span></li>
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="trait">Handler</span><span class="punct">,</span></li>
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="fn">watch</span><span class="punct">,</span></li>
             <li><span class="tab">&#9;</span><span class="punct">},</span></li>
             <li><span class="punct">};</span></li>
             <li></li>
@@ -118,11 +119,11 @@
                 <span class="type">MyHandler</span><span class="punct">(</span><span class="type">ExecHandler</span><span class="punct">);</span></li>
             <li></li>
             <li><span class="keyword">impl</span>
-                <span class="type">Handler</span>
+                <span class="trait">Handler</span>
                 <span class="keyword">for</span>
                 <span class="type">MyHandler</span>
                 <span class="punct">{</span></li>
-            <li><span class="tab">&#9;</span><span class=keyword">fn</span>
+            <li><span class="tab">&#9;</span><span class="keyword">fn</span>
                 <span class="fn">args</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">)</span>
                 <span class="sigil">-&gt;</span>
                 <span class="type">Config</span>
@@ -133,7 +134,7 @@
                 ><span class="fn">args</span><span class="punct">()</span></li>
             <li><span class="tab">&#9;</span><span class="punct">}</span></li>
             <li></li>
-            <li><span class="tab">&#9;</span><span class=keyword">fn</span>
+            <li><span class="tab">&#9;</span><span class="keyword">fn</span>
                 <span class="fn">on_manual</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">)</span>
                 <span class="sigil">-&gt;</span>
                 <span class="type">Result</span><span class="punct">&lt;</span><span class="keyword">bool</span><span class="punct">&gt;</span>
@@ -148,7 +149,7 @@
                 ><span class="fn">on_manual</span><span class="punct">()</span></li>
             <li><span class="tab">&#9;</span><span class="punct">}</span></li>
             <li></li>
-            <li><span class="tab">&#9;</span><span class=keyword">fn</span>
+            <li><span class="tab">&#9;</span><span class="keyword">fn</span>
                 <span class="fn">on_update</span><span class="punct">(</span
                     ><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">,</span>
                     <span class="binding">ops</span><span class="punct">:</span>
@@ -159,7 +160,7 @@
                 <span class="punct">{</span></li>
             <li><span class="tab">&#9;</span><span class="tab">&#9;</span
                 ><span class="macro">println!</span><span class="punct"
-                >(</span><span class="string">"Running manually <span class="sigil">{:?}"</span></span><span class="punct">,</span>
+                >(</span><span class="string">"Running manually <span class="sigil">{:?}</span>"</span><span class="punct">,</span>
                 <span class="binding">ops</span><span class="punct">);</span></li>
             <li><span class="tab">&#9;</span><span class="tab">&#9;</span
                 ><span class="keyword">self</span><span class="punct">.</span
@@ -197,11 +198,12 @@
 
     <p class="pitch">
         Clear the terminal. On all platforms, across all terminals. Go beyond
-        <code class="inline string">
-            <span class="escape">\x1b</span>[H
-            <span class="escape">\x1b</span>[2J
-            <span class="escape">\x1b</span>[3J
-        </code> and start doing the right thing in the right place. Reset even
+        <code class="inline rust"><span class="string"
+            ><span class="escape">\x1b</span
+            >[H<span class="escape">\x1b</span
+            >[2J<span class="escape">\x1b</span
+            >[3J</span
+        ></code> and start doing the right thing in the right place. Reset even
         the most dire of states. <em>Erase the past!</em>
     </p>
 
