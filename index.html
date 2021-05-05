@@ -74,34 +74,34 @@
     <code class="rust">
         <ol class="codeblock">
             <li><span class="keyword">use</span> <span class="path">watchexec</span><span class="punct">::{</span></li>
-            <li><span class="tab">→</span><span class="path">config</span><span class="punct">::</span><span class="type">ConfigBuilder</span><span class="punct">,</span></li>
-            <li><span class="tab">→</span><span class="path">error</span><span class="punct">::</span><span class="type">Result</span><span class="punct">,</span></li>
-            <li><span class="tab">→</span><span class="path">pathop</span><span class="punct">::</span><span class="type">PathOp</span><span class="punct">,</span></li>
-            <li><span class="tab">→</span><span class="path">run</span><span class="punct">::{</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span><span class="type">ExecHandler</span><span class="punct">,</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span><span class="type">Handler</span><span class="punct">,</span></li>
-            <li><span class="tab">→</span><span class="punct">},</span></li>
+            <li><span class="tab">&#9;</span><span class="path">config</span><span class="punct">::</span><span class="type">ConfigBuilder</span><span class="punct">,</span></li>
+            <li><span class="tab">&#9;</span><span class="path">error</span><span class="punct">::</span><span class="type">Result</span><span class="punct">,</span></li>
+            <li><span class="tab">&#9;</span><span class="path">pathop</span><span class="punct">::</span><span class="type">PathOp</span><span class="punct">,</span></li>
+            <li><span class="tab">&#9;</span><span class="path">run</span><span class="punct">::{</span></li>
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="type">ExecHandler</span><span class="punct">,</span></li>
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="type">Handler</span><span class="punct">,</span></li>
+            <li><span class="tab">&#9;</span><span class="punct">},</span></li>
             <li><span class="punct">};</span></li>
             <li></li>
             <li><span class="keyword">fn</span>
                 <span class="fn">main</span><span class="punct">()</span>
                 <span class="sigil">-&gt;</span>
                 <span class="type">Result</span><span class="punct">&lt;()&gt; {</span></li>
-            <li><span class="tab">→</span><span class="keyword">let</span>
+            <li><span class="tab">&#9;</span><span class="keyword">let</span>
                 <span class="binding">config</span>
                 <span class="punct">=</span>
                 <span class="type">ConfigBuilder</span><span class="punct">::</span><span class="fn">default</span><span class="punct">()</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span><span class="punct">.</span><span class="fn">clear_screen</span><span class="punct">(</span><span class="bool">true</span><span class="punct">)</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span><span class="punct">.</span><span class="fn">run_initially</span><span class="punct">(</span><span class="bool">true</span><span class="punct">)</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span><span class="punct">.</span><span class="fn">paths</span><span class="punct">(</span><span class="macro">vec!</span><span class="punct">[</span>
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">clear_screen</span><span class="punct">(</span><span class="bool">true</span><span class="punct">)</span></li>
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">run_initially</span><span class="punct">(</span><span class="bool">true</span><span class="punct">)</span></li>
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">paths</span><span class="punct">(</span><span class="macro">vec!</span><span class="punct">[</span>
                 <span class="string">"/path/to/dir"</span><span class="punct">.</span><span class="fn">into</span><span class="punct">()</span>
                 <span class="punct">])</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span><span class="punct">.</span><span class="fn">cmd</span><span class="punct">(</span><span class="macro">vec!</span><span class="punct">[</span>
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">cmd</span><span class="punct">(</span><span class="macro">vec!</span><span class="punct">[</span>
                 <span class="string">"date; seq 1 10"</span><span class="punct">.</span><span class="fn">into</span><span class="punct">()</span>
                 <span class="punct">])</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span><span class="punct">.</span><span class="fn">build</span><span class="punct">(</span><span class="punct">)<span class="sigil">?</span>;</span></li>
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">build</span><span class="punct">(</span><span class="punct">)<span class="sigil">?</span>;</span></li>
             <li></li>
-            <li><span class="tab">→</span><span class="keyword">let</span>
+            <li><span class="tab">&#9;</span><span class="keyword">let</span>
                 <span class="binding">handler</span>
                 <span class="punct">=</span>
                 <span class="type">MyHandler</span
@@ -111,7 +111,7 @@
                     >options</span><span class="punct"
                   >)</span><span class="sigil">?</span
                 ><span class="punct">);</span></li>
-            <li><span class="tab">→</span><span class="fn">watch</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="binding">handler</span><span class="punct">)</span></li>
+            <li><span class="tab">&#9;</span><span class="fn">watch</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="binding">handler</span><span class="punct">)</span></li>
             <li><span class="punct">}</span></li>
             <li></li>
             <li><span class="keyword">struct</span>
@@ -122,33 +122,33 @@
                 <span class="keyword">for</span>
                 <span class="type">MyHandler</span>
                 <span class="punct">{</span></li>
-            <li><span class="tab">→</span><span class=keyword">fn</span>
+            <li><span class="tab">&#9;</span><span class=keyword">fn</span>
                 <span class="fn">args</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">)</span>
                 <span class="sigil">-&gt;</span>
                 <span class="type">Config</span>
                 <span class="punct">{</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span
                 ><span class="keyword">self</span><span class="punct">.</span
                 ><span class="field">0</span><span class="punct">.</span
                 ><span class="fn">args</span><span class="punct">()</span></li>
-            <li><span class="tab">→</span><span class="punct">}</span></li>
+            <li><span class="tab">&#9;</span><span class="punct">}</span></li>
             <li></li>
-            <li><span class="tab">→</span><span class=keyword">fn</span>
+            <li><span class="tab">&#9;</span><span class=keyword">fn</span>
                 <span class="fn">on_manual</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">)</span>
                 <span class="sigil">-&gt;</span>
                 <span class="type">Result</span><span class="punct">&lt;</span><span class="keyword">bool</span><span class="punct">&gt;</span>
                 <span class="punct">{</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span
                 ><span class="macro">println!</span><span class="punct"
                 >(</span><span class="string">"Running manually!"</span
                 ><span class="punct">);</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span
                 ><span class="keyword">self</span><span class="punct">.</span
                 ><span class="field">0</span><span class="punct">.</span
                 ><span class="fn">on_manual</span><span class="punct">()</span></li>
-            <li><span class="tab">→</span><span class="punct">}</span></li>
+            <li><span class="tab">&#9;</span><span class="punct">}</span></li>
             <li></li>
-            <li><span class="tab">→</span><span class=keyword">fn</span>
+            <li><span class="tab">&#9;</span><span class=keyword">fn</span>
                 <span class="fn">on_update</span><span class="punct">(</span
                     ><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">,</span>
                     <span class="binding">ops</span><span class="punct">:</span>
@@ -157,15 +157,15 @@
                 <span class="sigil">-&gt;</span>
                 <span class="type">Result</span><span class="punct">&lt;</span><span class="keyword">bool</span><span class="punct">&gt;</span>
                 <span class="punct">{</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span
                 ><span class="macro">println!</span><span class="punct"
                 >(</span><span class="string">"Running manually <span class="sigil">{:?}"</span></span><span class="punct">,</span>
                 <span class="binding">ops</span><span class="punct">);</span></li>
-            <li><span class="tab">→</span><span class="tab">→</span
+            <li><span class="tab">&#9;</span><span class="tab">&#9;</span
                 ><span class="keyword">self</span><span class="punct">.</span
                 ><span class="field">0</span><span class="punct">.</span
                 ><span class="fn">on_update</span><span class="punct">(</span><span class="binding">ops</span><span class="punct">)</span></li>
-            <li><span class="tab">→</span><span class="punct">}</span></li>
+            <li><span class="tab">&#9;</span><span class="punct">}</span></li>
             <li><span class="punct">}</span></li>
         </ol>
     </code>

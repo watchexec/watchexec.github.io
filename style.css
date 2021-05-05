@@ -1,0 +1,69 @@
+/** COLOURS **/
+
+:root {
+  --indigo: rgb(130, 4, 255);
+
+  --code-border: var(--indigo);
+  --code-linenum: rgb(150, 150, 150);
+  --code-tab: rgb(200, 200, 200);
+}
+
+
+
+/** LAYOUT **/
+
+
+
+/** TYPO **/
+
+:root {
+  --mono: Iosevka, "Fira Code", Consolas, "Comic Code", monospace;
+}
+
+
+
+/** CODE **/
+
+code {
+  font-family: var(--mono);
+}
+
+/* Layouts */
+
+code.oneline {
+  display: block;
+  padding: 0.25rem 0.5rem;
+  font-size: 2rem;
+  border: 0.4rem double var(--code-border);
+  margin: 2rem;
+  border-radius: 0.5rem;
+  width: max-content;
+}
+
+code ol.codeblock {
+  font-size: 1.3rem;
+  list-style-type: decimal-leading-zero;
+  padding: 0.6em 2.7em;
+  width: max-content;
+  border: 0.4rem double var(--code-border);
+  margin: 2rem;
+  border-radius: 0.5rem;
+}
+
+code ol.codeblock ::marker {
+  color: var(--code-linenum);
+}
+
+
+/* Tabs */
+
+code .tab {
+  display: inline-block;
+  width: 4ch;
+}
+
+code .tab::after {
+  content: '→';
+  color: var(--code-tab);
+}
+
