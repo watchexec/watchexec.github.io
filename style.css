@@ -76,8 +76,16 @@ html {
 
 :root {
   --mono: Iosevka, "Fira Code", Consolas, "Comic Code", monospace;
+
+  --code-block-fs: 1.2;
+  --code-line-fs: 1.5;
 }
 
+html {
+  /** line-height: normal ~= 1.2 **/
+  /** big sample block of code = 40 lines + some margin ~= 50 **/
+  font-size: clamp(0.666rem, calc(100vh / (50 * var(--code-block-fs) * 1.2)), 2rem);
+}
 
 
 /** CODE **/
@@ -91,7 +99,7 @@ code {
 code.oneline {
   display: block;
   padding: 0.25rem 1rem;
-  font-size: 2rem;
+  font-size: calc(var(--code-line-fs) * 1rem);
   border: 0.4rem double var(--code-border);
   margin: 2rem;
   border-radius: 0.5rem;
@@ -99,7 +107,7 @@ code.oneline {
 }
 
 code ol.codeblock {
-  font-size: 1.3rem;
+  font-size: calc(var(--code-block-fs) * 1rem);
   list-style-type: decimal-leading-zero;
   padding: 0.6em 2.7em;
   width: max-content;
