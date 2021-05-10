@@ -1,11 +1,19 @@
-/** COLOURS **/
+/** THEMES **/
 
-html {
-  background: hsl(0 0% 98%);
-  color: hsl(0 0% 5%);
-}
+/* Light mode (default) */
 
 :root {
+  --bg: hsl(0 0% 98%);
+
+  --fg: hsl(0 0% 5%);
+  --fg-h1: hsl(230 50% 50%);
+  --fg-h2: hsl(230 40% 65%);
+  --fg-pitch-em: hsl(350 70% 25%);
+
+  --a-normal: hsl(230, 80%, 50%);
+  --a-active: hsl(340, 80%, 50%);
+  --a-visited: hsl(270, 80%, 50%);
+
   --code-border: hsl(270 100% 50%);
   --code-linenum: hsl(0 0% 60%);
   --code-tab: hsl(0 0% 85%);
@@ -30,17 +38,13 @@ html {
   --syn-type: hsl(318 44% 47%);
 }
 
-
-
 /* Dark mode */
 
 @media (prefers-color-scheme: dark) {
-  html {
-    background: hsl(0 5% 10%);
-    color: hsl(120 100% 98%);
-  }
-
   :root {
+    --bg: hsl(0 5% 10%);
+    --fg: hsl(120 100% 98%);
+
     --code-border: hsl(90 80% 40%);
     --code-linenum: hsl(0 0% 30%);
     --code-tab: hsl(0 0% 15%);
@@ -67,26 +71,68 @@ html {
 }
 
 
+/** COLOURS **/
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+h1 { color: var(--fg-h1); }
+h2 { color: var(--fg-h2); }
+
+a { color: var(--a-normal); }
+a:active { color: var(--a-active); }
+a:visited { color: var(--a-visited); }
+
+.pitch em { color: var(--fg-pitch-em); }
+
 
 /** LAYOUT **/
-
 
 
 /** TYPO **/
 
 :root {
-  --mono: Iosevka, "Fira Code", Consolas, "Comic Code", monospace;
+  --mono: Iosevka, "Fira Code", Consolas, "Comic Code", ui-monospace, monospace;
+  --sans: "Noto Sans", "San Francisco", Grandview, ui-sans-serif, sans-serif;
+  --serif: "Noto Serif", Georgia, ui-serif, serif;
 
   --code-block-fs: 1.2;
   --code-line-fs: 1.5;
 }
 
 html {
+  font-family: var(--sans);
+
   /** line-height: normal ~= 1.2 **/
   /** big sample block of code = 40 lines + some margin ~= 50 **/
   font-size: clamp(0.666rem, calc(100vh / (50 * var(--code-block-fs) * 1.2)), 2rem);
 }
 
+h1 {
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+em {
+  font-family: var(--serif);
+}
+
+kbd {
+  font-family: var(--mono);
+}
+
+.pitch {
+  font-size: 1.1rem;
+}
+
+/** PLACES **/
 
 /** CODE **/
 
