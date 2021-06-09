@@ -12,7 +12,9 @@
 
   --pitch-em: hsl(125 70% 30%);
 
-  --code-border: hsl(270 100% 50%);
+  --a-normal: hsl(230 80% 50%);
+  --a-active: hsl(340 80% 50%);
+  --a-visited: hsl(270 80% 50%);
   --code-linenum: hsl(0 0% 60%);
   --code-tab: hsl(0 0% 85%);
 
