@@ -25,11 +25,28 @@
 <section id="watchexec-cli">
     <h1>Watchexec</h1>
 
-    <code class="oneline shell">
-        <span class="prompt">$&gt;</span>
-        <span class="command">watchexec</span>
-        <span class="argument">make</span>
-    </code>
+    <div class="alternatives">
+        <code class="alt oneline shell">
+            <span class="prompt">$&gt;</span>
+            <span class="command">watchexec</span>
+            <span class="argument">make</span>
+        </code>
+        <code class="alt oneline shell">
+            <span class="prompt">$&gt;</span>
+            <span class="command">watchexec</span>
+            <span class="argument">node</span>
+            <span class="path">server.js</span>
+        </code>
+        <code class="alt oneline shell">
+            <span class="prompt">$&gt;</span>
+            <span class="command">watchexec</span>
+            <span class="string"
+                >"<span class="command">date</span>
+                <span class="sigil">&gt;&gt;</span>
+                <span class="path">../changes.log</span
+            >"</span>
+        </code>
+    </div>
 
     <p class="pitch">
         Run a command when files in the current directory change.
@@ -48,11 +65,34 @@
 <section id="cargo-watch">
     <h2>Cargo Watch</h2>
 
-    <code class="oneline shell">
-        <span class="prompt">$&gt;</span>
-        <span class="command">cargo</span>
-        <span class="subcommand">watch</span>
-    </code>
+    <div class="alternatives">
+        <code class="alt oneline shell">
+            <span class="prompt">$&gt;</span>
+            <span class="command">cargo</span>
+            <span class="subcommand">watch</span>
+        </code>
+        <code class="alt oneline shell">
+            <span class="prompt">$&gt;</span>
+            <span class="command">cargo</span>
+            <span class="subcommand">watch</span>
+            <span class="sigil">--</span>
+            <span class="command">cargo</span>
+            <span class="subcommand">test</span>
+        </code>
+        <code class="alt oneline shell">
+            <span class="prompt">$&gt;</span>
+            <span class="command">cargo</span>
+            <span class="subcommand">watch</span>
+            <span class="option">-x</span>
+            <span class="subcommand">clippy</span>
+            <span class="option">-x</span>
+            <span class="string"
+                >"<span class="subcommand">test</span>
+                <span class="option">--exact</span>
+                <span class="argument">chocolate_ice_cream</span
+            >"</span>
+        </code>
+    </div>
 
     <p class="pitch">
         Build your <a href="https://rust-lang.org">Rust</a> project. Two words
