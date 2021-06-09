@@ -51,6 +51,10 @@
 
     --pitch-em: hsl(60 100% 66%);
 
+    --a-normal: hsl(230 85% 65%);
+    --a-active: hsl(340 80% 58%);
+    --a-visited: hsl(270 80% 58%);
+
     --code-border: hsl(140 80% 40% / 50%);
     --code-linenum: hsl(0 0% 30%);
     --code-tab: hsl(0 0% 15%);
@@ -87,9 +91,10 @@ html {
 h1 { color: var(--fg-h1); }
 h2 { color: var(--fg-h2); }
 
+/* order matters! */
 a { color: var(--a-normal); }
-a:active { color: var(--a-active); }
 a:visited { color: var(--a-visited); }
+a:active { color: var(--a-active); }
 
 .pitch em {
   background: var(--pitch-em);
