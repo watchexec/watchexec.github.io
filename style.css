@@ -200,13 +200,17 @@ code ol.codeblock ::marker {
 /* Tabs */
 
 code .tab {
-  display: inline-block;
-  width: 4ch;
+  position: relative;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  white-space: pre;
 }
 
 code .tab::after {
-  content: '→';
   color: var(--code-tab);
+  content: '→';
+  position: absolute;
+  left: 1ch;
 }
 
 
