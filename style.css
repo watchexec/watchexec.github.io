@@ -177,6 +177,10 @@ kbd {
 
 /** PLACES **/
 
+.places {
+  line-height: 2.7;
+}
+
 .places a {
   border: 0.1em solid;
   border-bottom: 0.25em double;
@@ -185,6 +189,7 @@ kbd {
   outline-width: 0.1em;
   padding: 0.2em 0.5em 0.1em;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .places a:hover, .places a:focus {
