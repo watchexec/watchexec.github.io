@@ -240,6 +240,28 @@ code ol.codeblock ::marker {
   color: var(--code-linenum);
 }
 
+/* Code wrap breaks */
+
+code .wrapbreak {
+  color: var(--syn-sigil);
+}
+
+code .wrapbreak wbr {
+  display: block;
+}
+
+.shell .wrapbreak::after {
+  content: ' ';
+  display: inline-block;
+  width: 2ch;
+}
+
+@media (min-width: 30rem) {
+  code .wrapbreak {
+    display: none;
+  }
+}
+
 /* Alternatives */
 
 .alternatives {
