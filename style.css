@@ -146,6 +146,20 @@ kbd {
 
 /** PLACES **/
 
+.places a {
+  border: 0.1em solid;
+  border-bottom: 0.25em double;
+  font-size: 1.2em;
+  margin-right: 0.5em;
+  padding: 0.2em 0.5em 0.1em;
+  text-decoration: none;
+}
+
+.places a:hover, .places a:focus {
+  border-bottom-style: solid;
+}
+
+
 /** CODE **/
 
 code {
