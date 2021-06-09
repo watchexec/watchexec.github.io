@@ -3,12 +3,11 @@
 /* Light mode (default) */
 
 :root {
-  --bg: hsl(0 0% 98%);
+  --bg: hsl(0 23% 97%);
 
   --fg: hsl(0 0% 5%);
   --fg-h1: hsl(230 50% 50%);
-  --fg-h2: hsl(230 40% 65%);
-  --fg-pitch-em: hsl(350 70% 25%);
+  --fg-h2: hsl(230 45% 65%);
 
   --pitch-em: hsl(125 70% 30%);
 
@@ -42,8 +41,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: hsl(0 5% 10%);
+    --bg: hsl(0 5% 6%);
+
     --fg: hsl(120 100% 98%);
+    --fg-h1: hsl(230 90% 70%);
+    --fg-h2: hsl(230 40% 65%);
 
     --pitch-em: hsl(60 100% 66%);
 
