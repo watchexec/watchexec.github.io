@@ -191,6 +191,16 @@ kbd {
   border-bottom-style: solid;
 }
 
+.places a.primary {
+  background: var(--a-normal);
+  border-color: transparent;
+  color: var(--bg);
+  font-weight: 500;
+}
+.places a.primary:visited { background: var(--a-visited) }
+.places a.primary:active { background: var(--a-active) }
+.places a.primary:hover, .places a.primary:focus { background: var(--fg) }
+
 
 /** CODE **/
 
