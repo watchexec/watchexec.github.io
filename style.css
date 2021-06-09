@@ -196,6 +196,7 @@ kbd {
   border-color: transparent;
   color: var(--bg);
   font-weight: 500;
+  outline-color: var(--fg);
 }
 .places a.primary:visited { background: var(--a-visited) }
 .places a.primary:active { background: var(--a-active) }
