@@ -286,6 +286,7 @@ code .tab::after {
 .shell .command { color: var(--syn-command); }
 .shell .option { color: var(--syn-option); }
 .shell .prompt { color: var(--syn-prompt); }
+.shell .punct { color: var(--syn-punct); }
 .shell .sigil { color: var(--syn-sigil); }
 .shell .subcommand { color: var(--syn-subcommand); }
 
