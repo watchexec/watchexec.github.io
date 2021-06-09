@@ -173,23 +173,23 @@ code {
 /* Layouts */
 
 code.oneline {
+  border: solid var(--code-border);
+  border-width: 0 0.4rem;
   display: block;
-  padding: 0.25rem 1rem;
   font-size: calc(var(--code-line-fs) * 1rem);
-  border: 0.4rem double var(--code-border);
   margin: 2rem;
-  border-radius: 0.5rem;
+  padding: 0.25rem 1rem;
   width: max-content;
 }
 
 code ol.codeblock {
+  border: solid var(--code-border);
+  border-width: 0.4rem 0;
   font-size: calc(var(--code-block-fs) * 1rem);
   list-style-type: decimal-leading-zero;
+  margin: 2rem;
   padding: 0.6em 2.7em;
   width: max-content;
-  border: 0.4rem double var(--code-border);
-  margin: 2rem;
-  border-radius: 0.5rem;
 }
 
 code ol.codeblock ::marker {
