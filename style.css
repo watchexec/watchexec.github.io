@@ -10,9 +10,7 @@
   --fg-h2: hsl(230 40% 65%);
   --fg-pitch-em: hsl(350 70% 25%);
 
-  --a-normal: hsl(230, 80%, 50%);
-  --a-active: hsl(340, 80%, 50%);
-  --a-visited: hsl(270, 80%, 50%);
+  --pitch-em: hsl(125 70% 30%);
 
   --code-border: hsl(270 100% 50%);
   --code-linenum: hsl(0 0% 60%);
@@ -44,6 +42,8 @@
   :root {
     --bg: hsl(0 5% 10%);
     --fg: hsl(120 100% 98%);
+
+    --pitch-em: hsl(60 100% 66%);
 
     --code-border: hsl(90 80% 40%);
     --code-linenum: hsl(0 0% 30%);
@@ -85,7 +85,10 @@ a { color: var(--a-normal); }
 a:active { color: var(--a-active); }
 a:visited { color: var(--a-visited); }
 
-.pitch em { color: var(--fg-pitch-em); }
+.pitch em {
+  background: var(--pitch-em);
+  color: var(--bg);
+}
 
 
 /** LAYOUT **/
@@ -130,6 +133,15 @@ kbd {
 
 .pitch {
   font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+.pitch em {
+  border-radius: 0.2em;
+  display: inline-block;
+  line-height: 1;
+  padding: 0.1em 0.3em;
+  transform: rotate(-5deg);
 }
 
 /** PLACES **/
