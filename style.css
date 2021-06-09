@@ -14,6 +14,8 @@
   --a-normal: hsl(230 80% 50%);
   --a-active: hsl(340 80% 50%);
   --a-visited: hsl(270 80% 50%);
+
+  --code-border: hsl(270 100% 50% / 50%);
   --code-linenum: hsl(0 0% 60%);
   --code-tab: hsl(0 0% 85%);
 
@@ -49,7 +51,7 @@
 
     --pitch-em: hsl(60 100% 66%);
 
-    --code-border: hsl(90 80% 40%);
+    --code-border: hsl(140 80% 40% / 50%);
     --code-linenum: hsl(0 0% 30%);
     --code-tab: hsl(0 0% 15%);
 
