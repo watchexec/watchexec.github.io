@@ -175,6 +175,7 @@ kbd {
   transform: rotate(-5deg);
 }
 
+
 /** PLACES **/
 
 .places {
@@ -242,18 +243,13 @@ code ol.codeblock ::marker {
 
 /* Code wrap breaks */
 
-code .wbr wbr {
-  display: block;
-}
-
 @media (min-width: 30rem) {
   code .wbr {
     display: none;
   }
 }
 
-.shell .wbr::before {
-  content: '\\';
+.shell .wbr {
   color: var(--syn-sigil);
 }
 
@@ -285,7 +281,6 @@ code .wbr wbr {
   margin: 0;
 }
 
-
 /* Tabs */
 
 code .tab {
@@ -301,7 +296,6 @@ code .tab::after {
   position: absolute;
   left: 1ch;
 }
-
 
 /* Shell */
 
@@ -324,7 +318,6 @@ code .tab::after {
 .shell .punct { color: var(--syn-punct); }
 .shell .sigil { color: var(--syn-sigil); }
 .shell .subcommand { color: var(--syn-subcommand); }
-
 
 /* Rust */
 
