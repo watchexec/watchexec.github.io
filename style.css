@@ -263,6 +263,18 @@ code .wbr wbr {
   width: 3ch;
 }
 
+.rust .wbr::after {
+  color: var(--code-tab);
+  content: ' →  →  → ';
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.rust .wbr.t-1::after { width: 4ch; }
+.rust .wbr.t-2::after { width: 8ch; }
+.rust .wbr.t-3::after { width: 12ch; }
+
 /* Alternatives */
 
 .alternatives {
