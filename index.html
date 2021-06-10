@@ -2,282 +2,282 @@
 <html lang="en-NZ">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta charset="utf-8" />
 
-    <link rel="shortcut icon" href="/logo.svg" />
-    <title>Watchexec</title>
-    <meta name="description" content="A suite of tools and libraries related to Watchexec, which runs commands when files change." />
+	<link rel="shortcut icon" href="/logo.svg" />
+	<title>Watchexec</title>
+	<meta name="description" content="A suite of tools and libraries related to Watchexec, which runs commands when files change." />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Watchexec" />
-    <meta name="twitter:description" content="Run commands when files change." />
-    <meta name="twitter:image:src" content="/logo.svg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Watchexec" />
+	<meta name="twitter:description" content="Run commands when files change." />
+	<meta name="twitter:image:src" content="/logo.svg" />
 
-    <meta property="og:title" content="Watchexec" />
-    <meta property="og:description" content="Run commands when files change." />
-    <meta property="og:image" content="/logo.svg" />
+	<meta property="og:title" content="Watchexec" />
+	<meta property="og:description" content="Run commands when files change." />
+	<meta property="og:image" content="/logo.svg" />
 
-    <link rel="stylesheet" href="/style.css" />
+	<link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
 <section id="watchexec-cli">
-    <h1>Watchexec</h1>
+	<h1>Watchexec</h1>
 
-    <div class="alternatives">
-        <code class="alt oneline shell">
-            <span class="prompt">$&gt;</span>
-            <span class="command">watchexec</span>
-            <span class="argument">make</span>
-        </code>
-        <code class="alt oneline shell">
-            <span class="prompt">$&gt;</span>
-            <span class="command">watchexec</span>
-            <span class="wbr" aria-hidden="true">\<br></span
-            ><span class="string"
-                >"<span class="command">date</span>
-                <span class="sigil">&gt;&gt;</span>
-                <span class="path">../changes.log</span
-            >"</span>
-        </code>
-        <code class="alt oneline shell">
-            <span class="prompt">$&gt;</span>
-            <span class="command">watchexec</span>
-            <span class="wbr" aria-hidden="true">\<br></span
-            ><span class="option">--restart</span>
-            <span class="wbr" aria-hidden="true">\<br></span
-            ><span class="option">--exts</span>
-            <span class="argument">js<span class="punct">,</span>mjs</span>
-            <span class="wbr" aria-hidden="true">\<br></span
-            ><span class="sigil">--</span>
-            <span class="command">node</span>
-            <span class="path">server.js</span>
-        </code>
-    </div>
+	<div class="alternatives">
+		<code class="alt oneline shell">
+			<span class="prompt">$&gt;</span>
+			<span class="command">watchexec</span>
+			<span class="argument">make</span>
+		</code>
+		<code class="alt oneline shell">
+			<span class="prompt">$&gt;</span>
+			<span class="command">watchexec</span>
+			<span class="wbr" aria-hidden="true">\<br></span
+			><span class="string"
+				>"<span class="command">date</span>
+				<span class="sigil">&gt;&gt;</span>
+				<span class="path">../changes.log</span
+			>"</span>
+		</code>
+		<code class="alt oneline shell">
+			<span class="prompt">$&gt;</span>
+			<span class="command">watchexec</span>
+			<span class="wbr" aria-hidden="true">\<br></span
+			><span class="option">--restart</span>
+			<span class="wbr" aria-hidden="true">\<br></span
+			><span class="option">--exts</span>
+			<span class="argument">js<span class="punct">,</span>mjs</span>
+			<span class="wbr" aria-hidden="true">\<br></span
+			><span class="sigil">--</span>
+			<span class="command">node</span>
+			<span class="path">server.js</span>
+		</code>
+	</div>
 
-    <p class="pitch">
-        Run a command when files in the current directory change.
-        Kick off build processes, restart development servers, detect activity…
-        stop pressing <kbd>Enter ⏎</kbd> over and over again and <em>keep on doing!</em>
-    </p>
+	<p class="pitch">
+		Run a command when files in the current directory change.
+		Kick off build processes, restart development servers, detect activity…
+		stop pressing <kbd>Enter ⏎</kbd> over and over again and <em>keep on doing!</em>
+	</p>
 
-    <nav class="places">
-        <a class="primary" href="/downloads/#cli">📦 Download</a>
-        <a href="https://github.com/watchexec/watchexec">📜 Source</a>
-        <a href="https://github.com/watchexec/watchexec/issues">🐞 Issues</a>
-        <a href="/docs/cli/">📖 Documentation</a>
-    </nav>
+	<nav class="places">
+		<a class="primary" href="/downloads/#cli">📦 Download</a>
+		<a href="https://github.com/watchexec/watchexec">📜 Source</a>
+		<a href="https://github.com/watchexec/watchexec/issues">🐞 Issues</a>
+		<a href="/docs/cli/">📖 Documentation</a>
+	</nav>
 </section>
 
 <section id="cargo-watch">
-    <h2>Cargo Watch</h2>
+	<h2>Cargo Watch</h2>
 
-    <div class="alternatives">
-        <code class="alt oneline shell">
-            <span class="prompt">$&gt;</span>
-            <span class="command">cargo</span>
-            <span class="subcommand">watch</span>
-        </code>
-        <code class="alt oneline shell">
-            <span class="prompt">$&gt;</span>
-            <span class="command">cargo</span>
-            <span class="subcommand">watch</span>
-            <span class="wbr" aria-hidden="true">\<br></span
-            ><span class="sigil">--</span>
-            <span class="command">cargo</span>
-            <span class="subcommand">test</span>
-        </code>
-        <code class="alt oneline shell">
-            <span class="prompt">$&gt;</span>
-            <span class="command">cargo</span>
-            <span class="subcommand">watch</span>
-            <span class="wbr" aria-hidden="true">\<br></span
-            ><span class="option">-x</span>
-            <span class="subcommand">clippy</span>
-            <span class="wbr" aria-hidden="true">\<br></span
-            ><span class="option">-x</span>
-            <span class="string"
-                >"<span class="subcommand">test</span>
-                <span class="option">--exact</span>
-                <span class="argument">ice_cream</span
-            >"</span>
-        </code>
-    </div>
+	<div class="alternatives">
+		<code class="alt oneline shell">
+			<span class="prompt">$&gt;</span>
+			<span class="command">cargo</span>
+			<span class="subcommand">watch</span>
+		</code>
+		<code class="alt oneline shell">
+			<span class="prompt">$&gt;</span>
+			<span class="command">cargo</span>
+			<span class="subcommand">watch</span>
+			<span class="wbr" aria-hidden="true">\<br></span
+			><span class="sigil">--</span>
+			<span class="command">cargo</span>
+			<span class="subcommand">test</span>
+		</code>
+		<code class="alt oneline shell">
+			<span class="prompt">$&gt;</span>
+			<span class="command">cargo</span>
+			<span class="subcommand">watch</span>
+			<span class="wbr" aria-hidden="true">\<br></span
+			><span class="option">-x</span>
+			<span class="subcommand">clippy</span>
+			<span class="wbr" aria-hidden="true">\<br></span
+			><span class="option">-x</span>
+			<span class="string"
+				>"<span class="subcommand">test</span>
+				<span class="option">--exact</span>
+				<span class="argument">ice_cream</span
+			>"</span>
+		</code>
+	</div>
 
-    <p class="pitch">
-        Build your <a href="https://rust-lang.org">Rust</a> project. Two words
-        to get going, more opportunities at your fingertips. Fit for Cargo, fit
-        for life. Your code is in good hands. <em>Oxidise it!</em>
-    </p>
+	<p class="pitch">
+		Build your <a href="https://rust-lang.org">Rust</a> project. Two words
+		to get going, more opportunities at your fingertips. Fit for Cargo, fit
+		for life. Your code is in good hands. <em>Oxidise it!</em>
+	</p>
 
-    <nav class="places">
-        <a class="primary" href="/downloads/#cargo-watch">📦 Download</a>
-        <a href="https://github.com/watchexec/cargo-watch">📜 Source</a>
-        <a href="https://github.com/watchexec/cargo-watch/issues">🐞 Issues</a>
-        <a href="/docs/cargo-watch/">📖 Documentation</a>
-    </nav>
+	<nav class="places">
+		<a class="primary" href="/downloads/#cargo-watch">📦 Download</a>
+		<a href="https://github.com/watchexec/cargo-watch">📜 Source</a>
+		<a href="https://github.com/watchexec/cargo-watch/issues">🐞 Issues</a>
+		<a href="/docs/cargo-watch/">📖 Documentation</a>
+	</nav>
 </section>
 
 <section id="watchexec-lib">
-    <h2>Watchexec library</h2>
+	<h2>Watchexec library</h2>
 
-    <p class="pitch">
-        Create your own watching tool. From presenting different options,
-        to changing the defaults, to responding differently than running
-        commands, to answering to other events. <em>Power your craft!</em>
-    </p>
+	<p class="pitch">
+		Create your own watching tool. From presenting different options,
+		to changing the defaults, to responding differently than running
+		commands, to answering to other events. <em>Power your craft!</em>
+	</p>
 
-    <nav class="places">
-        <a class="primary" href="https://docs.rs/watchexec">📖 Documentation</a>
-        <a href="https://github.com/watchexec/watchexec">📜 Source</a>
-        <a href="https://github.com/watchexec/watchexec/issues">🐞 Issues</a>
-    </nav>
+	<nav class="places">
+		<a class="primary" href="https://docs.rs/watchexec">📖 Documentation</a>
+		<a href="https://github.com/watchexec/watchexec">📜 Source</a>
+		<a href="https://github.com/watchexec/watchexec/issues">🐞 Issues</a>
+	</nav>
 
-    <code class="rust">
-        <ol class="codeblock">
-            <li><span class="keyword">use</span> <span class="path">watchexec</span><span class="punct">::{</span></li>
-            <li><span class="tab">&#9;</span><span class="path">config</span><span class="punct">::</span><span class="type">ConfigBuilder</span><span class="punct">,</span></li>
-            <li><span class="tab">&#9;</span><span class="path">error</span><span class="punct">::</span><span class="type">Result</span><span class="punct">,</span></li>
-            <li><span class="tab">&#9;</span><span class="path">pathop</span><span class="punct">::</span><span class="type">PathOp</span><span class="punct">,</span></li>
-            <li><span class="tab">&#9;</span><span class="path">run</span><span class="punct">::{</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="type">ExecHandler</span><span class="punct">,</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="trait">Handler</span><span class="punct">,</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="fn">watch</span><span class="punct">,</span></li>
-            <li><span class="tab">&#9;</span><span class="punct">},</span></li>
-            <li><span class="punct">};</span></li>
-            <li></li>
-            <li><span class="keyword">fn</span>
-                <span class="fn">main</span><span class="punct">()</span>
-                <span class="sigil">-&gt;</span>
-                <span class="type">Result</span><span class="punct">&lt;()&gt; {</span></li>
-            <li><span class="tab">&#9;</span><span class="keyword">let</span>
-                <span class="binding">config</span>
-                <span class="punct">=</span>
-                <span class="type">ConfigBuilder</span><span class="punct">::</span><span class="fn">default</span><span class="punct">()</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">clear_screen</span><span class="punct">(</span><span class="bool">true</span><span class="punct">)</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">run_initially</span><span class="punct">(</span><span class="bool">true</span><span class="punct">)</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">paths</span><span class="punct">(</span><span class="macro">vec!</span><span class="punct">[</span
-            ><span class="wbr t-3" aria-hidden="true"><br></span
-                ><span class="string">"/path/to/dir"</span><span class="punct">.</span><span class="fn">into</span><span class="punct">()</span
-                ><span class="wbr t-2" aria-hidden="true"><br></span
-                ><span class="punct">])</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">cmd</span><span class="punct">(</span><span class="macro">vec!</span><span class="punct">[</span
-            ><span class="wbr t-3" aria-hidden="true"><br></span
-                ><span class="string">"date; seq 1 10"</span><span class="punct">.</span><span class="fn">into</span><span class="punct">()</span
-                ><span class="wbr t-2" aria-hidden="true"><br></span
-                ><span class="punct">])</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">build</span><span class="punct">(</span><span class="punct">)<span class="sigil">?</span>;</span></li>
-            <li></li>
-            <li><span class="tab">&#9;</span><span class="keyword">let</span>
-                <span class="binding">handler</span>
-                <span class="punct">=</span>
-                <span class="type">MyHandler</span
-                ><span class="punct">(</span><span
-                    class="wbr t-2" aria-hidden="true"><br></span><span
-                    class="type">ExecHandler</span><span class="punct">::</span><span class="fn">new</span
-                        ><span class="punct">(</span
-                            ><span class="binding">config</span><span class="punct"
-                        >)</span
-                    ><span class="sigil">?</span
-                    ><span class="wbr t-1" aria-hidden="true"><br></span
-                ><span class="punct">);</span></li>
-            <li><span class="tab">&#9;</span><span class="fn">watch</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="binding">handler</span><span class="punct">)</span></li>
-            <li><span class="punct">}</span></li>
-            <li></li>
-            <li><span class="keyword">struct</span>
-                <span class="type">MyHandler</span><span class="punct">(</span><span class="type">ExecHandler</span><span class="punct">);</span></li>
-            <li></li>
-            <li><span class="keyword">impl</span>
-                <span class="trait">Handler</span>
-                <span class="keyword">for</span>
-                <span class="type">MyHandler</span>
-                <span class="punct">{</span></li>
-            <li><span class="tab">&#9;</span><span class="keyword">fn</span>
-                <span class="fn">args</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">)</span>
-                <span class="sigil">-&gt;</span>
-                <span class="type">Config</span>
-                <span class="punct">{</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span
-                ><span class="keyword">self</span><span class="punct">.</span
-                ><span class="field">0</span><span class="punct">.</span
-                ><span class="fn">args</span><span class="punct">()</span></li>
-            <li><span class="tab">&#9;</span><span class="punct">}</span></li>
-            <li></li>
-            <li><span class="tab">&#9;</span><span class="keyword">fn</span>
-                <span class="fn">on_manual</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">)</span>
-                <span class="sigil">-&gt;</span>
-                <span class="type">Result</span><span class="punct">&lt;</span><span class="keyword">bool</span><span class="punct">&gt;</span>
-                <span class="punct">{</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span
-                ><span class="macro">println!</span><span class="punct"
-                >(</span><span class="string">"Running manually!"</span
-                ><span class="punct">);</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span
-                ><span class="keyword">self</span><span class="punct">.</span
-                ><span class="field">0</span><span class="punct">.</span
-                ><span class="fn">on_manual</span><span class="punct">()</span></li>
-            <li><span class="tab">&#9;</span><span class="punct">}</span></li>
-            <li></li>
-            <li><span class="tab">&#9;</span><span class="keyword">fn</span>
-                <span class="fn">on_update</span><span class="punct">(</span
-                    ><span class="wbr t-2" aria-hidden="true"><br></span
-                    ><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">,</span>
-                    <span class="wbr t-2" aria-hidden="true"><br></span
-                    ><span class="binding">ops</span><span class="punct">:</span>
-                    <span class="sigil">&amp;</span><span class="punct">[</span
-                        ><span class="type">PathOp</span><span class="punct"
-                    >]</span><span class="wbr t-1" aria-hidden="true"><br></span
-                ><span class="punct">)</span>
-                <span class="sigil">-&gt;</span>
-                <span class="type">Result</span><span class="punct">&lt;</span><span class="keyword">bool</span><span class="punct">&gt;</span>
-                <span class="punct">{</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span
-                ><span class="macro">println!</span><span class="punct">(</span
-                    ><span class="wbr t-3" aria-hidden="true"><br></span
-                    ><span class="string">"Running on update of: <span class="sigil">{:?}</span>"</span><span class="punct">,</span>
-                    <span class="wbr t-3" aria-hidden="true"><br></span
-                    ><span class="binding">ops</span
-                    ><span class="wbr t-2" aria-hidden="true"><br></span
-                ><span class="punct">);</span></li>
-            <li><span class="tab">&#9;</span><span class="tab">&#9;</span
-                ><span class="keyword">self</span><span class="punct">.</span
-                ><span class="field">0</span><span class="punct">.</span
-                ><span class="fn">on_update</span><span class="punct">(</span><span class="binding">ops</span><span class="punct">)</span></li>
-            <li><span class="tab">&#9;</span><span class="punct">}</span></li>
-            <li><span class="punct">}</span></li>
-        </ol>
-    </code>
+	<code class="rust">
+		<ol class="codeblock">
+			<li><span class="keyword">use</span> <span class="path">watchexec</span><span class="punct">::{</span></li>
+			<li><span class="tab">&#9;</span><span class="path">config</span><span class="punct">::</span><span class="type">ConfigBuilder</span><span class="punct">,</span></li>
+			<li><span class="tab">&#9;</span><span class="path">error</span><span class="punct">::</span><span class="type">Result</span><span class="punct">,</span></li>
+			<li><span class="tab">&#9;</span><span class="path">pathop</span><span class="punct">::</span><span class="type">PathOp</span><span class="punct">,</span></li>
+			<li><span class="tab">&#9;</span><span class="path">run</span><span class="punct">::{</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="type">ExecHandler</span><span class="punct">,</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="trait">Handler</span><span class="punct">,</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="fn">watch</span><span class="punct">,</span></li>
+			<li><span class="tab">&#9;</span><span class="punct">},</span></li>
+			<li><span class="punct">};</span></li>
+			<li></li>
+			<li><span class="keyword">fn</span>
+				<span class="fn">main</span><span class="punct">()</span>
+				<span class="sigil">-&gt;</span>
+				<span class="type">Result</span><span class="punct">&lt;()&gt; {</span></li>
+			<li><span class="tab">&#9;</span><span class="keyword">let</span>
+				<span class="binding">config</span>
+				<span class="punct">=</span>
+				<span class="type">ConfigBuilder</span><span class="punct">::</span><span class="fn">default</span><span class="punct">()</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">clear_screen</span><span class="punct">(</span><span class="bool">true</span><span class="punct">)</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">run_initially</span><span class="punct">(</span><span class="bool">true</span><span class="punct">)</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">paths</span><span class="punct">(</span><span class="macro">vec!</span><span class="punct">[</span
+			><span class="wbr t-3" aria-hidden="true"><br></span
+				><span class="string">"/path/to/dir"</span><span class="punct">.</span><span class="fn">into</span><span class="punct">()</span
+				><span class="wbr t-2" aria-hidden="true"><br></span
+				><span class="punct">])</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">cmd</span><span class="punct">(</span><span class="macro">vec!</span><span class="punct">[</span
+			><span class="wbr t-3" aria-hidden="true"><br></span
+				><span class="string">"date; seq 1 10"</span><span class="punct">.</span><span class="fn">into</span><span class="punct">()</span
+				><span class="wbr t-2" aria-hidden="true"><br></span
+				><span class="punct">])</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span><span class="punct">.</span><span class="fn">build</span><span class="punct">(</span><span class="punct">)<span class="sigil">?</span>;</span></li>
+			<li></li>
+			<li><span class="tab">&#9;</span><span class="keyword">let</span>
+				<span class="binding">handler</span>
+				<span class="punct">=</span>
+				<span class="type">MyHandler</span
+				><span class="punct">(</span><span
+					class="wbr t-2" aria-hidden="true"><br></span><span
+					class="type">ExecHandler</span><span class="punct">::</span><span class="fn">new</span
+						><span class="punct">(</span
+							><span class="binding">config</span><span class="punct"
+						>)</span
+					><span class="sigil">?</span
+					><span class="wbr t-1" aria-hidden="true"><br></span
+				><span class="punct">);</span></li>
+			<li><span class="tab">&#9;</span><span class="fn">watch</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="binding">handler</span><span class="punct">)</span></li>
+			<li><span class="punct">}</span></li>
+			<li></li>
+			<li><span class="keyword">struct</span>
+				<span class="type">MyHandler</span><span class="punct">(</span><span class="type">ExecHandler</span><span class="punct">);</span></li>
+			<li></li>
+			<li><span class="keyword">impl</span>
+				<span class="trait">Handler</span>
+				<span class="keyword">for</span>
+				<span class="type">MyHandler</span>
+				<span class="punct">{</span></li>
+			<li><span class="tab">&#9;</span><span class="keyword">fn</span>
+				<span class="fn">args</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">)</span>
+				<span class="sigil">-&gt;</span>
+				<span class="type">Config</span>
+				<span class="punct">{</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span
+				><span class="keyword">self</span><span class="punct">.</span
+				><span class="field">0</span><span class="punct">.</span
+				><span class="fn">args</span><span class="punct">()</span></li>
+			<li><span class="tab">&#9;</span><span class="punct">}</span></li>
+			<li></li>
+			<li><span class="tab">&#9;</span><span class="keyword">fn</span>
+				<span class="fn">on_manual</span><span class="punct">(</span><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">)</span>
+				<span class="sigil">-&gt;</span>
+				<span class="type">Result</span><span class="punct">&lt;</span><span class="keyword">bool</span><span class="punct">&gt;</span>
+				<span class="punct">{</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span
+				><span class="macro">println!</span><span class="punct"
+				>(</span><span class="string">"Running manually!"</span
+				><span class="punct">);</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span
+				><span class="keyword">self</span><span class="punct">.</span
+				><span class="field">0</span><span class="punct">.</span
+				><span class="fn">on_manual</span><span class="punct">()</span></li>
+			<li><span class="tab">&#9;</span><span class="punct">}</span></li>
+			<li></li>
+			<li><span class="tab">&#9;</span><span class="keyword">fn</span>
+				<span class="fn">on_update</span><span class="punct">(</span
+					><span class="wbr t-2" aria-hidden="true"><br></span
+					><span class="sigil">&amp;</span><span class="keyword">self</span><span class="punct">,</span>
+					<span class="wbr t-2" aria-hidden="true"><br></span
+					><span class="binding">ops</span><span class="punct">:</span>
+					<span class="sigil">&amp;</span><span class="punct">[</span
+						><span class="type">PathOp</span><span class="punct"
+					>]</span><span class="wbr t-1" aria-hidden="true"><br></span
+				><span class="punct">)</span>
+				<span class="sigil">-&gt;</span>
+				<span class="type">Result</span><span class="punct">&lt;</span><span class="keyword">bool</span><span class="punct">&gt;</span>
+				<span class="punct">{</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span
+				><span class="macro">println!</span><span class="punct">(</span
+					><span class="wbr t-3" aria-hidden="true"><br></span
+					><span class="string">"Running on update of: <span class="sigil">{:?}</span>"</span><span class="punct">,</span>
+					<span class="wbr t-3" aria-hidden="true"><br></span
+					><span class="binding">ops</span
+					><span class="wbr t-2" aria-hidden="true"><br></span
+				><span class="punct">);</span></li>
+			<li><span class="tab">&#9;</span><span class="tab">&#9;</span
+				><span class="keyword">self</span><span class="punct">.</span
+				><span class="field">0</span><span class="punct">.</span
+				><span class="fn">on_update</span><span class="punct">(</span><span class="binding">ops</span><span class="punct">)</span></li>
+			<li><span class="tab">&#9;</span><span class="punct">}</span></li>
+			<li><span class="punct">}</span></li>
+		</ol>
+	</code>
 </section>
 
 <section id="clearscreen">
-    <h2>ClearScreen</h2>
+	<h2>ClearScreen</h2>
 
-    <code class="oneline rust">
-        <span class="path">clearscreen</span
-            ><span class="punct">::</span
-            ><span class="fn">clear</span
-            ><span class="punct">().</span
-            ><span class="fn">unwrap</span
-            ><span class="punct">();</span>
-    </code>
+	<code class="oneline rust">
+		<span class="path">clearscreen</span
+			><span class="punct">::</span
+			><span class="fn">clear</span
+			><span class="punct">().</span
+			><span class="fn">unwrap</span
+			><span class="punct">();</span>
+	</code>
 
-    <p class="pitch">
-        Clear the terminal. On all platforms, across all terminals. Go beyond
-        <strong><code class="inline rust"><span class="string"
-            ><span class="escape">\x1b</span
-            >[H<span class="escape">\x1b</span
-            >[2J<span class="escape">\x1b</span
-            >[3J</span
-        ></code></strong> and start doing the right thing in the right place.
-        Reset even the most dire of states. <em>Erase the past!</em>
-    </p>
+	<p class="pitch">
+		Clear the terminal. On all platforms, across all terminals. Go beyond
+		<strong><code class="inline rust"><span class="string"
+			><span class="escape">\x1b</span
+			>[H<span class="escape">\x1b</span
+			>[2J<span class="escape">\x1b</span
+			>[3J</span
+		></code></strong> and start doing the right thing in the right place.
+		Reset even the most dire of states. <em>Erase the past!</em>
+	</p>
 
-    <nav class="places">
-        <a class="primary" href="https://docs.rs/clearscreen">📖 Documentation</a>
-        <a href="https://github.com/watchexec/clearscreen">📜 Source</a>
-        <a href="https://github.com/watchexec/clearscreen/issues">🐞 Issues</a>
-    </nav>
+	<nav class="places">
+		<a class="primary" href="https://docs.rs/clearscreen">📖 Documentation</a>
+		<a href="https://github.com/watchexec/clearscreen">📜 Source</a>
+		<a href="https://github.com/watchexec/clearscreen/issues">🐞 Issues</a>
+	</nav>
 </section>
 
 </body>
