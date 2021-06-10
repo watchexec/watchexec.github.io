@@ -242,24 +242,25 @@ code ol.codeblock ::marker {
 
 /* Code wrap breaks */
 
-code .wrapbreak {
-  color: var(--syn-sigil);
-}
-
-code .wrapbreak wbr {
+code .wbr wbr {
   display: block;
 }
 
-.shell .wrapbreak::after {
-  content: ' ';
-  display: inline-block;
-  width: 2ch;
-}
-
 @media (min-width: 30rem) {
-  code .wrapbreak {
+  code .wbr {
     display: none;
   }
+}
+
+.shell .wbr::before {
+  content: '\\';
+  color: var(--syn-sigil);
+}
+
+.shell .wbr::after {
+  content: ' ';
+  display: inline-block;
+  width: 3ch;
 }
 
 /* Alternatives */
