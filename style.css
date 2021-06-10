@@ -110,6 +110,7 @@ a:active { color: var(--a-active); }
 
 body {
 	margin: 1rem 0.5rem 0.5rem 2rem;
+	max-width: 60rem;
 }
 
 h1, h2 {
