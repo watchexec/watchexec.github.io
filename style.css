@@ -108,6 +108,10 @@ a:active { color: var(--a-active); }
 
 /** LAYOUT **/
 
+* {
+	box-sizing: content-box;
+}
+
 body {
 	margin: 1rem 0.5rem 0.5rem 2rem;
 	max-width: 60rem;
@@ -123,6 +127,35 @@ section {
 
 .pitch {
 	max-width: 35rem;
+}
+
+table {
+	border: 1px solid;
+	border-collapse: collapse;
+	margin-bottom: 2rem;
+}
+
+table td, table th {
+	border: 1px solid;
+	padding: 0.5em;
+}
+
+table.downloads .checksum {
+	user-select: all;
+}
+
+table.signatures th {
+	text-align: left;
+}
+
+aside {
+	border: 1px dashed;
+	margin: 2rem 0;
+	padding: 1em 2em;
+}
+
+aside p {
+	font-family: var(--sans);
 }
 
 

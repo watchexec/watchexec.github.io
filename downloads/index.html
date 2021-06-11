@@ -61,19 +61,232 @@
 </section>
 
 <section id="cli">
-	<h2>Watchexec</h2>
+	<h2>Watchexec 1.16.1</h2>
 
-	<p>
-		The latest released version is <strong>1.2.3</strong>.
-	</p>
+	<aside>
+		<h3>Changes</h3>
+
+		<ul>
+			<li>Fix <code class="shell"><span class="option">--clear</span></code> with clearscreen 1.0.4
+				(ref <a href="https://github.com/watchexec/clearscreen/issues/1">watchexec/clearscreen#1</a>)</li>
+		</ul>
+
+		<p>
+			This is a new CLI release only so that the binaries work, if you're using the library running
+			<code class="shell"><span class="command">cargo</span> <span class="subcommand">upgrade</span></code> is sufficient.
+		</p>
+	</aside>
+
+	<table class="downloads">
+		<thead>
+			<tr>
+				<th>OS</th>
+				<th>Arch</th>
+				<th>Variant</th>
+				<th>Download</th>
+				<th>B3 checksum</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="10">Linux</td>
+				<td rowspan="4">x86-64</td>
+				<td rowspan="2">glibc</td>
+				<td><a class="download tar" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-x86_64-unknown-linux-gnu.tar.xz">668 KB (XZ)</a></td>
+				<td><code class="checksum">96d2fc880c339777a1d7a7c7505d9f23f2a8ac0bacdf530b1d46edc0bcdb113c</code></td>
+			</tr>
+			<tr>
+				<td><a class="download deb" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-x86_64-unknown-linux-gnu.deb">664 KB (DEB)</a></td>
+				<td><code class="checksum">b025bc8b583930ac189d4aef91bbb3ee04dc8c4c3fe0087b306a104a7740f4e6</code></td>
+			</tr>
+			<tr>
+				<td rowspan="2">musl</td>
+				<td><a class="download tar" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-x86_64-unknown-linux-musl.tar.xz">698 KB (XZ)</a></td>
+				<td><code class="checksum">252795bdfd5fc63df259f0bb24ce0c8e52b13e4e2732167b5f2807bec5f7e773</code></td>
+			</tr>
+			<tr>
+				<td><a class="download deb" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-x86_64-unknown-linux-musl.deb">694 KB (DEB)</a></td>
+				<td><code class="checksum">6e2b7949b4a5a988d3a4cccbc33e00ffe901bfc7ac897e8d5fd4fa583437de11</code></td>
+			</tr>
+			<tr>
+				<td rowspan="2">x86</td>
+				<td rowspan="2">musl</td>
+				<td><a class="download tar" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-i686-unknown-linux-musl.tar.xz">699 KB (XZ)</a></td>
+				<td><code class="checksum">5b34d85ecd233e77d7e7b8dc96968446147b4b7a31141e97dd0fbb14b086c338</code></td>
+			</tr>
+			<tr>
+				<td><a class="download deb" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-i686-unknown-linux-musl.deb">695 KB (DEB)</a></td>
+				<td><code class="checksum">332a015df4f48646527c2af9a4ce5f0b740467e4bd7343d0c3694223b611ed4b</code></td>
+			</tr>
+			<tr>
+				<td rowspan="2">AArch64</td>
+				<td rowspan="2">glibc</td>
+				<td><a class="download tar" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-aarch64-unknown-linux-gnu.tar.xz">885 KB (XZ)</a></td>
+				<td><code class="checksum">8c49f255621234ec961304bf5807998ee2cd01be956c2c7af1b24603b42cd371</code></td>
+			</tr>
+			<tr>
+				<td><a class="download deb" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-aarch64-unknown-linux-gnu.deb">879 KB (DEB)</a></td>
+				<td><code class="checksum">82ceb00be0b1b47510ccbcc5af3a604af154df2b045968e40c16a4448df453e7</code></td>
+			</tr>
+			<tr>
+				<td rowspan="2">ARMv7 HF</td>
+				<td rowspan="2">glibc</td>
+				<td><a class="download tar" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-armv7-unknown-linux-gnueabihf.tar.xz">948 KB (XZ)</a></td>
+				<td><code class="checksum">166d99c45b966c3bfb87eac0f70a0799f568cc508914767c0545ee9fe217d230</code></td>
+			</tr>
+			<tr>
+				<td><a class="download deb" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-armv7-unknown-linux-gnueabihf.deb">943 KB (DEB)</a></td>
+				<td><code class="checksum">6a4b9c22933050507f39e799f317275d44928f928d73cb912aea310f4358796f</code></td>
+			</tr>
+
+			<tr>
+				<td>macOS</td>
+				<td>x86-64</td>
+				<td></td>
+				<td><a class="download tar" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-x86_64-apple-darwin.zip">625 KB (XZ)</a></td>
+				<td><code class="checksum">4e9973a8911b3aaaad89d90cd7857cfa61743a0c00e776f2f7b6b29e6c5cab0f</code></td>
+			</tr>
+			<tr>
+				<td rowspan="2">Windows</td>
+				<td>x86-64</td>
+				<td></td>
+				<td><a class="download zip" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-x86_64-pc-windows-msvc.zip">815 KB (Zip)</a></td>
+				<td><code class="checksum">c1893ba4baae1cac6abd622ac57ffcb6022553e1c3b96d05a1f20c23ed3a1f20</code></td>
+			</tr>
+			<tr>
+				<td>AArch64</td>
+				<td></td>
+				<td><a class="download zip" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.16.1/watchexec-1.16.1-aarch64-pc-windows-msvc.zip">743 KB (Zip)</a></td>
+				<td><code class="checksum">307c246d2c0589f16cbe5a56ae35fdb2ca0ff466422f0f18f68285aceff61386</code></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="signatures">
+		<tr>
+			<th><a href="...">B3 checksums</a></th>
+			<td><a href="...">Automated signature</a></td>
+			<td><a href="...">Félix’s signature</a></td>
+		</tr>
+		<tr>
+			<th><a href="...">SHA512 checksums</a></th>
+			<td><a href="...">Automated signature</a></td>
+			<td><a href="...">Félix’s signature</a></td>
+		</tr>
+	</table>
 </section>
 
 <section id="cargo-watch">
-	<h2>Cargo Watch</h2>
+	<h2>Cargo Watch 7.8.0</h2>
 
-	<p>
-		The latest released version is <strong>1.2.3</strong>.
-	</p>
+	<aside>
+		<h3>Changes</h3>
+
+		<ul>
+			<li><a href="https://github.com/passcod/cargo-watch/issues/172">#172</a> Restore and document the behaviour
+				where the directory is changed to the project/crate root by default, not the workspace root, as
+				introduced by 7.7.1.</li>
+
+			<li>New: <code class="shell"><span class="option">-C</span></code> /
+				<code class="shell"><span class="option">--workdir</span></code> option to change the working directory
+				to a custom location. Note that this will behave very strangely in combination with other path options
+				(like <code class="shell"><span class="option">-w</span></code> /
+				<code class="shell"><span class="option">--watch</span></code>) until real support is added upstream,
+				cf&nbsp;<a href="https://github.com/watchexec/watchexec/issues/188">watchexec/watchexec#188</a>.</li>
+
+			<li>New: logo.</li>
+			<li>New: Windows ARM builds.</li>
+			<li>New: checksums and release signing.</li>
+		</ul>
+	</aside>
+
+	<table class="downloads">
+		<thead>
+			<tr>
+				<th>OS</th>
+				<th>Arch</th>
+				<th>Variant</th>
+				<th>Download</th>
+				<th>B3 checksum</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="8">Linux</td>
+				<td rowspan="4">x86-64</td>
+				<td rowspan="2">glibc</td>
+				<td><a class="download tar" href="https://github.com/watchexec/cargo-watch/releases/download/v7.8.0/cargo-watch-v7.8.0-x86_64-unknown-linux-gnu.tar.xz">693 KB (XZ)</a></td>
+				<td><code class="checksum">c2e08110faa770dc713cf47893678159fb600910261617b1f96b42cee9a5d5bf</code></td>
+			</tr>
+			<tr>
+				<td><a class="download deb" href="https://github.com/watchexec/cargo-watch/releases/download/v7.8.0/cargo-watch-v7.8.0-x86_64-unknown-linux-gnu.deb">687 KB (DEB)</a></td>
+				<td><code class="checksum">2ec46ce5c8d6f629416d8c546c6cd58eb261bf4c664eec3c9343939c2a662a82</code></td>
+			</tr>
+			<tr>
+				<td rowspan="2">musl</td>
+				<td><a class="download tar" href="https://github.com/watchexec/cargo-watch/releases/download/v7.8.0/cargo-watch-v7.8.0-x86_64-unknown-linux-musl.tar.xz">711 KB (XZ)</a></td>
+				<td><code class="checksum">e6e429f3f5a6ea91c146979f6fcf01ce31d9ebfd28337a959e7cecd872b7efb4</code></td>
+			</tr>
+			<tr>
+				<td><a class="download deb" href="https://github.com/watchexec/cargo-watch/releases/download/v7.8.0/cargo-watch-v7.8.0-x86_64-unknown-linux-musl.deb">705 KB (DEB)</a></td>
+				<td><code class="checksum">8525b79fdcdd93643ae87942d05a44b0aceae883fea7247c10ec7ab8715fec23</code></td>
+			</tr>
+			<tr>
+				<td rowspan="2">AArch64</td>
+				<td rowspan="2">glibc</td>
+				<td><a class="download tar" href="https://github.com/watchexec/cargo-watch/releases/download/v7.8.0/cargo-watch-v7.8.0-aarch64-unknown-linux-gnu.tar.xz">908 KB (XZ)</a></td>
+				<td><code class="checksum">19cb14d554526f6c625bd4035b3d0e43231fc6e0191bd179f091417540fc7736</code></td>
+			</tr>
+			<tr>
+				<td><a class="download deb" href="https://github.com/watchexec/cargo-watch/releases/download/v7.8.0/cargo-watch-v7.8.0-aarch64-unknown-linux-gnu.deb">903 KB (DEB)</a></td>
+				<td><code class="checksum">cb16645ee3841ef8c626389117ae79901eb7b8852862656256fc1e8e95278cf2</code></td>
+			</tr>
+			<tr>
+				<td rowspan="2">ARMv7 HF</td>
+				<td rowspan="2">glibc</td>
+				<td><a class="download tar" href="https://github.com/watchexec/cargo-watch/releases/download/v7.8.0/cargo-watch-v7.8.0-armv7-unknown-linux-gnueabihf.tar.xz">962 KB (XZ)</a></td>
+				<td><code class="checksum">87619116d423330591dcb79b9a333a9f586791307fd5f26624280f82bf8b060d</code></td>
+			</tr>
+			<tr>
+				<td><a class="download deb" href="https://github.com/watchexec/cargo-watch/releases/download/v7.8.0/cargo-watch-v7.8.0-armv7-unknown-linux-gnueabihf.deb">955 KB (DEB)</a></td>
+				<td><code class="checksum">84347061b4a2b52c17fd12fc7e5c1635cd3d0eb8ab6d9edb927459df92846c12</code></td>
+			</tr>
+
+			<tr>
+				<td>macOS</td>
+				<td>x86-64</td>
+				<td></td>
+				<td><a class="download tar" href="https://github.com/watchexec/cargo-watch/releases/download/v7.8.0/cargo-watch-v7.8.0-x86_64-apple-darwin.zip">643 KB (XZ)</a></td>
+				<td><code class="checksum">4e9973a8911b3aaaad89d90cd7857cfa61743a0c00e776f2f7b6b29e6c5cab0f</code></td>
+			</tr>
+			<tr>
+				<td rowspan="2">Windows</td>
+				<td>x86-64</td>
+				<td></td>
+				<td><a class="download zip" href="https://github.com/watchexec/cargo-watch/releases/download/v7.8.0/cargo-watch-v7.8.0-x86_64-pc-windows-msvc.zip">830 KB (Zip)</a></td>
+				<td><code class="checksum">7f790b9e05cadb9d4ffee1e72e9929c9285fee91e6244052d25fe1f9b0713243</code></td>
+			</tr>
+			<tr>
+				<td>AArch64</td>
+				<td></td>
+				<td><a class="download zip" href="https://github.com/watchexec/cargo-watch/releases/download/v7.8.0/cargo-watch-v7.8.0-aarch64-pc-windows-msvc.zip">763 KB (Zip)</a></td>
+				<td><code class="checksum">a22be2179bda2a12dc13adcd23e7d9f80448fe76b068da44aac2fa466fc8a552</code></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="signatures">
+		<tr>
+			<th><a href="https://github.com/passcod/cargo-watch/releases/download/v7.8.0/CHECKSUMS">B3 checksums</a></th>
+			<td><a href="https://github.com/passcod/cargo-watch/releases/download/v7.8.0/CHECKSUMS.auto.minisig">Automated signature</a></td>
+			<td><a href="https://github.com/passcod/cargo-watch/releases/download/v7.8.0/CHECKSUMS.passcod.minisig">Félix’s signature</a></td>
+		</tr>
+		<tr>
+			<th><a href="https://github.com/passcod/cargo-watch/releases/download/v7.8.0/CHECKSUMS">SHA512 checksums</a></th>
+			<td><a href="https://github.com/passcod/cargo-watch/releases/download/v7.8.0/CHECKSUMS.auto.minisig">Automated signature</a></td>
+			<td><a href="https://github.com/passcod/cargo-watch/releases/download/v7.8.0/CHECKSUMS.passcod.minisig">Félix’s signature</a></td>
+		</tr>
+	</table>
 </section>
 
 </body>
