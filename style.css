@@ -129,6 +129,19 @@ section {
 	max-width: 35rem;
 }
 
+details {
+	padding-left: 1em;
+}
+
+details summary {
+	margin-left: -1em;
+	font-family: var(--sans);
+}
+
+details p {
+	font-family: var(--sans);
+}
+
 table {
 	border: 1px solid;
 	border-collapse: collapse;
