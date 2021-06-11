@@ -23,42 +23,41 @@
 		and signatures are available.
 	</p>
 
-	<p>
-		Checksums are provided as <a href="https://blake3.io" target="_blank" rel="nofollow">BLAKE3</a>
-		and as <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="nofollow">SHA512</a>.
-		SHA512 sums may be deprecated in the future.
-	</p>
+	<details>
+		<summary>More details on checksums and signatures</summary>
 
-	<p>
-		Signatures use the <a href="https://github.com/jedisct1/minisign" target="_blank" rel="nofollow">Minisign</a>
-		format. There are many compatible implementations of Minisign; some are listed at the above
-		link. At the moment, signatures are generated using the
-		<a href="https://github.com/jedisct1/rsign2" target="_blank" rel="nofollow">rsign2</a> tool.
-	</p>
+		<p>
+			Checksums are provided as <a href="https://blake3.io" target="_blank" rel="nofollow">BLAKE3</a>
+			and as <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="nofollow">SHA512</a>.
+			SHA512 sums may be deprecated in the future.
+		</p>
 
-	<p>
-		Releases are signed multiple times (at least once), with different keys, which provide
-		different trust levels. Each project has its own <em>"automated release key"</em>, which it
-		uses to sign releases when they are built, in the build infrastructure. Then, maintainers
-		<em>manually</em> sign the release. The automated signature provides weak trust,
-		authenticating only that a build is official. Maintainer signature(s) provide stronger trust,
-		in that the release is verified by a person.
-	</p>
+		<p>
+			Signatures use the <a href="https://github.com/jedisct1/minisign" target="_blank" rel="nofollow">Minisign</a>
+			format. There are many compatible implementations of Minisign; some are listed at the above
+			link. At the moment, signatures are generated using the
+			<a href="https://github.com/jedisct1/rsign2" target="_blank" rel="nofollow">rsign2</a> tool.
+		</p>
 
-	<p>
-		Releases built by other packagers, from source, or via
-		<code class="inline shell"><span class="command">cargo</span> <span class="subcommand">install</span></code>,
-		are not signed as part of this scheme, though they may be signed by the packager separately.
-		Packagers building on these official binary releases <em>should strongly consider</em>
-		verifying signatures as part of their process. Watchexec and associated projects only
-		officiate the builds on this page and on the projects GitHub Releases pages, and do not
-		endorse any other packaging effort. Caveat emptor.
-	</p>
+		<p>
+			Releases are signed multiple times (at least once), with different keys, which provide
+			different trust levels. Each project has its own <em>"automated release key"</em>, which it
+			uses to sign releases when they are built, in the build infrastructure. Then, maintainers
+			<em>manually</em> sign the release. The automated signature provides weak trust,
+			authenticating only that a build is official. Maintainer signature(s) provide stronger trust,
+			in that the release is verified by a person.
+		</p>
 
-	<nav class="places">
-		<a href="#cli">Watchexec CLI</a>
-		<a href="#cargo-watch">Cargo Watch</a>
-	</nav>
+		<p>
+			Releases built by other packagers, from source, or via
+			<code class="inline shell"><span class="command">cargo</span> <span class="subcommand">install</span></code>,
+			are not signed as part of this scheme, though they may be signed by the packager separately.
+			Packagers building on these official binary releases <em>should strongly consider</em>
+			verifying signatures as part of their process. Watchexec and associated projects only
+			officiate the builds on this page and on the projects GitHub Releases pages, and do not
+			endorse any other packaging effort. Caveat emptor.
+		</p>
+	</details>
 </section>
 
 <section id="cli">
