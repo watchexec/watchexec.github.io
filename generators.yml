@@ -1,0 +1,91 @@
+---
+maintainers:
+  - username: passcod
+    name: Félix
+    homepage: https://passcod.name
+    key_url: https://passcod.name/keys/software.pub
+
+apps:
+  defaults:
+    key_path: .github/workflows/release.pub
+    tag_format: v{version}
+    notes: gh-release
+    checksums:
+      - BLAKE3
+      - SHA512
+
+  watchexec:
+    name: Watchexec
+    repo: watchexec/watchexec
+    tag_format: cli-v{version}
+    basename_format: watchexec-{version}-{triple}
+
+    packings:
+      "*-windows-*": ["zip"]
+      "*-linux-*": ["deb", "tar.xz"]
+      "*": ["tar.xz"]
+
+    priors:
+      - before: "1.16.0"
+        tag_format: "{version}"
+        checksums: false
+
+      - before: "1.11.0"
+        packing:
+          "*-windows-*": ["zip"]
+          "*": ["tar.gz"]
+
+      - before: "0.11.0"
+        basename_format: watchexec_(osx|win)_{version}
+        packing:
+          "*_win_*": ["zip"]
+          "*_osx_*": ["tar.gz"]
+
+  cargo-watch:
+    name: Cargo Watch
+    repo: watchexec/cargo-watch
+    basename_format: cargo-watch-v{version}-{triple}
+
+    packings:
+      "*-windows-*": ["zip"]
+      "*-linux-*": ["deb", "tar.xz"]
+      "*": ["tar.xz"]
+
+    priors:
+      - before: "7.8.0"
+        checksums: false
+
+      - before: "7.0.2"
+        packing: false
+
+triples:
+  "x86_64-*": { arch: x86-64 }
+  "i686-*": { arch: x86 }
+  "aarch64-*": { arch: AArch64 }
+  "armv7-*eabihf": { arch: ARMv7 HF }
+  "*-linux-*": { os: Linux }
+  "*-apple-darwin": { os: macOS }
+  "aarch64-apple-darwin": { arch: M1 }
+  "*-windows-*": { os: Windows }
+  "*-linux-gnu*": { variant: glibc }
+  "*-linux-musl": { variant: musl }
+
+extensions:
+  Arch: pkg.tar.*
+  DEB: deb
+  GZ: tar.gz
+  RPM: rpm
+  XZ: tar.xz
+  Zip: zip
+  ZStd: tar.zst
+
+checksums:
+  BLAKE3:
+    filename: B3SUMS
+    tool: b3sum
+    url: https://blake3.io/
+
+  SHA512:
+    filename: SHA512SUMS
+    tool: sha512sum
+    url: https://en.wikipedia.org/wiki/SHA-2
