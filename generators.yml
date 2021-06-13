@@ -20,7 +20,7 @@ apps:
     tag_format: cli-v{version}
     basename_format: watchexec-{version}-{triple}
 
-    packings:
+    packing:
       "*-windows-*": ["zip"]
       "*-linux-*": ["deb", "tar.xz"]
       "*": ["tar.xz"]
@@ -31,13 +31,13 @@ apps:
         checksums: false
 
       - before: "1.11.0"
-        packing:
+        packings:
           "*-windows-*": ["zip"]
           "*": ["tar.gz"]
 
       - before: "0.11.0"
         basename_format: watchexec_(osx|win)_{version}
-        packing:
+        packings:
           "*_win_*": ["zip"]
           "*_osx_*": ["tar.gz"]
 
@@ -56,7 +56,7 @@ apps:
         checksums: false
 
       - before: "7.0.2"
-        packing: false
+        packings: false
 
 triples:
   "x86_64-*": { arch: x86-64 }
