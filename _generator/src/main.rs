@@ -1,7 +1,11 @@
-use std::{path::{Path, PathBuf}, collections::HashMap};
+use std::{
+	collections::HashMap,
+	path::{Path, PathBuf},
+};
 
-use async_std::{prelude::*, fs::File};
+use async_std::{fs::File, prelude::*};
 use color_eyre::Result;
+use globset::Glob;
 use indexmap::IndexMap;
 use semver::Version;
 use serde::{Deserialize, Deserializer};
@@ -16,21 +20,18 @@ enum Mode {
 
 		#[structopt(long)]
 		print: bool,
-	}
+	},
 }
 
 #[async_std::main]
 async fn main() -> Result<()> {
 	match Mode::from_args() {
-		Mode::Lint {
-			config_file,
-			print,
-		} => {
+		Mode::Lint { config_file, print } => {
 			let config = Config::load(&config_file).await?;
 			if print {
 				println!("{:#?}", config);
 			}
-			return Ok(())
+			return Ok(());
 		}
 	}
 }
@@ -39,9 +40,35 @@ async fn main() -> Result<()> {
 struct Config {
 	pub maintainers: Vec<Maintainer>,
 	pub apps: HashMap<AppName, App>,
-	pub triples: IndexMap<String, Cat>,
-	pub extensions: HashMap<String, String>,
+	#[serde(deserialize_with = "triple_globs")]
+	pub triples: IndexMap<Glob, Cat>,
+	#[serde(deserialize_with = "exts_globs")]
+	pub extensions: HashMap<String, Glob>,
 	pub checksums: HashMap<SumAlgo, ChecksumDetail>,
+}
+
+fn triple_globs<'de, D>(deserializer: D) -> Result<IndexMap<Glob, Cat>, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	let hs = IndexMap::<String, Cat>::deserialize(deserializer)?;
+	hs
+		.into_iter()
+		.map(|(k, v)| Glob::new(&k).map(|g| (g, v)))
+		.collect::<Result<_, _>>()
+		.map_err(|err| serde::de::Error::custom(err.to_string()))
+}
+
+fn exts_globs<'de, D>(deserializer: D) -> Result<HashMap<String, Glob>, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	let hs = HashMap::<String, String>::deserialize(deserializer)?;
+	hs
+		.into_iter()
+		.map(|(k, v)| Glob::new(&v).map(|g| (k, g)))
+		.collect::<Result<_, _>>()
+		.map_err(|err| serde::de::Error::custom(err.to_string()))
 }
 
 #[derive(Clone, Debug, Deserialize)]
@@ -58,17 +85,18 @@ enum AppName {
 	Named(String),
 }
 
-impl<'de> Deserialize<'de> for AppName  {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-        D: Deserializer<'de>,
-    {
+impl<'de> Deserialize<'de> for AppName {
+	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+	where
+		D: Deserializer<'de>,
+	{
 		let name = String::deserialize(deserializer)?;
-		if name == "defaults" { Ok(Self::Defaults) }
-		else {
+		if name == "defaults" {
+			Ok(Self::Defaults)
+		} else {
 			Ok(Self::Named(name))
 		}
-    }
+	}
 }
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -94,18 +122,19 @@ enum Tri<T> {
 }
 
 impl<T> Default for Tri<T> {
-    fn default() -> Self {
-        Self::NotPresent
-    }
+	fn default() -> Self {
+		Self::NotPresent
+	}
 }
 
 impl<'de, T> Deserialize<'de> for Tri<T>
 where
-    T: Deserialize<'de> {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-        D: Deserializer<'de>,
-    {
+	T: Deserialize<'de>,
+{
+	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+	where
+		D: Deserializer<'de>,
+	{
 		#[derive(Deserialize)]
 		#[serde(untagged)]
 		enum BoolOr<T> {
@@ -121,7 +150,7 @@ where
 			Some(BoolOr::Bool(false)) => Ok(Self::Disabled),
 			Some(BoolOr::Some(t)) => Ok(Self::Set(t)),
 		}
-    }
+	}
 }
 
 #[derive(Clone, Debug, Deserialize)]
@@ -147,12 +176,27 @@ struct App {
 	#[serde(default)]
 	pub checksums: Tri<Vec<SumAlgo>>,
 
-
-	#[serde(default)]
-	pub packings: Tri<HashMap<String, Vec<String>>>,
+	#[serde(default, deserialize_with = "packing_globs")]
+	pub packings: Tri<IndexMap<Glob, Vec<String>>>,
 
 	#[serde(default)]
 	pub priors: Vec<Prior>,
+}
+
+fn packing_globs<'de, D>(deserializer: D) -> Result<Tri<IndexMap<Glob, Vec<String>>>, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	match Tri::<IndexMap<String, Vec<String>>>::deserialize(deserializer)? {
+		Tri::Set(ig) => ig
+			.into_iter()
+			.map(|(k, v)| Glob::new(&k).map(|g| (g, v)))
+			.collect::<Result<_, _>>()
+			.map(Tri::Set)
+			.map_err(|err| serde::de::Error::custom(err.to_string())),
+		Tri::NotPresent => Ok(Tri::NotPresent),
+		Tri::Disabled => Ok(Tri::Disabled),
+	}
 }
 
 #[derive(Clone, Debug, Deserialize)]
