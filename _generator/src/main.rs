@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 
-use color_eyre::Result;
+use color_eyre::{eyre::eyre, Result};
 use semver::Version;
 use structopt::StructOpt;
 
@@ -52,6 +52,27 @@ async fn main() -> Result<()> {
 			let app = config.app(&app, &version)?;
 
 			println!("{:?}", app);
+
+			let release = octocrab::instance()
+				.repos(&app.repo.owner, &app.repo.repo)
+				.releases()
+				.get_by_tag(&app.tag(&version)?)
+				.await?;
+
+			for asset in &release.assets {
+				let url = &asset.browser_download_url;
+				let filename = url
+					.path_segments()
+					.and_then(|s| s.last())
+					.ok_or_else(|| eyre!("download url is malformed: {}", url))?;
+
+				println!(
+					"size={}\ttype={}\turl={}",
+					asset.size,
+					config.format_name(&filename),
+					url
+				);
+			}
 		}
 	}
 
