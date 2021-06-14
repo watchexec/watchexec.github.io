@@ -19,7 +19,7 @@ pub struct Config {
 	#[serde(deserialize_with = "triple_globs")]
 	pub triples: IndexMap<Glob, Cat>,
 	#[serde(deserialize_with = "exts_globs")]
-	pub extensions: HashMap<String, Glob>,
+	pub formats: IndexMap<String, Glob>,
 	pub checksums: HashMap<SumAlgo, ChecksumDetail>,
 }
 
@@ -34,11 +34,11 @@ where
 		.map_err(|err| serde::de::Error::custom(err.to_string()))
 }
 
-fn exts_globs<'de, D>(deserializer: D) -> Result<HashMap<String, Glob>, D::Error>
+fn exts_globs<'de, D>(deserializer: D) -> Result<IndexMap<String, Glob>, D::Error>
 where
 	D: Deserializer<'de>,
 {
-	let hs = HashMap::<String, String>::deserialize(deserializer)?;
+	let hs = IndexMap::<String, String>::deserialize(deserializer)?;
 	hs.into_iter()
 		.map(|(k, v)| Glob::new(&v).map(|g| (k, g)))
 		.collect::<Result<_, _>>()
@@ -139,7 +139,7 @@ impl<T> Tri<T> {
 
 	pub fn override_with(&mut self, other: Self) {
 		match other {
-			Tri::NotPresent => {},
+			Tri::NotPresent => {}
 			o => {
 				*self = o;
 			}
@@ -154,16 +154,16 @@ pub struct App {
 	pub name: String,
 
 	#[serde(default)]
-	pub repo: String,
+	pub repo: Repo,
 
 	#[serde(default)]
 	pub key_path: Option<PathBuf>,
 
 	#[serde(default)]
-	pub tag_format: Option<String>,
+	pub tag_template: Option<String>,
 
 	#[serde(default)]
-	pub basename_format: Option<String>,
+	pub basename_template: Option<String>,
 
 	#[serde(default)]
 	pub notes: Tri<NotesSource>,
@@ -176,6 +176,14 @@ pub struct App {
 
 	#[serde(default)]
 	pub priors: Vec<Prior>,
+}
+
+impl App {
+	pub fn tag(&self, version: &Version) -> Result<String> {
+		self.tag_template.as_ref()
+			.ok_or_else(|| eyre!("missing tag_template"))
+			.map(|tf| tf.replace("{version}", &version.to_string()))
+	}
 }
 
 fn packing_globs<'de, D>(deserializer: D) -> Result<Tri<IndexMap<Glob, Vec<String>>>, D::Error>
@@ -191,6 +199,48 @@ where
 			.map_err(|err| serde::de::Error::custom(err.to_string())),
 		Tri::NotPresent => Ok(Tri::NotPresent),
 		Tri::Disabled => Ok(Tri::Disabled),
+	}
+}
+
+#[derive(Clone, Debug, Default)]
+pub struct Repo {
+	pub owner: String,
+	pub repo: String,
+}
+
+impl<'de> Deserialize<'de> for Repo {
+	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+	where
+		D: Deserializer<'de>,
+	{
+		let raw = String::deserialize(deserializer)?;
+		if raw.is_empty() {
+			return Ok(Repo::default());
+		}
+
+		match raw.split_once('/') {
+			Some((o, r)) => {
+				if r.contains('/') {
+					Err(serde::de::Error::custom(
+						"repo is not in format 'repo/owner' (too many slashes)",
+					))
+				} else {
+					Ok(Repo {
+						owner: o.to_string(),
+						repo: r.to_string(),
+					})
+				}
+			}
+			None => Err(serde::de::Error::custom(
+				"repo is not in format 'repo/owner' (not enough slashes)",
+			)),
+		}
+	}
+}
+
+impl Repo {
+	pub fn is_empty(&self) -> bool {
+		self.owner.is_empty() || self.repo.is_empty()
 	}
 }
 
@@ -240,7 +290,11 @@ impl Config {
 
 				for prior in &app.priors {
 					if !prior.app.priors.is_empty() {
-						return Err(eyre!("{}'s prior (before={}) has a 'priors' key, this makes no sense", name, prior.before));
+						return Err(eyre!(
+							"{}'s prior (before={}) has a 'priors' key, this makes no sense",
+							name,
+							prior.before
+						));
 					}
 				}
 			}
@@ -266,13 +320,13 @@ impl Config {
 			app.name = name.to_string(); // TODO: ucfirst
 		}
 
-		app.tag_format = Some(
-			app.tag_format
-				.or(defaults.tag_format)
-				.ok_or_else(|| eyre!("app '{}' is missing its 'tag_format'", name))?,
+		app.tag_template = Some(
+			app.tag_template
+				.or(defaults.tag_template)
+				.ok_or_else(|| eyre!("app '{}' is missing its 'tag_template'", name))?,
 		);
 
-		app.basename_format = app.basename_format.or(defaults.basename_format);
+		app.basename_template = app.basename_template.or(defaults.basename_template);
 		app.notes = app.notes.or(defaults.notes);
 		app.checksums = app.checksums.or(defaults.checksums);
 		app.packings = app.packings.or(defaults.packings);
@@ -280,37 +334,44 @@ impl Config {
 
 		// priors here are in ASC order, unlike in the config, where they (most
 		// likely) are in DESC order (most recent at the top)
-		let priors = match app.priors.binary_search_by_key(version, |p| p.before.clone()) {
-			Ok(pidx) => if pidx == app.priors.len() - 1 {
-				// matching as the version the last prior is before,
-				// i.e. current
-				&[]
-			} else {
-				// matching as the version a prior is before,
-				// i.e. we want from the next one up
-				&app.priors[(pidx + 1)..]
-			},
-			Err(pidx) => if pidx == app.priors.len() {
-				// matching as after the version the last prior is before,
-				// i.e. current
-				&[]
-			} else {
-				// matching as after the version a prior is before,
-				// i.e. we want from that one up
-				&app.priors[pidx..]
-			},
+		let priors = match app
+			.priors
+			.binary_search_by_key(version, |p| p.before.clone())
+		{
+			Ok(pidx) => {
+				if pidx == app.priors.len() - 1 {
+					// matching as the version the last prior is before,
+					// i.e. current
+					&[]
+				} else {
+					// matching as the version a prior is before,
+					// i.e. we want from the next one up
+					&app.priors[(pidx + 1)..]
+				}
+			}
+			Err(pidx) => {
+				if pidx == app.priors.len() {
+					// matching as after the version the last prior is before,
+					// i.e. current
+					&[]
+				} else {
+					// matching as after the version a prior is before,
+					// i.e. we want from that one up
+					&app.priors[pidx..]
+				}
+			}
 		};
 
 		// we actually want to apply the priors' overrides in DESC order
 		for Prior { app: pa, .. } in priors.iter().rev() {
 			let pa = pa.clone();
 
-			if let Some(tf) = pa.tag_format {
-				app.tag_format.replace(tf);
+			if let Some(tf) = pa.tag_template {
+				app.tag_template.replace(tf);
 			}
 
-			if let Some(bf) = pa.basename_format {
-				app.basename_format.replace(bf);
+			if let Some(bf) = pa.basename_template {
+				app.basename_template.replace(bf);
 			}
 
 			if let Some(kp) = pa.key_path {
@@ -323,5 +384,19 @@ impl Config {
 		}
 
 		Ok(app)
+	}
+
+	pub fn format_name(&self, filename: &str) -> String {
+		for (name, format) in &self.formats {
+			if format.compile_matcher().is_match(filename) {
+				return name.to_string();
+			}
+		}
+
+		if let Some((_, ext)) = filename.split_once('.') {
+			ext.to_string()
+		} else {
+			"Bin".to_string()
+		}
 	}
 }

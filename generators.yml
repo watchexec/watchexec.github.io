@@ -8,7 +8,7 @@ maintainers:
 apps:
   defaults:
     key_path: .github/workflows/release.pub
-    tag_format: v{version}
+    tag_template: v{version}
     notes: gh-release
     checksums:
       - BLAKE3
@@ -17,8 +17,8 @@ apps:
   watchexec:
     name: Watchexec
     repo: watchexec/watchexec
-    tag_format: cli-v{version}
-    basename_format: watchexec-{version}-{triple}
+    tag_template: cli-v{version}
+    basename_template: watchexec-{version}-{triple}
 
     packings:
       "*-windows-*": ["zip"]
@@ -27,7 +27,7 @@ apps:
 
     priors:
       - before: "1.16.0"
-        tag_format: "{version}"
+        tag_template: "{version}"
         checksums: false
 
       - before: "1.11.0"
@@ -36,7 +36,7 @@ apps:
           "*": ["tar.gz"]
 
       - before: "0.11.0"
-        basename_format: watchexec_(osx|win)_{version}
+        basename_template: watchexec_(osx|win)_{version}
         packings:
           "*_win_*": ["zip"]
           "*_osx_*": ["tar.gz"]
@@ -44,7 +44,7 @@ apps:
   cargo-watch:
     name: Cargo Watch
     repo: watchexec/cargo-watch
-    basename_format: cargo-watch-v{version}-{triple}
+    basename_template: cargo-watch-v{version}-{triple}
 
     packings:
       "*-windows-*": ["zip"]
@@ -70,14 +70,14 @@ triples:
   "*-linux-gnu*": { variant: glibc }
   "*-linux-musl": { variant: musl }
 
-extensions:
-  Arch: pkg.tar.*
-  DEB: deb
-  GZ: tar.gz
-  RPM: rpm
-  XZ: tar.xz
-  Zip: zip
-  ZStd: tar.zst
+formats:
+  Arch: "*.pkg.tar.*"
+  DEB: "*.deb"
+  GZ: "*.tar.gz"
+  RPM: "*.rpm"
+  XZ: "*.tar.xz"
+  Zip: "*.zip"
+  ZStd: "*.tar.zst"
 
 checksums:
   BLAKE3:
