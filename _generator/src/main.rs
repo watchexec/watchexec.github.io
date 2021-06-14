@@ -37,6 +37,7 @@ async fn main() -> Result<()> {
 }
 
 #[derive(Clone, Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
 struct Config {
 	pub maintainers: Vec<Maintainer>,
 	pub apps: HashMap<AppName, App>,
@@ -72,6 +73,7 @@ where
 }
 
 #[derive(Clone, Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
 struct Maintainer {
 	pub username: String,
 	pub name: String,
@@ -154,6 +156,7 @@ where
 }
 
 #[derive(Clone, Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
 struct App {
 	#[serde(default)]
 	pub name: Option<String>,
@@ -201,14 +204,14 @@ where
 
 #[derive(Clone, Debug, Deserialize)]
 struct Prior {
-	#[serde(default)]
-	pub before: Option<Version>,
+	pub before: Version,
 
 	#[serde(flatten)]
 	pub app: App,
 }
 
 #[derive(Clone, Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
 struct Cat {
 	#[serde(default)]
 	pub arch: Option<String>,
@@ -221,6 +224,7 @@ struct Cat {
 }
 
 #[derive(Clone, Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
 struct ChecksumDetail {
 	pub filename: String,
 	pub tool: String,

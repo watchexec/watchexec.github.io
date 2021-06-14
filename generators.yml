@@ -20,7 +20,7 @@ apps:
     tag_format: cli-v{version}
     basename_format: watchexec-{version}-{triple}
 
-    packing:
+    packings:
       "*-windows-*": ["zip"]
       "*-linux-*": ["deb", "tar.xz"]
       "*": ["tar.xz"]
