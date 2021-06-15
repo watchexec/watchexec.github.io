@@ -8,55 +8,21 @@ maintainers:
 apps:
   defaults:
     key_path: .github/workflows/release.pub
-    tag_template: v{version}
     notes: gh-release
-    checksums:
-      - BLAKE3
-      - SHA512
 
   watchexec:
     name: Watchexec
     repo: watchexec/watchexec
     tag_template: cli-v{version}
-    basename_template: watchexec-{version}-{triple}
-
-    packings:
-      "*-windows-*": ["zip"]
-      "*-linux-*": ["deb", "tar.xz"]
-      "*": ["tar.xz"]
 
     priors:
       - before: "1.16.0"
         tag_template: "{version}"
-        checksums: false
-
-      - before: "1.11.0"
-        packings:
-          "*-windows-*": ["zip"]
-          "*": ["tar.gz"]
-
-      - before: "0.11.0"
-        basename_template: watchexec_(osx|win)_{version}
-        packings:
-          "*_win_*": ["zip"]
-          "*_osx_*": ["tar.gz"]
 
   cargo-watch:
     name: Cargo Watch
     repo: watchexec/cargo-watch
-    basename_template: cargo-watch-v{version}-{triple}
-
-    packings:
-      "*-windows-*": ["zip"]
-      "*-linux-*": ["deb", "tar.xz"]
-      "*": ["tar.xz"]
-
-    priors:
-      - before: "7.8.0"
-        checksums: false
-
-      - before: "7.0.2"
-        packings: false
+    tag_template: v{version}
 
 triples:
   "x86_64-*": { arch: x86-64 }
@@ -69,6 +35,8 @@ triples:
   "*-windows-*": { os: Windows }
   "*-linux-gnu*": { variant: glibc }
   "*-linux-musl": { variant: musl }
+  "*_osx_*": { os: macOS }
+  "*_win_*": { os: Windows }
 
 formats:
   Arch: "*.pkg.tar.*"

@@ -163,16 +163,7 @@ pub struct App {
 	pub tag_template: Option<String>,
 
 	#[serde(default)]
-	pub basename_template: Option<String>,
-
-	#[serde(default)]
 	pub notes: Tri<NotesSource>,
-
-	#[serde(default)]
-	pub checksums: Tri<Vec<SumAlgo>>,
-
-	#[serde(default, deserialize_with = "packing_globs")]
-	pub packings: Tri<IndexMap<Glob, Vec<String>>>,
 
 	#[serde(default)]
 	pub priors: Vec<Prior>,
@@ -183,22 +174,6 @@ impl App {
 		self.tag_template.as_ref()
 			.ok_or_else(|| eyre!("missing tag_template"))
 			.map(|tf| tf.replace("{version}", &version.to_string()))
-	}
-}
-
-fn packing_globs<'de, D>(deserializer: D) -> Result<Tri<IndexMap<Glob, Vec<String>>>, D::Error>
-where
-	D: Deserializer<'de>,
-{
-	match Tri::<IndexMap<String, Vec<String>>>::deserialize(deserializer)? {
-		Tri::Set(ig) => ig
-			.into_iter()
-			.map(|(k, v)| Glob::new(&k).map(|g| (g, v)))
-			.collect::<Result<_, _>>()
-			.map(Tri::Set)
-			.map_err(|err| serde::de::Error::custom(err.to_string())),
-		Tri::NotPresent => Ok(Tri::NotPresent),
-		Tri::Disabled => Ok(Tri::Disabled),
 	}
 }
 
@@ -326,11 +301,8 @@ impl Config {
 				.ok_or_else(|| eyre!("app '{}' is missing its 'tag_template'", name))?,
 		);
 
-		app.basename_template = app.basename_template.or(defaults.basename_template);
-		app.notes = app.notes.or(defaults.notes);
-		app.checksums = app.checksums.or(defaults.checksums);
-		app.packings = app.packings.or(defaults.packings);
 		app.key_path = app.key_path.or(defaults.key_path);
+		app.notes = app.notes.or(defaults.notes);
 
 		// priors here are in ASC order, unlike in the config, where they (most
 		// likely) are in DESC order (most recent at the top)
@@ -370,17 +342,11 @@ impl Config {
 				app.tag_template.replace(tf);
 			}
 
-			if let Some(bf) = pa.basename_template {
-				app.basename_template.replace(bf);
-			}
-
 			if let Some(kp) = pa.key_path {
 				app.key_path.replace(kp);
 			}
 
 			app.notes.override_with(pa.notes);
-			app.checksums.override_with(pa.checksums);
-			app.packings.override_with(pa.packings);
 		}
 
 		Ok(app)
