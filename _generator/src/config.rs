@@ -14,13 +14,13 @@ use url::Url;
 #[derive(Clone, Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
-	pub maintainers: Vec<Maintainer>,
 	pub apps: HashMap<AppName, App>,
 	#[serde(deserialize_with = "triple_globs")]
 	pub triples: IndexMap<Glob, Cat>,
-	#[serde(deserialize_with = "exts_globs")]
-	pub formats: IndexMap<String, Glob>,
+	#[serde(deserialize_with = "format_globs")]
+	pub formats: IndexMap<Glob, Format>,
 	pub checksums: HashMap<SumAlgo, ChecksumDetail>,
+	pub maintainers: Vec<Maintainer>,
 }
 
 fn triple_globs<'de, D>(deserializer: D) -> Result<IndexMap<Glob, Cat>, D::Error>
@@ -34,15 +34,23 @@ where
 		.map_err(|err| serde::de::Error::custom(err.to_string()))
 }
 
-fn exts_globs<'de, D>(deserializer: D) -> Result<IndexMap<String, Glob>, D::Error>
+fn format_globs<'de, D>(deserializer: D) -> Result<IndexMap<Glob, Format>, D::Error>
 where
 	D: Deserializer<'de>,
 {
-	let hs = IndexMap::<String, String>::deserialize(deserializer)?;
+	let hs = IndexMap::<String, Format>::deserialize(deserializer)?;
 	hs.into_iter()
-		.map(|(k, v)| Glob::new(&v).map(|g| (k, g)))
+		.map(|(k, v)| Glob::new(&k).map(|g| (g, v)))
 		.collect::<Result<_, _>>()
 		.map_err(|err| serde::de::Error::custom(err.to_string()))
+}
+
+#[derive(Clone, Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Format {
+	pub short: String,
+	pub long: String,
+	pub tool: String,
 }
 
 #[derive(Clone, Debug, Deserialize)]
@@ -80,7 +88,7 @@ pub enum NotesSource {
 	GithubRelease,
 }
 
-#[derive(Clone, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum SumAlgo {
 	#[serde(rename = "BLAKE3")]
 	Blake3,
@@ -171,7 +179,8 @@ pub struct App {
 
 impl App {
 	pub fn tag(&self, version: &Version) -> Result<String> {
-		self.tag_template.as_ref()
+		self.tag_template
+			.as_ref()
 			.ok_or_else(|| eyre!("missing tag_template"))
 			.map(|tf| tf.replace("{version}", &version.to_string()))
 	}
@@ -352,17 +361,11 @@ impl Config {
 		Ok(app)
 	}
 
-	pub fn format_name(&self, filename: &str) -> String {
-		for (name, format) in &self.formats {
-			if format.compile_matcher().is_match(filename) {
-				return name.to_string();
-			}
-		}
-
-		if let Some((_, ext)) = filename.split_once('.') {
-			ext.to_string()
-		} else {
-			"Bin".to_string()
-		}
+	pub fn match_format(&self, filename: &str) -> Result<&Format> {
+		self.formats
+			.iter()
+			.find(|(matcher, _)| matcher.compile_matcher().is_match(filename))
+			.map(|(_, f)| f)
+			.ok_or_else(|| eyre!("format not found for '{}'", filename))
 	}
 }
