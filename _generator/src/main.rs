@@ -120,24 +120,19 @@ async fn main() -> Result<()> {
 			// todo: add sum to dl
 
 			downloads.sort_by_key(|dl| (dl.cats.clone(), dl.format.short.clone()));
-
-			for dl in downloads {
-				println!(
-					"size={}\ttype={}\tcats={:?}\turl={}",
-					dl.size, dl.format.short, dl.cats, dl.url
-				);
-			}
-
-			dbg!(sums);
-
-			// todo: print to stdout as json
+			serde_json::to_writer(std::io::stdout(), &serde_json::json!({
+				"generated": "TODO: date",
+				"version": version,
+				"downloads": downloads,
+				"sums": sums,
+			}))?;
 		}
 	}
 
 	return Ok(());
 }
 
-#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Clone, Debug, Serialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Download {
 	pub url: Url,
 	pub filename: String,
@@ -147,7 +142,7 @@ pub struct Download {
 	pub cats: (String, String, Option<String>),
 }
 
-#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Clone, Debug, Serialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DownloadSum {
 	algo: SumAlgo,
 	hex: String,

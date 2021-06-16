@@ -42,7 +42,7 @@ where
 		.map_err(|err| serde::de::Error::custom(err.to_string()))
 }
 
-#[derive(Clone, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Clone, Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[serde(deny_unknown_fields)]
 pub struct Format {
 	pub short: String,
