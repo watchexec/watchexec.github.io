@@ -1,7 +1,8 @@
 use std::{convert::TryInto, path::PathBuf};
 
 use color_eyre::{eyre::eyre, Result};
-use config::SumAlgo;
+use config::{App, Cat, Config, Format, SumAlgo};
+use globset::Glob;
 use semver::Version;
 use structopt::StructOpt;
 use url::Url;
@@ -18,7 +19,7 @@ enum Mode {
 		print: bool,
 	},
 
-	ReleasePage {
+	ReleaseMeta {
 		#[structopt(short, long = "config")]
 		config_file: PathBuf,
 
@@ -34,13 +35,13 @@ enum Mode {
 async fn main() -> Result<()> {
 	match Mode::from_args() {
 		Mode::Lint { config_file, print } => {
-			let config = config::Config::load(&config_file).await?;
+			let config = Config::load(&config_file).await?;
 			if print {
 				println!("{:#?}", config);
 			}
 		}
 
-		Mode::ReleasePage {
+		Mode::ReleaseMeta {
 			config_file,
 			app,
 			version,
@@ -50,7 +51,7 @@ async fn main() -> Result<()> {
 				.transpose()?
 				.expect("TODO: get latest version");
 
-			let config = config::Config::load(&config_file).await?;
+			let config = Config::load(&config_file).await?;
 			let app = config.app(&app, &version)?;
 
 			let release = octocrab::instance()
@@ -70,27 +71,66 @@ async fn main() -> Result<()> {
 
 				for (algo, sum) in &config.checksums {
 					if filename.starts_with(&sum.filename) {
-						sums.push((*algo, filename));
+						sums.push((*algo, url, filename));
 						continue 'assets;
 					}
 				}
 
-				downloads.push(Download {
-					url: url.clone(),
-					filename: filename.into(),
-					size: asset.size.try_into()?,
-					sums: Vec::new(),
-				});
+				match Download::new(&config, url, filename, asset.size.try_into()?) {
+					Ok(dl) => downloads.push(dl),
+					Err(err) => eprintln!("warning: {}", err),
+				}
 			}
+
+			let known_sign_glob = Glob::new(&format!(
+				"{{{}}}.{{{}}}.minisig",
+				config
+					.checksums
+					.iter()
+					.map(|(_, c)| c.filename.as_str())
+					.collect::<Vec<&str>>()
+					.join(","),
+				config
+					.maintainers
+					.iter()
+					.map(|m| m.username.as_str())
+					.chain(std::iter::once("auto"))
+					.collect::<Vec<&str>>()
+					.join(","),
+			))?
+			.compile_matcher();
+
+			sums.sort_by_key(|(algo, _, filename)| (*algo, filename.to_string()));
+			let sums = sums
+				.into_iter()
+				.fold(SumFold::Init, |state, (algo, url, filename)| {
+					if filename == config.checksums.get(&algo).unwrap().filename {
+						state.add_sum(algo, url)
+					} else if known_sign_glob.is_match(filename) {
+						state.add_sign(&config, &app, url, filename)
+					} else {
+						eprintln!("unknown meta file: {}", filename);
+						state
+					}
+				})
+				.finish();
+
+			// todo: discover and fetch sums
+			// todo: discover signatures
+			// todo: add sum to dl
+
+			downloads.sort_by_key(|dl| (dl.cats.clone(), dl.format.short.clone()));
 
 			for dl in downloads {
 				println!(
-					"size={}\ttype={}\turl={}",
-					dl.size,
-					config.match_format(&dl.filename)?.short,
-					dl.url
+					"size={}\ttype={}\tcats={:?}\turl={}",
+					dl.size, dl.format.short, dl.cats, dl.url
 				);
 			}
+
+			dbg!(sums);
+
+			// todo: print to stdout as json
 		}
 	}
 
@@ -99,14 +139,147 @@ async fn main() -> Result<()> {
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Download {
-	url: Url,
-	filename: String,
-	size: usize,
-	sums: Vec<DownloadSum>,
+	pub url: Url,
+	pub filename: String,
+	pub size: usize,
+	pub format: Format,
+	pub sums: Vec<DownloadSum>,
+	pub cats: (String, String, Option<String>),
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DownloadSum {
 	algo: SumAlgo,
 	hex: String,
+}
+
+impl Download {
+	pub fn new(config: &Config, url: &Url, filename: &str, size: usize) -> Result<Self> {
+		let mut cats = Vec::new();
+		for (glob, cat) in &config.triples {
+			if glob.compile_matcher().is_match(filename) {
+				cats.push(cat);
+			}
+		}
+
+		let os = cats
+			.iter()
+			.find_map(|Cat { os, .. }| os.as_ref())
+			.cloned()
+			.ok_or_else(|| eyre!("no os found for: {}", filename))?;
+		let arch = cats
+			.iter()
+			.find_map(|Cat { arch, .. }| arch.as_ref())
+			.cloned()
+			.ok_or_else(|| eyre!("no arch found for: {}", filename))?;
+		let variant = cats
+			.iter()
+			.find_map(|Cat { variant, .. }| variant.as_ref())
+			.cloned();
+
+		Ok(Self {
+			url: url.clone(),
+			filename: filename.into(),
+			size,
+			format: config.match_format(&filename)?.clone(),
+			sums: Vec::new(),
+			cats: (os, arch, variant),
+		})
+	}
+}
+
+use serde::Serialize;
+
+// typestate
+#[derive(Debug, Clone)]
+enum SumFold {
+	Init,
+	Current {
+		acc: Vec<SignedSum>,
+		algo: SumAlgo,
+		url: Url,
+		signs: Vec<Sign>,
+	},
+}
+
+impl SumFold {
+	fn add_sum(self, algo: SumAlgo, url: &Url) -> Self {
+		let acc = match self {
+			Self::Init => Vec::new(),
+			Self::Current { mut acc, algo, url, signs } => {
+				acc.push(SignedSum { algo, url, signs });
+				acc
+			}
+		};
+
+		Self::Current {
+			acc,
+			algo,
+			url: url.clone(),
+			signs: Vec::new(),
+		}
+	}
+
+	fn add_sign(self, config: &Config, app: &App, sign_url: &Url, filename: &str) -> Self {
+		let app_key_url = match &app.key_path {
+			Some(kp) => Url::parse(&format!("https://github.com/{}/raw/-/{}", app.repo, kp.display())).unwrap(),
+			None => return self,
+		};
+
+		match self {
+			Self::Init => {
+				eprintln!("lone signature without checksum (or bug!): {}", sign_url);
+				Self::Init
+			}
+			Self::Current { acc, algo, url, mut signs } => {
+				let user = filename.split('.').nth(1).expect("should be caught by glob (format)");
+				let sign = if user == "auto" {
+					Sign {
+						sign_url: sign_url.clone(),
+						key_url: app_key_url,
+						name: "Automated signature".into(),
+					}
+				} else {
+					let maint = config.maintainers.iter().find(|m| m.username == user).expect("should be caught by glob (user)");
+					Sign {
+						sign_url: sign_url.clone(),
+						key_url: maint.key_url.clone(),
+						name: format!("{}’s signature", maint.name),
+					}
+				};
+
+				signs.push(sign);
+				Self::Current { acc, algo, url, signs }
+			}
+		}
+	}
+
+	fn finish(self) -> Vec<SignedSum> {
+		match self {
+			Self::Init => Vec::new(),
+			Self::Current {
+				mut acc,
+				algo,
+				url,
+				signs,
+			} => {
+				acc.push(SignedSum { algo, url, signs });
+				acc
+			}
+		}
+	}
+}
+
+#[derive(Clone, Debug, Serialize)]
+pub struct SignedSum {
+	pub algo: SumAlgo,
+	pub url: Url,
+	pub signs: Vec<Sign>,
+}
+
+#[derive(Clone, Debug, Serialize)]
+pub struct Sign {
+	pub sign_url: Url,
+	pub key_url: Url,
+	pub name: String,
 }

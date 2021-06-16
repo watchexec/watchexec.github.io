@@ -1,14 +1,11 @@
-use std::{
-	collections::HashMap,
-	path::{Path, PathBuf},
-};
+use std::{collections::HashMap, fmt, path::{Path, PathBuf}};
 
 use async_std::{fs::File, prelude::*};
 use color_eyre::{eyre::eyre, Result};
 use globset::Glob;
 use indexmap::IndexMap;
 use semver::Version;
-use serde::{Deserialize, Deserializer};
+use serde::{Deserialize, Deserializer, Serialize};
 use url::Url;
 
 #[derive(Clone, Debug, Deserialize)]
@@ -45,7 +42,7 @@ where
 		.map_err(|err| serde::de::Error::custom(err.to_string()))
 }
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[serde(deny_unknown_fields)]
 pub struct Format {
 	pub short: String,
@@ -59,7 +56,7 @@ pub struct Maintainer {
 	pub username: String,
 	pub name: String,
 	pub homepage: Option<Url>,
-	pub key_url: Option<Url>,
+	pub key_url: Url,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -88,7 +85,7 @@ pub enum NotesSource {
 	GithubRelease,
 }
 
-#[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum SumAlgo {
 	#[serde(rename = "BLAKE3")]
 	Blake3,
@@ -220,6 +217,12 @@ impl<'de> Deserialize<'de> for Repo {
 			)),
 		}
 	}
+}
+
+impl fmt::Display for Repo {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}/{}", self.owner, self.repo)
+    }
 }
 
 impl Repo {
