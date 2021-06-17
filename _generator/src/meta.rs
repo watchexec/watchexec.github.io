@@ -9,15 +9,17 @@ use crate::config::{Cat, Config, Format, SumAlgo};
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Meta {
 	pub generated: DateTime<Utc>,
+	pub app: String,
 	pub version: Version,
 	pub downloads: Vec<Download>,
 	pub sums: Vec<SignedSum>,
 }
 
 impl Meta {
-	pub fn new(version: Version, downloads: Vec<Download>, sums: Vec<SignedSum>) -> Self {
+	pub fn new(app: String, version: Version, downloads: Vec<Download>, sums: Vec<SignedSum>) -> Self {
 		Self {
 			generated: Utc::now(),
+			app,
 			version,
 			downloads,
 			sums,

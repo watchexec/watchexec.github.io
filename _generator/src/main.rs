@@ -1,5 +1,6 @@
 use std::path::PathBuf;
 
+use async_std::{fs::{File, create_dir_all}, io::prelude::WriteExt};
 use color_eyre::Result;
 use config::Config;
 use semver::Version;
@@ -53,8 +54,18 @@ async fn main() -> Result<()> {
 
 			let config = Config::load(&config_file).await?;
 			let app = config.app(&app, &version)?;
+
+			let dirpath = app.dir(&version);
+			create_dir_all(&dirpath).await?;
+
 			let meta = release::get_meta(config, app, version).await?;
-			serde_json::to_writer(std::io::stdout(), &meta)?;
+			let bytes = serde_json::to_vec(&meta)?;
+
+			let filepath = dirpath.join("meta.json");
+			let mut file = File::create(&filepath).await?;
+			file.write_all(&bytes).await?;
+
+			eprintln!("wrote {} bytes to {}", bytes.len(), filepath.display());
 		}
 	}
 

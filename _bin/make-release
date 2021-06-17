@@ -17,21 +17,34 @@ fi
 
 dlpath="downloads/$app/$version"
 metapath="$dlpath/meta.json"
-htmlpath="$dlpath/index.html"
+pagepath="$dlpath/index.html"
 
 make_meta() {
 	mkdir -p "$dlpath"
-	_bin/generator release-meta --app "$app" --version "$version" \
-		> "$metapath"
-	echo "wrote $metapath"
+	_bin/generator release-meta --app "$app" --version "$version"
+}
+
+make_page() {
+	mkdir -p "$dlpath"
+	_bin/generator release-page --meta "$metapath"
 }
 
 if [[ -f "$metapath" ]]; then
-	echo "$metapath exists, overwrite? [Yn]"
+	echo -n "$metapath exists, overwrite? [Yn] "
 	read confirm
 	if [[ "$confirm" != n* ]]; then
 		make_meta
 	fi
 else
 	make_meta
+fi
+
+if [[ -f "$pagepath" ]]; then
+	echo -n "$pagepath exists, overwrite? [Yn] "
+	read confirm
+	if [[ "$confirm" != n* ]]; then
+		make_page
+	fi
+else
+	make_page
 fi
