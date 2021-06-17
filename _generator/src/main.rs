@@ -1,8 +1,10 @@
 use std::{convert::TryInto, path::PathBuf};
 
+use chrono::Utc;
 use color_eyre::{eyre::eyre, Result};
 use config::{App, Cat, Config, Format, SumAlgo};
 use globset::Glob;
+use isahc::{AsyncReadResponseExt, HttpClientBuilder, config::{Configurable, RedirectPolicy}};
 use semver::Version;
 use structopt::StructOpt;
 use url::Url;
@@ -115,13 +117,37 @@ async fn main() -> Result<()> {
 				})
 				.finish();
 
-			// todo: discover and fetch sums
-			// todo: discover signatures
-			// todo: add sum to dl
+			let http = HttpClientBuilder::new()
+				.redirect_policy(RedirectPolicy::Follow)
+				.build()?;
+			for sum in &sums {
+				let sumfile = http.get_async(sum.url.to_string()).await?.text().await?;
+				for line in sumfile.lines() {
+					let mut parts = line.split_whitespace();
+
+					let sumtext = match parts.next() {
+						Some(s) => s,
+						None => continue,
+					};
+					let sumfile = match parts.next() {
+						Some(s) => s,
+						None => continue,
+					};
+
+					for dl in &mut downloads {
+						if dl.filename == sumfile {
+							dl.sums.push(DownloadSum {
+								algo: sum.algo,
+								sum: sumtext.into(),
+							});
+						}
+					}
+				}
+			}
 
 			downloads.sort_by_key(|dl| (dl.cats.clone(), dl.format.short.clone()));
 			serde_json::to_writer(std::io::stdout(), &serde_json::json!({
-				"generated": "TODO: date",
+				"generated": Utc::now(),
 				"version": version,
 				"downloads": downloads,
 				"sums": sums,
@@ -145,7 +171,7 @@ pub struct Download {
 #[derive(Clone, Debug, Serialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DownloadSum {
 	algo: SumAlgo,
-	hex: String,
+	sum: String,
 }
 
 impl Download {
