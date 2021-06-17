@@ -66,7 +66,7 @@ pub async fn get_meta(config: Config, app: App, version: Version) -> Result<Meta
 			if filename == config.checksums.get(&algo).unwrap().filename {
 				state.add_sum(algo, url)
 			} else if known_sign_glob.is_match(filename) {
-				state.add_sign(&config, &app, url, filename)
+				state.add_sign(&config, &app, &version, url, filename)
 			} else {
 				eprintln!("unknown meta file: {}", filename);
 				state
@@ -103,7 +103,7 @@ pub async fn get_meta(config: Config, app: App, version: Version) -> Result<Meta
 	}
 
 	downloads.sort_by_key(|dl| (dl.cats.clone(), dl.format.short.clone()));
-	Ok(Meta::new(version, downloads, sums))
+	Ok(Meta::new(app.slug, version, downloads, sums))
 }
 
 // typestate
@@ -141,11 +141,12 @@ impl SumFold {
 		}
 	}
 
-	fn add_sign(self, config: &Config, app: &App, sign_url: &Url, filename: &str) -> Self {
+	fn add_sign(self, config: &Config, app: &App, version: &Version, sign_url: &Url, filename: &str) -> Self {
 		let app_key_url = match &app.key_path {
 			Some(kp) => Url::parse(&format!(
-				"https://github.com/{}/raw/-/{}",
+				"https://raw.githubusercontent.com/{}/{}/{}",
 				app.repo,
+				app.tag(version).unwrap(),
 				kp.display()
 			))
 			.unwrap(),
