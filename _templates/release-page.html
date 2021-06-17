@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta charset="utf-8" />
+
+	<link rel="shortcut icon" href="/logo.svg" />
+	<title>Downloads → {{ app.name }} {{ meta.version }}</title>
+	<meta name="description"
+		content="A suite of tools and libraries related to Watchexec, which runs commands when files change. Download page for official binaries for {{ app.name }} {{ meta.version }}." />
+
+	<link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+	<section>
+		<h2>{{ app.name }} {{ meta.version }}</h2>
+
+		<aside>
+			<h3>Changes</h3>
+
+			TODO
+		</aside>
+
+		<table class="downloads">
+			<thead>
+				<tr>
+					<th>OS</th>
+					<th>Arch</th>
+					<th>Variant</th>
+					<th>Download</th>
+					<th>BLAKE3 checksum</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for dl in meta.downloads %}
+				<tr>
+					<td rowspan="1">{{ dl.cats[0] }}</td>
+					<td rowspan="1">{{ dl.cats[1] }}</td>
+					<td rowspan="1">{{ dl.cats[2] }}</td>
+					<td><a class="download" href="{{ dl.url }}">{{ dl.size / 1024 | round }} KB ({{ dl.format.short }})</a></td>
+					<td><code class="checksum">{{ dl.sums | map(attribute='sum') | first }}</code>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<table class="signatures">
+			{% for sum in meta.sums %}
+			<tr>
+				<th><a href="{{ sum.url }}">{{ sum.algo }} checksums</a></th>
+				{% for sign in sum.signs %}
+				<td>
+					<a href="{{ sign.sign_url }}">{{ sign.name }}</a>
+					(<a href="{{ sign.key_url }}">key</a>)
+				</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</table>
+	</section>
+</body>
+
+</html>

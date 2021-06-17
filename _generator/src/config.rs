@@ -156,9 +156,12 @@ impl<T> Tri<T> {
 	}
 }
 
-#[derive(Clone, Debug, Default, Deserialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct App {
+	#[serde(skip_deserializing, default)]
+	pub slug: String,
+
 	#[serde(default)]
 	pub name: String,
 
@@ -171,10 +174,10 @@ pub struct App {
 	#[serde(default)]
 	pub tag_template: Option<String>,
 
-	#[serde(default)]
+	#[serde(default, skip_serializing)]
 	pub notes: Tri<NotesSource>,
 
-	#[serde(default)]
+	#[serde(default, skip_serializing)]
 	pub priors: Vec<Prior>,
 }
 
@@ -185,9 +188,13 @@ impl App {
 			.ok_or_else(|| eyre!("missing tag_template"))
 			.map(|tf| tf.replace("{version}", &version.to_string()))
 	}
+
+	pub fn dir(&self, version: &Version) -> PathBuf {
+		PathBuf::from(format!("downloads/{}/{}", self.slug, version))
+	}
 }
 
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug, Default, Serialize)]
 pub struct Repo {
 	pub owner: String,
 	pub repo: String,
@@ -300,6 +307,8 @@ impl Config {
 			.get(&AppName::Named(name.to_string()))
 			.ok_or_else(|| eyre!("no such app defined: {}", name))?
 			.clone();
+
+		app.slug = name.to_string();
 
 		let defaults = self
 			.apps

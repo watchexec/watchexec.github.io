@@ -5,6 +5,9 @@ use color_eyre::Result;
 use config::Config;
 use semver::Version;
 use structopt::StructOpt;
+use tera::{Context, Tera};
+
+use crate::meta::Meta;
 
 mod config;
 mod meta;
@@ -29,6 +32,14 @@ enum Mode {
 
 		#[structopt(short, long)]
 		version: Option<String>,
+	},
+
+	ReleasePage {
+		#[structopt(short, long = "config")]
+		config_file: PathBuf,
+
+		#[structopt(short, long = "meta")]
+		meta_file: PathBuf,
 	},
 }
 
@@ -66,6 +77,30 @@ async fn main() -> Result<()> {
 			file.write_all(&bytes).await?;
 
 			eprintln!("wrote {} bytes to {}", bytes.len(), filepath.display());
+		}
+
+		Mode::ReleasePage {
+			config_file,
+			meta_file,
+		} => {
+			let config = Config::load(&config_file).await?;
+			let meta = Meta::load(&meta_file).await?;
+			let app = config.app(&meta.app, &meta.version)?;
+
+			let tera = Tera::new("_templates/**/*")?;
+			let mut context = Context::new();
+			context.try_insert("app", &app)?;
+			context.try_insert("meta", &meta)?;
+			let page = tera.render("release-page.html", &context)?;
+
+			let dirpath = app.dir(&meta.version);
+			create_dir_all(&dirpath).await?;
+
+			let filepath = dirpath.join("index.html");
+			let mut file = File::create(&filepath).await?;
+			file.write_all(page.as_bytes()).await?;
+
+			eprintln!("wrote {} bytes to {}", page.as_bytes().len(), filepath.display());
 		}
 	}
 

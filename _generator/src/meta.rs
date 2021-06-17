@@ -1,3 +1,6 @@
+use std::path::Path;
+
+use async_std::{fs::File, prelude::*};
 use chrono::{DateTime, Utc};
 use color_eyre::{eyre::eyre, Result};
 use semver::Version;
@@ -24,6 +27,13 @@ impl Meta {
 			downloads,
 			sums,
 		}
+	}
+
+	pub async fn load(path: impl AsRef<Path>) -> Result<Self> {
+		let mut file = File::open(path.as_ref()).await?;
+		let mut bytes = Vec::new();
+		file.read_to_end(&mut bytes).await?;
+		Ok(serde_json::from_slice(&bytes)?)
 	}
 }
 
