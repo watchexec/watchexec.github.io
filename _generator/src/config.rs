@@ -1,4 +1,8 @@
-use std::{collections::HashMap, fmt, path::{Path, PathBuf}};
+use std::{
+	collections::HashMap,
+	fmt,
+	path::{Path, PathBuf},
+};
 
 use async_std::{fs::File, prelude::*};
 use color_eyre::{eyre::eyre, Result};
@@ -220,9 +224,9 @@ impl<'de> Deserialize<'de> for Repo {
 }
 
 impl fmt::Display for Repo {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}/{}", self.owner, self.repo)
-    }
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		write!(f, "{}/{}", self.owner, self.repo)
+	}
 }
 
 impl Repo {
