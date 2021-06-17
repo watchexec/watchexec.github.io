@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+genbin="_generator/target/release/generator"
+
+if [[ ! -x "$genbin" ]]; then
+	cd _generator
+	cargo build --release
+	cd ..
+fi
+
+if [[ ! -x "$genbin" ]]; then
+	echo "Did not manage to build the generator !?" >&2
+	exit 42
+fi
+
+exec "$genbin" $@ --config generators.yml

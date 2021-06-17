@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+app="${1:-}"
+version="${2:-}"
+
+if [[ -z "$app" ]]; then
+	echo "Usage: $0 APP [VERSION]"
+	exit 1
+fi
+
+if [[ -z "$version" ]]; then
+	# TODO:
+	version=$(_bin/generator latest-version --app "$app")
+fi
+
+dlpath="downloads/$app/$version"
+metapath="$dlpath/meta.json"
+htmlpath="$dlpath/index.html"
+
+make_meta() {
+	mkdir -p "$dlpath"
+	_bin/generator release-meta --app "$app" --version "$version" \
+		> "$metapath"
+	echo "wrote $metapath"
+}
+
+if [[ -f "$metapath" ]]; then
+	echo "$metapath exists, overwrite? [Yn]"
+	read confirm
+	if [[ "$confirm" != n* ]]; then
+		make_meta
+	fi
+else
+	make_meta
+fi
