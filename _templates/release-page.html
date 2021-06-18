@@ -34,16 +34,33 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for dl in meta.downloads %}
-				<tr>
-					<td rowspan="1">{{ dl.cats[0] }}</td>
-					<td rowspan="1">{{ dl.cats[1] }}</td>
-					<td rowspan="1">{{ dl.cats[2] }}</td>
-					<td><a class="download" href="{{ dl.url }}">{{ dl.size / 1024 | round }} KB ({{ dl.format.short }})</a></td>
-					<td><code class="checksum">{{ dl.sums | map(attribute='sum') | first }}</code>
-					</td>
-				</tr>
-				{% endfor %}
+				{%- for os, dls1 in meta.downloads | group_by(attribute='cats.0') -%}
+					{%- set len1 = dls1 | length -%}
+					{%- for arch, dls2 in dls1 | group_by(attribute='cats.1') -%}
+						{%- set first2 = loop.first -%}
+						{%- set len2 = dls2 | length -%}
+						{%- for variant, dls3 in dls2 | group_by(attribute='cats.2') -%}
+							{%- set first3 = loop.first -%}
+							{%- set len3 = dls3 | length -%}
+							{% for dl in dls3 %}
+							<tr>
+								{% if first2 and first3 and loop.first %}<td rowspan="{{ len1 }}">{{ os }}</td>{% endif %}
+								{% if first3 and loop.first %}<td rowspan="{{ len2 }}">{{ arch }}</td>{% endif %}
+								{% if loop.first %}<td rowspan="{{ len3 }}">{{ variant }}</td>{% endif %}
+								<td><a class="download" href="{{ dl.url }}">{{ dl.size / 1024 | round }} KB ({{ dl.format.short }})</a></td>
+								<td>
+									{%- set sum = dl.sums | filter(attribute='algo', value='BLAKE3') | map(attribute='sum') | first -%}
+									{%- if sum -%}
+										<code class="checksum">{{ sum }}</code>
+									{%- else -%}
+										<em class="missing-checksum">missing checksum</em>
+									{%- endif -%}
+								</td>
+							</tr>
+							{% endfor %}
+						{%- endfor -%}
+					{%- endfor -%}
+				{%- endfor -%}
 			</tbody>
 		</table>
 

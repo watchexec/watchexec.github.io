@@ -84,8 +84,14 @@ async fn main() -> Result<()> {
 			meta_file,
 		} => {
 			let config = Config::load(&config_file).await?;
-			let meta = Meta::load(&meta_file).await?;
+			let mut meta = Meta::load(&meta_file).await?;
 			let app = config.app(&meta.app, &meta.version)?;
+
+			// work around a limitation of Tera where the group_by filter
+			// cannot group by a value being null (as it discards instead)
+			for dl in &mut meta.downloads {
+				dl.cats.2.get_or_insert("".into());
+			}
 
 			let tera = Tera::new("_templates/**/*")?;
 			let mut context = Context::new();

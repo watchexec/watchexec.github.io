@@ -157,6 +157,10 @@ table.downloads .checksum {
 	user-select: all;
 }
 
+table.downloads .missing-checksum {
+	color: var(--syn-prompt);
+}
+
 table.signatures th {
 	text-align: left;
 }
