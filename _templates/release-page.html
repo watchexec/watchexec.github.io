@@ -77,6 +77,13 @@
 			</tr>
 			{% endfor %}
 		</table>
+
+		<p class="generator">
+			version released on <time datetime="{{ meta.published }}">{{ meta.published | date }}</time>
+			| this page built on <time datetime="{{ meta.generated }}">{{ meta.generated | date(format='%Y-%m-%d at %H:%M UTC') }}</time>
+			| generator v{{ genver }}
+			| <a href="meta.json">json metadata</a>
+		</p>
 	</section>
 </body>
 

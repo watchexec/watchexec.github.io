@@ -103,7 +103,7 @@ pub async fn get_meta(config: Config, app: App, version: Version) -> Result<Meta
 	}
 
 	downloads.sort_by_key(|dl| (dl.cats.clone(), dl.format.short.clone()));
-	Ok(Meta::new(app.slug, version, downloads, sums))
+	Ok(Meta::new(app.slug, version, release.published_at, downloads, sums))
 }
 
 // typestate

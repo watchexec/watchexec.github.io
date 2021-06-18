@@ -96,6 +96,7 @@ async fn main() -> Result<()> {
 			let tera = Tera::new("_templates/**/*")?;
 			let mut context = Context::new();
 			context.try_insert("app", &app)?;
+			context.try_insert("genver", &env!("CARGO_PKG_VERSION"))?;
 			context.try_insert("meta", &meta)?;
 			let page = tera.render("release-page.html", &context)?;
 

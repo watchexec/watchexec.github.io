@@ -10,6 +10,8 @@
 	--fg-h2: hsl(230 45% 65%);
 
 	--pitch-em: hsl(125 70% 30%);
+	--muted: hsl(0 0% 30%);
+	--warning: var(--syn-prompt);
 
 	--a-normal: hsl(230 80% 50%);
 	--a-active: hsl(340 80% 50%);
@@ -52,6 +54,7 @@
 		--fg-h2: hsl(230 40% 65%);
 
 		--pitch-em: hsl(60 100% 66%);
+		--muted: hsl(0 0% 70%);
 
 		--a-normal: hsl(230 85% 65%);
 		--a-active: hsl(340 80% 58%);
@@ -158,7 +161,7 @@ table.downloads .checksum {
 }
 
 table.downloads .missing-checksum {
-	color: var(--syn-prompt);
+	color: var(--warning);
 }
 
 table.signatures th {
@@ -173,6 +176,12 @@ aside {
 
 aside p {
 	font-family: var(--sans);
+}
+
+.generator {
+	font-family: var(--mono);
+	margin: 0;
+	color: var(--muted);
 }
 
 
