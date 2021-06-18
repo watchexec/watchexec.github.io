@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
-use async_std::{fs::{File, create_dir_all}, io::prelude::WriteExt};
-use color_eyre::Result;
+use async_std::{fs::{File, create_dir_all, read_dir}, prelude::*};
+use color_eyre::{eyre::eyre, Result};
 use config::Config;
 use semver::Version;
 use structopt::StructOpt;
@@ -40,6 +40,14 @@ enum Mode {
 
 		#[structopt(short, long = "meta")]
 		meta_file: PathBuf,
+	},
+
+	ReleaseIndex {
+		#[structopt(short, long = "config")]
+		config_file: PathBuf,
+
+		#[structopt(short, long)]
+		app: String,
 	},
 }
 
@@ -105,6 +113,42 @@ async fn main() -> Result<()> {
 			create_dir_all(&dirpath).await?;
 
 			let filepath = dirpath.join("index.html");
+			let mut file = File::create(&filepath).await?;
+			file.write_all(page.as_bytes()).await?;
+
+			eprintln!("wrote {} bytes to {}", page.as_bytes().len(), filepath.display());
+		}
+
+		Mode::ReleaseIndex {
+			config_file,
+			app,
+		} => {
+			let appdir = PathBuf::from(format!("downloads/{}", app));
+			let mut dirs = read_dir(&appdir).await?;
+			let mut versions = Vec::new();
+			while let Some(dir) = dirs.next().await {
+				let dir = dir?;
+				if !dir.file_type().await?.is_dir() { continue; }
+				versions.push(Meta::load(dir.path().join("meta.json")).await?);
+			}
+
+			versions.sort_by_key(|v| v.version.clone());
+
+			if versions.is_empty() {
+				return Err(eyre!("no versions, abort"));
+			}
+
+			let config = Config::load(&config_file).await?;
+			let app = config.app(&app, &versions.last().unwrap().version)?;
+
+			let tera = Tera::new("_templates/**/*")?;
+			let mut context = Context::new();
+			context.try_insert("app", &app)?;
+			context.try_insert("genver", &env!("CARGO_PKG_VERSION"))?;
+			context.try_insert("versions", &versions)?;
+			let page = tera.render("release-index.html", &context)?;
+
+			let filepath = appdir.join("index.html");
 			let mut file = File::create(&filepath).await?;
 			file.write_all(page.as_bytes()).await?;
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta charset="utf-8" />
+
+	<link rel="shortcut icon" href="/logo.svg" />
+	<title>Downloads → {{ app.name }}</title>
+	<meta name="description"
+		content="A suite of tools and libraries related to Watchexec, which runs commands when files change. Download page index for historical {{ app.name }} releases." />
+
+	<link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+	<section>
+		<h2>
+			<a href="/"><img class="logo-icon" src="/logo:{{ app.slug }}.svg" alt="Home"></a>
+			←
+			<a href="/downloads/">Downloads</a>
+			←
+			<a href="/downloads/{{ app.slug }}/">{{ app.name }}</a>
+		</h2>
+
+		<p>{{ versions | length }} releases available:</p>
+
+		{% for v in versions | reverse %}
+		<section >
+			<h3>
+				<a href="/downloads/{{ app.slug }}/{{ v.version }}/">{{ app.name }} {{ v.version }}</a>
+				{% if loop.first %}(latest){% endif %}
+			</h3>
+
+			{%- if v.notes -%}
+			<details {% if loop.first %}open{% endif %}>
+				<summary>
+					Released on <b><time datetime="{{ v.published }}">{{ v.published | date }}</time></b>.
+					{{ v.downloads | length }} assets.
+					Release notes ↓
+				</summary>
+
+				<aside>{{ v.notes | safe }}</aside>
+			</details>
+			{%- else -%}
+			<p>
+				Released on <time datetime="{{ v.published }}">{{ v.published | date }}</time>.
+				{{ v.downloads | length }} assets.
+			</p>
+			{%- endif -%}
+		</section>
+		{% endfor %}
+
+		<p class="generator">
+			this page built on <time datetime="{{ now() }}">{{ now() | date(format='%Y-%m-%d at %H:%M UTC') }}</time>
+			| generator v{{ genver }}
+		</p>
+	</section>
+</body>
+
+</html>
