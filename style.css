@@ -9,6 +9,7 @@
 	--fg-h1: hsl(230 50% 50%);
 	--fg-h2: hsl(230 45% 65%);
 
+	--logo-shadow: transparent;
 	--pitch-em: hsl(125 70% 30%);
 	--muted: hsl(0 0% 30%);
 	--warning: var(--syn-prompt);
@@ -53,6 +54,7 @@
 		--fg-h1: hsl(230 90% 70%);
 		--fg-h2: hsl(230 40% 65%);
 
+		--logo-shadow: var(--fg);
 		--pitch-em: hsl(60 100% 66%);
 		--muted: hsl(0 0% 70%);
 
@@ -182,6 +184,12 @@ aside p {
 	font-family: var(--mono);
 	margin: 0;
 	color: var(--muted);
+}
+
+.logo-icon {
+	filter: drop-shadow(0 0 0.1em var(--logo-shadow));
+	height: 1em;
+	transform: scale(1.5) translateY(0.2em);
 }
 
 

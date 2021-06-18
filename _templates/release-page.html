@@ -6,7 +6,7 @@
 	<meta charset="utf-8" />
 
 	<link rel="shortcut icon" href="/logo.svg" />
-	<title>Downloads → {{ app.name }} {{ meta.version }}</title>
+	<title>Downloads → {{ app.name }} → {{ meta.version }}</title>
 	<meta name="description"
 		content="A suite of tools and libraries related to Watchexec, which runs commands when files change. Download page for official binaries for {{ app.name }} {{ meta.version }}." />
 
@@ -15,7 +15,15 @@
 
 <body>
 	<section>
-		<h2>{{ app.name }} {{ meta.version }}</h2>
+		<h2>
+			<a href="/"><img class="logo-icon" src="/logo:{{ app.slug }}.svg" alt="Home"></a>
+			←
+			<a href="/downloads/">Downloads</a>
+			←
+			<a href="/downloads/{{ app.slug }}/">{{ app.name }}</a>
+			←
+			<a href="/downloads/{{ app.slug }}/{{ meta.version }}/">{{ meta.version }}</a>
+		</h2>
 
 		<aside>
 			<h3>Changes</h3>
