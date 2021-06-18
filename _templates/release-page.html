@@ -25,11 +25,13 @@
 			<a href="/downloads/{{ app.slug }}/{{ meta.version }}/">{{ meta.version }}</a>
 		</h2>
 
+		{%- if meta.notes -%}
 		<aside>
-			<h3>Changes</h3>
+			<h3>Release notes</h3>
 
-			TODO
+			{{ meta.notes | safe }}
 		</aside>
+		{%- endif -%}
 
 		<table class="downloads">
 			<thead>

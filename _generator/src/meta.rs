@@ -15,17 +15,19 @@ pub struct Meta {
 	pub published: DateTime<Utc>,
 	pub app: String,
 	pub version: Version,
+	pub notes: Option<String>,
 	pub downloads: Vec<Download>,
 	pub sums: Vec<SignedSum>,
 }
 
 impl Meta {
-	pub fn new(app: String, version: Version, published: DateTime<Utc>, downloads: Vec<Download>, sums: Vec<SignedSum>) -> Self {
+	pub fn new(app: String, version: Version, published: DateTime<Utc>, notes: Option<String>, downloads: Vec<Download>, sums: Vec<SignedSum>) -> Self {
 		Self {
 			generated: Utc::now(),
 			published,
 			app,
 			version,
+			notes,
 			downloads,
 			sums,
 		}

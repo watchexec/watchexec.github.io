@@ -6,6 +6,7 @@ use isahc::{
 	config::{Configurable, RedirectPolicy},
 	AsyncReadResponseExt, HttpClientBuilder,
 };
+use octocrab::params::markdown::Mode;
 use semver::Version;
 use url::Url;
 
@@ -102,8 +103,30 @@ pub async fn get_meta(config: Config, app: App, version: Version) -> Result<Meta
 		}
 	}
 
+	// TODO: handle changelog file if requested
+	let notes = if let Some(mkd) = &release.body {
+		Some(
+			octocrab::instance()
+				.markdown()
+				.render(mkd)
+				.mode(Mode::Gfm)
+				.context(app.repo.to_string())
+				.send()
+				.await?,
+		)
+	} else {
+		None
+	};
+
 	downloads.sort_by_key(|dl| (dl.cats.clone(), dl.format.short.clone()));
-	Ok(Meta::new(app.slug, version, release.published_at, downloads, sums))
+	Ok(Meta::new(
+		app.slug,
+		version,
+		release.published_at,
+		notes,
+		downloads,
+		sums,
+	))
 }
 
 // typestate
@@ -141,7 +164,14 @@ impl SumFold {
 		}
 	}
 
-	fn add_sign(self, config: &Config, app: &App, version: &Version, sign_url: &Url, filename: &str) -> Self {
+	fn add_sign(
+		self,
+		config: &Config,
+		app: &App,
+		version: &Version,
+		sign_url: &Url,
+		filename: &str,
+	) -> Self {
 		let app_key_url = match &app.key_path {
 			Some(kp) => Url::parse(&format!(
 				"https://raw.githubusercontent.com/{}/{}/{}",
