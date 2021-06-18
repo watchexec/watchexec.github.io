@@ -2,9 +2,11 @@
 
 set -euo pipefail
 
-channel="${1:-}"
-[[ ! -z "$channel" ]] && shift
-[[ -z "$channel" ]] && channel=release
+channel="release"
+if [[ "${1:-}" == "debug" ]]; then
+	shift
+	channel="debug"
+fi
 
 genbin="_generator/target/$channel/generator"
 

@@ -15,36 +15,16 @@ if [[ -z "$version" ]]; then
 	version=$(_bin/generator latest-version --app "$app")
 fi
 
-dlpath="downloads/$app/$version"
-metapath="$dlpath/meta.json"
-pagepath="$dlpath/index.html"
+metapath="downloads/$app/$version/meta.json"
 
-make_meta() {
-	mkdir -p "$dlpath"
-	_bin/generator release-meta --app "$app" --version "$version"
-}
+echo -e "\n> fetching release data"
+_bin/generator release-meta --app "$app" --version "$version"
 
-make_page() {
-	mkdir -p "$dlpath"
-	_bin/generator release-page --meta "$metapath"
-}
+echo -e "\n> generating release page"
+_bin/generator release-page --meta "$metapath"
 
-if [[ -f "$metapath" ]]; then
-	echo -n "$metapath exists, overwrite? [Yn] "
-	read confirm
-	if [[ "$confirm" != n* ]]; then
-		make_meta
-	fi
-else
-	make_meta
-fi
+echo -e "\n> rebuilding release index"
+_bin/generator release-index --app "$app"
 
-if [[ -f "$pagepath" ]]; then
-	echo -n "$pagepath exists, overwrite? [Yn] "
-	read confirm
-	if [[ "$confirm" != n* ]]; then
-		make_page
-	fi
-else
-	make_page
-fi
+echo -e "\n> rebuilding downloads page"
+_bin/generator release-fold --meta "$metapath"
