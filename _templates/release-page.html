@@ -88,6 +88,10 @@
 			{% endfor %}
 		</table>
 
+		<p><a href="https://github.com/{{ app.repo.owner }}/{{ app.repo.repo }}/releases/{{ tag }}" target="_blank">
+			<em>View on GitHub</em>
+		</a></p>
+
 		<p class="generator">
 			version released on <time datetime="{{ meta.published }}">{{ meta.published | date }}</time>
 			| this page built on <time datetime="{{ meta.generated }}">{{ meta.generated | date(format='%Y-%m-%d at %H:%M UTC') }}</time>

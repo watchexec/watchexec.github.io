@@ -98,6 +98,7 @@ async fn main() -> Result<()> {
 			context.try_insert("app", &app)?;
 			context.try_insert("genver", &env!("CARGO_PKG_VERSION"))?;
 			context.try_insert("meta", &meta)?;
+			context.try_insert("tag", &app.tag(&meta.version)?)?;
 			let page = tera.render("release-page.html", &context)?;
 
 			let dirpath = app.dir(&meta.version);
