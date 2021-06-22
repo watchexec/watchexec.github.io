@@ -156,6 +156,7 @@ impl<T> Tri<T> {
 		}
 	}
 
+	#[allow(dead_code)] // until it's used
 	pub fn set(self) -> Option<T> {
 		match self {
 			Tri::Set(t) => Some(t),
