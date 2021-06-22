@@ -11,8 +11,7 @@ if [[ -z "$app" ]]; then
 fi
 
 if [[ -z "$version" ]]; then
-	# TODO:
-	version=$(_bin/generator latest-version --app "$app")
+	version=$(_bin/generator version-list --app "$app" -n1)
 fi
 
 metapath="downloads/$app/$version/meta.json"
