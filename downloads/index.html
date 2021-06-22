@@ -58,17 +58,18 @@
 		<summary>For packagers:</summary>
 
 		<p>
-			Each release on this website has a `meta.json`, see the `json metadata` link at the
-			bottom of a release page. This contains all download links, sizes, checksums, signatures,
-			release notes, and so on. The file is static so no rate limiting applies, contrary to
-			the GitHub API, and can be used for packaging or whatever other purpose. Note that the
-			downloads themselves are hosted on GitHub, and may be subject to rate limiting.
+			Each release on this website has a <code>meta.json</code>, see the “json metadata” link
+			at the bottom of a release page. This contains all download links, sizes, checksums,
+			signatures, release notes, OS information, and so on. The file is static so no rate
+			limiting applies, as opposed to the GitHub API, and can be used for packaging or
+			whatever other purpose. Note that the downloads themselves are hosted on GitHub, and may
+			be subject to their own rate limiting.
 		</p>
 
 		<p>
-			There is also a `latest.json` symlink to the meta file in each app’s release index, e.g.
-			<a href="/downloads/watchexec/latest.json">/downloads/watchexec/latest.json</a>, pointing
-			to the latest release’s `meta.json`.
+			There is also a <code>latest.json</code> symlink to the meta file in each app’s release
+			index, e.g. <a href="/downloads/watchexec/latest.json">/downloads/watchexec/latest.json</a>,
+			pointing to the latest release’s <code>meta.json</code>.
 		</p>
 
 		<p>
@@ -80,6 +81,43 @@
 			Packagers are strongly encouraged to verify checksums and signatures as part of their
 			process, where available.
 		</p>
+	</details>
+
+	<details>
+		<summary>Package formats:</summary>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Abbreviation</th>
+					<th>Description</th>
+					<th>Sample tool to unpack</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>DEB</td>
+					<td>Debian/Ubuntu package</td>
+					<td><code>dpkg -i <em><u>filename</u></em></code></td>
+				</tr>
+				<tr>
+					<td>GZ</td>
+					<td>Gzipped tarball</td>
+					<td><code>tar xzf <em><u>filename</u></em></code></td>
+				</tr>
+				<tr>
+					<td>XZ</td>
+					<td>Xzipped tarball</td>
+					<td><code>tar xJf <em><u>filename</u></em></code></td>
+				</tr>
+				<tr>
+					<td>Zip</td>
+					<td>Zipped folder</td>
+					<td><code>unzip <em><u>filename</u></em></code></td>
+				</tr>
+			</tbody>
+		</table>
 	</details>
 </section>
 
