@@ -301,7 +301,7 @@ impl Config {
 		Ok(cfg)
 	}
 
-	pub fn app(&self, name: &str, version: &Version) -> Result<App> {
+	pub fn app_from_name(&self, name: &str) -> Result<App> {
 		let mut app = self
 			.apps
 			.get(&AppName::Named(name.to_string()))
@@ -328,6 +328,12 @@ impl Config {
 
 		app.key_path = app.key_path.or(defaults.key_path);
 		app.notes = app.notes.or(defaults.notes);
+
+		Ok(app)
+	}
+
+	pub fn app_from_version(&self, name: &str, version: &Version) -> Result<App> {
+		let mut app = self.app_from_name(name)?;
 
 		// priors here are in ASC order, unlike in the config, where they (most
 		// likely) are in DESC order (most recent at the top)

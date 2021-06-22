@@ -82,7 +82,7 @@ async fn main() -> Result<()> {
 			let version = Version::parse(&version)?;
 
 			let config = Config::load(&config_file).await?;
-			let app = config.app(&app, &version)?;
+			let app = config.app_from_version(&app, &version)?;
 
 			let dirpath = app.dir(&version);
 			create_dir_all(&dirpath).await?;
@@ -103,7 +103,7 @@ async fn main() -> Result<()> {
 		} => {
 			let config = Config::load(&config_file).await?;
 			let mut meta = Meta::load(&meta_file).await?;
-			let app = config.app(&meta.app, &meta.version)?;
+			let app = config.app_from_version(&meta.app, &meta.version)?;
 
 			// work around a limitation of Tera where the group_by filter
 			// cannot group by a value being null (as it discards instead)
@@ -149,7 +149,7 @@ async fn main() -> Result<()> {
 			}
 
 			let config = Config::load(&config_file).await?;
-			let app = config.app(&app, &versions.last().unwrap().version)?;
+			let app = config.app_from_version(&app, &versions.last().unwrap().version)?;
 
 			let tera = Tera::new("_templates/**/*")?;
 			let mut context = Context::new();
