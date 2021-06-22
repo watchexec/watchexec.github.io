@@ -18,6 +18,7 @@ indexmap = { version = "1.6.2", features = ["serde"] }
 isahc = { version = "1.4.0", features = ["json"] }
 nipper = "0.1.9"
 octocrab = "0.9.1"
+regex = "1.5.4"
 semver = { version = "1.0.3", features = ["serde"] }
 serde = "1.0.126"
 serde_json = "1.0.64"

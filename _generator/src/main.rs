@@ -62,6 +62,21 @@ enum Mode {
 		#[structopt(short, long)]
 		app: String,
 	},
+
+	/// Print sorted list of versions from GitHub releases
+	VersionList {
+		/// The config file
+		#[structopt(short, long = "config")]
+		config_file: PathBuf,
+
+		/// The app key in the config
+		#[structopt(short, long)]
+		app: String,
+
+		/// Print only the last N
+		#[structopt(short = "n", long)]
+		last: Option<usize>,
+	},
 }
 
 #[async_std::main]
@@ -163,6 +178,45 @@ async fn main() -> Result<()> {
 			file.write_all(page.as_bytes()).await?;
 
 			eprintln!("wrote {} bytes to {}", page.as_bytes().len(), filepath.display());
+		}
+
+		Mode::VersionList {
+			config_file,
+			app,
+			last,
+		} => {
+			let name = app;
+			let config = Config::load(&config_file).await?;
+			let app = config.app_from_name(&name)?;
+
+			let gh = octocrab::instance();
+			let repo = gh.repos(&app.repo.owner, &app.repo.repo);
+			let rels = repo.releases();
+
+			let mut page = 0_u32;
+			let mut tags = Vec::with_capacity(512);
+			while let Ok(mut releases) = rels.list().per_page(100).page(page).send().await {
+				tags.extend(releases.take_items().into_iter().map(|r| {
+					r.tag_name
+				}));
+
+				if releases.next.is_none() {
+					break;
+				}
+
+				page += 1;
+			}
+
+			let mut versions = tags.into_iter().map(|tag| app.version_from_tag(&tag)).collect::<Result<Vec<_>>>()?;
+			versions.sort();
+
+			if let Some(n) = last {
+				versions = versions[versions.len() - n ..].to_vec();
+			}
+
+			for v in versions {
+				println!("{}", v);
+			}
 		}
 	}
 

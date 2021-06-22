@@ -1,6 +1,6 @@
 use std::{
-	collections::HashMap,
-	fmt,
+	collections::{BTreeMap, HashMap},
+	fmt, iter,
 	path::{Path, PathBuf},
 };
 
@@ -8,6 +8,7 @@ use async_std::{fs::File, prelude::*};
 use color_eyre::{eyre::eyre, Result};
 use globset::Glob;
 use indexmap::IndexMap;
+use regex::Regex;
 use semver::Version;
 use serde::{Deserialize, Deserializer, Serialize};
 use url::Url;
@@ -198,6 +199,46 @@ impl App {
 
 	pub fn dir(&self, version: &Version) -> PathBuf {
 		PathBuf::from(format!("downloads/{}/{}", self.slug, version))
+	}
+
+	pub fn version_from_tag(&self, tag: &str) -> Result<Version> {
+		let v0 = Version::new(0, 0, 0);
+
+		let tag_map = self
+			.priors
+			.iter()
+			.filter_map(|p| p.app.tag_template.as_ref().map(|t| (p.before.clone(), t)))
+			.chain(iter::once((
+				v0.clone(),
+				self.tag_template.as_ref().unwrap(),
+			)))
+			.try_fold(
+				(v0, BTreeMap::new()),
+				|(version, mut map), (before, template)| -> Result<_> {
+					let tt = Regex::new(&template.replace(
+						"{version}",
+						r"(?P<version>\d+[.]\d+[.]\d+(?:-[\w+][.]\d+)?)",
+					))?;
+					map.insert(version, tt);
+					Ok((before, map))
+				},
+			)?
+			.1;
+
+		let tag_rx = tag_map
+			.into_iter()
+			.map(|kv| kv.1)
+			.filter(|rx| rx.is_match(tag))
+			.last()
+			.ok_or_else(|| eyre!("{}: no tag template match for {}", self.slug, tag))?;
+
+		let version = tag_rx
+			.captures_iter(tag)
+			.next()
+			.and_then(|c| c.name("version"))
+			.expect("regex matched so we always have one");
+
+		Version::parse(version.as_str()).map_err(|err| err.into())
 	}
 }
 
