@@ -38,7 +38,7 @@ enum Mode {
 
 		/// The semver version
 		#[structopt(short, long)]
-		version: Option<String>,
+		version: String,
 	},
 
 	/// Build the app release page from an existing release meta.json
@@ -79,10 +79,7 @@ async fn main() -> Result<()> {
 			app,
 			version,
 		} => {
-			let version = version
-				.map(|v| Version::parse(&v))
-				.transpose()?
-				.expect("TODO: get latest version");
+			let version = Version::parse(&version)?;
 
 			let config = Config::load(&config_file).await?;
 			let app = config.app(&app, &version)?;
