@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta charset="utf-8" />
+
+	<link rel="shortcut icon" href="/logo.svg" />
+	<title>Downloads → Watchexec</title>
+	<meta name="description"
+		content="A suite of tools and libraries related to Watchexec, which runs commands when files change. Download page index for historical Watchexec releases." />
+
+	<link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+	<section>
+		<h2>
+			<a href="/"><img class="logo-icon" src="/logo:watchexec.svg" alt="Home"></a>
+			←
+			<a href="/downloads/">Downloads</a>
+			←
+			<a href="/downloads/watchexec/">Watchexec</a>
+		</h2>
+
+		<p>43 releases available:</p>
+
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.16.1/">Watchexec 1.16.1</a>
+				(latest)
+			</h3><details open>
+				<summary>
+					Released on <b><time datetime="2021-05-22T08:08:13Z">2021-05-22</time></b>.
+					13 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Fix <code>--clear</code> with clearscreen 1.0.4 (ref <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="898745036" data-permission-text="Title is private" data-url="https://github.com/watchexec/clearscreen/issues/1" data-hovercard-type="issue" data-hovercard-url="/watchexec/clearscreen/issues/1/hovercard" href="https://github.com/watchexec/clearscreen/issues/1">watchexec/clearscreen#1</a>)</li>
+</ul>
+<p>This is a new CLI release only so that the binaries work, if you're using the library running <code>cargo upgrade</code> is sufficient.</p></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.16.0/">Watchexec 1.16.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2021-05-08T14:25:37Z">2021-05-08</time></b>.
+					13 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li><g-emoji class="g-emoji" alias="green_apple" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f34f.png">🍏</g-emoji> New: build config for Apple M1 builds, which will become available <a href="https://github.com/actions/virtual-environments/issues/2486" data-hovercard-type="issue" data-hovercard-url="/actions/virtual-environments/issues/2486/hovercard">sometime in May/June</a></li>
+<li><g-emoji class="g-emoji" alias="mechanical_arm" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f9be.png">🦾</g-emoji> New: Windows ARM builds</li>
+<li><g-emoji class="g-emoji" alias="pen" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f58a.png">🖊️</g-emoji> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="368405131" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/99" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/99/hovercard" href="https://github.com/watchexec/watchexec/issues/99">#99</a> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="855280397" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/185" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/185/hovercard" href="https://github.com/watchexec/watchexec/issues/185">#185</a> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="738206355" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/171" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/171/hovercard" href="https://github.com/watchexec/watchexec/issues/171">#171</a> Use <a href="https://github.com/watchexec/clearscreen"><code>clearscreen</code></a> library. This should in particular help with the <code>-c</code> flag on Windows, and provide a more consistent experience (as much as is possible) everywhere.</li>
+<li><g-emoji class="g-emoji" alias="rotating_light" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f6a8.png">🚨</g-emoji> Change: project split into two-package workspace.
+<ul>
+<li><g-emoji class="g-emoji" alias="warning" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png">⚠️</g-emoji> Use <code>cargo install watchexec-cli</code> when installing via cargo.</li>
+<li><g-emoji class="g-emoji" alias="package" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4e6.png">📦</g-emoji> Prefer <code>cargo binstall watchexec-cli</code> when installing via <a href="https://github.com/ryankurte/cargo-binstall">cargo-binstall</a>, though <code>cargo binstall watchexec</code> will still work for now but will rapidly stop working well as the versions diverge.</li>
+<li><g-emoji class="g-emoji" alias="arrow_right_hook" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/21aa.png">↪️</g-emoji> A stub <code>main.rs</code> is in place which will direct you to install <code>watchexec-cli</code> when using <code>cargo install watchexec</code>. This stub will go away in a future release.</li>
+<li><g-emoji class="g-emoji" alias="books" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4da.png">📚</g-emoji> The <code>watchexec</code> crate is now the library only and is versioned separately from the binary, which means <strong>semver now applies</strong>.</li>
+</ul>
+</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.15.3/">Watchexec 1.15.3</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2021-04-30T12:30:37Z">2021-04-30</time></b>.
+					12 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="868347589" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/191" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/191/hovercard" href="https://github.com/watchexec/watchexec/issues/191">#191</a> Bugfix: Type change caused a warning message to have dupe info.</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="871493179" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/192" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/192/hovercard" href="https://github.com/watchexec/watchexec/issues/192">#192</a> Bugfix: Windows critical on some (?) versions of Win10 due to XML schemas in the manifest</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.15.2/">Watchexec 1.15.2</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2021-04-26T14:07:38Z">2021-04-26</time></b>.
+					12 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="368405131" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/99" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/99/hovercard" href="https://github.com/watchexec/watchexec/issues/99">#99</a> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="855280397" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/185" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/185/hovercard" href="https://github.com/watchexec/watchexec/issues/185">#185</a> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="738206355" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/171" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/171/hovercard" href="https://github.com/watchexec/watchexec/issues/171">#171</a> Experimental: new spinoff crate <a href="https://github.com/watchexec/clearscreen"><code>clearscreen</code></a> which is a comprehensive terminal/console screen clearing library. Eventually this will be used here, for now it needs a little time to settle and get properly tested around a bunch of terminals and setups (<a href="https://github.com/watchexec/clearscreen/blob/main/TERMINALS.md">and you can help!</a>). However, its API is stable and it is fully documented, so please consider it for new projects!</li>
+<li>New: a cute logo for the project! <g-emoji class="g-emoji" alias="shell" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f41a.png">🐚</g-emoji><g-emoji class="g-emoji" alias="crab" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f980.png">🦀</g-emoji> This is used in the repo metadata and the API documentation. For now!</li>
+<li>On Windows, the application manifest has been added to, which opts us into a few modern settings, adds some metadata, and declares compatibility to Windows 8, 8.1, and 10.</li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/watchexec/watchexec/blob/main/doc/logo.png"><img src="https://github.com/watchexec/watchexec/blob/main/doc/logo.png" alt="black and white image of a hermit crab in a round shell with an upside-down diagonal-sideways greek lowercase omega" style="max-width:100%;"></a></p></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.15.1/">Watchexec 1.15.1</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2021-04-17T00:51:27Z">2021-04-17</time></b>.
+					12 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="710961239" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/168" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/168/hovercard" href="https://github.com/watchexec/watchexec/issues/168">#168</a> Decreasing debounce interval further to 150ms.</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="855132251" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/181" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/181/hovercard" href="https://github.com/watchexec/watchexec/issues/181">#181</a> Fix --shell to support (very simply) options passed to the shell.</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="855882026" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/189" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/189/hovercard" href="https://github.com/watchexec/watchexec/pull/189">#189</a> Fix algorithm to find the root of a git repo.</li>
+<li>Manpage is built in HTML as well as Roff and included in releases (more useful than roff on windows).</li>
+<li>Notify updated to latest patch in lockfile.</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="320178392" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/82" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/82/hovercard" href="https://github.com/watchexec/watchexec/issues/82">#82</a> Command/arguments processing is documented clearly in the manpage.</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.15.0/">Watchexec 1.15.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2021-04-10T18:01:24Z">2021-04-10</time></b>.
+					12 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>CI and releases switch from Travis to Github Actions.</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="849936718" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/178" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/178/hovercard" href="https://github.com/watchexec/watchexec/pull/178">#178</a> Add <code>arm-unknown-linux-gnueabihf</code> and <code>aarch64-unknown-linux-gnu</code> builds.</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="853714558" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/180" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/180/hovercard" href="https://github.com/watchexec/watchexec/pull/180">#180</a> Add <code>--changes-only</code> option to print what changes (for debugging purposes, not for consuming).</li>
+<li>Add <code>--shell=SHELL</code> and deprecate <code>--no-shell</code>.</li>
+<li>The above allows to use powershell instead of cmd (<code>--shell=powershell</code>), which solves <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="309814012" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/80" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/80/hovercard" href="https://github.com/watchexec/watchexec/issues/80">#80</a>. On Windows, powershell will become the CLI default in v2.0, and is the new default right now in the library.</li>
+<li>Undocument <code>--kill</code> from the man page, help, and completion. It will be removed in v2.0.</li>
+<li>In the library, <code>Args</code> is renamed to <code>Config</code> and the old name deprecated.</li>
+<li>In the library, <code>get_args</code> is deprecated in the view to be removed at some point (and only exist in the CLI).</li>
+<li>In the builder, durations are now Durations instead of integers of milliseconds.</li>
+<li>In the builder, <code>restart</code> and <code>watch_when_idle</code> are deprecated and replaced with <code>on_busy_update</code> which clarifies the behaviour when receiving updates while a command is running.</li>
+<li>Add <code>--on-busy-update=</code> option to expose that builder option.</li>
+<li>Deprecate <code>--watch-when-idle</code> (ref <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="453125990" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/123" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/123/hovercard" href="https://github.com/watchexec/watchexec/issues/123">#123</a>) in favour of <code>--on-busy-update=do-nothing</code>.</li>
+<li>Add <a href="https://github.com/ryankurte/cargo-binstall">binstall</a> metadata.</li>
+<li>Add DEB packages for every linux build.</li>
+<li>Increase MSRV to 1.43.0.</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.14.1/">Watchexec 1.14.1</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2020-09-30T04:50:39Z">2020-09-30</time></b>.
+					6 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/watchexec/watchexec/commit/fdb0cfb759dc3269957859abc44d7ff789044a19/hovercard" href="https://github.com/watchexec/watchexec/commit/fdb0cfb759dc3269957859abc44d7ff789044a19"><tt>fdb0cfb</tt></a> Soft-deprecate (in documentation only) <code>Args.debug</code> as it's not used any more.</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="657021231" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/163" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/163/hovercard" href="https://github.com/watchexec/watchexec/issues/163">#163</a> Add a manifest on Windows to transparently opt-in to long path support when supported. This is a cli change only and is not present in downstream executables (see associated commits for how to do it for your application).</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="692791392" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/165" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/165/hovercard" href="https://github.com/watchexec/watchexec/issues/165">#165</a> Fix help text and documentation to mention that <code>-w</code> can be used to watch files as well as folders.</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="710961239" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/168" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/168/hovercard" href="https://github.com/watchexec/watchexec/issues/168">#168</a> Drop default debounce time to 300ms. This is an experiment to gain testing on a lower value! Please report any issues. If it goes well the default will be dropped again later on.</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.14.0/">Watchexec 1.14.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2020-07-03T12:58:34Z">2020-07-03</time></b>.
+					7 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="643802808" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/157" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/157/hovercard" href="https://github.com/watchexec/watchexec/pull/157">#157</a> Error and exit gracefully when the subprocess's environment would be too large (as a result of too many changes being added to the <code>WATCHEXEC_*</code> environment variables instead of throwing a cryptic message ("Argument list too long")</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="643802808" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/157" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/157/hovercard" href="https://github.com/watchexec/watchexec/pull/157">#157</a> Add <code>--no-environment</code> to disable the <code>WATCHEXEC_*</code> variables being set, to avoid the above situation completely.</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="643802808" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/157" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/157/hovercard" href="https://github.com/watchexec/watchexec/pull/157">#157</a> Add <code>--no-meta</code> to disable only "metadata" events from being reported as above, which mitigates the above situation.</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="645447440" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/160" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/160/hovercard" href="https://github.com/watchexec/watchexec/pull/160">#160</a> <g-emoji class="g-emoji" alias="warning" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png">⚠️</g-emoji> Stop initialising the logger in the library code. Downstream users will need to initialise their own logger if they want debug/warn output. As a reminder, the library API is not considered in semver here, and downstream users are encouraged to specify <strong>exact</strong> versions: <code>watchexec = "=1.14.0"</code>.</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.13.1/">Watchexec 1.13.1</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2020-06-06T03:22:12Z">2020-06-06</time></b>.
+					7 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="631482106" data-permission-text="Title is private" data-url="https://github.com/passcod/cargo-watch/issues/149" data-hovercard-type="issue" data-hovercard-url="/passcod/cargo-watch/issues/149/hovercard" href="https://github.com/passcod/cargo-watch/issues/149">passcod/cargo-watch#149</a>: if watched directory didn't contain a .git folder, thread would block (infinite loop)</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.13.0/">Watchexec 1.13.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2020-06-04T07:39:42Z">2020-06-04</time></b>.
+					7 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="576850129" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/147" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/147/hovercard" href="https://github.com/watchexec/watchexec/pull/147">#147</a>: .gitignore files are now looked at in children <em>as well as parents</em>, the latter being very much not what should happen, but I'm kinda stuck with it at the moment to avoid breaking behaviour, eeech</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="601971215" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/150" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/150/hovercard" href="https://github.com/watchexec/watchexec/pull/150">#150</a>: clarity around time units in the interface</li>
+<li>Deps: <code>notify</code> (patch), <code>globset</code> (patch), <code>clap</code> (patch), <code>nix</code> (major: 0.15 → 0.17)</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.12.0/">Watchexec 1.12.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2019-11-19T06:09:41Z">2019-11-19</time></b>.
+					6 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="521250292" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/142" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/142/hovercard" href="https://github.com/watchexec/watchexec/pull/142">#142</a>: Change ignore globbing to behave as the readme documents: <code>-i foo</code> now matches the <code>foo</code> folder and descendants, instead of having to specify <code>-i foo/**</code></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="520463228" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/141" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/141/hovercard" href="https://github.com/watchexec/watchexec/pull/141">#141</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="453125990" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/123" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/123/hovercard" href="https://github.com/watchexec/watchexec/issues/123">#123</a>: Introduce a <code>--watch-when-idle</code> option that ignores events emitted while the command is running. This may help ignore changes made <em>by</em> the command itself (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="205821666" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/40" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/40/hovercard" href="https://github.com/watchexec/watchexec/issues/40">#40</a>), though it of course also ignores all other changes during that time.</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.11.1/">Watchexec 1.11.1</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2019-10-28T09:35:13Z">2019-10-28</time></b>.
+					6 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Revert a change that made a type borrowed instead of the more sane (and more flexible) owned</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.11.0/">Watchexec 1.11.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2019-10-28T06:08:01Z">2019-10-28</time></b>.
+					6 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Support for <code>.ignore</code> files (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="502953441" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/127" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/127/hovercard" href="https://github.com/watchexec/watchexec/pull/127">#127</a>)</li>
+<li>zsh completions in tree and releases (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="509955456" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/130" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/130/hovercard" href="https://github.com/watchexec/watchexec/pull/130">#130</a>)</li>
+<li>Semver policy for library written down (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="512913520" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/135" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/135/hovercard" href="https://github.com/watchexec/watchexec/issues/135">#135</a>)</li>
+<li>A new builder for <code>Args</code> (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="512913520" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/135" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/135/hovercard" href="https://github.com/watchexec/watchexec/issues/135">#135</a>)</li>
+<li>More flexible <code>Handler</code> trait (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="512877561" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/133" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/133/hovercard" href="https://github.com/watchexec/watchexec/issues/133">#133</a>)</li>
+<li>Rust Edition 2018</li>
+<li>MSRV bumped to 1.38</li>
+<li>Builds done with <code>--locked</code> for reproducibility (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="510761584" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/131" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/131/hovercard" href="https://github.com/watchexec/watchexec/pull/131">#131</a>)</li>
+<li>Windows builds moved to Travis</li>
+<li>MSVC release builds are back</li>
+<li>Linux and macOS builds use xz compression</li>
+<li>Lots of lints enabled</li>
+<li>Some typos fixed (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="505185121" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/128" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/128/hovercard" href="https://github.com/watchexec/watchexec/pull/128">#128</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="506273169" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/129" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/129/hovercard" href="https://github.com/watchexec/watchexec/pull/129">#129</a>)</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.10.3/">Watchexec 1.10.3</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2019-07-29T23:51:22Z">2019-07-29</time></b>.
+					6 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>The man page was brought up-to-date to new options and a hint to use <code>--</code> (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="474124146" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/125" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/125/hovercard" href="https://github.com/watchexec/watchexec/pull/125">#125</a>)</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.10.2/">Watchexec 1.10.2</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2019-05-29T06:39:25Z">2019-05-29</time></b>.
+					6 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Always canonicalise paths, fixing a bug where some ignores would sometimes fail to apply (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="416342689" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/113" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/113/hovercard" href="https://github.com/watchexec/watchexec/pull/113">#113</a>)</li>
+<li>Some dependency updates (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="419344522" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/115" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/115/hovercard" href="https://github.com/watchexec/watchexec/pull/115">#115</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="424085618" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/116" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/116/hovercard" href="https://github.com/watchexec/watchexec/pull/116">#116</a>, <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/watchexec/watchexec/commit/7ed5ea577793d44be574031ba8a408acba8b0699/hovercard" href="https://github.com/watchexec/watchexec/commit/7ed5ea577793d44be574031ba8a408acba8b0699"><tt>7ed5ea5</tt></a>)</li>
+<li>Crate is somewhat smaller (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="424173283" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/117" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/117/hovercard" href="https://github.com/watchexec/watchexec/pull/117">#117</a>)</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.10.1/">Watchexec 1.10.1</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2019-02-18T08:28:58Z">2019-02-18</time></b>.
+					6 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Fix crash on some error conditions. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="410549555" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/111" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/111/hovercard" href="https://github.com/watchexec/watchexec/pull/111">#111</a>)</li>
+<li>Clear the screen on initial run again (<a href="https://github.com/watchexec/watchexec/commit/4918b123d9466e47ad311fa720a250b396327fbb"><code>4918b12</code></a>)</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.10.0/">Watchexec 1.10.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2019-01-26T05:30:29Z">2019-01-26</time></b>.
+					6 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><h2>New API features</h2>
+<p>The API now enables:</p>
+<ul>
+<li>parsing a command line string into watchexec <code>Args</code></li>
+<li>writing one's own handler to react to changes</li>
+<li>a lot more errors to be caught instead of panicking</li>
+</ul>
+<p>This also has creates two minor breaking changes:</p>
+<ul>
+<li><code>Args</code>'s <code>paths</code> field is now a <code>Vec&lt;PathBuf&gt;</code> rather than a <code>Vec&lt;String&gt;</code></li>
+<li><code>cli::get_args()</code> returns a <code>Result</code> rather than nothing</li>
+</ul>
+<p>This was done in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="403393276" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/105" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/105/hovercard" href="https://github.com/watchexec/watchexec/pull/105">#105</a>, prompted by <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="402361805" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/104" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/104/hovercard" href="https://github.com/watchexec/watchexec/pull/104">#104</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="400308445" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/103" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/103/hovercard" href="https://github.com/watchexec/watchexec/pull/103">#103</a>.</p>
+<h2>Clap update</h2>
+<p>This formalises the fix to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="289563829" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/76" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/76/hovercard" href="https://github.com/watchexec/watchexec/issues/76">#76</a>.</p>
+<h2>Support commands that allocate their own TTY</h2>
+<p>Through setsid, thanks to <a class="user-mention" data-hovercard-type="user" data-hovercard-url="/users/Mange/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Mange">@Mange</a> (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="400262130" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/102" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/102/hovercard" href="https://github.com/watchexec/watchexec/pull/102">#102</a>).</p>
+<p>Fixes <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="217889720" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/47" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/47/hovercard" href="https://github.com/watchexec/watchexec/issues/47">#47</a> and some other issues downstream.</p>
+<h2>An attempt to fix some issues clearing screens under some Windows configurations</h2>
+<p>These are hard to guess at / repro. Maybe it helped <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="368405131" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/99" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/99/hovercard" href="https://github.com/watchexec/watchexec/issues/99">#99</a>.</p>
+<h2>Dependency upgrades</h2>
+<ul>
+<li>Notify 4.0.7 brings in some fixes, notably a performance/battery-saving optimisation on Linux.</li>
+<li>Regex 1.1.0 brings in some performance improvements for (git)ignore patterns</li>
+</ul>
+<h2>Some progress towards manual restarts</h2>
+<p>As part of the API changes, file-triggered runs and manual runs are now explicitly differentiated, which will help when eventually implementing <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="260532309" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/67" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/67/hovercard" href="https://github.com/watchexec/watchexec/issues/67">#67</a>.</p></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.9.2/">Watchexec 1.9.2</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2018-09-09T04:12:32Z">2018-09-09</time></b>.
+					6 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><p>My bad. My changes related to whitespace handling completely broke several use cases, e.g.:</p>
+<ul>
+<li><code>watchexec -- 'echo foo; echo bar'</code></li>
+</ul>
+<p>See discussion on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="320178392" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/82" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/82/hovercard" href="https://github.com/watchexec/watchexec/issues/82">#82</a>.</p>
+<p>This release reverts (comments out) those parts, but keeps everything else.</p></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.9.1/">Watchexec 1.9.1</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2018-09-09T03:03:55Z">2018-09-09</time></b>.
+					5 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="281977645" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/74" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/74/hovercard" href="https://github.com/watchexec/watchexec/pull/74">#74</a> — Watchexec no longer panics on missing folders — patch<sup><strong>1, 2</strong></sup></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="352699054" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/95" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/95/hovercard" href="https://github.com/watchexec/watchexec/pull/95">#95</a> — Fix issues with whitespace in commands — patch<sup><strong>2</strong></sup></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="356592084" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/96" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/96/hovercard" href="https://github.com/watchexec/watchexec/pull/96">#96</a> — Add install instructions for Arch Linux — docs</li>
+<li>Create a Debian package on release — releng</li>
+<li>Add install instructions for Debian — docs</li>
+</ul>
+<p><sub> <strong>1:</strong> Other changes were added following this to convert more panics into normal errors: some glob parsing errors, and file watcher initialisation errors.</sub></p>
+<p><sub> <strong>2:</strong> These changes also cause a breaking changes to the library interface, but this is not considered in the version numbers (i.e. if you use it, <em>pin it</em>). From cursory investigation only <a href="https://github.com/passcod/cargo-watch">cargo-watch</a> is a consumer and changes there in consequence are coordinated.</sub></p></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.9.0/">Watchexec 1.9.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2018-08-19T09:33:58Z">2018-08-19</time></b>.
+					5 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><p>First release by <a class="user-mention" data-hovercard-type="user" data-hovercard-url="/users/passcod/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/passcod">@passcod</a>! This release is merging in a variety of long-waiting improvements, but is otherwise fairly conservative.</p>
+<ul>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="295623080" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/77" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/77/hovercard" href="https://github.com/watchexec/watchexec/pull/77">#77</a> — Better default ignore patterns for Python, Emacs, and Vim — patch</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="339148475" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/89" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/89/hovercard" href="https://github.com/watchexec/watchexec/pull/89">#89</a> — On Linux, statically-compiled musl builds are now provided — releng</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="343637032" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/90" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/90/hovercard" href="https://github.com/watchexec/watchexec/pull/90">#90</a> — <code>WATCHEXEC_*_PATH</code> environment variables are now accurately documented — docs</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="343878560" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/91" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/91/hovercard" href="https://github.com/watchexec/watchexec/pull/91">#91</a> — On Windows, watchexec can now be installed using scoop.sh — docs</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="345899712" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/92" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/92/hovercard" href="https://github.com/watchexec/watchexec/pull/92">#92</a> — Support OpenBSD 6.3+ — patch</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="346655259" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/93" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/93/hovercard" href="https://github.com/watchexec/watchexec/pull/93">#93</a> — On Linux, fallback to polling if inotify limit is reached — minor</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.8.6/">Watchexec 1.8.6</a>
+				
+			</h3><p>
+				Released on <time datetime="2017-10-09T13:05:06Z">2017-10-09</time>.
+				3 assets.
+			</p></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.8.5/">Watchexec 1.8.5</a>
+				
+			</h3><p>
+				Released on <time datetime="2017-09-08T20:23:39Z">2017-09-08</time>.
+				2 assets.
+			</p></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.8.4/">Watchexec 1.8.4</a>
+				
+			</h3><p>
+				Released on <time datetime="2017-05-18T17:28:08Z">2017-05-18</time>.
+				3 assets.
+			</p></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.8.3/">Watchexec 1.8.3</a>
+				
+			</h3><p>
+				Released on <time datetime="2017-04-27T19:45:15Z">2017-04-27</time>.
+				3 assets.
+			</p></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.8.2/">Watchexec 1.8.2</a>
+				
+			</h3><p>
+				Released on <time datetime="2017-04-27T19:26:16Z">2017-04-27</time>.
+				3 assets.
+			</p></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.8.1/">Watchexec 1.8.1</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2017-04-26T14:19:51Z">2017-04-26</time></b>.
+					3 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li><strong>Behavior change</strong>: removes the default <code>./.*</code> ignore pattern, as it was often surprising and usually not needed with <code>.gitignore</code> handling.</li>
+<li>Add <code>--no-default-ignore</code> to explicitly disable all default ignores (<a class="user-mention" data-hovercard-type="user" data-hovercard-url="/users/akerl/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/akerl">@akerl</a>)</li>
+<li>Restructured slightly to support being used as a library within other utilities (<a class="user-mention" data-hovercard-type="user" data-hovercard-url="/users/passcod/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/passcod">@passcod</a>). Right now, this is mostly for <code>cargo watch</code>.</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.8.0/">Watchexec 1.8.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2017-04-19T21:38:56Z">2017-04-19</time></b>.
+					3 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>POSIX: Add <code>--signal</code> option to specify signal to send to child process (<a class="user-mention" data-hovercard-type="user" data-hovercard-url="/users/chr4/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/chr4">@chr4</a>)</li>
+<li>Add <code>--no-shell</code> option to <code>exec()</code> child process directly, instead of going through <code>sh</code>/<code>cmd.exe</code> (<a class="user-mention" data-hovercard-type="user" data-hovercard-url="/users/chr4/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/chr4">@chr4</a>)</li>
+<li>Requires Rust 1.15 for building/Cargo installation</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.7.0/">Watchexec 1.7.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2017-02-05T18:33:11Z">2017-02-05</time></b>.
+					3 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Add <code>-w</code>/<code>--watch</code> option back to manually specify directories to watch. This is useful for cutting down on file descriptors used when watching deeply nested directory structures on Linux.</li>
+<li>Load <code>.gitignore</code> files from all watched directories, and then search upwards in the directory hierarchy for any additional ones that need to be loaded. When watching multiple directories with a common parent, <code>.gitignore</code> files will only be loaded once.</li>
+<li>Test all <code>.gitignore</code> files found for each notification from the outside in.</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.6.1/">Watchexec 1.6.1</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2017-01-16T19:22:21Z">2017-01-16</time></b>.
+					2 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Unix: reap children upon receipt of SIGCHLD</li>
+<li>Add <code>-k</code> option for sending <code>SIGKILL</code> to child processes</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.6.0/">Watchexec 1.6.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-12-19T16:52:23Z">2016-12-19</time></b>.
+					3 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul><li>Unix: Add -k option to send <code>SIGKILL</code> to child processes</li><li>Unix: propagate <code>SIGTSTP</code>/<code>SIGCONT</code> signals (used when you hit control-z in your shell for job control)</li></ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.5.0/">Watchexec 1.5.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-11-23T18:19:25Z">2016-11-23</time></b>.
+					2 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Drop <code>--watch</code> option, as it has confusing semantics around where to find <code>.gitignore</code> files. If you need it, file an issue.</li>
+<li>POSIX-based OSes: wait for all child processes to exit before running command</li>
+<li>Remove all features requiring nightly Rust builds</li>
+<li>Build size optimizations</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.4.0/">Watchexec 1.4.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-11-08T23:09:44Z">2016-11-08</time></b>.
+					3 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Fix infinite loop when no <code>.gitignore</code> file found</li>
+<li>Optimize filter matching</li>
+<li>Upgrade to <code>notify</code> 3</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.3.0/">Watchexec 1.3.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-11-03T20:28:42Z">2016-11-03</time></b>.
+					3 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><p>Automatically deployed release</p></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.2.3/">Watchexec 1.2.3</a>
+				
+			</h3><p>
+				Released on <time datetime="2016-10-29T14:33:57Z">2016-10-29</time>.
+				3 assets.
+			</p></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.2.2/">Watchexec 1.2.2</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-10-28T13:21:19Z">2016-10-28</time></b>.
+					3 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>When waiting for all file system changes, de-dupe paths. This significantly reduces CPU for Linux users, as inotify sends a lot of notifications</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.2.1/">Watchexec 1.2.1</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-10-26T20:39:43Z">2016-10-26</time></b>.
+					3 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Windows: launch child processes in a new job object, letting us kill all subprocesses</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.2.0/">Watchexec 1.2.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-10-25T11:38:20Z">2016-10-25</time></b>.
+					3 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Add <code>--run-initially</code> flag</li>
+<li>Search for <code>.gitignore</code> files in parent dirs</li>
+<li>Set <code>$WATCHEXEC_UPDATED_PATH</code> to the first updated path</li>
+<li>Add <code>--force-poll</code> option</li>
+<li>macOS/Linux/BSD: launch child processes in their own process group</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.0.0/">Watchexec 1.0.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-10-15T15:09:49Z">2016-10-15</time></b>.
+					3 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><p>Initial release</p></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/0.11.0/">Watchexec 0.11.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-10-12T13:28:44Z">2016-10-12</time></b>.
+					0 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Load and use <code>.gitignore</code> file, if one is located in the current working directory</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/0.10.0/">Watchexec 0.10.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-09-24T18:14:03Z">2016-09-24</time></b>.
+					0 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Add <code>-r</code> option to restart commands when new changes arrive</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/0.9.0/">Watchexec 0.9.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-09-24T16:50:40Z">2016-09-24</time></b>.
+					0 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>By default, watch the current directory and all subdirectories. Can be overridden with <code>--watch</code></li>
+<li>New option: <code>-e</code> to monitor file extensions (e.g. <code>-e js,html,css</code>)</li>
+<li>Fix dotted dirs not being ignored by default</li>
+<li>Rename <code>-d</code> option to <code>-v</code> (verbose)</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/0.8.0/">Watchexec 0.8.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-09-22T03:37:14Z">2016-09-22</time></b>.
+					0 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>Support <code>-f</code> for filter patterns, and <code>-i</code> for ignore patterns</li>
+<li>All arguments after directory to watch are interpreted as command to run</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/0.7.0/">Watchexec 0.7.0</a>
+				
+			</h3><details >
+				<summary>
+					Released on <b><time datetime="2016-09-19T15:27:06Z">2016-09-19</time></b>.
+					0 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><p>Basic functionality</p></aside>
+			</details></section>
+		
+
+		<p class="generator">
+			this page built on <time datetime="2021-06-23T02:28:26.318703367+12:00">2021-06-23 at 02:28 UTC</time>
+			| generator v0.0.1
+		</p>
+	</section>
+</body>
+
+</html>
