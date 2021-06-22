@@ -15,37 +15,50 @@ mod release;
 
 #[derive(Clone, Debug, StructOpt)]
 enum Mode {
+	/// Verify the config file
 	Lint {
+		/// The config file
 		#[structopt(short, long = "config")]
 		config_file: PathBuf,
 
+		/// Print the debug listing of the parsed config
 		#[structopt(long)]
 		print: bool,
 	},
 
+	/// Build the app release meta.json for a particular version
 	ReleaseMeta {
+		/// The config file
 		#[structopt(short, long = "config")]
 		config_file: PathBuf,
 
+		/// The app key in the config
 		#[structopt(short, long)]
 		app: String,
 
+		/// The semver version
 		#[structopt(short, long)]
 		version: Option<String>,
 	},
 
+	/// Build the app release page from an existing release meta.json
 	ReleasePage {
+		/// The config file
 		#[structopt(short, long = "config")]
 		config_file: PathBuf,
 
+		/// The meta.json file
 		#[structopt(short, long = "meta")]
 		meta_file: PathBuf,
 	},
 
+	/// Build the app release index from all existing app release pages
 	ReleaseIndex {
+		/// The config file
 		#[structopt(short, long = "config")]
 		config_file: PathBuf,
 
+		/// The app key in the config
 		#[structopt(short, long)]
 		app: String,
 	},
