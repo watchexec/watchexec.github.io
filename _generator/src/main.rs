@@ -211,7 +211,7 @@ async fn main() -> Result<()> {
 			versions.sort();
 
 			if let Some(n) = last {
-				versions = versions[versions.len() - n ..].to_vec();
+				versions = versions[versions.len() - n.min(versions.len()) ..].to_vec();
 			}
 
 			for v in versions {

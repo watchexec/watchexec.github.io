@@ -27,10 +27,15 @@ triples:
   "*-apple-darwin.*": { os: macOS }
   "*-aarch64-apple-darwin.*": { arch: M1 }
   "*-windows-*": { os: Windows }
+  "*-windows-gnu.*": { variant: MingW }
+  "*-windows-msvc.*": { variant: MSVC }
   "*-linux-gnu*": { variant: glibc }
   "*-linux-musl.*": { variant: musl }
-  "*_osx_*": { os: macOS }
-  "*_win_*": { os: Windows }
+
+  # watchexec pre 1.0
+  "*-osx-*": { os: macOS, arch: x86-64 }
+  "*_osx_*": { os: macOS, arch: x86-64 }
+  "*_win_*": { os: Windows, arch: x86-64 }
 
 formats:
   "*.pkg.tar.*":
