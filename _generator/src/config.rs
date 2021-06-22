@@ -154,6 +154,13 @@ impl<T> Tri<T> {
 			}
 		}
 	}
+
+	pub fn set(self) -> Option<T> {
+		match self {
+			Tri::Set(t) => Some(t),
+			_ => None,
+		}
+	}
 }
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
