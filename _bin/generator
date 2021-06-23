@@ -2,18 +2,8 @@
 
 set -euo pipefail
 
-channel="release"
-if [[ "${1:-}" == "debug" ]]; then
-	shift
-	channel="debug"
-fi
-
 cd _generator
-if [[ "$channel" == "debug" ]]; then
-	cargo build
-else
-	cargo build --release
-fi
+cargo build
 cd ..
 
-exec "_generator/target/$channel/generator" $@ --config generators.yml
+exec _generator/target/debug/generator $@ --config generators.yml
