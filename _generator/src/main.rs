@@ -1,6 +1,10 @@
 use std::path::PathBuf;
 
-use async_std::{fs::{File, create_dir_all, read_dir}, prelude::*};
+use async_std::{
+	fs::{create_dir_all, read_dir, File},
+	os::unix::fs::symlink,
+	prelude::*,
+};
 use color_eyre::{eyre::eyre, Result};
 use config::Config;
 use semver::Version;
@@ -141,19 +145,22 @@ async fn main() -> Result<()> {
 			let mut file = File::create(&filepath).await?;
 			file.write_all(page.as_bytes()).await?;
 
-			eprintln!("wrote {} bytes to {}", page.as_bytes().len(), filepath.display());
+			eprintln!(
+				"wrote {} bytes to {}",
+				page.as_bytes().len(),
+				filepath.display()
+			);
 		}
 
-		Mode::ReleaseIndex {
-			config_file,
-			app,
-		} => {
+		Mode::ReleaseIndex { config_file, app } => {
 			let appdir = PathBuf::from(format!("downloads/{}", app));
 			let mut dirs = read_dir(&appdir).await?;
 			let mut versions = Vec::new();
 			while let Some(dir) = dirs.next().await {
 				let dir = dir?;
-				if !dir.file_type().await?.is_dir() { continue; }
+				if !dir.file_type().await?.is_dir() {
+					continue;
+				}
 				versions.push(Meta::load(dir.path().join("meta.json")).await?);
 			}
 
@@ -164,7 +171,8 @@ async fn main() -> Result<()> {
 			}
 
 			let config = Config::load(&config_file).await?;
-			let app = config.app_from_version(&app, &versions.last().unwrap().version)?;
+			let latest = versions.last().unwrap().version.clone();
+			let app = config.app_from_version(&app, &latest)?;
 
 			let tera = Tera::new("_templates/**/*")?;
 			let mut context = Context::new();
@@ -176,8 +184,20 @@ async fn main() -> Result<()> {
 			let filepath = appdir.join("index.html");
 			let mut file = File::create(&filepath).await?;
 			file.write_all(page.as_bytes()).await?;
+			eprintln!(
+				"wrote {} bytes to {}",
+				page.as_bytes().len(),
+				filepath.display()
+			);
 
-			eprintln!("wrote {} bytes to {}", page.as_bytes().len(), filepath.display());
+			let latest_meta = appdir.join(latest.to_string()).join("meta.json");
+			let latest_link = appdir.join("latest.json");
+			symlink(&latest_meta, &latest_link).await?;
+			eprintln!(
+				"linked {} to {}",
+				latest_link.display(),
+				latest_meta.display()
+			);
 		}
 
 		Mode::VersionList {
@@ -196,9 +216,7 @@ async fn main() -> Result<()> {
 			let mut page = 0_u32;
 			let mut tags = Vec::with_capacity(512);
 			while let Ok(mut releases) = rels.list().per_page(100).page(page).send().await {
-				tags.extend(releases.take_items().into_iter().map(|r| {
-					r.tag_name
-				}));
+				tags.extend(releases.take_items().into_iter().map(|r| r.tag_name));
 
 				if releases.next.is_none() {
 					break;
@@ -207,11 +225,14 @@ async fn main() -> Result<()> {
 				page += 1;
 			}
 
-			let mut versions = tags.into_iter().map(|tag| app.version_from_tag(&tag)).collect::<Result<Vec<_>>>()?;
+			let mut versions = tags
+				.into_iter()
+				.map(|tag| app.version_from_tag(&tag))
+				.collect::<Result<Vec<_>>>()?;
 			versions.sort();
 
 			if let Some(n) = last {
-				versions = versions[versions.len() - n.min(versions.len()) ..].to_vec();
+				versions = versions[versions.len() - n.min(versions.len())..].to_vec();
 			}
 
 			for v in versions {
