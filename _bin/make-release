@@ -11,6 +11,7 @@ if [[ -z "$app" ]]; then
 fi
 
 if [[ -z "$version" ]]; then
+	echo -e "\n> fetching version list"
 	version=$(_bin/generator version-list --app "$app" -n1)
 fi
 

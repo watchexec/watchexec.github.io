@@ -23,10 +23,12 @@
 			<a href="/downloads/watchexec/">Watchexec</a>
 			←
 			<a href="/downloads/watchexec/1.9.1/">1.9.1</a>
-		</h2><aside>
-			<h3>Release notes</h3>
+		</h2>
 
-			<ul>
+		<aside>
+	<h3>Release notes</h3>
+
+	<ul>
 <li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="281977645" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/74" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/74/hovercard" href="https://github.com/watchexec/watchexec/pull/74">#74</a> — Watchexec no longer panics on missing folders — patch<sup><strong>1, 2</strong></sup></li>
 <li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="352699054" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/95" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/95/hovercard" href="https://github.com/watchexec/watchexec/pull/95">#95</a> — Fix issues with whitespace in commands — patch<sup><strong>2</strong></sup></li>
 <li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="356592084" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/96" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/96/hovercard" href="https://github.com/watchexec/watchexec/pull/96">#96</a> — Add install instructions for Arch Linux — docs</li>
@@ -35,69 +37,79 @@
 </ul>
 <p><sub> <strong>1:</strong> Other changes were added following this to convert more panics into normal errors: some glob parsing errors, and file watcher initialisation errors.</sub></p>
 <p><sub> <strong>2:</strong> These changes also cause a breaking changes to the library interface, but this is not considered in the version numbers (i.e. if you use it, <em>pin it</em>). From cursory investigation only <a href="https://github.com/passcod/cargo-watch">cargo-watch</a> is a consumer and changes there in consequence are coordinated.</sub></p>
-		</aside><table class="downloads">
-			<thead>
-				<tr>
-					<th>OS</th>
-					<th>Arch</th>
-					<th>Variant</th>
-					<th>Download</th>
+</aside>
+		<table class="downloads">
+	<thead>
+		<tr>
+			<th>OS</th>
+			<th>Arch</th>
+			<th>Variant</th>
+			<th>Download</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+					<tr>
+						<td rowspan="4">Linux</td>
+						<td rowspan="1">x86</td>
+						<td rowspan="1">musl</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.9.1&#x2F;watchexec-1.9.1-i686-unknown-linux-musl.tar.gz">1793 KB (GZ)</a></td>
+						
+					</tr>
 					
-				</tr>
-			</thead>
-			<tbody>
-							<tr>
-								<td rowspan="4">Linux</td>
-								<td rowspan="1">x86</td>
-								<td rowspan="1">musl</td>
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.9.1&#x2F;watchexec-1.9.1-i686-unknown-linux-musl.tar.gz">1793 KB (GZ)</a></td>
-								
-							</tr>
-							
-							<tr>
-								
-								<td rowspan="3">x86-64</td>
-								<td rowspan="2">glibc</td>
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.9.1&#x2F;watchexec-1.9.1-x86_64-unknown-linux-gnu.deb">1099 KB (DEB)</a></td>
-								
-							</tr>
-							
-							<tr>
-								
-								
-								
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.9.1&#x2F;watchexec-1.9.1-x86_64-unknown-linux-gnu.tar.gz">1477 KB (GZ)</a></td>
-								
-							</tr>
-							
-							<tr>
-								
-								
-								<td rowspan="1">musl</td>
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.9.1&#x2F;watchexec-1.9.1-x86_64-unknown-linux-musl.tar.gz">1865 KB (GZ)</a></td>
-								
-							</tr>
-							
-							<tr>
-								<td rowspan="1">macOS</td>
-								<td rowspan="1">x86-64</td>
-								<td rowspan="1"></td>
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.9.1&#x2F;watchexec-1.9.1-x86_64-apple-darwin.tar.gz">904 KB (GZ)</a></td>
-								
-							</tr>
-							</tbody>
-		</table>
+					<tr>
+						
+						<td rowspan="3">x86-64</td>
+						<td rowspan="2">glibc</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.9.1&#x2F;watchexec-1.9.1-x86_64-unknown-linux-gnu.deb">1099 KB (DEB)</a></td>
+						
+					</tr>
+					
+					<tr>
+						
+						
+						
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.9.1&#x2F;watchexec-1.9.1-x86_64-unknown-linux-gnu.tar.gz">1477 KB (GZ)</a></td>
+						
+					</tr>
+					
+					<tr>
+						
+						
+						<td rowspan="1">musl</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.9.1&#x2F;watchexec-1.9.1-x86_64-unknown-linux-musl.tar.gz">1865 KB (GZ)</a></td>
+						
+					</tr>
+					
+					<tr>
+						<td rowspan="1">macOS</td>
+						<td rowspan="1">x86-64</td>
+						<td rowspan="1"></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.9.1&#x2F;watchexec-1.9.1-x86_64-apple-darwin.tar.gz">904 KB (GZ)</a></td>
+						
+					</tr>
+					</tbody>
+</table>
+
+		
+
 
 		<p><a href="https://github.com/watchexec/watchexec/releases/1.9.1" target="_blank">
 			<em>View on GitHub</em>
 		</a></p>
 
-		<p class="generator">
-			version released on <time datetime="2018-09-09T03:03:55Z">2018-09-09</time>
-			| this page built on <time datetime="2021-06-22T13:40:25.427140286Z">2021-06-22 at 13:40 UTC</time>
-			| generator v0.0.1
-			| <a href="meta.json">json metadata</a>
-		</p>
+		
+<p class="generator">
+	 version released on <time datetime="2018-09-09T03:03:55Z">2018-09-09</time>
+	|
+
+	this page built on <time datetime="2021-06-23T21:01:35.253727960+12:00">2021-06-23 at 21:01 UTC</time>
+
+	| generator v0.0.1
+
+	| <a href="meta.json">json metadata</a>
+</p>
+
 	</section>
 </body>
 

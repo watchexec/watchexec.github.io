@@ -23,94 +23,106 @@
 			<a href="/downloads/watchexec/">Watchexec</a>
 			←
 			<a href="/downloads/watchexec/1.14.0/">1.14.0</a>
-		</h2><aside>
-			<h3>Release notes</h3>
+		</h2>
 
-			<ul>
+		<aside>
+	<h3>Release notes</h3>
+
+	<ul>
 <li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="643802808" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/157" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/157/hovercard" href="https://github.com/watchexec/watchexec/pull/157">#157</a> Error and exit gracefully when the subprocess's environment would be too large (as a result of too many changes being added to the <code>WATCHEXEC_*</code> environment variables instead of throwing a cryptic message ("Argument list too long")</li>
 <li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="643802808" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/157" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/157/hovercard" href="https://github.com/watchexec/watchexec/pull/157">#157</a> Add <code>--no-environment</code> to disable the <code>WATCHEXEC_*</code> variables being set, to avoid the above situation completely.</li>
 <li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="643802808" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/157" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/157/hovercard" href="https://github.com/watchexec/watchexec/pull/157">#157</a> Add <code>--no-meta</code> to disable only "metadata" events from being reported as above, which mitigates the above situation.</li>
 <li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="645447440" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/160" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/160/hovercard" href="https://github.com/watchexec/watchexec/pull/160">#160</a> <g-emoji class="g-emoji" alias="warning" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png">⚠️</g-emoji> Stop initialising the logger in the library code. Downstream users will need to initialise their own logger if they want debug/warn output. As a reminder, the library API is not considered in semver here, and downstream users are encouraged to specify <strong>exact</strong> versions: <code>watchexec = "=1.14.0"</code>.</li>
 </ul>
-		</aside><table class="downloads">
-			<thead>
-				<tr>
-					<th>OS</th>
-					<th>Arch</th>
-					<th>Variant</th>
-					<th>Download</th>
+</aside>
+		<table class="downloads">
+	<thead>
+		<tr>
+			<th>OS</th>
+			<th>Arch</th>
+			<th>Variant</th>
+			<th>Download</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+					<tr>
+						<td rowspan="4">Linux</td>
+						<td rowspan="1">x86</td>
+						<td rowspan="1">musl</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-i686-unknown-linux-musl.tar.xz">641 KB (XZ)</a></td>
+						
+					</tr>
 					
-				</tr>
-			</thead>
-			<tbody>
-							<tr>
-								<td rowspan="4">Linux</td>
-								<td rowspan="1">x86</td>
-								<td rowspan="1">musl</td>
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-i686-unknown-linux-musl.tar.xz">641 KB (XZ)</a></td>
-								
-							</tr>
-							
-							<tr>
-								
-								<td rowspan="3">x86-64</td>
-								<td rowspan="2">glibc</td>
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-unknown-linux-gnu.deb">626 KB (DEB)</a></td>
-								
-							</tr>
-							
-							<tr>
-								
-								
-								
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-unknown-linux-gnu.tar.xz">630 KB (XZ)</a></td>
-								
-							</tr>
-							
-							<tr>
-								
-								
-								<td rowspan="1">musl</td>
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-unknown-linux-musl.tar.xz">648 KB (XZ)</a></td>
-								
-							</tr>
-							
-							<tr>
-								<td rowspan="2">Windows</td>
-								<td rowspan="2">x86-64</td>
-								<td rowspan="1">MSVC</td>
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-pc-windows-msvc.zip">753 KB (Zip)</a></td>
-								
-							</tr>
-							
-							<tr>
-								
-								
-								<td rowspan="1">MingW</td>
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-pc-windows-gnu.zip">784 KB (Zip)</a></td>
-								
-							</tr>
-							
-							<tr>
-								<td rowspan="1">macOS</td>
-								<td rowspan="1">x86-64</td>
-								<td rowspan="1"></td>
-								<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-apple-darwin.tar.xz">581 KB (XZ)</a></td>
-								
-							</tr>
-							</tbody>
-		</table>
+					<tr>
+						
+						<td rowspan="3">x86-64</td>
+						<td rowspan="2">glibc</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-unknown-linux-gnu.deb">626 KB (DEB)</a></td>
+						
+					</tr>
+					
+					<tr>
+						
+						
+						
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-unknown-linux-gnu.tar.xz">630 KB (XZ)</a></td>
+						
+					</tr>
+					
+					<tr>
+						
+						
+						<td rowspan="1">musl</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-unknown-linux-musl.tar.xz">648 KB (XZ)</a></td>
+						
+					</tr>
+					
+					<tr>
+						<td rowspan="2">Windows</td>
+						<td rowspan="2">x86-64</td>
+						<td rowspan="1">MSVC</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-pc-windows-msvc.zip">753 KB (Zip)</a></td>
+						
+					</tr>
+					
+					<tr>
+						
+						
+						<td rowspan="1">MingW</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-pc-windows-gnu.zip">784 KB (Zip)</a></td>
+						
+					</tr>
+					
+					<tr>
+						<td rowspan="1">macOS</td>
+						<td rowspan="1">x86-64</td>
+						<td rowspan="1"></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;1.14.0&#x2F;watchexec-1.14.0-x86_64-apple-darwin.tar.xz">581 KB (XZ)</a></td>
+						
+					</tr>
+					</tbody>
+</table>
+
+		
+
 
 		<p><a href="https://github.com/watchexec/watchexec/releases/1.14.0" target="_blank">
 			<em>View on GitHub</em>
 		</a></p>
 
-		<p class="generator">
-			version released on <time datetime="2020-07-03T12:58:34Z">2020-07-03</time>
-			| this page built on <time datetime="2021-06-22T13:38:02.909371742Z">2021-06-22 at 13:38 UTC</time>
-			| generator v0.0.1
-			| <a href="meta.json">json metadata</a>
-		</p>
+		
+<p class="generator">
+	 version released on <time datetime="2020-07-03T12:58:34Z">2020-07-03</time>
+	|
+
+	this page built on <time datetime="2021-06-23T21:01:33.959939219+12:00">2021-06-23 at 21:01 UTC</time>
+
+	| generator v0.0.1
+
+	| <a href="meta.json">json metadata</a>
+</p>
+
 	</section>
 </body>
 

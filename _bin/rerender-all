@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+for metapath in downloads/*/*/meta.json; do
+	echo -e "\n> generating release page for $metapath"
+	_bin/generator release-page --meta "$metapath"
+done
+
+for apppath in downloads/*; do
+	[[ ! -d "$apppath" ]] && continue
+	app=$(cut -d/ -f2 <<< "$apppath")
+
+	echo -e "\n> rebuilding release index for $app"
+	_bin/generator release-index --app "$app"
+done
+
+echo -e "\n> rebuilding downloads page"
+_bin/generator downloads-page
