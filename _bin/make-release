@@ -24,3 +24,6 @@ _bin/generator release-page --meta "$metapath"
 
 echo -e "\n> rebuilding release index"
 _bin/generator release-index --app "$app"
+
+echo -e "\n> rebuilding downloads page"
+_bin/generator downloads-page
