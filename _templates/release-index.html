@@ -1,3 +1,4 @@
+{% import "tables.html.j2" as tables %}
 <!DOCTYPE html>
 <html lang="en-NZ">
 
@@ -51,11 +52,7 @@
 		</section>
 		{% endfor %}
 
-		<p class="generator">
-			this page built on <time datetime="{{ now() }}">{{ now() | date(format='%Y-%m-%d at %H:%M UTC') }}</time>
-			| generator v{{ genver }}
-			| <a href="latest.json">latest json</a>
-		</p>
+		{{ tables::generator(genver=genver, json="latest.json", json_name="latest meta") }}
 	</section>
 </body>
 
