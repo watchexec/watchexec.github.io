@@ -85,7 +85,7 @@
 	</details>
 
 	<details>
-		<summary>/// Package formats:</summary>
+		<summary>Package formats:</summary>
 
 		<table>
 			<thead>
@@ -97,31 +97,17 @@
 			</thead>
 
 			<tbody>
+				{% for k, format in formats %}
 				<tr>
-					<td>DEB</td>
-					<td>Debian/Ubuntu package</td>
-					<td><code>dpkg -i <em><u>filename</u></em></code></td>
+					<td>{{ format.short }}</td>
+					<td>{{ format.long }}</td>
+					<td><code>{{ format.tool }} <em><u>filename</u></em></code></td>
 				</tr>
-				<tr>
-					<td>GZ</td>
-					<td>Gzipped tarball</td>
-					<td><code>tar xzf <em><u>filename</u></em></code></td>
-				</tr>
-				<tr>
-					<td>XZ</td>
-					<td>Xzipped tarball</td>
-					<td><code>tar xJf <em><u>filename</u></em></code></td>
-				</tr>
-				<tr>
-					<td>Zip</td>
-					<td>Zipped folder</td>
-					<td><code>unzip <em><u>filename</u></em></code></td>
-				</tr>
+				{% endfor %}
 			</tbody>
 		</table>
 	</details>
 </section>
-
 
 <section id="cli">
 	<h2>
