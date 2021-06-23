@@ -1,7 +1,7 @@
 use std::{collections::BTreeMap, path::PathBuf};
 
 use async_std::{
-	fs::{create_dir_all, read_dir, File},
+	fs::{create_dir_all, read_dir, remove_file, File},
 	os::unix::fs::symlink,
 	prelude::*,
 };
@@ -200,6 +200,7 @@ async fn main() -> Result<()> {
 
 			let latest_meta = appdir.join(latest.to_string()).join("meta.json");
 			let latest_link = appdir.join("latest.json");
+			remove_file(&latest_link).await?;
 			symlink(&latest_meta, &latest_link).await?;
 			eprintln!(
 				"linked {} to {}",
