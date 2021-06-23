@@ -298,7 +298,14 @@ async fn main() -> Result<()> {
 
 				let latest = versions.last().unwrap().version.clone();
 				let app = config.app_from_version(&appname, &latest)?;
-				let meta = Meta::load(&appdir.join(latest.to_string()).join("meta.json")).await?;
+				let mut meta =
+					Meta::load(&appdir.join(latest.to_string()).join("meta.json")).await?;
+
+				// work around a limitation of Tera where the group_by filter
+				// cannot group by a value being null (as it discards instead)
+				for dl in &mut meta.downloads {
+					dl.cats.2.get_or_insert("".into());
+				}
 
 				#[derive(Serialize)]
 				struct DlApp {
