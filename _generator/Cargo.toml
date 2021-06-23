@@ -13,7 +13,7 @@ repository = "https://github.com/watchexec/watchexec.github.io/main/tree/generat
 async-std = { version = "1.9.0", features = ["attributes", "tokio1"] }
 chrono = { version = "0.4.19", features = ["serde"] }
 color-eyre = "0.5.11"
-globset = "0.4.6"
+globset = { version = "0.4.8", features = ["serde1"] }
 indexmap = { version = "1.6.2", features = ["serde"] }
 isahc = { version = "1.4.0", features = ["json"] }
 nipper = "0.1.9"

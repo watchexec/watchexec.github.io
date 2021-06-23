@@ -13,38 +13,14 @@ use semver::Version;
 use serde::{Deserialize, Deserializer, Serialize};
 use url::Url;
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
 	pub apps: HashMap<AppName, App>,
-	#[serde(deserialize_with = "triple_globs")]
 	pub triples: IndexMap<Glob, Cat>,
-	#[serde(deserialize_with = "format_globs")]
 	pub formats: IndexMap<Glob, Format>,
 	pub checksums: HashMap<SumAlgo, ChecksumDetail>,
 	pub maintainers: Vec<Maintainer>,
-}
-
-fn triple_globs<'de, D>(deserializer: D) -> Result<IndexMap<Glob, Cat>, D::Error>
-where
-	D: Deserializer<'de>,
-{
-	let hs = IndexMap::<String, Cat>::deserialize(deserializer)?;
-	hs.into_iter()
-		.map(|(k, v)| Glob::new(&k).map(|g| (g, v)))
-		.collect::<Result<_, _>>()
-		.map_err(|err| serde::de::Error::custom(err.to_string()))
-}
-
-fn format_globs<'de, D>(deserializer: D) -> Result<IndexMap<Glob, Format>, D::Error>
-where
-	D: Deserializer<'de>,
-{
-	let hs = IndexMap::<String, Format>::deserialize(deserializer)?;
-	hs.into_iter()
-		.map(|(k, v)| Glob::new(&k).map(|g| (g, v)))
-		.collect::<Result<_, _>>()
-		.map_err(|err| serde::de::Error::custom(err.to_string()))
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -55,7 +31,7 @@ pub struct Format {
 	pub tool: String,
 }
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct Maintainer {
 	pub username: String,
@@ -64,8 +40,10 @@ pub struct Maintainer {
 	pub key_url: Url,
 }
 
-#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize)]
+#[serde(untagged)]
 pub enum AppName {
+	#[serde(rename = "defaults")]
 	Defaults,
 	Named(String),
 }
@@ -84,7 +62,7 @@ impl<'de> Deserialize<'de> for AppName {
 	}
 }
 
-#[derive(Clone, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum NotesSource {
 	#[serde(rename = "gh-release")]
 	GithubRelease,
@@ -97,72 +75,6 @@ pub enum SumAlgo {
 
 	#[serde(rename = "SHA512")]
 	Sha512,
-}
-
-#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
-pub enum Tri<T> {
-	NotPresent,
-	Disabled,
-	Set(T),
-}
-
-impl<T> Default for Tri<T> {
-	fn default() -> Self {
-		Self::NotPresent
-	}
-}
-
-impl<'de, T> Deserialize<'de> for Tri<T>
-where
-	T: Deserialize<'de>,
-{
-	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-	where
-		D: Deserializer<'de>,
-	{
-		#[derive(Deserialize)]
-		#[serde(untagged)]
-		enum BoolOr<T> {
-			Bool(bool),
-			Some(T),
-		}
-
-		type NoneBoolOr<T> = Option<BoolOr<T>>;
-
-		match NoneBoolOr::<T>::deserialize(deserializer)? {
-			None => Ok(Self::NotPresent),
-			Some(BoolOr::Bool(true)) => Err(serde::de::Error::custom("cannot be true")),
-			Some(BoolOr::Bool(false)) => Ok(Self::Disabled),
-			Some(BoolOr::Some(t)) => Ok(Self::Set(t)),
-		}
-	}
-}
-
-impl<T> Tri<T> {
-	/// Returns `other` iff `self` is `NotPresent`
-	pub fn or(self, other: Self) -> Self {
-		match self {
-			Tri::NotPresent => other,
-			tri => tri,
-		}
-	}
-
-	pub fn override_with(&mut self, other: Self) {
-		match other {
-			Tri::NotPresent => {}
-			o => {
-				*self = o;
-			}
-		}
-	}
-
-	#[allow(dead_code)] // until it's used
-	pub fn set(self) -> Option<T> {
-		match self {
-			Tri::Set(t) => Some(t),
-			_ => None,
-		}
-	}
 }
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
@@ -184,7 +96,7 @@ pub struct App {
 	pub tag_template: Option<String>,
 
 	#[serde(default, skip_serializing)]
-	pub notes: Tri<NotesSource>,
+	pub notes: Option<NotesSource>,
 
 	#[serde(default, skip_serializing)]
 	pub priors: Vec<Prior>,
@@ -291,7 +203,7 @@ impl Repo {
 	}
 }
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Prior {
 	pub before: Version,
 
@@ -299,7 +211,7 @@ pub struct Prior {
 	pub app: App,
 }
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct Cat {
 	#[serde(default)]
@@ -312,7 +224,7 @@ pub struct Cat {
 	pub variant: Option<String>,
 }
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ChecksumDetail {
 	pub filename: String,
@@ -325,7 +237,14 @@ impl Config {
 		let mut file = File::open(path.as_ref()).await?;
 		let mut bytes = Vec::new();
 		file.read_to_end(&mut bytes).await?;
-		let mut cfg: Config = serde_yaml::from_slice(&bytes)?;
+
+		// bit of a weird one, but globset requires borrowed-string deserialisation,
+		// and serde-yaml doesn't support it, so at the cost of losing position info
+		// in errors, we first transcode from yaml to json and then deser that out…
+
+		let jsonv = serde_yaml::from_slice::<serde_json::Value>(&bytes)?;
+		let newbs = serde_json::to_vec(&jsonv)?;
+		let mut cfg: Config = serde_json::from_slice(&newbs)?;
 
 		for (name, app) in &mut cfg.apps {
 			app.priors.sort_by_key(|p| p.before.clone());
@@ -426,7 +345,9 @@ impl Config {
 				app.key_path.replace(kp);
 			}
 
-			app.notes.override_with(pa.notes);
+			if let Some(n) = pa.notes {
+				app.notes.replace(n);
+			}
 		}
 
 		Ok(app)
