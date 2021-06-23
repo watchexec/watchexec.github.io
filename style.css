@@ -139,8 +139,9 @@ details {
 }
 
 details summary {
-	margin-left: -1em;
 	font-family: var(--sans);
+	margin-bottom: 1em;
+	margin-left: -1em;
 }
 
 details p {
@@ -150,6 +151,7 @@ details p {
 table {
 	border: 1px solid;
 	border-collapse: collapse;
+	margin-top: 1rem;
 	margin-bottom: 2rem;
 }
 
