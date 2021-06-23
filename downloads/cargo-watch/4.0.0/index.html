@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta charset="utf-8" />
+
+	<link rel="shortcut icon" href="/logo.svg" />
+	<title>Downloads → Cargo Watch → 4.0.0</title>
+	<meta name="description"
+		content="A suite of tools and libraries related to Watchexec, which runs commands when files change. Download page for official binaries for Cargo Watch 4.0.0." />
+
+	<link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+	<section>
+		<h2>
+			<a href="/"><img class="logo-icon" src="/logo:cargo-watch.svg" alt="Home"></a>
+			←
+			<a href="/downloads/">Downloads</a>
+			←
+			<a href="/downloads/cargo-watch/">Cargo Watch</a>
+			←
+			<a href="/downloads/cargo-watch/4.0.0/">4.0.0</a>
+		</h2>
+
+		<aside>
+	<h3>Release notes</h3>
+
+	<p>Breaking changes:</p>
+<ul>
+<li>The command is now run immediately, instead of waiting for changes first (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="141091694" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/37" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/37/hovercard" href="https://github.com/watchexec/cargo-watch/issues/37">#37</a>)</li>
+<li>New CLI usage. The simple invocation hasn't changed, but everything else has.</li>
+<li>You now have to use <code>-x &lt;cmd&gt;</code> to run custom cargo commands (multiple times as needed).</li>
+</ul>
+<p>New features:</p>
+<ul>
+<li>Watch everything: the entire project is watched, but the target/ folder is ignored by default. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="129982042" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/31" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/31/hovercard" href="https://github.com/watchexec/cargo-watch/issues/31">#31</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="140781236" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/35" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/35/hovercard" href="https://github.com/watchexec/cargo-watch/issues/35">#35</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="157529618" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/39" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/39/hovercard" href="https://github.com/watchexec/cargo-watch/issues/39">#39</a>)</li>
+<li>You can decide to instead watch specific folders with <code>-w &lt;folder&gt;</code> (multiple times as needed).</li>
+<li>Gitignore support: <code>.gitignore</code> files are found and parsed recursively through the repo. This can be disabled with <code>--no-gitignore</code>.</li>
+<li>Custom ignore rules can be specified with <code>-i &lt;pattern&gt;</code> (multiple times as needed).</li>
+<li>If you absolutely need to, you can explicitly require that no ignoring is applied: <code>--ignore-nothing</code>.</li>
+<li>You can suppress all of cargo-watch's output with <code>-q</code>, leaving only the output from the commands.</li>
+<li>You can run arbitrary commands with <code>-s &lt;cmd&gt;</code> (for <code>--shell</code>) (multiple times as needed).</li>
+<li>You can customise the debouncing delay with <code>--delay</code> or <code>-d</code>, in seconds.</li>
+</ul>
+<p>Features from 3.2.0 (which was just a few days ago so might be shadowed by this release):</p>
+<ul>
+<li>You can force cargo-watch to use polling instead of the native API with <code>--poll</code>.</li>
+<li>It will automatically fallback to polling if the native API fails to start.</li>
+<li>You can clear the screen between runs with <code>--clear</code> or <code>-c</code>.</li>
+</ul>
+<p>Server development (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="126306738" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/25" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/25/hovercard" href="https://github.com/watchexec/cargo-watch/issues/25">#25</a>) is still not quite supported, but is expected to make it in soon in a point release.</p>
+</aside>
+		<table class="downloads">
+	<thead>
+		<tr>
+			<th>OS</th>
+			<th>Arch</th>
+			<th>Variant</th>
+			<th>Download</th>
+			
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
+
+		
+
+
+		<p><a href="https://github.com/watchexec/cargo-watch/releases/v4.0.0" target="_blank">
+			<em>View on GitHub</em>
+		</a></p>
+
+		
+<p class="generator">
+	 version released on <time datetime="2017-03-29T14:50:41Z">2017-03-29</time>
+	|
+
+	this page built on <time datetime="2021-06-23T21:04:43.500158512+12:00">2021-06-23 at 21:04 UTC</time>
+
+	| generator v0.0.1
+
+	| <a href="meta.json">json metadata</a>
+</p>
+
+	</section>
+</body>
+
+</html>

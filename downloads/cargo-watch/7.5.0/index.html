@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta charset="utf-8" />
+
+	<link rel="shortcut icon" href="/logo.svg" />
+	<title>Downloads → Cargo Watch → 7.5.0</title>
+	<meta name="description"
+		content="A suite of tools and libraries related to Watchexec, which runs commands when files change. Download page for official binaries for Cargo Watch 7.5.0." />
+
+	<link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+	<section>
+		<h2>
+			<a href="/"><img class="logo-icon" src="/logo:cargo-watch.svg" alt="Home"></a>
+			←
+			<a href="/downloads/">Downloads</a>
+			←
+			<a href="/downloads/cargo-watch/">Cargo Watch</a>
+			←
+			<a href="/downloads/cargo-watch/7.5.0/">7.5.0</a>
+		</h2>
+
+		<aside>
+	<h3>Release notes</h3>
+
+	<ul>
+<li>Log format (debugs and warnings) changed as part of the upgrade to <a href="https://github.com/watchexec/watchexec/releases/tag/1.14.0">watchexec 1.14</a></li>
+<li><code>WATCHEXEC_*</code> environment variables are not set for subprocesses anymore. I didn't actually intend to have them in the first place, but chime in if you rely on them!</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="640629452" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/152" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/152/hovercard" href="https://github.com/watchexec/cargo-watch/pull/152">#152</a> New <code>--features</code> option to pass the <code>--features</code> flag to a selection of cargo commands that support them. E.g. <code>cargo watch --features feat -x check -x test</code> can now be used instead of <code>cargo watch -x 'check --features feat' -x 'test --features feat'</code>.</li>
+<li>Also fixes a bug where a polling message was shown even when <code>--quiet</code> was given.</li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/155787/86506751-94a38300-be26-11ea-8a73-72f982c699f0.png"><img src="https://user-images.githubusercontent.com/155787/86506751-94a38300-be26-11ea-8a73-72f982c699f0.png" alt="image" style="max-width:100%;"></a></p>
+</aside>
+		<table class="downloads">
+	<thead>
+		<tr>
+			<th>OS</th>
+			<th>Arch</th>
+			<th>Variant</th>
+			<th>Download</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+					<tr>
+						<td rowspan="3">Linux</td>
+						<td rowspan="3">x86-64</td>
+						<td rowspan="2">glibc</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v7.5.0&#x2F;cargo-watch-v7.5.0-x86_64-unknown-linux-gnu.deb">645 KB (DEB)</a></td>
+						
+					</tr>
+					
+					<tr>
+						
+						
+						
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v7.5.0&#x2F;cargo-watch-v7.5.0-x86_64-unknown-linux-gnu.tar.xz">646 KB (XZ)</a></td>
+						
+					</tr>
+					
+					<tr>
+						
+						
+						<td rowspan="1">musl</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v7.5.0&#x2F;cargo-watch-v7.5.0-x86_64-unknown-linux-musl.tar.xz">665 KB (XZ)</a></td>
+						
+					</tr>
+					
+					<tr>
+						<td rowspan="2">Windows</td>
+						<td rowspan="2">x86-64</td>
+						<td rowspan="1">MSVC</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v7.5.0&#x2F;cargo-watch-v7.5.0-x86_64-pc-windows-msvc.zip">799 KB (Zip)</a></td>
+						
+					</tr>
+					
+					<tr>
+						
+						
+						<td rowspan="1">MingW</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v7.5.0&#x2F;cargo-watch-v7.5.0-x86_64-pc-windows-gnu.zip">824 KB (Zip)</a></td>
+						
+					</tr>
+					
+					<tr>
+						<td rowspan="1">macOS</td>
+						<td rowspan="1">x86-64</td>
+						<td rowspan="1"></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v7.5.0&#x2F;cargo-watch-v7.5.0-x86_64-apple-darwin.tar.xz">592 KB (XZ)</a></td>
+						
+					</tr>
+					</tbody>
+</table>
+
+		
+
+
+		<p><a href="https://github.com/watchexec/cargo-watch/releases/v7.5.0" target="_blank">
+			<em>View on GitHub</em>
+		</a></p>
+
+		
+<p class="generator">
+	 version released on <time datetime="2020-07-04T07:23:04Z">2020-07-04</time>
+	|
+
+	this page built on <time datetime="2021-06-23T21:05:13.392883043+12:00">2021-06-23 at 21:05 UTC</time>
+
+	| generator v0.0.1
+
+	| <a href="meta.json">json metadata</a>
+</p>
+
+	</section>
+</body>
+
+</html>
