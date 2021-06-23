@@ -8,21 +8,12 @@ if [[ "${1:-}" == "debug" ]]; then
 	channel="debug"
 fi
 
-genbin="_generator/target/$channel/generator"
-
+cd _generator
 if [[ "$channel" == "debug" ]]; then
-	cd _generator
 	cargo build
-	cd ..
-elif [[ ! -x "$genbin" ]]; then
-	cd _generator
+else
 	cargo build --release
-	cd ..
 fi
+cd ..
 
-if [[ ! -x "$genbin" ]]; then
-	echo "Did not manage to build the generator !?" >&2
-	exit 42
-fi
-
-exec "$genbin" $@ --config generators.yml
+exec "_generator/target/$channel/generator" $@ --config generators.yml
