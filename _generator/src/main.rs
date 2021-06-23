@@ -198,14 +198,15 @@ async fn main() -> Result<()> {
 				filepath.display()
 			);
 
-			let latest_meta = appdir.join(latest.to_string()).join("meta.json");
+			let latest_meta = format!("{}/meta.json", latest);
 			let latest_link = appdir.join("latest.json");
 			remove_file(&latest_link).await?;
 			symlink(&latest_meta, &latest_link).await?;
 			eprintln!(
-				"linked {} to {}",
+				"linked {} to downloads/{}/{}",
 				latest_link.display(),
-				latest_meta.display()
+				app.slug,
+				latest_meta
 			);
 		}
 
