@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::{collections::BTreeMap, path::PathBuf};
 
 use async_std::{
 	fs::{create_dir_all, read_dir, File},
@@ -8,10 +8,11 @@ use async_std::{
 use color_eyre::{eyre::eyre, Result};
 use config::Config;
 use semver::Version;
+use serde::Serialize;
 use structopt::StructOpt;
 use tera::{Context, Tera};
 
-use crate::meta::Meta;
+use crate::{config::App, meta::Meta};
 
 mod config;
 mod meta;
@@ -80,6 +81,13 @@ enum Mode {
 		/// Print only the last N
 		#[structopt(short = "n", long)]
 		last: Option<usize>,
+	},
+
+	/// Build the main downloads page from all existing app release pages
+	DownloadsPage {
+		/// The config file
+		#[structopt(short, long = "config")]
+		config_file: PathBuf,
 	},
 }
 
@@ -238,6 +246,75 @@ async fn main() -> Result<()> {
 			for v in versions {
 				println!("{}", v);
 			}
+		}
+
+		Mode::DownloadsPage { config_file } => {
+			let config = Config::load(&config_file).await?;
+
+			let tera = Tera::new("_templates/**/*")?;
+			let mut context = Context::new();
+			context.try_insert("genver", &env!("CARGO_PKG_VERSION"))?;
+			context.try_insert(
+				"formats",
+				&config
+					.formats
+					.iter()
+					.map(|(g, f)| (g.to_string(), f))
+					.collect::<BTreeMap<_, _>>(),
+			)?;
+
+			let mut dldirs = read_dir("downloads").await?;
+			while let Some(appdir) = dldirs.next().await {
+				let appdir = appdir?;
+				if !appdir.file_type().await?.is_dir() {
+					continue;
+				}
+
+				let appdir = appdir.path();
+				let appname = PathBuf::from(
+					appdir
+						.file_name()
+						.expect("we just read it so it should have a name"),
+				)
+				.display()
+				.to_string();
+
+				let mut dirs = read_dir(&appdir).await?;
+				let mut versions = Vec::new();
+				while let Some(dir) = dirs.next().await {
+					let dir = dir?;
+					if !dir.file_type().await?.is_dir() {
+						continue;
+					}
+					versions.push(Meta::load(dir.path().join("meta.json")).await?);
+				}
+
+				versions.sort_by_key(|v| v.version.clone());
+
+				if versions.is_empty() {
+					return Err(eyre!("no versions, abort"));
+				}
+
+				let latest = versions.last().unwrap().version.clone();
+				let app = config.app_from_version(&appname, &latest)?;
+				let meta = Meta::load(&appdir.join(latest.to_string()).join("meta.json")).await?;
+
+				#[derive(Serialize)]
+				struct DlApp {
+					pub app: App,
+					pub latest: Meta,
+				}
+
+				context.try_insert(&app.slug.replace('-', "_"), &DlApp { app, latest: meta })?;
+			}
+
+			let page = tera.render("downloads-page.html", &context)?;
+			let mut file = File::create("downloads/index.html").await?;
+			file.write_all(page.as_bytes()).await?;
+			eprintln!(
+				"wrote {} bytes to downloads/index.html",
+				page.as_bytes().len(),
+			);
 		}
 	}
 
