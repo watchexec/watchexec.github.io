@@ -33,7 +33,7 @@
 
 		<p>inotify has several configurable limits:</p>
 		<ul>
-			<li><code>max_user_instances</code> limits (grossly) how many applications can watch files (per user);</li>
+			<li><code>max_user_instances</code> limits (roughly) how many applications can watch files (per user);</li>
 			<li><code>max_user_watches</code> limits how many filesystem items can be watched, in total across all applications (per user);</li>
 			<li><code>max_queued_events</code> limits how many filesystem events will be held in the kernel queue if the application does not read them;</li>
 		</ul>
@@ -112,7 +112,8 @@
 			To fix it permanently, you need to use
 			<a href="https://man.archlinux.org/man/core/systemd/sysctl.d.5.en">sysctl</a>
 			to configure your kernel on boot. Write the following line to a appropriately-named
-			file under <code>/etc/sysctl.d/</code>. E.g. <code>/etc/sysctl.d/inotify.conf</code>.
+			file under <code class="shell"><span class="path">/etc/sysctl.d/</span></code>.
+			E.g. <code class="shell"><span class="path">/etc/sysctl.d/inotify.conf</span></code>.
 		</p>
 
 		<code class="oneline">fs.inotify.max_user_watches=65536</code>
@@ -132,7 +133,7 @@
 			><span class="sigil">.</span
 			><span class="option">max_user_watches</span
 			><span class="sigil">=</span
-			><span class="path">65536</span>
+			><span class="argument">65536</span>
 		</code>
 
 		<p>
