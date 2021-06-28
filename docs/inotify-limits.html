@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta charset="utf-8" />
+
+	<link rel="shortcut icon" href="/logo.svg" />
+	<title>Linux: inotify limits → Docs → Watchexec</title>
+	<meta name="description"
+		content="A suite of tools and libraries related to Watchexec, which runs commands when files change. Documentation on inotify limits." />
+
+	<link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+	<h1>
+		<a href="/"><img class="logo-icon" src="/logo.svg" alt="Home"></a>
+		←
+		<a href="/docs/">Docs</a>
+		←
+		Linux: inotify limits
+	</h1>
+
+	<section id="intro">
+		<h2>Introduction</h2>
+
+		<p>
+			The underlying technology used to watch for filesystem changes on Linux is
+			<a href="https://www.kernel.org/doc/html/latest/filesystems/inotify.html">inotify</a>, a
+			component of the Linux kernel.
+		</p>
+
+		<p>inotify has several configurable limits:</p>
+		<ul>
+			<li><code>max_user_instances</code> limits (grossly) how many applications can watch files (per user);</li>
+			<li><code>max_user_watches</code> limits how many filesystem items can be watched, in total across all applications (per user);</li>
+			<li><code>max_queued_events</code> limits how many filesystem events will be held in the kernel queue if the application does not read them;</li>
+		</ul>
+		<p>There are also physical limits, dependent on the amount of RAM/memory a system has available.</p>
+
+		<p>
+			Note that the first two limits are <em>per user</em>, rather than per application.
+			This means that all applications a user runs which make use of filesystem events
+			<em>compete</em> for the same “pool” of resources.
+		</p>
+
+		<p>
+			The default <code>max_user_watches</code> limit on most Linux systems
+			is <strong>8192</strong>. That is regularly reached if you watch large
+			folder structures, or if you use more than one application that watches
+			the filesystem in some way, something you might not be aware of!
+		</p>
+	</section>
+
+	<section id="errors">
+		<h2>Errors you may have seen</h2>
+
+		<p>
+			You may have seen one of the following errors, or something similar,
+			which are characteristic of exceeding an inotify limit:
+		</p>
+
+		<code>
+			<ol class="codeblock">
+				<li>Unable to monitor filesystem. Please run:</li>
+				<li>echo 100000 | sudo tee /proc/sys/fs/inotify/max_user_watches</li>
+			</ol>
+		</code>
+
+		<code>
+			<ol class="codeblock">
+				<li>No space left on device - Failed to watch “…”:</li>
+				<li>The user limit on the total number of inotify watches was</li>
+				<li>reached or the kernel failed to allocate a needed resource.</li>
+				<li>(Errno::ENOSPC)</li>
+			</ol>
+		</code>
+
+		<code>
+			<ol class="codeblock">
+				<li>Io(Error { repr: Os {</li>
+				<li><span class="tab">&#9;</span>code: 28,</li>
+				<li><span class="tab">&#9;</span>message: “No space left on device”</li>
+				<li>} })</li>
+			</ol>
+		</code>
+
+		<code>
+			<ol class="codeblock">
+				<li>tail: cannot watch ‘/path/to/dir’: No space left on device</li>
+			</ol>
+		</code>
+
+		<code>
+			<ol class="codeblock">
+				<li>Failed to watch /path/to/dir;</li>
+				<li>upper limit on inotify watches reached!</li>
+			</ol>
+		</code>
+	</section>
+
+	<section id="fix">
+		<h2>Fixing it</h2>
+
+		<p>
+			For most users, the default limit is much too low.
+			<strong>65536</strong> is a good start on a more reasonable allowance.
+		</p>
+
+		<p>
+			To fix it permanently, you need to use
+			<a href="https://man.archlinux.org/man/core/systemd/sysctl.d.5.en">sysctl</a>
+			to configure your kernel on boot. Write the following line to a appropriately-named
+			file under <code>/etc/sysctl.d/</code>. E.g. <code>/etc/sysctl.d/inotify.conf</code>.
+		</p>
+
+		<code class="oneline">fs.inotify.max_user_watches=65536</code>
+
+		<p>
+			To fix it temporarily (it will persist until a reboot), use the
+			<code class="shell"><span class="command">sysctl</span></code> command instead:
+		</p>
+
+		<code class="oneline shell">
+			<span class="prompt">$&gt;</span>
+			<span class="command">sysctl</span>
+			<span class="wbr" aria-hidden="true">\<br></span
+			><span class="option">fs</span
+			><span class="sigil">.</span
+			><span class="option">inotify</span
+			><span class="sigil">.</span
+			><span class="option">max_user_watches</span
+			><span class="sigil">=</span
+			><span class="path">65536</span>
+		</code>
+
+		<p>
+			You may increase the limits further, if you require it. The hard upper bound is
+			controlled by how much kernel memory you are willing or able to dedicate for this use.
+			One <em>inotify watch</em> costs <code>540</code> bytes of kernel memory on 32-bit
+			architectures, and <code>1080</code> bytes on 64-bit ones. The consuming application
+			may have additional overhead on this. For example, applications that use the
+			<a href="https://github.com/notify-rs/notify">Notify</a> library (version 4.x) use about
+			<code>10</code> additional bytes, plus the full filesystem path, for each watched item.
+		</p>
+
+		<p>
+			There are recorded instances of people using <em>millions</em> of watches, for example
+			to monitor their entire home directory. They may potentially be using <em>gigabytes</em>
+			of kernel (which isn’t swappable) and userspace (which is) memory for that purpose.
+		</p>
+	</section>
+
+	<section id="sources">
+		<h2>Sources</h2>
+
+		<ul>
+			<li>
+				<a href="http://web.archive.org/web/20161106193425/http://blog.sorah.jp/2012/01/24/inotify-limitation">Sorah Fukumori: limit of inotify</a>
+				(archived in 2016, original published 24 january 2012)
+			</li>
+
+			<li>
+				<a href="https://unix.stackexchange.com/questions/13751/kernel-inotify-watch-limit-reached">Unix.SE: Kernel inotify watch limit reached</a>
+				(25 may 2011)
+			</li>
+
+			<li>
+				<a href="http://www.linuxjournal.com/article/8478">Linux Journal: Kernel Korner - Intro to inotify</a>
+				(28 september 2005)
+			</li>
+		</ul>
+
+		<aside>
+			<h3>Note on dnotify, inotify, fanotify, fsnotify</h3>
+
+			<p>
+				Dnotify was the original Linux kernel implementation of filesystem watching.
+				Prior to dnotify was “FAM”, which came from IRIX. Dnotify was replaced around
+				2008 by inotify. Then fanotify was initially implemented, but ultimately not
+				merged and abandoned. Meanwhile, fsnotify replaced the entire <em>backend</em> kernel
+				implementation, with dnotify and inotify (and then fanotify) re-written as
+				<em>frontends</em> on fsnotify, eliminating duplication.
+			</p>
+
+			<p>
+				Thus, nowadays (i.e. on kernels 4.3 and higher, from about 2015 onwards) when
+				speaking of all or any of these systems, one is talking about the <em>same</em>
+				mechanism, but accessed through different kernel calls, potentially exposing
+				different capabilities and trade-offs (e.g. fanotify is more powerful and may be
+				vastly more efficient, but currently — as of&nbsp;2021 — requires root access).
+			</p>
+		</aside>
+	</section>
+
+</body>
+</html>
