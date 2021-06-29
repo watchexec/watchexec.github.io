@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta charset="utf-8" />
+
+	<link rel="shortcut icon" href="/logo.svg" />
+	<title>Mac: FSEvents limitations → Docs → Watchexec</title>
+	<meta name="description"
+		content="A suite of tools and libraries related to Watchexec, which runs commands when files change. Documentation on FSEvents limitations." />
+
+	<link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+	<h1>
+		<a href="/"><img class="logo-icon" src="/logo.svg" alt="Home"></a>
+		←
+		<a href="/docs/">Docs</a>
+		←
+		Mac: FSEvents limitations
+	</h1>
+
+	<p>
+		The underlying technology used to watch for filesystem changes on Mac is
+		<a href="https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/FSEvents_ProgGuide/TechnologyOverview/TechnologyOverview.html#//apple_ref/doc/uid/TP40005289-CH3-SW1">FSEvents</a>,
+		a component of the Darwin kernel.
+	</p>
+
+	<section id="historical">
+		<h2>Limitations due to Watchexec/Notify history</h2>
+
+		<p>
+			FSEvents is used because <a href="https://github.com/notify-rs/notify">Notify</a>, the
+			filesystem monitor library Watchexec uses, chose it as its backend on Mac. However, that
+			was a mistake. <small>(I the author of this text was also the author of Notify at the
+			time, so I can say these things, but note I am not involved in Notify anymore.)</small>
+			FSEvents is <em>not designed for the usecases Notify (and Watchexec) is used for</em>.
+		</p>
+
+		<p>
+			Instead, it was designed for backup software like Apple TimeMachine: internally, it is
+			powered by a log of filesystem-level events on every mounted volume. When an application
+			requests a watch, it delivers events regarding that subset of the volume. Due to how the
+			logging is done, it may batch events, provide them out of order, or even miss some
+			entirely. The idea behind FSEvents is to receive a notification that <em>something</em>
+			changed, and so the application should go and rescan either all or part of the volume or
+			directory tree it is looking after.
+		</p>
+
+		<p>
+			The <em>correct</em> interface to use for Watchexec and most Notify usecases would be
+			<a href="https://en.wikipedia.org/wiki/Kqueue">Kqueue</a>, which is a component of BSD
+			kernels, of which family Darwin is part. However, Notify does not, at this time, support
+			it. (This is also why it falls back to polling on non-Mac BSDs.) Adding such support is
+			beyond the scope of Watchexec.
+		</p>
+	</section>
+</body>
+</html>
