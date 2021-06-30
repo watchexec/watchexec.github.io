@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta charset="utf-8" />
+
+	<link rel="shortcut icon" href="/logo.svg" />
+	<title>Glob patterns → Docs → Watchexec</title>
+	<meta name="description"
+		content="A suite of tools and libraries related to Watchexec, which runs commands when files change. Documentation on glob patterns used in ignores and filters." />
+
+	<link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+	<h1>
+		<a href="/"><img class="logo-icon" src="/logo.svg" alt="Home"></a>
+		←
+		<a href="/docs/">Docs</a>
+		←
+		Glob patterns
+	</h1>
+
+
+	<section id="intro">
+		<h2>Introduction</h2>
+
+		<p>
+			Glob patterns in Watchexec (for <code class="shell"><span class="option">--ignore</span></code>
+			and <code class="shell"><span class="option">--filter</span></code>) and in Cargo Watch
+			(for <code class="shell"><span class="option">--ignore</span></code>) are matched
+			against the path of a file affected by an event and include or exclude that event from
+			triggering an action based on that match.
+		</p>
+
+		<p>
+			Thus, the purpose of glob patterns is to provide flexible and powerful filtering in a
+			syntax familiar to users in respect to other tools in similar shells.
+		</p>
+
+		<p>
+			The current implementation of glob patterns relies on the
+			<a href="https://docs.rs/globset">globset</a> library. Here is a basic summary of its
+			syntax:
+		</p>
+
+		<aside><ul>
+			<li>
+				<code class="shell"><span class="sigil">?</span></code> matches one character.
+			</li>
+
+			<li>
+				<code class="shell"><span class="sigil">*</span></code> matches zero or more characters
+				but not beyond a path component boundary (i.e. it stays within two slashes).
+			</li>
+
+			<li>
+				<code class="shell"><span class="sigil">**</span></code> matches zero or more characters
+				and may span several path components (but there are many limitations, see docs).
+			</li>
+
+			<li>
+				<code class="shell"><span class="sigil">{a,b}</span></code> matches <code>a</code>
+				or <code>b</code> where <code>a</code> and <code>b</code> are glob patterns (nesting
+				is not supported).
+			</li>
+
+			<li>
+				<code class="shell"><span class="sigil">[ab]</span></code> matches <code>a</code>
+				or <code>b</code> where <code>a</code> and <code>b</code> are <em>characters</em>
+				(not patterns).
+			</li>
+		</ul></aside>
+
+	</section>
+
+	<section id="intro">
+		<h2>Subtleties that may catch you out</h2>
+
+		<p>
+			The current implementation is less than friendly in some situations, due to how matching
+			is performed. The most important thing to note is that matching is done over the full,
+			absolute path. Here’s how that might catch you out:
+		</p>
+
+		<ul>
+			<li>
+				You generally want to prepend <code class="shell"><span class="sigil">*/</span></code>
+				to all patterns that don't otherwise start with a glob star.
+			</li>
+
+			<li>
+				Folders that are parents of the watched or current directory can get matched. For
+				example, if the current directory is <code class="shell"><span class="path">/home/<strong>data</strong>/project</span></code>
+				and your project contains a directory at <code class="shell"><span class="path">test/<strong>data</strong></span></code>
+				that you want to ignore, the pattern <code class="shell"><span class="sigil">*/<strong>data</strong>/**/*</span></code>
+				will match <em>every</em> event path, resulting in <em>zero</em> events triggering actions.
+			</li>
+
+			<li>
+				Ignoring a directory doesn’t ignore files inside it, because the events will be
+				delivered with the path for the files within, so you need to use a pattern like
+				<code class="shell"><span class="sigil">*/foldername/**/*</span></code> instead.
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Future plans</h2>
+
+		<p>
+			The above, as well as the large amount of issues regularly opened on the topic, makes
+			clear that the glob pattern and ignore/filter situation needs to be vastly improved.
+		</p>
+
+		<p>
+			The current thinking is to replace the implementation with one based on the
+			<a href="https://docs.rs/ignore">ignore</a> crate. However, that work has not started.
+			You can subscribe to <a href="https://github.com/watchexec/watchexec/issues/188">issue #188 on watchexec</a>
+			to track when that happens.
+		</p>
+	</section>
+</body>
+</html>
