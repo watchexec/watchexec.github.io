@@ -93,6 +93,7 @@ enum Mode {
 
 #[async_std::main]
 async fn main() -> Result<()> {
+	color_eyre::install()?;
 	match Mode::from_args() {
 		Mode::Lint { config_file, print } => {
 			let config = Config::load(&config_file).await?;
