@@ -292,5 +292,51 @@
 	</nav>
 </section>
 
+<section id="command-group">
+	<h2>
+		<img class="logo-icon" src="/logo:command-group.svg" alt="Logo">
+		Command Group
+	</h2>
+
+	<code class="rust">
+		<ol class="codeblock">
+			<li><span class="keyword">use</span> <span class="path">std</span
+				><span class="punct">::</span><span class="path">process</span
+				><span class="punct">::</span><span class="type">Command</span
+				><span class="punct">;</span></li>
+			<li><span class="keyword">use</span> <span class="path">command_group</span
+				><span class="punct">::</span><span class="trait">CommandGroup</span
+				><span class="punct">;</span></li>
+			<li></li>
+			<li><span class="keyword">let mut</span>
+				<span class="binding">child</span>
+				<span class="punct">=</span>
+				<span class="type">Command</span><span class="punct">::</span
+				><span class="fn">new</span><span class="punct">(</span
+				><span class="string">"watch"</span><span class="punct">).</span
+				><span class="fn">arg</span><span class="punct">(</span><span class="string">"ls"</span><span class="punct">).</span
+				><span class="fn">group_spawn</span><span class="punct">()<span class="sigil">?</span>;</span></li>
+			<li><span class="keyword">let</span>
+				<span class="binding">status</span>
+				<span class="punct">=</span>
+				<span class="binding">child</span><span class="punct">.</span
+				><span class="fn">wait</span><span class="punct">()<span class="sigil">?</span>;</span></li>
+			<li><span class="macro">dbg!</span><span class="punct">(</span
+				><span class="binding">status</span><span class="punct">);</span></li>
+		</ol>
+	</code>
+
+	<p class="pitch">
+		Run commands in process groups. Stop creating zombies.
+		Avoid unwanted detachment. <em>Regain control!</em>
+	</p>
+
+	<nav class="places">
+		<a class="primary" href="https://docs.rs/command-group">📖 Documentation</a>
+		<a href="https://github.com/watchexec/command-group">📜 Source</a>
+		<a href="https://github.com/watchexec/command-group/issues">🐞 Issues</a>
+	</nav>
+</section>
+
 </body>
 </html>
