@@ -23,14 +23,57 @@
 			<a href="/downloads/watchexec/">Watchexec</a>
 		</h2>
 
-		<p>44 releases available:</p>
+		<p>45 releases available:</p>
 
 		
 		<section >
 			<h3>
-				<a href="/downloads/watchexec/1.16.2/">Watchexec 1.16.2</a>
+				<a href="/downloads/watchexec/1.17.0/">Watchexec 1.17.0</a>
 				(latest)
 			</h3><details open>
+				<summary>
+					Released on <b><time datetime="2021-07-21T15:37:23Z">2021-07-21</time></b>.
+					18 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>
+<p><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="710961239" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/168" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/168/hovercard" href="https://github.com/watchexec/watchexec/issues/168">#168</a> The default debounce time was further decreased to 100ms.</p>
+</li>
+<li>
+<p><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="558497647" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/145" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/145/hovercard" href="https://github.com/watchexec/watchexec/issues/145">#145</a> New: <code>@path</code>-style argument parsing. <sup>(<a href="https://doc.rust-lang.org/nightly/rustc/command-line-arguments.html#path-load-command-line-flags-from-a-path" rel="nofollow">like rustc</a>)</sup> You can now specify <code>@argfile</code> as the first argument to <code>watchexec</code>: this will read the file <code>argfile</code> and insert each line as an argument (no need to quote for whitespace, blank lines make empty arguments). This is a rudimentary way to have a configuration file, or as shorthand for established workflows; a more thorough file-based configuration system may be introduced later (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="198392565" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/33" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/33/hovercard" href="https://github.com/watchexec/watchexec/issues/33">#33</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="513078994" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/136" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/136/hovercard" href="https://github.com/watchexec/watchexec/issues/136">#136</a>).</p>
+</li>
+<li>
+<p>New: there’s now <strong><a href="https://watchexec.github.io" rel="nofollow">a website</a></strong>. Some of it is still being drafted, notably dedicated general documentation for this tool, but there’s already some specific documentation that’s been brought over and rewritten/improved, such as the <a href="https://watchexec.github.io/docs/inotify-limits.html" rel="nofollow">inotify limitations</a> and the <a href="https://watchexec.github.io/docs/glob-patterns.html" rel="nofollow">glob patterns</a> pages. Eventually a lot of the documentation that’s in readmes and issues will be moved there and improved.</p>
+</li>
+<li>
+<p><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="644081153" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/158" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/158/hovercard" href="https://github.com/watchexec/watchexec/issues/158">#158</a> New: <code>--no-process-group</code> flag to disable process groups.</p>
+</li>
+<li>
+<p>New: RPM packages are now available. These are built from the same binaries in the tarballs and DEB packages, so may not work properly for distros due to glibc versions or whatever. Untested as I don’t run RPM-based distros, tell me how it goes.</p>
+</li>
+<li>
+<p>New: checksums (BLAKE3 and SHA512) and signatures (minisign) for first-party pre-built packages. See <a href="https://watchexec.github.io/downloads/" rel="nofollow">on the website</a>.</p>
+</li>
+<li>
+<p>New: fatal errors (panics) will now be displayed via <a href="https://github.com/yaahc/color-eyre">eyre</a>; for a bit of a friendlier look and easier to debug. Hopefully these aren't seen much though!</p>
+</li>
+<li>
+<p>Packagers: if you’re reading these notes:</p>
+<ul>
+<li>The website now has a JSON metadata file for every release and the latest, and that’s probably easier to parse than fighting it out with the API and the filenames. It also has the release notes and the checksums in nicely machine readable locations if you’re into that.</li>
+<li>The archive format for tarballs will change to ZStandard (.tar.zst) at some point in the future (probably next year).</li>
+</ul>
+</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.16.2/">Watchexec 1.16.2</a>
+				
+			</h3><details >
 				<summary>
 					Released on <b><time datetime="2021-07-10T08:11:18Z">2021-07-10</time></b>.
 					13 assets.
@@ -802,7 +845,7 @@
 <p class="generator">
 	
 
-	this page built on <time datetime="2021-07-15T21:39:22.621582932+12:00">2021-07-15 at 21:39 UTC</time>
+	this page built on <time datetime="2021-07-22T03:56:52.681533436+12:00">2021-07-22 at 03:56 UTC</time>
 
 	| generator v0.0.1
 
