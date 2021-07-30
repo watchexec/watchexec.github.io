@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta charset="utf-8" />
+
+	<link rel="shortcut icon" href="/logo:cargo-watch.svg" />
+	<title>Downloads → Cargo Watch → 8.0.0</title>
+	<meta name="description"
+		content="A suite of tools and libraries related to Watchexec, which runs commands when files change. Download page for official binaries for Cargo Watch 8.0.0." />
+
+	<link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+	<section>
+		<h2>
+			<a href="/"><img class="logo-icon" src="/logo:cargo-watch.svg" alt="Home"></a>
+			←
+			<a href="/downloads/">Downloads</a>
+			←
+			<a href="/downloads/cargo-watch/">Cargo Watch</a>
+			←
+			<a href="/downloads/cargo-watch/8.0.0/">8.0.0</a>
+		</h2>
+
+		<aside>
+	<h3>Release notes</h3>
+
+	<ul>
+<li>
+<p><strong>Breaking change</strong>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="946827844" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/177" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/177/hovercard" href="https://github.com/watchexec/cargo-watch/pull/177">#177</a> the order of <code>-x</code> and <code>-s</code> is now respected.</p>
+<p>Example: <code>cargo watch -s 'echo before' -x test -s 'echo after'</code><br>
+Before: would run <code>cargo test &amp;&amp; echo before &amp;&amp; echo after</code>.<br>
+Now: runs <code>echo before &amp;&amp; cargo test &amp;&amp; echo after</code>.</p>
+</li>
+<li>
+<p>Experimental: <code>--notify</code>/<code>-N</code> flag sends a desktop notification when a change is observed (which may or may not trigger a command restart). While objectively the better behaviour would be to notify on command <em>finish</em> and vary the notification on exit status, we just can't do that at the moment with the current architecture.</p>
+</li>
+</ul>
+</aside>
+		<table class="downloads">
+	<thead>
+		<tr>
+			<th>OS</th>
+			<th>Arch</th>
+			<th>Variant</th>
+			<th>Download</th>
+			<th>BLAKE3 checksum</th>
+		</tr>
+	</thead>
+	<tbody>
+					<tr>
+						<td rowspan="8">Linux</td>
+						<td rowspan="2">AArch64</td>
+						<td rowspan="2">glibc</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;cargo-watch-v8.0.0-aarch64-unknown-linux-gnu.deb">1013 KB (DEB)</a></td>
+						<td><code class="checksum">0cd7c7ce276519d701108d8c21ac4b72322d9e2185047786abcbac664385793c</code></td>
+					</tr>
+					
+					<tr>
+						
+						
+						
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;cargo-watch-v8.0.0-aarch64-unknown-linux-gnu.tar.xz">1000 KB (XZ)</a></td>
+						<td><code class="checksum">7616f887477bffe13388ad27f357315fefdcf2768cba698d6d49f39d34456892</code></td>
+					</tr>
+					
+					<tr>
+						
+						<td rowspan="2">ARMv7 HF</td>
+						<td rowspan="2">glibc</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;cargo-watch-v8.0.0-armv7-unknown-linux-gnueabihf.deb">1076 KB (DEB)</a></td>
+						<td><code class="checksum">34b079fd67268a36be8c83c53e76ee6cb02625d639820ef6147de4ae9e7752bd</code></td>
+					</tr>
+					
+					<tr>
+						
+						
+						
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;cargo-watch-v8.0.0-armv7-unknown-linux-gnueabihf.tar.xz">1062 KB (XZ)</a></td>
+						<td><code class="checksum">0667b91ab17a272fb6354071f74b8598b94dd9081414c0a2e0499bfdfbb16d7f</code></td>
+					</tr>
+					
+					<tr>
+						
+						<td rowspan="4">x86-64</td>
+						<td rowspan="2">glibc</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;cargo-watch-v8.0.0-x86_64-unknown-linux-gnu.deb">801 KB (DEB)</a></td>
+						<td><code class="checksum">926754a2b18ab38aeba6a5b676ec27c86a44409838f2d19184f13f6deac3dc8b</code></td>
+					</tr>
+					
+					<tr>
+						
+						
+						
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;cargo-watch-v8.0.0-x86_64-unknown-linux-gnu.tar.xz">786 KB (XZ)</a></td>
+						<td><code class="checksum">8e40a0a85a539699555ca6939d9e4f766bb147aca472db129e03ced9f0506e6c</code></td>
+					</tr>
+					
+					<tr>
+						
+						
+						<td rowspan="2">musl</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;cargo-watch-v8.0.0-x86_64-unknown-linux-musl.deb">817 KB (DEB)</a></td>
+						<td><code class="checksum">2eb0700d0050fb91e7bfdc653e2b93afef0a4c4702600cdd35c64e6614cb3266</code></td>
+					</tr>
+					
+					<tr>
+						
+						
+						
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;cargo-watch-v8.0.0-x86_64-unknown-linux-musl.tar.xz">803 KB (XZ)</a></td>
+						<td><code class="checksum">3d6e0bd68fef11bdcd8d84e31d9ee861726571e5560c2689b15ea0bed4bb2102</code></td>
+					</tr>
+					
+					<tr>
+						<td rowspan="2">Windows</td>
+						<td rowspan="1">AArch64</td>
+						<td rowspan="1">MSVC</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;cargo-watch-v8.0.0-aarch64-pc-windows-msvc.zip">758 KB (Zip)</a></td>
+						<td><code class="checksum">798b382af6f9fef2f1032780c200d5e4831fd1c6a97d26de97021892db2d06ce</code></td>
+					</tr>
+					
+					<tr>
+						
+						<td rowspan="1">x86-64</td>
+						<td rowspan="1">MSVC</td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;cargo-watch-v8.0.0-x86_64-pc-windows-msvc.zip">824 KB (Zip)</a></td>
+						<td><code class="checksum">7a0995ad663665557896fea76d9faa5e92e343a443120c2d8f7397c4a41def38</code></td>
+					</tr>
+					
+					<tr>
+						<td rowspan="1">macOS</td>
+						<td rowspan="1">x86-64</td>
+						<td rowspan="1"></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;cargo-watch-v8.0.0-x86_64-apple-darwin.tar.xz">634 KB (XZ)</a></td>
+						<td><code class="checksum">66b237380215eddec365c6fc169e8dcb685e815cc3952733ee3bc3e72168500d</code></td>
+					</tr>
+					</tbody>
+</table>
+
+		<table class="signatures">
+	
+	<tr>
+		<th><a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;B3SUMS">BLAKE3 checksums</a></th>
+		
+		<td>
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;B3SUMS.auto.minisig">Automated signature</a>
+			(<a href="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;v8.0.0&#x2F;.github&#x2F;workflows&#x2F;release.pub">key</a>)
+		</td>
+		
+		<td>
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;B3SUMS.passcod.minisig">Félix’s signature</a>
+			(<a href="https:&#x2F;&#x2F;passcod.name&#x2F;keys&#x2F;software.pub">key</a>)
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<th><a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;SHA512SUMS">SHA512 checksums</a></th>
+		
+		<td>
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;SHA512SUMS.auto.minisig">Automated signature</a>
+			(<a href="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;v8.0.0&#x2F;.github&#x2F;workflows&#x2F;release.pub">key</a>)
+		</td>
+		
+		<td>
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;cargo-watch&#x2F;releases&#x2F;download&#x2F;v8.0.0&#x2F;SHA512SUMS.passcod.minisig">Félix’s signature</a>
+			(<a href="https:&#x2F;&#x2F;passcod.name&#x2F;keys&#x2F;software.pub">key</a>)
+		</td>
+		
+	</tr>
+	
+</table>
+
+
+
+		<p><a href="https://github.com/watchexec/cargo-watch/releases/v8.0.0" target="_blank">
+			<em>View on GitHub</em>
+		</a></p>
+
+		
+<p class="generator">
+	 version released on <time datetime="2021-07-30T19:22:40Z">2021-07-30</time>
+	|
+
+	this page built on <time datetime="2021-07-31T07:26:12.628709712+12:00">2021-07-31 at 07:26 UTC</time>
+
+	| generator v0.0.1
+
+	| <a href="meta.json">json metadata</a>
+</p>
+
+	</section>
+</body>
+
+</html>
