@@ -23,14 +23,33 @@
 			<a href="/downloads/cargo-watch/">Cargo Watch</a>
 		</h2>
 
-		<p>40 releases available:</p>
+		<p>41 releases available:</p>
 
 		
 		<section >
 			<h3>
-				<a href="/downloads/cargo-watch/8.0.0/">Cargo Watch 8.0.0</a>
+				<a href="/downloads/cargo-watch/8.1.0/">Cargo Watch 8.1.0</a>
 				(latest)
 			</h3><details open>
+				<summary>
+					Released on <b><time datetime="2021-09-21T09:08:38Z">2021-09-21</time></b>.
+					12 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul>
+<li>New: the <code>-B</code> option injects <code>RUST_BACKTRACE</code> into the environment, which is a fairly common thing to do when catching panics. Use like: <code>cargo watch -B1 -x run</code> (<a href="https://twitter.com/passcod/status/1440223706236669956" rel="nofollow">tweet</a>)</li>
+<li>Fix: quoting issues with Zsh (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1000163767" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/183" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/183/hovercard" href="https://github.com/watchexec/cargo-watch/pull/183">#183</a>)</li>
+<li>Metadata: The <code>rust-version</code> field is now used in the Cargo.toml. This will generate a warning when compiling until rustc 1.56.</li>
+<li>Releng: this is the first release with native Apple M1 binaries!</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/cargo-watch/8.0.0/">Cargo Watch 8.0.0</a>
+				
+			</h3><details >
 				<summary>
 					Released on <b><time datetime="2021-07-30T19:22:40Z">2021-07-30</time></b>.
 					11 assets.
@@ -731,7 +750,7 @@ $ cargo-watch <span class="pl-c"><span class="pl-c">#</span> &lt;== NEW!</span><
 <p class="generator">
 	
 
-	this page built on <time datetime="2021-07-31T07:26:13.278821359+12:00">2021-07-31 at 07:26 UTC</time>
+	this page built on <time datetime="2021-09-21T21:15:18.450197794+12:00">2021-09-21 at 21:15 UTC</time>
 
 	| generator v0.0.1
 
