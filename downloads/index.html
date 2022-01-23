@@ -146,62 +146,16 @@
 
 <section id="cli">
 	<h2>
-		Watchexec 1.18.0
-		<small>(<time datetime="2022-01-18T11:50:49Z">2022-01-18</time>)</small>
+		Watchexec 1.18.1
+		<small>(<time datetime="2022-01-23T09:07:30Z">2022-01-23</time>)</small>
 	</h2>
 
 	<aside>
 	<h3>Release notes</h3>
 
-	<p dir="auto">This is the first release built on top of Watchexec library 2.0. <strong>Any change in behaviour other than listed below is a bug.</strong></p>
-<ul dir="auto">
-<li>Verbose mode is now more configurable, with <code>-v</code>, <code>-vv</code>… up to <code>-vvvv</code> printing increasingly more logs. Note that <code>-v</code> already prints <em>a lot more</em> logs than in previous releases, and that the log format has changed. Additionally, <a href="https://docs.rs/tracing-subscriber/latest/tracing_subscriber/struct.EnvFilter.html" rel="nofollow">the <code>RUST_LOG</code> environment variable</a> can be set for even finer-grained logging.</li>
-<li><code>--changes-only</code> was renamed to <code>--print-events</code>, and its output changed. The former option persists as an alias for compatibility but will be removed eventually.</li>
-<li><code>--no-ignore</code> was renamed to <code>--no-project-ignore</code> for clarity. The former option persists as an alias for compatibility but will be removed eventually.</li>
-<li>When the command ends with a non-0 exit code, or by a signal, or a Windows exception, a message is printed (e.g. <code>[[Command exited with 63]]</code>) (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="203661044" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/37" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/37/hovercard" href="https://github.com/watchexec/watchexec/issues/37">#37</a>)</li>
-<li>The <code>--notify</code> / <code>-N</code> option now works properly, and is therefore out of experimental.</li>
-<li>Finding the "project origin" now considers other VCSs and many software development tooling conventions.</li>
-<li>Ignore file loading has been improved, with support for:
-<ul dir="auto">
-<li>global VCS ignores (e.g. <code>~/.gitignore</code>, <code>~/.bazaar/ignore</code>) (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="230898429" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/58" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/58/hovercard" href="https://github.com/watchexec/watchexec/issues/58">#58</a>)</li>
-<li>global Git excludes (i.e. as configured in git config <code>core.excludesFile</code>)</li>
-<li>local project git excludes (i.e. <code>.git/info/exclude</code>)</li>
-<li>more VCS ignore files (for Mercurial, Darcs, Fossil, Bazaar) <sub>(nb gitignore syntax is assumed)</sub></li>
-<li>a watchexec-specific global ignore file in <code>~/.config/watchexec/ignore</code> or as system-appropriate</li>
-<li>any files listed in the new <code>WATCHEXEC_IGNORE_FILES</code> environment variable (format is as for the system <code>PATH</code> variable)</li>
-<li>contextual ignores: git ignores won't be loaded for a Mercurial project, for example.</li>
-<li>correct ignore file parsing, notably around folder patterns.</li>
+	<ul dir="auto">
+<li>Bugfix: <code>-e</code> can now accept extensions with a leading period again. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1111804158" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/236" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/236/hovercard" href="https://github.com/watchexec/watchexec/issues/236">#236</a>)</li>
 </ul>
-</li>
-<li>The environment variables set on the command have a number of minor changes:
-<ul dir="auto">
-<li>paths are absolute</li>
-<li><code>WATCHEXEC_COMMON_PATH</code> is always set, with the common prefix of all paths</li>
-<li><code>WATCHEXEC_OTHERWISE_CHANGED_PATH</code> is new, for event kinds not covered by the other five (<code>CREATED</code>, <code>META_CHANGED</code>, <code>REMOVED</code>, <code>RENAMED</code>, <code>WRITTEN</code>)</li>
-<li>within each envvar, paths are sorted (with binary ordering).</li>
-</ul>
-</li>
-<li>Permission and other errors encountered when watching files are now reported with the concerned file path, when available. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="584848025" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/149" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/149/hovercard" href="https://github.com/watchexec/watchexec/issues/149">#149</a>)</li>
-<li>Basic Pijul support was added.</li>
-<li>Some errors are now not fatal: they are reported to STDERR but won't cause a crash.</li>
-<li><a href="https://github.com/microsoft/mimalloc">Mimalloc</a> is used for musl builds, which may improve performance and reduce memory use. This is only done on musl because its default allocator <a href="https://www.linkedin.com/pulse/testing-alternative-c-memory-allocators-pt-2-musl-mystery-gomes/" rel="nofollow">is</a> <a href="https://andygrove.io/2020/05/why-musl-extremely-slow/" rel="nofollow">so</a> <a href="https://github.com/BurntSushi/ripgrep/issues/1268" data-hovercard-type="issue" data-hovercard-url="/BurntSushi/ripgrep/issues/1268/hovercard">terrible</a>. Non-musl builds use the system allocator.</li>
-</ul>
-<p dir="auto">Note that this release is not coincidental with the stable release of the library 2.0, which is still "in preview."</p>
-<h3 dir="auto">New experimental filter engine</h3>
-<p dir="auto">Set <code>WATCHEXEC_FILTERER=tagged</code> to opt into a new filter engine. This will disable the <code>-e</code> / <code>--exts</code> and <code>-i</code> / <code>--ignore</code> options and change the <code>-f</code> / <code>--filter</code> option to accept a "tagged filter" instead.</p>
-<p dir="auto">Documentation is available at: <a href="https://docs.rs/watchexec/2.0.0-pre.6/watchexec/filter/tagged/struct.TaggedFilterer.html" rel="nofollow">https://docs.rs/watchexec/2.0.0-pre.6/watchexec/filter/tagged/struct.TaggedFilterer.html</a></p>
-<p dir="auto">For example, this set of filters:</p>
-<pre><code>path=data/*.json
-path*!test-*
-kind=Create(*)
-</code></pre>
-<p dir="auto">would only allow file creation events from JSON files in <code>data/</code> except those starting with <code>test-</code>.</p>
-<p dir="auto">There are 8 "tags" that can be matched upon, including <code>path</code>, <code>kind</code> (of the event: creates, modifies, metadata, etc), <code>type</code> (of the path that was changed: file, folder, link, etc). There is a variety of operators: glob (<code>*=</code> and <code>*!</code>), exact (<code>==</code> and <code>!=</code>), sets (<code>:=</code> and <code>:!</code>), and regex (<code>~=</code> and <code>~!</code>). The shorthand <code>=</code> operator resolves to the "most useful" operator for the tag being matched (currently <code>*=</code> for <code>path</code>, <code>kind</code>, and <code>exit</code>, <code>:=</code> otherwise). This provides a lot more power and flexibility, but does make filtering less intuitive — ideas are welcome on improvements.</p>
-<p dir="auto">The tagged filterer also solves the current filterer's main confusing issue: folder filtering. <code>path=folder/</code> and <code>path!*folder/</code> will do the expected thing, instead of requiring obscure forms like <code>**/folder/**</code>.</p>
-<p dir="auto">Using the <code>--filter-file</code> / <code>-F</code> option, one or more "tagged filter files" can be loaded, with every filter on a new line. Blank lines and lines starting with <code>#</code> are ignored. Like for ignore files, the <code>WATCHEXEC_FILTER_FILES</code> envvar is also consulted, and the <code>~/.config/watchexec/filter</code> global filter file applies if present (or in system-relevant location). There is no default project-local filter file.</p>
-<p dir="auto"><em>This mode is experimental: it is not to be considered stable in any way. Using it will print a warning message when watchexec starts. The aim is to have it become good enough so it can be the default in a future breaking release (but not 2.0, which will instead focus on other long-standing issues which aren't as earth-shattering as this), or to use its ideas to improve the existing implementation, whichever ends up better for everyone!</em></p>
-<h3 dir="auto">Thanks</h3>
-<p dir="auto">This release comes with special thanks to Radon Rosborough, supporting me <a href="https://ko-fi.com/passcod" rel="nofollow">via Ko-fi</a>.</p>
 </aside>
 	<table class="downloads">
 	<thead>
@@ -218,168 +172,168 @@ kind=Create(*)
 						<td rowspan="18">Linux</td>
 						<td rowspan="6">AArch64</td>
 						<td rowspan="3">glibc</td>
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-aarch64-unknown-linux-gnu.deb">4993 KB (DEB)</a></td>
-						<td><code class="checksum">96b9f6cc282b538f5b0b6cf63f352a098a5c1b3a782cec4579cae64d414e0df1</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-aarch64-unknown-linux-gnu.deb">4991 KB (DEB)</a></td>
+						<td><code class="checksum">21c5e7ef18d7878298c849c847249acf5d1fb612b01bfef3ec2b750fa36dc22d</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-aarch64-unknown-linux-gnu.rpm">5452 KB (RPM)</a></td>
-						<td><code class="checksum">e8b0836cf432fd89801721821621754a164eebbf0935c90e54aa9ca380837814</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-aarch64-unknown-linux-gnu.rpm">5457 KB (RPM)</a></td>
+						<td><code class="checksum">e69c7bc1b88601df053e473873985999577de47f4fb8af63bf79de1c719f885a</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-aarch64-unknown-linux-gnu.tar.xz">4944 KB (XZ)</a></td>
-						<td><code class="checksum">1df7a908c91a23d1b3b7ac36f045e32c1f8aafd33beb276ada8c0a75174baebd</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-aarch64-unknown-linux-gnu.tar.xz">4943 KB (XZ)</a></td>
+						<td><code class="checksum">178c126d83b3ae0eb4ebf3c4c5495690711decf04df726524d1b03bf2d34d977</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						<td rowspan="3">musl</td>
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-aarch64-unknown-linux-musl.deb">5157 KB (DEB)</a></td>
-						<td><code class="checksum">13466e8818aff6d1a583e807724da07f8cd422610276ac543de8c54c9212ff4e</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-aarch64-unknown-linux-musl.deb">5155 KB (DEB)</a></td>
+						<td><code class="checksum">cabe29697e2febe0d52dbc3c568d54dfcb86d4cb8ac4ca711431af06bd6caf19</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-aarch64-unknown-linux-musl.rpm">5624 KB (RPM)</a></td>
-						<td><code class="checksum">ff5dac9103660659c9a067c3e1d6ca092ac56be3e515e3f0bc2e7c8d5f5b3c77</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-aarch64-unknown-linux-musl.rpm">5622 KB (RPM)</a></td>
+						<td><code class="checksum">1429fb700b2fc3217c3deca82cc09e63fec37ef36ede3a2e4b8e83689b25167d</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-aarch64-unknown-linux-musl.tar.xz">5110 KB (XZ)</a></td>
-						<td><code class="checksum">3cf451d6890efdeff26458445f62f48ff145237e7d791547eee0a6a81e317fa3</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-aarch64-unknown-linux-musl.tar.xz">5105 KB (XZ)</a></td>
+						<td><code class="checksum">34c77b4a0e4d236e7291bdee9257313284350ba828411cdb618732fa8dd63a28</code></td>
 					</tr>
 					
 					<tr>
 						
 						<td rowspan="3">ARMv7 HF</td>
 						<td rowspan="3">glibc</td>
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-armv7-unknown-linux-gnueabihf.deb">5141 KB (DEB)</a></td>
-						<td><code class="checksum">f6c4a62c12f4694ffc86c745bc79708683791d7febb6581608e31d63834c708f</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-armv7-unknown-linux-gnueabihf.deb">5143 KB (DEB)</a></td>
+						<td><code class="checksum">ec40867ee430c7de84c92ed66f64ff59afcbe0ce298b347e3dcf0a2858d77a74</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-armv7-unknown-linux-gnueabihf.rpm">5635 KB (RPM)</a></td>
-						<td><code class="checksum">00e9957cbd60ccc8aa1d97570081d087460792294ec558bf8bb8c90a0b78d56d</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-armv7-unknown-linux-gnueabihf.rpm">5641 KB (RPM)</a></td>
+						<td><code class="checksum">853ce0cf4fdfde027c778694e73ab8b87fda2d672e3e88478fd730491872a75c</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-armv7-unknown-linux-gnueabihf.tar.xz">5090 KB (XZ)</a></td>
-						<td><code class="checksum">9a98c695284b056de08c3f9fae53889cec0114c48c92006ece4ce9aefae04fac</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-armv7-unknown-linux-gnueabihf.tar.xz">5086 KB (XZ)</a></td>
+						<td><code class="checksum">386303b2593c16e3777a12177f39bf577c317980e1f5b1caadcbc4131cc1da42</code></td>
 					</tr>
 					
 					<tr>
 						
 						<td rowspan="3">x86</td>
 						<td rowspan="3">musl</td>
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-i686-unknown-linux-musl.deb">7793 KB (DEB)</a></td>
-						<td><code class="checksum">c9ce5e9dae2e6fb606e8a6284360577b4e8a93897dc6d10349bfc62095015b35</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-i686-unknown-linux-musl.deb">7792 KB (DEB)</a></td>
+						<td><code class="checksum">302f398fc2b45e3ad4d04fef7a3460d83c080d8ce66f88b8092a37f9faf626ec</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-i686-unknown-linux-musl.rpm">7921 KB (RPM)</a></td>
-						<td><code class="checksum">d78cc3b23e6f8e70efa3ba74ca8577efa7520cd515aee121893305f55737902b</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-i686-unknown-linux-musl.rpm">7919 KB (RPM)</a></td>
+						<td><code class="checksum">8a91bc3f5b3c2e46f51d391b9d55b74997857ea366acaf3018a8ba68ab06a3a4</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-i686-unknown-linux-musl.tar.xz">7789 KB (XZ)</a></td>
-						<td><code class="checksum">2503204f6b8b72a63e5ccf60832318645bcb5cd90acfcb697985766cd3821039</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-i686-unknown-linux-musl.tar.xz">7788 KB (XZ)</a></td>
+						<td><code class="checksum">a8c779deb67d662b062ba9ef09187bf0f18d94fb837c3eb61063c89410e684b8</code></td>
 					</tr>
 					
 					<tr>
 						
 						<td rowspan="6">x86-64</td>
 						<td rowspan="3">glibc</td>
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-x86_64-unknown-linux-gnu.deb">7837 KB (DEB)</a></td>
-						<td><code class="checksum">42f4f22b2f3ea75b0b8c7117db540bdc8b26c2ecb236038a548105602e786075</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-x86_64-unknown-linux-gnu.deb">7838 KB (DEB)</a></td>
+						<td><code class="checksum">8879756504997bdc4d39871205a22eb9241b1d7925349473b609b1ed6ada5047</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-x86_64-unknown-linux-gnu.rpm">7969 KB (RPM)</a></td>
-						<td><code class="checksum">3840a84e78474682e775b52610234c1e4523f9e9389ef2b1245bd2635518b413</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-x86_64-unknown-linux-gnu.rpm">7969 KB (RPM)</a></td>
+						<td><code class="checksum">615970bed63298c0b569928650759b5166a5fa0619f15a98319c0339e488297a</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-x86_64-unknown-linux-gnu.tar.xz">7833 KB (XZ)</a></td>
-						<td><code class="checksum">04512f03ba1abd8b6c11d9fa1c67e6c04cf863b7c35bc6612bcdfbf303bf9bff</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-x86_64-unknown-linux-gnu.tar.xz">7832 KB (XZ)</a></td>
+						<td><code class="checksum">fdab03dd51aaa7c92ce0f2e08e00783af3587b3fdc09b1322681b23eb586c957</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						<td rowspan="3">musl</td>
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-x86_64-unknown-linux-musl.deb">7676 KB (DEB)</a></td>
-						<td><code class="checksum">57b13415c6e7bacdb01fdb25bae841db68a76c574b7f73c0d46c5ea515209012</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-x86_64-unknown-linux-musl.deb">7678 KB (DEB)</a></td>
+						<td><code class="checksum">9d974577165356170c57566b78ec49c3b0274187306eac16d16bae949c1c95ac</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-x86_64-unknown-linux-musl.rpm">7801 KB (RPM)</a></td>
-						<td><code class="checksum">e476bf012f6d9e56146315359df605b4c256db4cc0adb6c0c820b437c217ece3</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-x86_64-unknown-linux-musl.rpm">7803 KB (RPM)</a></td>
+						<td><code class="checksum">3bdc82ad24fcc5fd2b312f43468314d2aaa9d9a5b0741b06c5efe471cd30dfa2</code></td>
 					</tr>
 					
 					<tr>
 						
 						
 						
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-x86_64-unknown-linux-musl.tar.xz">7672 KB (XZ)</a></td>
-						<td><code class="checksum">9d9d9641bd56e68a4e01c87a9787dcd3363751b2f11ea3de5b3cbdda17dd6409</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-x86_64-unknown-linux-musl.tar.xz">7675 KB (XZ)</a></td>
+						<td><code class="checksum">7da269b5ffc0a8e9ed334dd38e3d0c39df0a6ddf2ab77fa77e22523becd258e1</code></td>
 					</tr>
 					
 					<tr>
 						<td rowspan="1">Windows</td>
 						<td rowspan="1">x86-64</td>
 						<td rowspan="1">MSVC</td>
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-x86_64-pc-windows-msvc.zip">2105 KB (Zip)</a></td>
-						<td><code class="checksum">a034fdc9543eac7ffc8b3054de552ee385ae1c4cbc7deceb5391ffd3155b2021</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-x86_64-pc-windows-msvc.zip">2105 KB (Zip)</a></td>
+						<td><code class="checksum">29760fcb812a860c6584be1fd7696ece1889631936f0a2f06792c861726e9e25</code></td>
 					</tr>
 					
 					<tr>
 						<td rowspan="2">macOS</td>
 						<td rowspan="1">AArch64</td>
 						<td rowspan="1"></td>
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-aarch64-apple-darwin.tar.xz">1092 KB (XZ)</a></td>
-						<td><code class="checksum">fbe6db5f8fe13f399668b2a6d9e4582bf77336e477e758ea11ae6164125f4583</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-aarch64-apple-darwin.tar.xz">1093 KB (XZ)</a></td>
+						<td><code class="checksum">49df5b8c3c75ef6f1b29be82ccdbc3b774dfde7a8472cafbf4ffcaec4b1dc342</code></td>
 					</tr>
 					
 					<tr>
 						
 						<td rowspan="1">x86-64</td>
 						<td rowspan="1"></td>
-						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;watchexec-1.18.0-x86_64-apple-darwin.tar.xz">1252 KB (XZ)</a></td>
-						<td><code class="checksum">9971681654f2983dbce82f3ca14d488622ebcaadab4c4f51c67422b9bdff09f7</code></td>
+						<td><a class="download" href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;watchexec-1.18.1-x86_64-apple-darwin.tar.xz">1253 KB (XZ)</a></td>
+						<td><code class="checksum">d3797df402e29d4f519a9b73dd640d499fceee2bb2e16e71b7f9eac89c5d0f04</code></td>
 					</tr>
 					</tbody>
 </table>
@@ -387,31 +341,21 @@ kind=Create(*)
 	<table class="signatures">
 	
 	<tr>
-		<th><a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;B3SUMS">BLAKE3 checksums</a></th>
+		<th><a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;B3SUMS">BLAKE3 checksums</a></th>
 		
 		<td>
-			<a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;B3SUMS.auto.minisig">Automated signature</a>
-			(<a href="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;watchexec&#x2F;watchexec&#x2F;cli-v1.18.0&#x2F;.github&#x2F;workflows&#x2F;release.pub">key</a>)
-		</td>
-		
-		<td>
-			<a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;B3SUMS.passcod.minisig">Félix’s signature</a>
-			(<a href="https:&#x2F;&#x2F;passcod.name&#x2F;keys&#x2F;software.pub">key</a>)
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;B3SUMS.auto.minisig">Automated signature</a>
+			(<a href="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;watchexec&#x2F;watchexec&#x2F;cli-v1.18.1&#x2F;.github&#x2F;workflows&#x2F;release.pub">key</a>)
 		</td>
 		
 	</tr>
 	
 	<tr>
-		<th><a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;SHA512SUMS">SHA512 checksums</a></th>
+		<th><a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;SHA512SUMS">SHA512 checksums</a></th>
 		
 		<td>
-			<a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;SHA512SUMS.auto.minisig">Automated signature</a>
-			(<a href="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;watchexec&#x2F;watchexec&#x2F;cli-v1.18.0&#x2F;.github&#x2F;workflows&#x2F;release.pub">key</a>)
-		</td>
-		
-		<td>
-			<a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.0&#x2F;SHA512SUMS.passcod.minisig">Félix’s signature</a>
-			(<a href="https:&#x2F;&#x2F;passcod.name&#x2F;keys&#x2F;software.pub">key</a>)
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;watchexec&#x2F;watchexec&#x2F;releases&#x2F;download&#x2F;cli-v1.18.1&#x2F;SHA512SUMS.auto.minisig">Automated signature</a>
+			(<a href="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;watchexec&#x2F;watchexec&#x2F;cli-v1.18.1&#x2F;.github&#x2F;workflows&#x2F;release.pub">key</a>)
 		</td>
 		
 	</tr>
