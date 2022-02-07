@@ -23,14 +23,34 @@
 			<a href="/downloads/watchexec/">Watchexec</a>
 		</h2>
 
-		<p>52 releases available:</p>
+		<p>53 releases available:</p>
 
 		
 		<section >
 			<h3>
-				<a href="/downloads/watchexec/1.18.5/">Watchexec 1.18.5</a>
+				<a href="/downloads/watchexec/1.18.6/">Watchexec 1.18.6</a>
 				(latest)
 			</h3><details open>
+				<summary>
+					Released on <b><time datetime="2022-02-07T04:48:31Z">2022-02-07</time></b>.
+					21 assets.
+					Release notes ↓
+				</summary>
+
+				<aside><ul dir="auto">
+<li>Paths in <code>WATCHEXEC_*_PATH</code>s are deduplicated (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1117937837" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/253" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/253/hovercard" href="https://github.com/watchexec/watchexec/issues/253">#253</a>)</li>
+<li>If the filesystem watcher fails to instantiate, Watchexec will error and stop. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1117919945" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/251" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/251/hovercard" href="https://github.com/watchexec/watchexec/issues/251">#251</a>)</li>
+<li>Runtime errors are pretty-printed</li>
+<li>Bugfix: global ignores would not be loaded if the working directory wasn't a VCS (Git etc) project (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1125298986" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/255" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/255/hovercard" href="https://github.com/watchexec/watchexec/issues/255">#255</a>)</li>
+<li>Reverted change from 1.18.0: <code>.git</code> folders (and so on for other VCS) are ignored by default regardless of whether the watched project is detected as Git (and so on).</li>
+</ul></aside>
+			</details></section>
+		
+		<section >
+			<h3>
+				<a href="/downloads/watchexec/1.18.5/">Watchexec 1.18.5</a>
+				
+			</h3><details >
 				<summary>
 					Released on <b><time datetime="2022-01-30T12:03:41Z">2022-01-30</time></b>.
 					21 assets.
@@ -1013,7 +1033,7 @@ kind=Create(*)
 <p class="generator">
 	
 
-	this page built on <time datetime="2022-01-31T01:10:21.064555845+13:00">2022-01-31 at 01:10 UTC</time>
+	this page built on <time datetime="2022-02-07T18:06:02.016786671+13:00">2022-02-07 at 18:06 UTC</time>
 
 	| generator v0.0.1
 
