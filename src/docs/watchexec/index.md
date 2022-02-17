@@ -1,1 +1,2 @@
-# Watchexec
+# Watchexec Usage
+{{#title Watchexec Usage - Watchexec}}
