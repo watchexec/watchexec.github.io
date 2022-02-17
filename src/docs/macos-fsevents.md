@@ -1,0 +1,1 @@
+# Mac FSEvents limitations
