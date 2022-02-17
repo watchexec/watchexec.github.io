@@ -16,13 +16,19 @@ max-level = 4
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "ayu"
-additional-css = ["src/colours.css"]
+additional-css = ["colours.css"]
+no-section-label = true
 git-repository-url = "https://github.com/watchexec"
+edit-url-template = "https://github.com/watchexec/watchexec.github.io/edit/master/{path}"
 curly-quotes = true
 mathjax-support = true
+print = { enable = false }
 
 [output.html.fold]
 enable = true
 level = 1
+
+[output.html.redirect]
+"/docs/index.html" = "/docs/watchexec/"
 
 [output.linkcheck]
