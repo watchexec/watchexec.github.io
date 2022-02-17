@@ -5,12 +5,18 @@ multilingual = false
 src = "src"
 title = "Watchexec"
 
+[rust]
+edition = "2021"
+
 [preprocessor.toc]
 renderer = ["html"]
 marker = "* auto-gen TOC;\n{:toc}"
 max-level = 4
 
 [output.html]
+default-theme = "light"
+preferred-dark-theme = "ayu"
+additional-css = ["src/colours.css"]
 git-repository-url = "https://github.com/watchexec"
 curly-quotes = true
 mathjax-support = true
