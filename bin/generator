@@ -3,7 +3,7 @@
 set -euo pipefail
 
 mtime() {
-  stat --format="%Y" $1
+  stat --format="%Y" $1 || echo 0
 }
 
 mtime_bin=$(mtime generator/target/debug/generator)
