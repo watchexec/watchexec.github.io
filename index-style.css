@@ -1,0 +1,409 @@
+/** THEMES **/
+
+/* Light mode (default) */
+
+:root {
+	--bg: hsl(0 23% 97%);
+
+	--fg: hsl(0 0% 5%);
+	--fg-h1: hsl(230 50% 50%);
+	--fg-h2: hsl(230 45% 65%);
+
+	--logo-shadow: transparent;
+	--pitch-em: hsl(125 70% 30%);
+	--muted: hsl(0 0% 30%);
+	--warning: var(--syn-prompt);
+
+	--a-normal: hsl(270 80% 50%);
+	--a-active: hsl(340 80% 50%);
+
+	--code-border: hsl(270 100% 50% / 50%);
+	--code-linenum: hsl(0 0% 60%);
+	--code-tab: hsl(0 0% 85%);
+
+	--syn-argument: hsl(75 18% 45%);
+	--syn-binding: hsl(36 100% 42%);
+	--syn-binding-line: hsl(36 100% 80%);
+	--syn-bool: hsl(180 100% 35%);
+	--syn-command: hsl(213 100% 35%);
+	--syn-escape: hsl(190 100% 26%);
+	--syn-field: hsl(360 57% 47%);
+	--syn-fn: hsl(32 52% 40%);
+	--syn-keyword: hsl(214 45% 47%);
+	--syn-macro: hsl(117 100% 25%);
+	--syn-option: hsl(215 100% 25%);
+	--syn-path: hsl(0 0% 30%);
+	--syn-prompt: hsl(320 100% 30%);
+	--syn-punct: hsl(0 0% 40%);
+	--syn-sigil: hsl(191 54% 37%);
+	--syn-string: hsl(72 100% 27%);
+	--syn-string-bg: hsl(72 100% 27% / 20%);
+	--syn-subcommand: hsl(270 100% 40%);
+	--syn-trait: hsl(253 86% 65%);
+	--syn-type: hsl(318 44% 47%);
+}
+
+/* Dark mode */
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: hsl(0 5% 6%);
+
+		--fg: hsl(120 100% 98%);
+		--fg-h1: hsl(230 90% 70%);
+		--fg-h2: hsl(230 40% 65%);
+
+		--logo-shadow: var(--fg);
+		--pitch-em: hsl(60 100% 66%);
+		--muted: hsl(0 0% 70%);
+
+		--a-normal: hsl(270 85% 65%);
+		--a-active: hsl(340 80% 58%);
+
+		--code-border: hsl(140 80% 40% / 50%);
+		--code-linenum: hsl(0 0% 30%);
+		--code-tab: hsl(0 0% 15%);
+
+		--syn-argument: hsl(75 70% 70%);
+		--syn-binding: hsl(36 100% 60%);
+		--syn-binding-line: hsl(36 100% 35%);
+		--syn-bool: hsl(180 80% 55%);
+		--syn-command: hsl(213 100% 70%);
+		--syn-escape: hsl(190 70% 66%);
+		--syn-field: hsl(360 70% 60%);
+		--syn-fn: hsl(32 70% 70%);
+		--syn-keyword: hsl(214 65% 55%);
+		--syn-macro: hsl(117 100% 40%);
+		--syn-option: hsl(215 100% 40%);
+		--syn-path: hsl(0 0% 60%);
+		--syn-prompt: hsl(320 100% 45%);
+		--syn-punct: hsl(0 0% 70%);
+		--syn-sigil: hsl(191 55% 65%);
+		--syn-string: hsl(72 75% 55%);
+		--syn-string-bg: hsl(72 75% 55% / 10%);
+		--syn-subcommand: hsl(270 100% 80%);
+		--syn-trait: hsl(253 60% 73%);
+		--syn-type: hsl(318 90% 75%);
+	}
+}
+
+
+/** COLOURS **/
+
+html {
+	background: var(--bg);
+	color: var(--fg);
+}
+
+h1 { color: var(--fg-h1); }
+h2 { color: var(--fg-h2); }
+
+/* order matters! */
+a { color: var(--a-normal); }
+a:active { color: var(--a-active); }
+
+.pitch em {
+	background: var(--pitch-em);
+	color: var(--bg);
+}
+
+
+/** LAYOUT **/
+
+* {
+	box-sizing: content-box;
+}
+
+body {
+	margin: 1rem 0.5rem 0.5rem 2rem;
+	max-width: 60rem;
+}
+
+h1, h2 {
+	margin: 0;
+}
+
+section {
+	margin-bottom: 3rem;
+}
+
+.pitch {
+	max-width: 35rem;
+}
+
+details {
+	padding-left: 1em;
+}
+
+details summary {
+	font-family: var(--sans);
+	margin-bottom: 1em;
+	margin-left: -1em;
+}
+
+details p {
+	font-family: var(--sans);
+}
+
+table {
+	border: 1px solid;
+	border-collapse: collapse;
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+}
+
+table td, table th {
+	border: 1px solid;
+	padding: 0.5em;
+}
+
+table.downloads .checksum {
+	user-select: all;
+}
+
+table.downloads .missing-checksum {
+	color: var(--warning);
+}
+
+table.signatures th {
+	text-align: left;
+}
+
+aside {
+	border: 1px dashed;
+	margin: 2rem 0;
+	padding: 1em 2em;
+}
+
+aside p {
+	font-family: var(--sans);
+}
+
+.generator {
+	font-family: var(--mono);
+	margin: 0;
+	color: var(--muted);
+}
+
+.logo-icon {
+	filter: drop-shadow(0 0 0.1em var(--logo-shadow));
+	height: 1em;
+	transform: scale(1.5) translateY(0.2em);
+}
+
+
+/** TYPO **/
+
+:root {
+	--mono: Iosevka, "Fira Code", Consolas, "Comic Code", ui-monospace, monospace;
+	--sans: "Noto Sans", "San Francisco", Grandview, ui-sans-serif, sans-serif;
+	--serif: "Noto Serif", Georgia, ui-serif, serif;
+
+	--code-block-fs: 1.2;
+	--code-line-fs: 1.5;
+}
+
+html {
+	font-family: var(--sans);
+	font-size: clamp(0.666rem, calc(0.666rem + .333vw), 1rem);
+}
+
+h1 {
+	font-size: 3rem;
+	font-weight: 400;
+	margin-bottom: 1em;
+}
+
+h2 {
+	font-size: 2rem;
+	font-weight: 500;
+}
+
+h2 small {
+	font-size: 1rem;
+}
+
+p {
+	font-family: var(--serif);
+}
+
+kbd {
+	font-family: var(--mono);
+}
+
+.pitch {
+	font-size: 1.1rem;
+	line-height: 1.75;
+}
+
+.pitch em {
+	border-radius: 0.2em;
+	display: inline-block;
+	line-height: 1;
+	padding: 0.1em 0.3em;
+	transform: rotate(-5deg);
+}
+
+
+/** PLACES **/
+
+.places {
+	line-height: 2.7;
+}
+
+.places a {
+	border: 0.1em solid;
+	border-bottom: 0.25em double;
+	font-size: 1.2em;
+	margin-right: 0.5em;
+	outline-width: 0.1em;
+	padding: 0.2em 0.5em 0.1em;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.places a:hover, .places a:focus {
+	border-bottom-style: solid;
+}
+
+.places a.primary {
+	background: var(--a-normal);
+	border-color: transparent;
+	color: var(--bg);
+	font-weight: 500;
+	outline-color: var(--fg);
+}
+.places a.primary:visited { background: var(--a-visited) }
+.places a.primary:active { background: var(--a-active) }
+.places a.primary:hover, .places a.primary:focus { background: var(--fg) }
+
+
+/** CODE **/
+
+code {
+	font-family: var(--mono);
+}
+
+/* Layouts */
+
+code.oneline {
+	border: solid var(--code-border);
+	border-width: 0 0.4rem;
+	display: block;
+	font-size: calc(var(--code-line-fs) * 1rem);
+	margin: 2rem;
+	padding: 0.25rem 1rem;
+	width: max-content;
+}
+
+code ol.codeblock {
+	border: solid var(--code-border);
+	border-width: 0.4rem 0;
+	font-size: calc(var(--code-block-fs) * 1rem);
+	list-style-type: decimal-leading-zero;
+	margin: 3rem 0 2rem;
+	padding: 0.6em 2.7em;
+	width: max-content;
+}
+
+code ol.codeblock ::marker {
+	color: var(--code-linenum);
+}
+
+/* Code wrap breaks */
+
+@media (min-width: 30rem) {
+	code .wbr {
+		display: none;
+	}
+}
+
+.shell .wbr {
+	color: var(--syn-sigil);
+}
+
+.shell .wbr::after {
+	content: ' ';
+	display: inline-block;
+	width: 3ch;
+}
+
+.rust .wbr::after {
+	color: var(--code-tab);
+	content: ' →  →  → ';
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+.rust .wbr.t-1::after { width: 4ch; }
+.rust .wbr.t-2::after { width: 8ch; }
+.rust .wbr.t-3::after { width: 12ch; }
+
+/* Alternatives */
+
+.alternatives {
+	margin: 2rem;
+}
+
+.alternatives .alt {
+	margin: 0;
+}
+
+/* Tabs */
+
+code .tab {
+	position: relative;
+	-moz-tab-size: 4;
+	tab-size: 4;
+	white-space: pre;
+}
+
+code .tab::after {
+	color: var(--code-tab);
+	content: '→';
+	position: absolute;
+	left: 1ch;
+}
+
+/* Shell */
+
+.oneline.shell { padding-left: 0.5rem; }
+
+.shell .path {
+	color: var(--syn-path);
+	text-decoration: underline 2px;
+}
+
+.shell .string {
+	color: var(--syn-string);
+	background: var(--syn-string-bg);
+}
+
+.shell .argument { color: var(--syn-argument); }
+.shell .command { color: var(--syn-command); }
+.shell .option { color: var(--syn-option); }
+.shell .prompt { color: var(--syn-prompt); }
+.shell .punct { color: var(--syn-punct); }
+.shell .sigil { color: var(--syn-sigil); }
+.shell .subcommand { color: var(--syn-subcommand); }
+
+/* Rust */
+
+.rust .binding {
+	color: var(--syn-binding);
+	text-decoration: underline var(--syn-binding-line) 2px;
+}
+
+.rust .bool { color: var(--syn-bool); }
+.rust .escape { color: var(--syn-escape); }
+.rust .field { color: var(--syn-field); }
+.rust .fn { color: var(--syn-fn); }
+.rust .keyword { color: var(--syn-keyword); }
+.rust .macro { color: var(--syn-macro); }
+.rust .path { color: var(--syn-path); }
+.rust .punct { color: var(--syn-punct); }
+.rust .sigil { color: var(--syn-sigil); }
+.rust .string { color: var(--syn-string); }
+.rust .trait { color: var(--syn-trait); }
+.rust .type { color: var(--syn-type); }

@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Linux inotify limits - Watchexec</title>
+
+
+        <!-- Custom HTML head -->
+        <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Watchexec" />
+<meta name="twitter:description" content="Run commands when files change." />
+<meta name="twitter:image:src" content="/logo.svg" />
+
+<meta property="og:title" content="Watchexec" />
+<meta property="og:description" content="Run commands when files change." />
+<meta property="og:image" content="/logo.svg" />
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../colours.css">
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">Home</a></li><li class="chapter-item expanded affix "><li class="part-title">Documentation</li><li class="chapter-item expanded "><a href="../docs/glob-patterns.html">Glob pattern syntax and issues</a></li><li class="chapter-item expanded "><a href="../docs/inotify-limits.html" class="active">Linux inotify limits</a></li><li class="chapter-item expanded "><a href="../docs/macos-fsevents.html">Mac FSEvents limitations</a></li><li class="chapter-item expanded affix "><li class="part-title">Project Updates</li><li class="chapter-item expanded affix "><li class="part-title">Releases</li><li class="chapter-item expanded "><a href="../downloads/index.html">Downloads</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../downloads/watchexec/index.html">Watchexec</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../downloads/watchexec/1.18.6/index.html">Watchexec 1.18.6</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.18.5/index.html">Watchexec 1.18.5</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.18.4/index.html">Watchexec 1.18.4</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.18.3/index.html">Watchexec 1.18.3</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.18.2/index.html">Watchexec 1.18.2</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.18.1/index.html">Watchexec 1.18.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.18.0/index.html">Watchexec 1.18.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.17.1/index.html">Watchexec 1.17.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.17.0/index.html">Watchexec 1.17.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.16.2/index.html">Watchexec 1.16.2</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.16.1/index.html">Watchexec 1.16.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.16.0/index.html">Watchexec 1.16.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.15.3/index.html">Watchexec 1.15.3</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.15.2/index.html">Watchexec 1.15.2</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.15.1/index.html">Watchexec 1.15.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.15.0/index.html">Watchexec 1.15.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.14.1/index.html">Watchexec 1.14.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.14.0/index.html">Watchexec 1.14.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.13.1/index.html">Watchexec 1.13.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.13.0/index.html">Watchexec 1.13.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.12.0/index.html">Watchexec 1.12.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.11.1/index.html">Watchexec 1.11.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.11.0/index.html">Watchexec 1.11.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.10.3/index.html">Watchexec 1.10.3</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.10.2/index.html">Watchexec 1.10.2</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.10.1/index.html">Watchexec 1.10.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.10.0/index.html">Watchexec 1.10.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.9.2/index.html">Watchexec 1.9.2</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.9.1/index.html">Watchexec 1.9.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.9.0/index.html">Watchexec 1.9.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.8.6/index.html">Watchexec 1.8.6</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.8.5/index.html">Watchexec 1.8.5</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.8.4/index.html">Watchexec 1.8.4</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.8.3/index.html">Watchexec 1.8.3</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.8.2/index.html">Watchexec 1.8.2</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.8.1/index.html">Watchexec 1.8.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.8.0/index.html">Watchexec 1.8.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.7.0/index.html">Watchexec 1.7.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.6.1/index.html">Watchexec 1.6.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.6.0/index.html">Watchexec 1.6.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.5.0/index.html">Watchexec 1.5.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.4.0/index.html">Watchexec 1.4.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.3.0/index.html">Watchexec 1.3.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.2.3/index.html">Watchexec 1.2.3</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.2.2/index.html">Watchexec 1.2.2</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.2.1/index.html">Watchexec 1.2.1</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.2.0/index.html">Watchexec 1.2.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/1.0.0/index.html">Watchexec 1.0.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/0.11.0/index.html">Watchexec 0.11.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/0.10.0/index.html">Watchexec 0.10.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/0.9.0/index.html">Watchexec 0.9.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/0.8.0/index.html">Watchexec 0.8.0</a></li><li class="chapter-item "><a href="../downloads/watchexec/0.7.0/index.html">Watchexec 0.7.0</a></li></ol></li><li class="chapter-item "><a href="../downloads/cargo-watch/index.html">Cargo Watch</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../downloads/cargo-watch/8.1.2/index.html">Cargo Watch 8.1.2</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/8.1.1/index.html">Cargo Watch 8.1.1</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/8.1.0/index.html">Cargo Watch 8.1.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/8.0.0/index.html">Cargo Watch 8.0.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.8.1/index.html">Cargo Watch 7.8.1</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.8.0/index.html">Cargo Watch 7.8.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.7.2/index.html">Cargo Watch 7.7.2</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.7.1/index.html">Cargo Watch 7.7.1</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.7.0/index.html">Cargo Watch 7.7.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.6.1/index.html">Cargo Watch 7.6.1</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.6.0/index.html">Cargo Watch 7.6.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.5.1/index.html">Cargo Watch 7.5.1</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.5.0/index.html">Cargo Watch 7.5.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.4.1/index.html">Cargo Watch 7.4.1</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.4.0/index.html">Cargo Watch 7.4.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.3.0/index.html">Cargo Watch 7.3.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.2.2/index.html">Cargo Watch 7.2.2</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.2.1/index.html">Cargo Watch 7.2.1</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.2.0/index.html">Cargo Watch 7.2.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.1.1/index.html">Cargo Watch 7.1.1</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.1.0/index.html">Cargo Watch 7.1.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.0.9/index.html">Cargo Watch 7.0.9</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.0.8/index.html">Cargo Watch 7.0.8</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.0.7/index.html">Cargo Watch 7.0.7</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.0.6/index.html">Cargo Watch 7.0.6</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.0.5/index.html">Cargo Watch 7.0.5</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.0.4/index.html">Cargo Watch 7.0.4</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.0.3/index.html">Cargo Watch 7.0.3</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.0.2/index.html">Cargo Watch 7.0.2</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.0.1/index.html">Cargo Watch 7.0.1</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/7.0.0/index.html">Cargo Watch 7.0.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/6.0.0/index.html">Cargo Watch 6.0.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/5.1.0/index.html">Cargo Watch 5.1.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/5.0.5/index.html">Cargo Watch 5.0.5</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/5.0.4/index.html">Cargo Watch 5.0.4</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/5.0.3/index.html">Cargo Watch 5.0.3</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/5.0.2/index.html">Cargo Watch 5.0.2</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/5.0.1/index.html">Cargo Watch 5.0.1</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/5.0.0/index.html">Cargo Watch 5.0.0</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/4.0.3/index.html">Cargo Watch 4.0.3</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/4.0.2/index.html">Cargo Watch 4.0.2</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/4.0.1/index.html">Cargo Watch 4.0.1</a></li><li class="chapter-item "><a href="../downloads/cargo-watch/4.0.0/index.html">Cargo Watch 4.0.0</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Watchexec</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/watchexec" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/watchexec/watchexec.github.io/edit/master/src/docs/inotify-limits.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="linux-inotify-limits"><a class="header" href="#linux-inotify-limits">Linux inotify limits</a></h1>
+<p>The underlying technology used to watch for filesystem changes on Linux is
+<a href="https://www.kernel.org/doc/html/latest/filesystems/inotify.html">inotify</a>, a
+component of the Linux kernel.</p>
+<p>inotify has several configurable limits:</p>
+<ul>
+<li><code>max_user_instances</code> limits (roughly) how many applications can watch files
+(per user);</li>
+<li><code>max_user_watches</code> limits how many filesystem items can be watched, in total
+across all applications (per user);</li>
+<li><code>max_queued_events</code> limits how many filesystem events will be held in the
+kernel queue if the application does not read them;</li>
+</ul>
+<p>There are also physical limits, dependent on the amount of RAM/memory a system
+has available, and open file/handle limits, as configured in
+<a href="https://man.archlinux.org/man/limits.conf.5">limits.conf (5)</a> and with Bash’s
+<code>ulimit</code>.</p>
+<p>Note that the first two limits are <em>per user</em>, rather than per application.
+This means that all applications a user runs which make use of filesystem
+events <em>compete</em> for the same “pool” of resources. Also note that it’s not
+possible to set different limits for different users.</p>
+<p>The default <code>max_user_watches</code> limit on most Linux systems is <strong>8192</strong>. That is
+regularly reached if you watch large folder structures, or if you use more than
+one application that watches the filesystem in some way, something you might
+not be aware of!</p>
+<h2 id="errors-you-may-have-seen"><a class="header" href="#errors-you-may-have-seen">Errors you may have seen</a></h2>
+<p>You may have seen one of the following errors, or something similar, which are
+characteristic of exceeding an inotify limit:</p>
+<pre><code class="language-plain">Unable to monitor filesystem. Please run:
+echo 100000 | sudo tee /proc/sys/fs/inotify/max_user_watches
+</code></pre>
+<pre><code class="language-plain">No space left on device - Failed to watch “…”:
+The user limit on the total number of inotify watches was
+reached or the kernel failed to allocate a needed resource.
+(Errno::ENOSPC)
+</code></pre>
+<pre><code class="language-plain">Io(Error { repr: Os {
+	code: 28,
+	message: “No space left on device”
+} })
+</code></pre>
+<pre><code class="language-plain">tail: cannot watch ‘/path/to/dir’: No space left on device
+</code></pre>
+<pre><code class="language-plain">Failed to watch /path/to/dir;
+upper limit on inotify watches reached!
+</code></pre>
+<p>Note that these errors are from a variety of applications, as this page is
+intended for guidance for more than just the Watchexec family of tools.</p>
+<h2 id="fixing-it"><a class="header" href="#fixing-it">Fixing it</a></h2>
+<p>For most users, the default limit is much too low. <strong>65536</strong> is a good start on
+a more reasonable allowance.</p>
+<p>To fix it permanently, you need to use
+<a href="https://man.archlinux.org/man/core/systemd/sysctl.d.5.en">sysctl</a> to configure
+your kernel on boot. Write the following line to a appropriately-named file
+under <code>/etc/sysctl.d/</code>, for example <code>/etc/sysctl.d/inotify.conf</code>:</p>
+<pre><code class="language-ini">fs.inotify.max_user_watches=65536
+</code></pre>
+<p>To fix it temporarily (it will persist until a reboot), use the <code>sysctl</code>
+command instead:</p>
+<pre><code class="language-bash">sysctl fs.inotify.max_user_watches=65536
+</code></pre>
+<p>You may increase the limits further, if you require it.</p>
+<p>The hard upper bound is controlled by how much kernel memory you are willing or
+able to dedicate for this use. One <em>inotify watch</em> costs 540 bytes of kernel
+memory on 32-bit architectures, and 1080 bytes on 64-bit ones. The consuming
+application may have additional overhead on this.</p>
+<p>For example, applications that use the
+<a href="https://github.com/notify-rs/notify">Notify</a> library use about 10 additional
+bytes, plus the full filesystem path, for each watched item. (A watched item is
+generally a single directory. When watching directories recursively, one
+<em>inotify watch</em> is established <em>per</em> subdirectory.)</p>
+<p>There are recorded instances of people using <em>millions</em> of watches, for example
+to monitor their entire home directory. They may potentially be using
+<em>gigabytes</em> of kernel (which isn’t swappable) and userspace (which is) memory
+for that purpose.</p>
+<h3 id="other-limits"><a class="header" href="#other-limits">Other limits</a></h3>
+<p><code>max_user_instances</code> may also be too low on some systems. For example, on
+servers it is frequently set as low as <strong>127</strong>. A good workstation default is
+<strong>1024</strong>.</p>
+<p><code>max_queued_events</code> is rarely an issue. Applications will most often read
+events from the queue as fast as they can, and use their own userspace queues
+and structures to deal with them, so events will not remain kernel-side for
+very long.</p>
+<p>This is compounded by the behaviour of the inotify subsystem when the queue
+maximum is reached: instead of ignoring further events, the whole inotify
+instance is dropped. This is usually a fatal error for an application, and may
+be hard to recover from if not: applications will therefore want to zealously
+avoid that happening.</p>
+<h2 id="sources"><a class="header" href="#sources">Sources</a></h2>
+<ul>
+<li><a href="http://web.archive.org/web/20161106193425/http://blog.sorah.jp/2012/01/24/inotify-limitation">Sorah Fukumori: limit of inotify</a> (archived in 2016, original published 24 january 2012)</li>
+<li><a href="https://unix.stackexchange.com/questions/13751/kernel-inotify-watch-limit-reached">Unix.SE: Kernel inotify watch limit reached</a> (25 may 2011)</li>
+<li><a href="http://www.linuxjournal.com/article/8478">Linux Journal: Kernel Korner - Intro to inotify</a> (28 september 2005)</li>
+</ul>
+<blockquote>
+<p><strong>Note on dnotify, inotify, fanotify, fsnotify</strong></p>
+<p>Dnotify was the original Linux kernel implementation of filesystem watching.
+Prior to dnotify was “FAM”, which came from IRIX. Dnotify was replaced around
+2008 by inotify. Then fanotify was initially implemented, but ultimately not
+merged and abandoned. Meanwhile, fsnotify replaced the entire <em>backend</em>
+kernel implementation, with dnotify and inotify (and then fanotify)
+re-written as <em>frontends</em> on fsnotify, eliminating duplication.</p>
+<p>Thus, nowadays (i.e. on kernels 4.3 and higher, from about 2015 onwards) when
+speaking of all or any of these systems, one is talking about the <em>same</em>
+mechanism, but accessed through different kernel calls, potentially exposing
+different capabilities and trade-offs (e.g. fanotify is more powerful and may
+be vastly more efficient, but currently — as of 2021 — requires root access,
+as it is geared towards access control rather than monitoring).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../docs/glob-patterns.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../docs/macos-fsevents.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../docs/glob-patterns.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../docs/macos-fsevents.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
