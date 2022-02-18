@@ -1,0 +1,36 @@
+name: Cargo Watch release
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '48 19 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            generator/target
+          key: "cargo-${{ hashFiles('.github/workflows/deploy.yml', 'generator/Cargo.*', 'generator/src/*') }}"
+
+      - name: Prep generator
+        run: bin/generator lint
+
+      - name: Update cargo watch
+        run: |
+          set -exo pipefail
+          version=$(bin/generator version-list -a cargo-watch -n1)
+          if [[ ! -f "src/downloads/cargo-watch/$version/meta.json" ]]; then
+            bin/make-release cargo-watch $version
+            echo "new_version=$version" >> "$GITHUB_ENV"
+          fi
+
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        if: env.new_version
+        with:
+          commit_message: Cargo Watch ${{ env.new_version }}
