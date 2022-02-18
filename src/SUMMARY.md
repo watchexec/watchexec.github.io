@@ -10,7 +10,7 @@
 
 # Project Updates
 
-
+- [The road to Watchexec 2](./blog/road-to-watchexec-2.md)
 
 # Releases
 
