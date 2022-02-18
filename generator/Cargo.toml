@@ -12,12 +12,12 @@ repository = "https://github.com/watchexec/watchexec.github.io/main/tree/generat
 [dependencies]
 async-std = { version = "1.9.0", features = ["attributes", "tokio1"] }
 chrono = { version = "0.4.19", features = ["serde"] }
-color-eyre = "0.5.11"
+color-eyre = "0.6.0"
 globset = { version = "0.4.8", features = ["serde1"] }
 indexmap = { version = "1.6.2", features = ["serde"] }
 isahc = { version = "1.4.0", features = ["json"] }
 nipper = "0.1.9"
-octocrab = "0.9.1"
+octocrab = "0.15.4"
 regex = "1.5.4"
 semver = { version = "1.0.3", features = ["serde"] }
 serde = "1.0.126"

@@ -122,7 +122,7 @@ pub async fn get_meta(config: Config, app: App, version: Version) -> Result<Meta
 	Ok(Meta::new(
 		app.slug,
 		version,
-		release.published_at,
+		release.published_at.unwrap(),
 		notes,
 		downloads,
 		sums,
