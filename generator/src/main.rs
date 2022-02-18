@@ -238,7 +238,7 @@ async fn main() -> Result<()> {
 
 			let mut versions = tags
 				.into_iter()
-				.map(|tag| app.version_from_tag(&tag))
+				.flat_map(|tag| app.version_from_tag(&tag).transpose())
 				.collect::<Result<Vec<_>>>()?;
 			versions.sort();
 

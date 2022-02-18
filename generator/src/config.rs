@@ -114,7 +114,7 @@ impl App {
 		PathBuf::from(format!("downloads/{}/{}", self.slug, version))
 	}
 
-	pub fn version_from_tag(&self, tag: &str) -> Result<Version> {
+	pub fn version_from_tag(&self, tag: &str) -> Result<Option<Version>> {
 		let v0 = Version::new(0, 0, 0);
 
 		let tag_map = self
@@ -128,22 +128,24 @@ impl App {
 			.try_fold(
 				(v0, BTreeMap::new()),
 				|(version, mut map), (before, template)| -> Result<_> {
-					let tt = Regex::new(&template.replace(
+					let tt = Regex::new(&format!("^{}$", template.replace(
 						"{version}",
 						r"(?P<version>\d+[.]\d+[.]\d+(?:-[\w+][.]\d+)?)",
-					))?;
+					)))?;
 					map.insert(version, tt);
 					Ok((before, map))
 				},
 			)?
 			.1;
 
-		let tag_rx = tag_map
+		let tag_rx = match tag_map
 			.into_iter()
 			.map(|kv| kv.1)
 			.filter(|rx| rx.is_match(tag))
-			.last()
-			.ok_or_else(|| eyre!("{}: no tag template match for {}", self.slug, tag))?;
+			.last() {
+        Some(t) => t,
+        None => return Ok(None),
+    };
 
 		let version = tag_rx
 			.captures_iter(tag)
@@ -151,7 +153,7 @@ impl App {
 			.and_then(|c| c.name("version"))
 			.expect("regex matched so we always have one");
 
-		Version::parse(version.as_str()).map_err(|err| err.into())
+		Version::parse(version.as_str()).map_err(|err| err.into()).map(Some)
 	}
 }
 
