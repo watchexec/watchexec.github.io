@@ -2,7 +2,8 @@
 
 ## Release notes
 
-<ul>
+<p dir="auto"><strong>To be yanked from crates.io</strong> (pending release of 9.0)</p>
+<ul dir="auto">
 <li>Releng: Experimental: RPM packages are now available. These are built from the same binaries in the tarballs and DEB packages, so may not work properly for distros due to glibc versions or whatever. Untested as I don’t run RPM-based distros, tell me how it goes.</li>
 <li>CI: Cross build targets + FreeBSD are now checked.</li>
 <li>Workaround: <code>-N</code> / desktop notifications are disabled on FreeBSD (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1002122621" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/184" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/184/hovercard" href="https://github.com/watchexec/cargo-watch/issues/184">#184</a>)</li>
@@ -225,7 +226,7 @@ View release [on GitHub](https://github.com/watchexec/cargo-watch/releases/v8.1.
 
 >	 version released on 2021-09-22
 >	|
->	this page built on 2022-02-19 at 03:29
+>	this page built on 2022-02-19 at 12:28
 >	| generator v0.0.2
 >	| [json metadata](meta.json)
 

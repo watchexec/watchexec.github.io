@@ -2,7 +2,8 @@
 
 ## Release notes
 
-<ul>
+<p dir="auto"><strong>Yanked from crates.io on 2022-01-22</strong></p>
+<ul dir="auto">
 <li>New: the <code>-B</code> option injects <code>RUST_BACKTRACE</code> into the environment, which is a fairly common thing to do when catching panics. Use like: <code>cargo watch -B1 -x run</code> (<a href="https://twitter.com/passcod/status/1440223706236669956" rel="nofollow">tweet</a>)</li>
 <li>Fix: quoting issues with Zsh (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1000163767" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/183" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/183/hovercard" href="https://github.com/watchexec/cargo-watch/pull/183">#183</a>)</li>
 <li>Metadata: The <code>rust-version</code> field is now used in the Cargo.toml. This will generate a warning when compiling until rustc 1.56.</li>
@@ -194,7 +195,7 @@ View release [on GitHub](https://github.com/watchexec/cargo-watch/releases/v8.1.
 
 >	 version released on 2021-09-21
 >	|
->	this page built on 2022-02-19 at 03:29
+>	this page built on 2022-02-19 at 12:26
 >	| generator v0.0.2
 >	| [json metadata](meta.json)
 

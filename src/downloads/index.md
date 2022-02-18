@@ -20,11 +20,18 @@ Latest release: [1.18.6](./watchexec/1.18.6/index.md) (2022-02-07)
 
 ## Cargo Watch
 
-Latest release: [8.1.2](./cargo-watch/8.1.2/index.md) (2021-11-16)
+Latest release: [8.1.1](./cargo-watch/8.1.1/index.md) (2021-09-22)
 
+### Release notes
 
+<p dir="auto"><strong>To be yanked from crates.io</strong> (pending release of 9.0)</p>
+<ul dir="auto">
+<li>Releng: Experimental: RPM packages are now available. These are built from the same binaries in the tarballs and DEB packages, so may not work properly for distros due to glibc versions or whatever. Untested as I don’t run RPM-based distros, tell me how it goes.</li>
+<li>CI: Cross build targets + FreeBSD are now checked.</li>
+<li>Workaround: <code>-N</code> / desktop notifications are disabled on FreeBSD (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1002122621" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/184" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/184/hovercard" href="https://github.com/watchexec/cargo-watch/issues/184">#184</a>)</li>
+</ul>
 
-**[→ Download this release](./cargo-watch/8.1.2/index.md)**
+**[→ Download this release](./cargo-watch/8.1.1/index.md)**
 
 [→ Previous releases](./cargo-watch/index.md)
 

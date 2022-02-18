@@ -72,7 +72,6 @@
     - [Watchexec 0.7.0](./downloads/watchexec/0.7.0/index.md)
   - [Cargo Watch](./downloads/cargo-watch/index.md)
     
-    - [Cargo Watch 8.1.2](./downloads/cargo-watch/8.1.2/index.md)
     - [Cargo Watch 8.1.1](./downloads/cargo-watch/8.1.1/index.md)
     - [Cargo Watch 8.1.0](./downloads/cargo-watch/8.1.0/index.md)
     - [Cargo Watch 8.0.0](./downloads/cargo-watch/8.0.0/index.md)

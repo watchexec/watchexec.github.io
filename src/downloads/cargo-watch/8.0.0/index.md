@@ -2,15 +2,16 @@
 
 ## Release notes
 
-<ul>
+<p dir="auto"><strong>Never released to crates.io</strong></p>
+<ul dir="auto">
 <li>
-<p><strong>Breaking change</strong>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="946827844" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/177" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/177/hovercard" href="https://github.com/watchexec/cargo-watch/pull/177">#177</a> the order of <code>-x</code> and <code>-s</code> is now respected.</p>
-<p>Example: <code>cargo watch -s 'echo before' -x test -s 'echo after'</code><br>
+<p dir="auto"><del><strong>Breaking change</strong>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="946827844" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/177" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/177/hovercard" href="https://github.com/watchexec/cargo-watch/pull/177">#177</a> the order of <code>-x</code> and <code>-s</code> is now respected.</del> (<strong>This never actually happened. The code was not merged.</strong>)</p>
+<p dir="auto">Example: <code>cargo watch -s 'echo before' -x test -s 'echo after'</code><br>
 Before: would run <code>cargo test &amp;&amp; echo before &amp;&amp; echo after</code>.<br>
 Now: runs <code>echo before &amp;&amp; cargo test &amp;&amp; echo after</code>.</p>
 </li>
 <li>
-<p>Experimental: <code>--notify</code>/<code>-N</code> flag sends a desktop notification when a change is observed (which may or may not trigger a command restart). While objectively the better behaviour would be to notify on command <em>finish</em> and vary the notification on exit status, we just can't do that at the moment with the current architecture.</p>
+<p dir="auto">Experimental: <code>--notify</code>/<code>-N</code> flag sends a desktop notification when a change is observed (which may or may not trigger a command restart). While objectively the better behaviour would be to notify on command <em>finish</em> and vary the notification on exit status, we just can't do that at the moment with the current architecture.</p>
 </li>
 </ul>
 
@@ -187,7 +188,7 @@ View release [on GitHub](https://github.com/watchexec/cargo-watch/releases/v8.0.
 
 >	 version released on 2021-07-30
 >	|
->	this page built on 2022-02-19 at 03:29
+>	this page built on 2022-02-19 at 12:26
 >	| generator v0.0.2
 >	| [json metadata](meta.json)
 
