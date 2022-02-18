@@ -1,0 +1,1 @@
+{"generated":"2021-06-22T13:29:25.307838279Z","published":"2016-10-12T13:28:44Z","app":"watchexec","version":"0.11.0","notes":"<ul>\n<li>Load and use <code>.gitignore</code> file, if one is located in the current working directory</li>\n</ul>","downloads":[],"sums":[]}
