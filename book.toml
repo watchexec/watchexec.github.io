@@ -29,6 +29,9 @@ enable = true
 level = 1
 
 [output.html.redirect]
-"/docs/index.html" = "/docs/watchexec/"
+# temporarily until more appropriate content is written
+"/docs/index.html" = "/docs/glob-patterns.html"
+"/docs/watchexec/index.html" = "/docs/glob-patterns.html"
+"/docs/cargo-watch/index.html" = "/docs/glob-patterns.html"
 
 [output.linkcheck]

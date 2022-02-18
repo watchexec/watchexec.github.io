@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cd generator
+cargo build
+cd ..
+
+exec generator/target/debug/generator $@ --config generators.yml

@@ -1,0 +1,28 @@
+# folder name starts with _ such that jekyll ignores it
+[package]
+name = "generator"
+version = "0.0.1"
+authors = ["Félix Saparelli <felix@passcod.name>"]
+edition = "2018"
+publish = false
+
+description = "Tooling for watchexec website"
+repository = "https://github.com/watchexec/watchexec.github.io/main/tree/generator"
+
+[dependencies]
+async-std = { version = "1.9.0", features = ["attributes", "tokio1"] }
+chrono = { version = "0.4.19", features = ["serde"] }
+color-eyre = "0.5.11"
+globset = { version = "0.4.8", features = ["serde1"] }
+indexmap = { version = "1.6.2", features = ["serde"] }
+isahc = { version = "1.4.0", features = ["json"] }
+nipper = "0.1.9"
+octocrab = "0.9.1"
+regex = "1.5.4"
+semver = { version = "1.0.3", features = ["serde"] }
+serde = "1.0.126"
+serde_json = "1.0.64"
+serde_yaml = "0.8.17"
+structopt = "0.3.21"
+tera = "1.10.0"
+url = { version = "2.2.2", features = ["serde"] }
