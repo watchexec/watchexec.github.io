@@ -139,18 +139,18 @@ async fn main() -> Result<()> {
 				dl.cats.2.get_or_insert("".into());
 			}
 
-			let tera = Tera::new("_templates/**/*")?;
+			let tera = Tera::new("generator/templates/*")?;
 			let mut context = Context::new();
 			context.try_insert("app", &app)?;
 			context.try_insert("genver", &env!("CARGO_PKG_VERSION"))?;
 			context.try_insert("meta", &meta)?;
 			context.try_insert("tag", &app.tag(&meta.version)?)?;
-			let page = tera.render("release-page.html", &context)?;
+			let page = tera.render("release.md", &context)?;
 
 			let dirpath = app.dir(&meta.version);
 			create_dir_all(&dirpath).await?;
 
-			let filepath = dirpath.join("index.html");
+			let filepath = dirpath.join("index.md");
 			let mut file = File::create(&filepath).await?;
 			file.write_all(page.as_bytes()).await?;
 
@@ -162,7 +162,7 @@ async fn main() -> Result<()> {
 		}
 
 		Mode::ReleaseIndex { config_file, app } => {
-			let appdir = PathBuf::from(format!("downloads/{}", app));
+			let appdir = PathBuf::from(format!("src/downloads/{}", app));
 			let mut dirs = read_dir(&appdir).await?;
 			let mut versions = Vec::new();
 			while let Some(dir) = dirs.next().await {
@@ -183,14 +183,14 @@ async fn main() -> Result<()> {
 			let latest = versions.last().unwrap().version.clone();
 			let app = config.app_from_version(&app, &latest)?;
 
-			let tera = Tera::new("_templates/**/*")?;
+			let tera = Tera::new("generator/templates/*")?;
 			let mut context = Context::new();
 			context.try_insert("app", &app)?;
 			context.try_insert("genver", &env!("CARGO_PKG_VERSION"))?;
 			context.try_insert("versions", &versions)?;
-			let page = tera.render("release-index.html", &context)?;
+			let page = tera.render("release-index.md", &context)?;
 
-			let filepath = appdir.join("index.html");
+			let filepath = appdir.join("index.md");
 			let mut file = File::create(&filepath).await?;
 			file.write_all(page.as_bytes()).await?;
 			eprintln!(
@@ -204,7 +204,7 @@ async fn main() -> Result<()> {
 			remove_file(&latest_link).await?;
 			symlink(&latest_meta, &latest_link).await?;
 			eprintln!(
-				"linked {} to downloads/{}/{}",
+				"linked {} to src/downloads/{}/{}",
 				latest_link.display(),
 				app.slug,
 				latest_meta
@@ -254,7 +254,7 @@ async fn main() -> Result<()> {
 		Mode::DownloadsPage { config_file } => {
 			let config = Config::load(&config_file).await?;
 
-			let tera = Tera::new("_templates/**/*")?;
+			let tera = Tera::new("generator/templates/*")?;
 			let mut context = Context::new();
 			context.try_insert("genver", &env!("CARGO_PKG_VERSION"))?;
 			context.try_insert(
@@ -318,11 +318,11 @@ async fn main() -> Result<()> {
 				context.try_insert(&app.slug.replace('-', "_"), &DlApp { app, latest: meta })?;
 			}
 
-			let page = tera.render("downloads-page.html", &context)?;
-			let mut file = File::create("downloads/index.html").await?;
+			let page = tera.render("downloads-index.md", &context)?;
+			let mut file = File::create("src/downloads/index.md").await?;
 			file.write_all(page.as_bytes()).await?;
 			eprintln!(
-				"wrote {} bytes to downloads/index.html",
+				"wrote {} bytes to src/downloads/index.md",
 				page.as_bytes().len(),
 			);
 		}

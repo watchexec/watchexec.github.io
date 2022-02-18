@@ -111,7 +111,7 @@ impl App {
 	}
 
 	pub fn dir(&self, version: &Version) -> PathBuf {
-		PathBuf::from(format!("downloads/{}/{}", self.slug, version))
+		PathBuf::from(format!("src/downloads/{}/{}", self.slug, version))
 	}
 
 	pub fn version_from_tag(&self, tag: &str) -> Result<Option<Version>> {
