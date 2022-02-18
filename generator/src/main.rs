@@ -180,14 +180,15 @@ async fn main() -> Result<()> {
 			}
 
 			let config = Config::load(&config_file).await?;
-			let latest = versions.last().unwrap().version.clone();
-			let app = config.app_from_version(&app, &latest)?;
+			let latest = versions.last().unwrap();
+			let app = config.app_from_version(&app, &latest.version)?;
 
 			let tera = Tera::new("generator/templates/*")?;
 			let mut context = Context::new();
 			context.try_insert("app", &app)?;
 			context.try_insert("genver", &env!("CARGO_PKG_VERSION"))?;
 			context.try_insert("versions", &versions)?;
+			context.try_insert("latest", &latest)?;
 			let page = tera.render("release-index.md", &context)?;
 
 			let filepath = appdir.join("index.md");
@@ -199,7 +200,7 @@ async fn main() -> Result<()> {
 				filepath.display()
 			);
 
-			let latest_meta = format!("{}/meta.json", latest);
+			let latest_meta = format!("{}/meta.json", latest.version);
 			let latest_link = appdir.join("latest.json");
 			remove_file(&latest_link).await?;
 			symlink(&latest_meta, &latest_link).await?;
@@ -266,7 +267,7 @@ async fn main() -> Result<()> {
 					.collect::<BTreeMap<_, _>>(),
 			)?;
 
-			let mut dldirs = read_dir("downloads").await?;
+			let mut dldirs = read_dir("src/downloads").await?;
 			while let Some(appdir) = dldirs.next().await {
 				let appdir = appdir?;
 				if !appdir.file_type().await?.is_dir() {
@@ -313,18 +314,25 @@ async fn main() -> Result<()> {
 				struct DlApp {
 					pub app: App,
 					pub latest: Meta,
+          pub versions: Vec<Meta>,
 				}
 
-				context.try_insert(&app.slug.replace('-', "_"), &DlApp { app, latest: meta })?;
+				context.try_insert(&app.slug.replace('-', "_"), &DlApp { app, latest: meta, versions })?;
 			}
 
-			let page = tera.render("downloads-index.md", &context)?;
-			let mut file = File::create("src/downloads/index.md").await?;
-			file.write_all(page.as_bytes()).await?;
-			eprintln!(
-				"wrote {} bytes to src/downloads/index.md",
-				page.as_bytes().len(),
-			);
+      for (tmpl, dest) in [
+        ("downloads-index.md", "src/downloads/index.md"),
+        ("SUMMARY.md", "src/SUMMARY.md"),
+      ] {
+        let page = tera.render(tmpl, &context)?;
+        let mut file = File::create(dest).await?;
+        file.write_all(page.as_bytes()).await?;
+        eprintln!(
+          "wrote {} bytes to {}",
+          page.as_bytes().len(),
+          dest,
+        );
+      }
 		}
 	}
 

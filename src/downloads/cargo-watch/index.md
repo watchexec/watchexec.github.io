@@ -1,577 +1,194 @@
 # Download Cargo Watch
-{{#title Download Cargo Watch- Watchexec}}
-
-43 releases available:
-
-
-## [Cargo Watch 8.1.2](./8.1.2/index.md) (latest)Released on 2021-11-16.
-15 assets.------------
-
-## [Cargo Watch 8.1.1](./8.1.1/index.md) <details >
-<summary>
-Released on **2021-09-22**.
-16 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Releng: Experimental: RPM packages are now available. These are built from the same binaries in the tarballs and DEB packages, so may not work properly for distros due to glibc versions or whatever. Untested as I don’t run RPM-based distros, tell me how it goes.</li>
-<li>CI: Cross build targets + FreeBSD are now checked.</li>
-<li>Workaround: <code>-N</code> / desktop notifications are disabled on FreeBSD (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1002122621" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/184" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/184/hovercard" href="https://github.com/watchexec/cargo-watch/issues/184">#184</a>)</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 8.1.0](./8.1.0/index.md) <details >
-<summary>
-Released on **2021-09-21**.
-12 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>New: the <code>-B</code> option injects <code>RUST_BACKTRACE</code> into the environment, which is a fairly common thing to do when catching panics. Use like: <code>cargo watch -B1 -x run</code> (<a href="https://twitter.com/passcod/status/1440223706236669956" rel="nofollow">tweet</a>)</li>
-<li>Fix: quoting issues with Zsh (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1000163767" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/183" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/183/hovercard" href="https://github.com/watchexec/cargo-watch/pull/183">#183</a>)</li>
-<li>Metadata: The <code>rust-version</code> field is now used in the Cargo.toml. This will generate a warning when compiling until rustc 1.56.</li>
-<li>Releng: this is the first release with native Apple M1 binaries!</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 8.0.0](./8.0.0/index.md) <details >
-<summary>
-Released on **2021-07-30**.
-11 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>
-<p><strong>Breaking change</strong>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="946827844" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/177" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/177/hovercard" href="https://github.com/watchexec/cargo-watch/pull/177">#177</a> the order of <code>-x</code> and <code>-s</code> is now respected.</p>
-<p>Example: <code>cargo watch -s 'echo before' -x test -s 'echo after'</code><br>
-Before: would run <code>cargo test &amp;&amp; echo before &amp;&amp; echo after</code>.<br>
-Now: runs <code>echo before &amp;&amp; cargo test &amp;&amp; echo after</code>.</p>
-</li>
-<li>
-<p>Experimental: <code>--notify</code>/<code>-N</code> flag sends a desktop notification when a change is observed (which may or may not trigger a command restart). While objectively the better behaviour would be to notify on command <em>finish</em> and vary the notification on exit status, we just can't do that at the moment with the current architecture.</p>
-</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.8.1](./7.8.1/index.md) <details >
-<summary>
-Released on **2021-07-15**.
-11 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>New: there’s now <strong><a href="https://watchexec.github.io" rel="nofollow">a website</a></strong>. Some of it is still being drafted, notably dedicated general documentation for this tool, but there’s already some specific documentation that’s been brought over and rewritten/improved, such as the <a href="https://watchexec.github.io/docs/inotify-limits.html" rel="nofollow">inotify limitations</a> and the <a href="https://watchexec.github.io/docs/glob-patterns.html" rel="nofollow">glob patterns</a> pages. Eventually a lot of the documentation that’s in the readme will be moved there, so the readme can become a much leaner page with only the important bits, and the information moved over will have a lot more space to really shine.</li>
-<li>Meta: moved to the watchexec github organisation. As well as bringing these very related projects together under one umbrella, this should make the maintaining relationship much clearer. As a bonus, that enables Github’s tooling to move issues to a different repo.</li>
-<li>Deps: updated to watchexec 1.16.1, which pins the <code>globset</code> crate to version 0.4.6. While not a good long-term fix, this fixes issues installing via <code>cargo install cargo-watch</code> yielding buggy (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="943296406" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/176" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/176/hovercard" href="https://github.com/watchexec/cargo-watch/issues/176">#176</a>) builds without <code>--locked</code>.</li>
-<li>Releng: in 7.8.0, binary release builds got checksums and signatures, but generated a combined CHECKSUMS file with both SHA512 and BLAKE3 checksums, which causes warnings to be emitted when checking with the <code>sha512sum</code> or <code>b3sum</code> tools, as well as being a bit ambiguous. In this release, checksums go in separate files, one for each checksum algorithm; these files are also signed separately. I also retroactively fixed that in the 7.8.0 release. The release download list on GitHub is becoming quite long! The <a href="https://watchexec.github.io/downloads/#cargo-watch" rel="nofollow">one on the website</a> is a lot easier to use.</li>
-<li>Packagers: if you’re reading these notes:
-<ul>
-<li>The website now has a JSON metadata file for every release and the latest, and that’s probably easier to parse than fighting it out with the API and the filenames. It also has the release notes and the checksums in nicely machine readable locations if you’re into that.</li>
-<li>The archive format for tarballs will change to ZStandard (<code>.tar.zst</code>) at some point in the future, probably around version 8.</li>
-</ul>
-</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.8.0](./7.8.0/index.md) <details >
-<summary>
-Released on **2021-05-01**.
-11 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="873303216" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/172" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/172/hovercard" href="https://github.com/watchexec/cargo-watch/issues/172">#172</a> Restore and document the behaviour where the directory is changed to the project/crate root by default, not the workspace root, as introduced by 7.7.1</li>
-<li>New: <code>-C</code>/<code>--workdir</code> option to change the working directory to a custom location. Note that this will behave very strangely in combination with other path options (like <code>-w</code>/<code>--watch</code>) until real support is added upstream, cf <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="855282691" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/188" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/188/hovercard" href="https://github.com/watchexec/watchexec/issues/188">watchexec/watchexec#188</a>.</li>
-<li>New: logo.</li>
-<li>New: Windows ARM builds.</li>
-<li>New: <a href="https://watchexec.github.io/downloads/" rel="nofollow">checksums and release signing</a>.</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.7.2](./7.7.2/index.md) <details >
-<summary>
-Released on **2021-04-30**.
-10 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Finalise the build config for Apple M1 builds, which will become available <a href="https://github.com/actions/virtual-environments/issues/2486" data-hovercard-type="issue" data-hovercard-url="/actions/virtual-environments/issues/2486/hovercard">sometime in June/July</a></li>
-<li>Fix an issue with Windows builds via upstream update, see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="871493179" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/192" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/192/hovercard" href="https://github.com/watchexec/watchexec/issues/192">watchexec/watchexec#192</a></li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.7.1](./7.7.1/index.md) <details >
-<summary>
-Released on **2021-04-29**.
-10 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Use <a href="https://lib.rs/crates/cargo_metadata" rel="nofollow">cargo metadata crate</a> to replace cargo root finding logic</li>
-<li>Update <code>insta</code> test helper to maybe help on the cross-platform front (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="868294290" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/170" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/170/hovercard" href="https://github.com/watchexec/cargo-watch/issues/170">#170</a>)</li>
-<li>Include module path in debug logging</li>
-<li>Update other deps</li>
-<li>Remove dependence on an empty tests/touchdata directory for tests to pass</li>
-<li>Run tests in CI again (on Linux)</li>
-<li>Be a little more flexible on the version of watchexec (not quite semver yet!)</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.7.0](./7.7.0/index.md) <details >
-<summary>
-Released on **2021-04-11**.
-10 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Issue policy change / clarification: if an issue is a watchexec issue, it should go there, and issues opened here that ultimately are upstream issues will get moved/closed.</li>
-<li>Upgrade to <a href="https://github.com/watchexec/watchexec/releases/tag/1.15.0">watchexec 1.15</a>.
-<ul>
-<li>Add <code>--shell</code> option</li>
-<li>Add <code>--why</code> switch</li>
-</ul>
-</li>
-<li>Add a manpage (cargo-watch in section 1)</li>
-<li>Add Zsh completions (try them out and tell me if they work well!)</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.6.1](./7.6.1/index.md) <details >
-<summary>
-Released on **2021-03-29**.
-10 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="842897679" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/167" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/167/hovercard" href="https://github.com/watchexec/cargo-watch/issues/167">#167</a> — add escaping to trailing command</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.6.0](./7.6.0/index.md) <details >
-<summary>
-Released on **2021-03-29**.
-10 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="343437887" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/97" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/97/hovercard" href="https://github.com/watchexec/cargo-watch/issues/97">#97</a> We now support the <code>cargo watch -- command...</code> syntax style. That should make it a little more intuitive to those used to comparable unix tools.</li>
-<li>GNU builds on Windows have been dropped</li>
-<li>ARM v7 (hf) and v8 (aarch64) binaries are now available</li>
-<li>DEBs are now available for both amd64 gnu and musl (if that's useful in some way), and for ARM builds</li>
-<li>Builds are done on Github Actions (and are super fast! <g-emoji class="g-emoji" alias="rocket" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png">🚀</g-emoji>)</li>
-<li>MSRV has been bumped to 1.51.0 (not a breaking change as per policy)</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.5.1](./7.5.1/index.md) <details >
-<summary>
-Released on **2021-03-07**.
-6 assets.
-Release notes ↓
-</summary>
-
-> <p>No code changes this release.</p>
-<ul>
-<li><g-emoji class="g-emoji" alias="package" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4e6.png">📦</g-emoji> You can now install from binary using <a href="https://github.com/ryankurte/cargo-binstall">cargo-binstall</a> on Linux and macOS. Windows support will depend on <a href="https://github.com/ryankurte/cargo-binstall/issues/37" data-hovercard-type="issue" data-hovercard-url="/ryankurte/cargo-binstall/issues/37/hovercard">binstall#37</a>.</li>
-<li><g-emoji class="g-emoji" alias="scroll" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4dc.png">📜</g-emoji> For servers, the documentation now recommends <a href="https://github.com/mitsuhiko/systemfd">systemfd</a> over and above <a href="https://github.com/passcod/catflap">catflap</a>.</li>
-<li><g-emoji class="g-emoji" alias="people_holding_hands" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f9d1-1f91d-1f9d1.png">🧑‍🤝‍🧑</g-emoji> The project now officially uses <a href="https://github.com/passcod/cargo-watch/blob/main/CARETAKERS.md">Caretaker Maintainership</a> and <a href="https://github.com/passcod/cargo-watch#troubleshooting">a blurb about maintenance attitude</a> had also been previously added last year. <strong>This may have implications for you, as a user, especially wrt supply chain issues.</strong> The <a href="https://github.com/passcod/cargo-watch/commit/417303e335b8318053dbe9e78b50e5c7210a4600">commit message</a> has more details.</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.5.0](./7.5.0/index.md) <details >
-<summary>
-Released on **2020-07-04**.
-6 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Log format (debugs and warnings) changed as part of the upgrade to <a href="https://github.com/watchexec/watchexec/releases/tag/1.14.0">watchexec 1.14</a></li>
-<li><code>WATCHEXEC_*</code> environment variables are not set for subprocesses anymore. I didn't actually intend to have them in the first place, but chime in if you rely on them!</li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="640629452" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/152" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/152/hovercard" href="https://github.com/watchexec/cargo-watch/pull/152">#152</a> New <code>--features</code> option to pass the <code>--features</code> flag to a selection of cargo commands that support them. E.g. <code>cargo watch --features feat -x check -x test</code> can now be used instead of <code>cargo watch -x 'check --features feat' -x 'test --features feat'</code>.</li>
-<li>Also fixes a bug where a polling message was shown even when <code>--quiet</code> was given.</li>
-</ul>
-<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/155787/86506751-94a38300-be26-11ea-8a73-72f982c699f0.png"><img src="https://user-images.githubusercontent.com/155787/86506751-94a38300-be26-11ea-8a73-72f982c699f0.png" alt="image" style="max-width:100%;"></a></p>
-</details>------------
-
-## [Cargo Watch 7.4.1](./7.4.1/index.md) <details >
-<summary>
-Released on **2020-06-06**.
-6 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="631482106" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/149" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/149/hovercard" href="https://github.com/watchexec/cargo-watch/issues/149">#149</a>: if watched directory didn't contain a .git folder, thread would block (infinite loop)</li>
-<li>Also, #BlackLivesMatter. Closer to home, #ArmsDownNZ (police here wants to arm up, fuck that). Over the pond, #AboriginalLivesMatter. #JunkTerrorBill a bit further away, and spare a thought for Hong Kong, which has been fighting since March last year! I'm not comfortable stating that on Watchexec (which I also maintain and is released concurrently) given it's not, originally, my project, but here I can.</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.4.0](./7.4.0/index.md) <details >
-<summary>
-Released on **2020-06-04**.
-6 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="629931099" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/147" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/147/hovercard" href="https://github.com/watchexec/cargo-watch/issues/147">#147</a> (pulling in watchexec 1.13): now gitignores in subdirs are also honoured</li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="534294928" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/137" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/137/hovercard" href="https://github.com/watchexec/cargo-watch/issues/137">#137</a>: MSRV is documented now, as well as the versioning policy when bumping MSRV</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.3.0](./7.3.0/index.md) <details >
-<summary>
-Released on **2019-11-19**.
-6 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Watchexec 1.12.0</li>
-<li>More documentation on ignore files (<a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/watchexec/cargo-watch/commit/e4e13bee30016d5ee2babfe3d7f739fcaee07cc6/hovercard" href="https://github.com/watchexec/cargo-watch/commit/e4e13bee30016d5ee2babfe3d7f739fcaee07cc6"><tt>e4e13be</tt></a>)</li>
-<li>Bring in <code>--no-ignore</code> support from upstream (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="516806396" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/133" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/133/hovercard" href="https://github.com/watchexec/cargo-watch/pull/133">#133</a>)</li>
-<li>Bring in <code>--watch-when-idle</code> support from upstream (<a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/watchexec/cargo-watch/commit/329aa33f4ddcff5dbb1c291f69c1f7a8d7709025/hovercard" href="https://github.com/watchexec/cargo-watch/commit/329aa33f4ddcff5dbb1c291f69c1f7a8d7709025"><tt>329aa33</tt></a>)</li>
-<li>FYI: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="521250292" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/142" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/142/hovercard" href="https://github.com/watchexec/watchexec/pull/142">watchexec/watchexec#142</a> from upstream has improved <code>--ignore</code> handling!</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.2.2](./7.2.2/index.md) <details >
-<summary>
-Released on **2019-10-28**.
-5 assets.
-Release notes ↓
-</summary>
-
-> <p>From upstream watchexec: <code>.ignore</code> files are now supported.</p>
-</details>------------
-
-## [Cargo Watch 7.2.1](./7.2.1/index.md) Released on 2019-04-08.
-5 assets.------------
-
-## [Cargo Watch 7.2.0](./7.2.0/index.md) <details >
-<summary>
-Released on **2019-02-18**.
-5 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Fixed a crash on error due to <a href="https://github.com/watchexec/watchexec/pull/111" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/111/hovercard">an upstream bug</a>.</li>
-<li>Allowed direct invocation without the <code>watch</code> argument, such that all these now do the same: (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="408366087" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/114" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/114/hovercard" href="https://github.com/watchexec/cargo-watch/pull/114">#114</a>)</li>
-</ul>
-<div class="highlight highlight-source-shell"><pre>$ cargo watch
-$ cargo-watch watch
-$ cargo-watch <span class="pl-c"><span class="pl-c">#</span> &lt;== NEW!</span></pre></div>
-</details>------------
-
-## [Cargo Watch 7.1.1](./7.1.1/index.md) <details >
-<summary>
-Released on **2019-01-29**.
-5 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Fixed a bug on Windows where the wrong command separator was being used (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="404273588" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/113" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/113/hovercard" href="https://github.com/watchexec/cargo-watch/issues/113">#113</a>)</li>
-<li>Added exit code to the finish message in windows, similar to unixes.</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.1.0](./7.1.0/index.md) <details >
-<summary>
-Released on **2019-01-27**.
-5 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>No more quotes or escapes for the start/finish messages, fixing <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="403453075" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/112" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/112/hovercard" href="https://github.com/watchexec/cargo-watch/issues/112">#112</a>.</li>
-<li>The start message was brought into Rust code rather than shell, so quoting doesn't affect it anymore! This may help a few other issues (e.g. <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="391494352" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/107" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/107/hovercard" href="https://github.com/watchexec/cargo-watch/issues/107">#107</a>).</li>
-<li>The finish message is printed regardless of whether the command is successful or not.</li>
-<li>On unixes only for now, the exit status is now reported as part of the finish message.</li>
-<li>LTO and codegen optimisations are now enabled for release builds.</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.0.9](./7.0.9/index.md) <details >
-<summary>
-Released on **2019-01-26**.
-6 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="339340286" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/93" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/93/hovercard" href="https://github.com/watchexec/cargo-watch/issues/93">#93</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="400353967" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/110" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/110/hovercard" href="https://github.com/watchexec/cargo-watch/issues/110">#110</a> fixed through the <a href="https://github.com/watchexec/watchexec/releases/tag/1.10.0">Watchexec 1.10.0 release</a></li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.0.8](./7.0.8/index.md) Released on 2018-12-29.
-6 assets.------------
-
-## [Cargo Watch 7.0.7](./7.0.7/index.md) <details >
-<summary>
-Released on **2018-10-29**.
-7 assets.
-Release notes ↓
-</summary>
-
-> <p>— <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="263616618" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/82" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/82/hovercard?comment_id=432001140&amp;comment_type=issue_comment" href="https://github.com/watchexec/cargo-watch/issues/82#issuecomment-432001140">#82 (comment)</a> — SQLite files are now ignored by default</p>
-</details>------------
-
-## [Cargo Watch 7.0.6](./7.0.6/index.md) <details >
-<summary>
-Released on **2018-10-19**.
-7 assets.
-Release notes ↓
-</summary>
-
-> <p>As well as the GNU ones.</p>
-</details>------------
-
-## [Cargo Watch 7.0.5](./7.0.5/index.md) <details >
-<summary>
-Released on **2018-10-19**.
-6 assets.
-Release notes ↓
-</summary>
-
-> <p><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="371763091" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/100" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/100/hovercard" href="https://github.com/watchexec/cargo-watch/pull/100">#100</a> — thanks to Bruce Guenter — patch</p>
-</details>------------
-
-## [Cargo Watch 7.0.4](./7.0.4/index.md) Released on 2018-09-09.
-6 assets.------------
-
-## [Cargo Watch 7.0.3](./7.0.3/index.md) Released on 2018-09-09.
-5 assets.------------
-
-## [Cargo Watch 7.0.2](./7.0.2/index.md) <details >
-<summary>
-Released on **2018-08-21**.
-5 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Updated watchexec</li>
-<li>Set up CI for automated builds to releases</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 7.0.1](./7.0.1/index.md) <details >
-<summary>
-Released on **2018-08-21**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <p><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="341148247" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/96" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/96/hovercard" href="https://github.com/watchexec/cargo-watch/issues/96">#96</a> — On Windows, fix build — patch</p>
-</details>------------
-
-## [Cargo Watch 7.0.0](./7.0.0/index.md) <details >
-<summary>
-Released on **2018-08-21**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <p><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="306147470" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/89" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/89/hovercard" href="https://github.com/watchexec/cargo-watch/pull/89">#89</a> — On Windows, better support for ignores — breaking</p>
-</details>------------
-
-## [Cargo Watch 6.0.0](./6.0.0/index.md) <details >
-<summary>
-Released on **2017-09-12**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Breaking: change default value of <code>--delay</code> to 0.5 seconds</li>
-<li>Dependency: update to watchexec 1.8.5</li>
-<li>Watchexec: apply <code>--delay</code> value to debounce time as well as poll interval</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 5.1.0](./5.1.0/index.md) <details >
-<summary>
-Released on **2017-07-26**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Feature: <code>--no-restart</code> flag (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="245692556" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/73" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/73/hovercard" href="https://github.com/watchexec/cargo-watch/issues/73">#73</a>)</li>
-<li>Docs: new article for inotify limits (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="238378201" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/72" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/72/hovercard" href="https://github.com/watchexec/cargo-watch/issues/72">#72</a>)</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 5.0.5](./5.0.5/index.md) <details >
-<summary>
-Released on **2017-06-25**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Fix: parse <code>--delay</code> from seconds instead of mistakenly interpreting the argument as milliseconds (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="238378201" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/72" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/72/hovercard" href="https://github.com/watchexec/cargo-watch/issues/72">#72</a>)</li>
-<li>Doc: add "No space left on device" error to troubleshooting section (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="238378201" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/72" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/72/hovercard" href="https://github.com/watchexec/cargo-watch/issues/72">#72</a>)</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 5.0.4](./5.0.4/index.md) <details >
-<summary>
-Released on **2017-05-20**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <ul>
-<li>Improvement: change the current directory to the cargo root at the top level, not at the subcommand level. That should improve <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="228545113" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/71" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/71/hovercard" href="https://github.com/watchexec/cargo-watch/issues/71">#71</a> while still supporting <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="228473054" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/70" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/70/hovercard" href="https://github.com/watchexec/cargo-watch/pull/70">#70</a>.</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 5.0.3](./5.0.3/index.md) <details >
-<summary>
-Released on **2017-05-13**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <p>Bugfix: support directories/paths with spaces (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="228473054" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/70" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/cargo-watch/pull/70/hovercard" href="https://github.com/watchexec/cargo-watch/pull/70">#70</a>)</p>
-</details>------------
-
-## [Cargo Watch 5.0.2](./5.0.2/index.md) <details >
-<summary>
-Released on **2017-05-10**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <p>Bugfix: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="226649562" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/68" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/68/hovercard" href="https://github.com/watchexec/cargo-watch/issues/68">#68</a>, see <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/watchexec/watchexec/commit/6ebb7bc7b31784b7a8b56c9b9ab3697aeb4337f6/hovercard" href="https://github.com/watchexec/watchexec/commit/6ebb7bc7b31784b7a8b56c9b9ab3697aeb4337f6">watchexec/watchexec@<tt>6ebb7bc</tt></a></p>
-</details>------------
-
-## [Cargo Watch 5.0.1](./5.0.1/index.md) <details >
-<summary>
-Released on **2017-04-29**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <p>Following from <a href="https://github.com/mattgreen/watchexec/releases/tag/1.8.3">watchexec 1.8.3</a>, corrected the .git ignore glob and added ones for .hg and .svn.</p>
-</details>------------
-
-## [Cargo Watch 5.0.0](./5.0.0/index.md) <details >
-<summary>
-Released on **2017-04-27**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <p>This is the proper way to implement <a href="https://github.com/passcod/cargo-watch/releases/tag/v5.0.0-justwrapit">Version "5"</a>.</p>
-<p>In a major break from the past, Cargo Watch now depends directly on <a href="https://github.com/mattgreen/watchexec">Watchexec</a>. It uses the newly-landed (contributed by yours truly) library support in watchexec to directly and statically embed it, parsing our own options and figuring out our own defaults and then running watchexec's main loop with the relevant arguments.</p>
-<p>This means that we take advantage of Watchexec's excellent features and fixes in this domain, and can focus entirely on the cargo experience and the specific concerns around it. Notably, this fixes:</p>
-<ul>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="126306738" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/25" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/25/hovercard" href="https://github.com/watchexec/cargo-watch/issues/25">#25</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="221915328" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/63" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/63/hovercard" href="https://github.com/watchexec/cargo-watch/issues/63">#63</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="222031577" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/64" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/64/hovercard" href="https://github.com/watchexec/cargo-watch/issues/64">#64</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="219287165" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/62" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/62/hovercard" href="https://github.com/watchexec/cargo-watch/issues/62">#62</a></li>
-</ul>
-<p>You can install as usual with</p>
-<pre><code>$ cargo install cargo-watch
-</code></pre>
-<p>And upgrade an existing install with:</p>
-<pre><code>$ cargo install --force cargo-watch
-</code></pre>
-<p>If you had previously installed the watchexec binary to make the wrappy version work, and you do not require it anymore, you can safely uninstall it. However, watchexec itself is a great tool and may suit other non-cargo usecases you have well, so consider keeping it.</p>
-</details>------------
-
-## [Cargo Watch 4.0.3](./4.0.3/index.md) <details >
-<summary>
-Released on **2017-04-01**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <p>Bugfix:</p>
-<ul>
-<li>Also ignore .git folder by default</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 4.0.2](./4.0.2/index.md) <details >
-<summary>
-Released on **2017-03-31**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <p>Bugfixes</p>
-<ul>
-<li>Wait on a process after killing it, as per Duct documentation.</li>
-<li>Fix an issue with the way <code>echo</code> was called that caused it not to work on Windows <code>cmd</code>. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="218293012" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/59" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/59/hovercard" href="https://github.com/watchexec/cargo-watch/issues/59">#59</a>)</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 4.0.1](./4.0.1/index.md) <details >
-<summary>
-Released on **2017-03-30**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <p>Bugfix:</p>
-<ul>
-<li>A command exiting with a non-0 status was hanging the Duct job, which in turn caused a check on the next iteration to abort Cargo Watch. Jobs no longer hang when commands fail, and this check no longer causes an abort. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="217938714" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/57" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/57/hovercard" href="https://github.com/watchexec/cargo-watch/issues/57">#57</a>)</li>
-</ul>
-</details>------------
-
-## [Cargo Watch 4.0.0](./4.0.0/index.md) <details >
-<summary>
-Released on **2017-03-29**.
-0 assets.
-Release notes ↓
-</summary>
-
-> <p>Breaking changes:</p>
-<ul>
-<li>The command is now run immediately, instead of waiting for changes first (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="141091694" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/37" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/37/hovercard" href="https://github.com/watchexec/cargo-watch/issues/37">#37</a>)</li>
-<li>New CLI usage. The simple invocation hasn't changed, but everything else has.</li>
-<li>You now have to use <code>-x &lt;cmd&gt;</code> to run custom cargo commands (multiple times as needed).</li>
-</ul>
-<p>New features:</p>
-<ul>
-<li>Watch everything: the entire project is watched, but the target/ folder is ignored by default. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="129982042" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/31" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/31/hovercard" href="https://github.com/watchexec/cargo-watch/issues/31">#31</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="140781236" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/35" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/35/hovercard" href="https://github.com/watchexec/cargo-watch/issues/35">#35</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="157529618" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/39" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/39/hovercard" href="https://github.com/watchexec/cargo-watch/issues/39">#39</a>)</li>
-<li>You can decide to instead watch specific folders with <code>-w &lt;folder&gt;</code> (multiple times as needed).</li>
-<li>Gitignore support: <code>.gitignore</code> files are found and parsed recursively through the repo. This can be disabled with <code>--no-gitignore</code>.</li>
-<li>Custom ignore rules can be specified with <code>-i &lt;pattern&gt;</code> (multiple times as needed).</li>
-<li>If you absolutely need to, you can explicitly require that no ignoring is applied: <code>--ignore-nothing</code>.</li>
-<li>You can suppress all of cargo-watch's output with <code>-q</code>, leaving only the output from the commands.</li>
-<li>You can run arbitrary commands with <code>-s &lt;cmd&gt;</code> (for <code>--shell</code>) (multiple times as needed).</li>
-<li>You can customise the debouncing delay with <code>--delay</code> or <code>-d</code>, in seconds.</li>
-</ul>
-<p>Features from 3.2.0 (which was just a few days ago so might be shadowed by this release):</p>
-<ul>
-<li>You can force cargo-watch to use polling instead of the native API with <code>--poll</code>.</li>
-<li>It will automatically fallback to polling if the native API fails to start.</li>
-<li>You can clear the screen between runs with <code>--clear</code> or <code>-c</code>.</li>
-</ul>
-<p>Server development (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="126306738" data-permission-text="Title is private" data-url="https://github.com/watchexec/cargo-watch/issues/25" data-hovercard-type="issue" data-hovercard-url="/watchexec/cargo-watch/issues/25/hovercard" href="https://github.com/watchexec/cargo-watch/issues/25">#25</a>) is still not quite supported, but is expected to make it in soon in a point release.</p>
-</details>------------
-
+{{#title Download Cargo Watch - Watchexec}}
+
+## Latest release: 8.1.2
+
+<table class="downloads">
+<thead>
+<tr>
+<th>OS</th>
+<th>Arch</th>
+<th>Variant</th>
+<th>Download</th>
+
+</tr>
+</thead>
+<tbody>
+<tr>
+						<td rowspan="12">Linux</td>
+						
+<td rowspan="3">AArch64</td>
+            
+						
+<td rowspan="3">glibc</td>
+            
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-aarch64-unknown-linux-gnu.deb">DEB</a> (1 MB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+						
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-aarch64-unknown-linux-gnu.rpm">RPM</a> (1.2 MB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+						
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-aarch64-unknown-linux-gnu.tar.xz">XZ</a> (1 MB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+<td rowspan="3">ARMv7 HF</td>
+            
+						
+<td rowspan="3">glibc</td>
+            
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-armv7-unknown-linux-gnueabihf.deb">DEB</a> (1.1 MB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+						
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-armv7-unknown-linux-gnueabihf.rpm">RPM</a> (1.3 MB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+						
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-armv7-unknown-linux-gnueabihf.tar.xz">XZ</a> (1.1 MB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+<td rowspan="6">x86-64</td>
+            
+						
+<td rowspan="3">glibc</td>
+            
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-gnu.deb">DEB</a> (805 KB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+						
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-gnu.rpm">RPM</a> (875 KB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+						
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-gnu.tar.xz">XZ</a> (791 KB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+						
+<td rowspan="3">musl</td>
+            
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-musl.deb">DEB</a> (823 KB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+						
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-musl.rpm">RPM</a> (884 KB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+						
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-musl.tar.xz">XZ</a> (809 KB)</td>
+						
+</tr>
+					
+<tr>
+						<td rowspan="1">Windows</td>
+						
+<td rowspan="1">x86-64</td>
+            
+						
+<td rowspan="1">MSVC</td>
+            
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-pc-windows-msvc.zip">Zip</a> (816 KB)</td>
+						
+</tr>
+					</tbody>
+</table>
+
+
+## 43 releases available:
+
+
+- [Cargo Watch 8.1.2](./8.1.2/index.md) 2021-11-16
+- [Cargo Watch 8.1.1](./8.1.1/index.md) 2021-09-22
+- [Cargo Watch 8.1.0](./8.1.0/index.md) 2021-09-21
+- [Cargo Watch 8.0.0](./8.0.0/index.md) 2021-07-30
+- [Cargo Watch 7.8.1](./7.8.1/index.md) 2021-07-15
+- [Cargo Watch 7.8.0](./7.8.0/index.md) 2021-05-01
+- [Cargo Watch 7.7.2](./7.7.2/index.md) 2021-04-30
+- [Cargo Watch 7.7.1](./7.7.1/index.md) 2021-04-29
+- [Cargo Watch 7.7.0](./7.7.0/index.md) 2021-04-11
+- [Cargo Watch 7.6.1](./7.6.1/index.md) 2021-03-29
+- [Cargo Watch 7.6.0](./7.6.0/index.md) 2021-03-29
+- [Cargo Watch 7.5.1](./7.5.1/index.md) 2021-03-07
+- [Cargo Watch 7.5.0](./7.5.0/index.md) 2020-07-04
+- [Cargo Watch 7.4.1](./7.4.1/index.md) 2020-06-06
+- [Cargo Watch 7.4.0](./7.4.0/index.md) 2020-06-04
+- [Cargo Watch 7.3.0](./7.3.0/index.md) 2019-11-19
+- [Cargo Watch 7.2.2](./7.2.2/index.md) 2019-10-28
+- [Cargo Watch 7.2.1](./7.2.1/index.md) 2019-04-08
+- [Cargo Watch 7.2.0](./7.2.0/index.md) 2019-02-18
+- [Cargo Watch 7.1.1](./7.1.1/index.md) 2019-01-29
+- [Cargo Watch 7.1.0](./7.1.0/index.md) 2019-01-27
+- [Cargo Watch 7.0.9](./7.0.9/index.md) 2019-01-26
+- [Cargo Watch 7.0.8](./7.0.8/index.md) 2018-12-29
+- [Cargo Watch 7.0.7](./7.0.7/index.md) 2018-10-29
+- [Cargo Watch 7.0.6](./7.0.6/index.md) 2018-10-19
+- [Cargo Watch 7.0.5](./7.0.5/index.md) 2018-10-19
+- [Cargo Watch 7.0.4](./7.0.4/index.md) 2018-09-09
+- [Cargo Watch 7.0.3](./7.0.3/index.md) 2018-09-09
+- [Cargo Watch 7.0.2](./7.0.2/index.md) 2018-08-21
+- [Cargo Watch 7.0.1](./7.0.1/index.md) 2018-08-21
+- [Cargo Watch 7.0.0](./7.0.0/index.md) 2018-08-21
+- [Cargo Watch 6.0.0](./6.0.0/index.md) 2017-09-12
+- [Cargo Watch 5.1.0](./5.1.0/index.md) 2017-07-26
+- [Cargo Watch 5.0.5](./5.0.5/index.md) 2017-06-25
+- [Cargo Watch 5.0.4](./5.0.4/index.md) 2017-05-20
+- [Cargo Watch 5.0.3](./5.0.3/index.md) 2017-05-13
+- [Cargo Watch 5.0.2](./5.0.2/index.md) 2017-05-10
+- [Cargo Watch 5.0.1](./5.0.1/index.md) 2017-04-29
+- [Cargo Watch 5.0.0](./5.0.0/index.md) 2017-04-27
+- [Cargo Watch 4.0.3](./4.0.3/index.md) 2017-04-01
+- [Cargo Watch 4.0.2](./4.0.2/index.md) 2017-03-31
+- [Cargo Watch 4.0.1](./4.0.1/index.md) 2017-03-30
+- [Cargo Watch 4.0.0](./4.0.0/index.md) 2017-03-29
 
 
 >	
->	this page built on 2022-02-19 at 02:21 UTC
->	| generator v0.0.1
+>	this page built on 2022-02-19 at 03:29
+>	| generator v0.0.2
 >	| [latest meta](latest.json)
 

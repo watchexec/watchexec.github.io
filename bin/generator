@@ -8,7 +8,7 @@ mtime() {
 
 mtime_bin=$(mtime generator/target/debug/generator)
 recompile=""
-for f in generator/src/*; do
+for f in generator/Cargo.* generator/src/*; do
   if test "$(mtime $f)" -gt "$mtime_bin"; then
     recompile="yes"
   fi
