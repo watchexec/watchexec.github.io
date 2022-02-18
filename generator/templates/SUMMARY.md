@@ -10,7 +10,7 @@
 
 # Project Updates
 
-
+- [Cargo Watch 9.0](./blog/cargo-watch-9.md)
 
 # Releases
 
