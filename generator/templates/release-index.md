@@ -6,7 +6,7 @@
 {{ versions | length }} releases available:
 
 {% for v in versions | reverse %}
-## [{{ app.name }} {{ v.version }}](/downloads/{{ app.slug }}/{{ v.version }}/) {% if loop.first %}(latest){% endif %}
+## [{{ app.name }} {{ v.version }}](./{{ v.version }}/index.md) {% if loop.first %}(latest){% endif %}
 
 {%- if v.notes -%}
 <details {% if loop.first %}open{% endif %}>

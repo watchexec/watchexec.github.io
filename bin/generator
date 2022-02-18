@@ -2,8 +2,22 @@
 
 set -euo pipefail
 
-cd generator
-cargo build
-cd ..
+mtime() {
+  stat --format="%Y" $1
+}
+
+mtime_bin=$(mtime generator/target/debug/generator)
+recompile=""
+for f in generator/src/*; do
+  if test "$(mtime $f)" -gt "$mtime_bin"; then
+    recompile="yes"
+  fi
+done
+
+if [[ ! -z "$recompile" ]]; then
+  cd generator
+  cargo build
+  cd ..
+fi
 
 exec generator/target/debug/generator $@ --config generators.yml

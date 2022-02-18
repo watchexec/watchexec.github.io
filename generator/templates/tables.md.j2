@@ -1,8 +1,8 @@
 {% macro notes(notes) %}
 {%- if notes -%}
->	**Release notes**
->
->	{{ notes | safe }}
+### Release notes
+
+{{ notes | safe }}
 {%- endif -%}
 {% endmacro notes %}
 

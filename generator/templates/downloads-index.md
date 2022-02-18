@@ -12,7 +12,7 @@ Latest release: {{ watchexec.latest.version }} ({{ watchexec.latest.published | 
 
 {{ tables::signatures(sums=watchexec.latest.sums) }}
 
-**[→ Previous releases](/downloads/{{ watchexec.app.slug }}/)**
+**[→ Previous releases](./{{ watchexec.app.slug }}/index.md)**
 
 ## Cargo Watch
 
@@ -24,5 +24,5 @@ Latest release: {{ cargo_watch.latest.version }} ({{ cargo_watch.latest.publishe
 
 {{ tables::signatures(sums=cargo_watch.latest.sums) }}
 
-**[→ Previous releases](/downloads/{{ cargo_watch.app.slug }}/)**
+**[→ Previous releases](./{{ cargo_watch.app.slug }}/index.md)**
 

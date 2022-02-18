@@ -9,7 +9,7 @@ done
 
 for apppath in src/downloads/*; do
 	[[ ! -d "$apppath" ]] && continue
-	app=$(cut -d/ -f2 <<< "$apppath")
+	app=$(cut -d/ -f3 <<< "$apppath")
 
 	echo -e "\n> rebuilding release index for $app"
 	bin/generator release-index --app "$app"
