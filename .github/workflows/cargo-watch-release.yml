@@ -34,3 +34,7 @@ jobs:
         if: env.new_version
         with:
           commit_message: Cargo Watch ${{ env.new_version }}
+
+  deploy:
+    needs: build
+    uses: ./.github/workflows/deploy.yml
