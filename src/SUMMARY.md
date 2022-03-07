@@ -10,8 +10,6 @@
 
 # Project Updates
 
-- [The road to Watchexec 2: Tokio](./blog/road-to-watchexec-2-tokio.md)
-
 # Releases
 
 - [Downloads](./downloads/index.md)
