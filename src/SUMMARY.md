@@ -10,11 +10,14 @@
 
 # Project Updates
 
+- [The road to Watchexec 2: Tokio](./blog/road-to-watchexec-2-tokio.md)
+
 # Releases
 
 - [Downloads](./downloads/index.md)
   - [Watchexec](./downloads/watchexec/index.md)
     
+    - [Watchexec 1.18.8](./downloads/watchexec/1.18.8/index.md)
     - [Watchexec 1.18.7](./downloads/watchexec/1.18.7/index.md)
     - [Watchexec 1.18.6](./downloads/watchexec/1.18.6/index.md)
     - [Watchexec 1.18.5](./downloads/watchexec/1.18.5/index.md)
