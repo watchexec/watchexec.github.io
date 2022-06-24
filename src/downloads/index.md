@@ -2,19 +2,33 @@
 
 ## Watchexec CLI
 
-Latest release: [1.19.0](./watchexec/1.19.0/index.md) (2022-04-15)
+Latest release: [1.20.0](./watchexec/1.20.0/index.md) (2022-06-23)
 
 ### Release notes
 
 <ul dir="auto">
-<li>Decrease default debounce timeout to 50ms (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="710961239" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/168" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/168/hovercard" href="https://github.com/watchexec/watchexec/issues/168">#168</a>).</li>
-<li>Add notice that the <code>--shell</code> default will be changing on Unix (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="979180368" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/210" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/210/hovercard" href="https://github.com/watchexec/watchexec/issues/210">#210</a>).</li>
-<li>New option <code>--project-origin</code> provides an override which can be useful when the project origin is misdetected, or if you want to stop watchexec from looking for ignore files in (some) parent directories (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1113916874" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/246" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/246/hovercard" href="https://github.com/watchexec/watchexec/issues/246">#246</a>).</li>
-<li>New option <code>--workdir</code> sets the command's working directory independent of Watchexec's.</li>
-<li>New option <code>--env</code> (short: <code>-E</code>) adds environment variables to the command without affecting Watchexec itself.</li>
+<li>Watchexec should not refuse to quit if there are too many events anymore. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1268153992" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/302" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/302/hovercard" href="https://github.com/watchexec/watchexec/pull/302">#302</a>, <a href="https://github.com/watchexec/watchexec/blob/main/crates/lib/CHANGELOG.md#v200-2022-06-17">lib 2.0.0</a>)</li>
+<li>The help text is reorganised in semantic sections rather than options/flags. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1268186947" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/304" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/304/hovercard" href="https://github.com/watchexec/watchexec/pull/304">#304</a>)</li>
+<li>Verbose logs now may include even more logging (from third-party libraries). (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1263061262" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/300" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/300/hovercard" href="https://github.com/watchexec/watchexec/pull/300">#300</a>)</li>
+<li>All arguments must now be valid UTF-8. Previously the command and the <code class="notranslate">-E</code> flag would accept but silently discard invalid UTF-8, now watchexec errors on such input. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1273357615" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/317" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/317/hovercard" href="https://github.com/watchexec/watchexec/pull/317">#317</a>)</li>
+<li>New <code class="notranslate">--log-file</code> option makes it easier to collect logs without polluting the screen. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1273684138" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/321" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/321/hovercard" href="https://github.com/watchexec/watchexec/pull/321">#321</a>)</li>
+<li>New <code class="notranslate">--delay-run</code> option adds a configurable sleep before running the command. A native, cross-platform alternative to <code class="notranslate">sleep N; command...</code>! (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="308561423" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/79" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/79/hovercard" href="https://github.com/watchexec/watchexec/issues/79">#79</a>)</li>
 </ul>
+<p dir="auto">Additionally, some repo changes:</p>
+<ul dir="auto">
+<li>PRs are now exclusively merged by <a href="https://bors.tech" rel="nofollow">Bors</a>, and pushing directly to <code class="notranslate">main</code> is not allowed.</li>
+<li>There's a PR-based (and thus Bors-assisted) release workflow, rather than initiating releases from a local checkout. For example, this release was made with PR <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1282136554" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/337" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/337/hovercard" href="https://github.com/watchexec/watchexec/pull/337">#337</a>.</li>
+<li>Github Discussions are enabled, and should be used for asking questions, discussing the project or features, and comments on releases. Feature requests and bug reports should go to the Issues as before.
+<ul dir="auto">
+<li>One exception is discussion of "<a href="https://github.com/watchexec/watchexec/discussions/332" data-hovercard-type="discussion" data-hovercard-url="/watchexec/watchexec/discussions/332/hovercard">Known Issues</a>", which has its own topic to keep the Issues list focused on discrete problems.</li>
+</ul>
+</li>
+<li>The scheme for releases has changed slightly: only CLI releases will show up in GitHub releases, so the <a href="https://github.com/watchexec/watchexec/releases/latest">/latest link</a> will always point to the last CLI release; the library and other crates now have their own, file-based <a href="https://github.com/watchexec/watchexec/blob/main/crates/lib/CHANGELOG.md">CHANGELOG.md</a>.</li>
+</ul>
+<p dir="auto">Not directly related to the CLI, but the <a href="https://docs.rs/watchexec" rel="nofollow">library 2.0.0 version</a> has now been released as stable! Full semver applies again.</p>
+<p dir="auto">Known issue with some packages: DEB and RPM packages may be missing dependencies due to being auto-generated instead of lovingly handcrafted. Prefer distributions from packagers rather than these ones, which are just provided on an ad-hoc, if convenient, as-is, basis.</p>
 
-**[→ Download this release](./watchexec/1.19.0/index.md)**
+**[→ Download this release](./watchexec/1.20.0/index.md)**
 
 [→ Previous releases](./watchexec/index.md)
 
