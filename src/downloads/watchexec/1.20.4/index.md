@@ -1,7 +1,13 @@
-# Download Watchexec
-{{#title Download Watchexec - Watchexec}}
+# Watchexec 1.20.4
 
-## Latest release: 1.20.4
+## Release notes
+
+<ul dir="auto">
+<li>Remove CLI help tests. They'll be replaced with brand new integration testing that's not obnoxious. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1290482783" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/362" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/362/hovercard" href="https://github.com/watchexec/watchexec/issues/362">#362</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1291411749" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/363" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/363/hovercard" href="https://github.com/watchexec/watchexec/pull/363">#363</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1291446393" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/365" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/365/hovercard" href="https://github.com/watchexec/watchexec/pull/365">#365</a>)</li>
+<li>Fix the install filenames for first-party RPM packagings, and possibly for DEBs as well. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1258178675" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/292" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/292/hovercard" href="https://github.com/watchexec/watchexec/issues/292">#292</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1291413928" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/364" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/364/hovercard" href="https://github.com/watchexec/watchexec/pull/364">#364</a>)</li>
+</ul>
+
+## Packages
 
 <table class="downloads">
 <thead>
@@ -189,82 +195,68 @@
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.20.4/watchexec-1.20.4-x86_64-pc-windows-msvc.zip">Zip</a> (1.9 MB)</td>
 						
 </tr>
+					
+<tr>
+						<td rowspan="2">macOS</td>
+						
+<td rowspan="1">AArch64</td>
+            
+						
+<td rowspan="1"></td>
+            
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.20.4/watchexec-1.20.4-aarch64-apple-darwin.tar.xz">XZ</a> (1.1 MB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+<td rowspan="1">x86-64</td>
+            
+						
+<td rowspan="1"></td>
+            
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/cli-v1.20.4/watchexec-1.20.4-x86_64-apple-darwin.tar.xz">XZ</a> (1.3 MB)</td>
+						
+</tr>
 					</tbody>
 </table>
 
 
-## 65 releases available:
+View release [on GitHub](https://github.com/watchexec/watchexec/releases/cli-v1.20.4).
+
+## Checksums
+
+<table class="signatures">
+	
+<tr>
+<th><a href="https://github.com/watchexec/watchexec/releases/download/cli-v1.20.4/B3SUMS">BLAKE3 checksums</a></th>
+		
+<td>
+<a href="https://github.com/watchexec/watchexec/releases/download/cli-v1.20.4/B3SUMS.auto.minisig">Automated signature</a>
+(<a href="https://raw.githubusercontent.com/watchexec/watchexec/cli-v1.20.4/.github/workflows/release.pub">key</a>)
+</td>
+		
+</tr>
+	
+<tr>
+<th><a href="https://github.com/watchexec/watchexec/releases/download/cli-v1.20.4/SHA512SUMS">SHA512 checksums</a></th>
+		
+<td>
+<a href="https://github.com/watchexec/watchexec/releases/download/cli-v1.20.4/SHA512SUMS.auto.minisig">Automated signature</a>
+(<a href="https://raw.githubusercontent.com/watchexec/watchexec/cli-v1.20.4/.github/workflows/release.pub">key</a>)
+</td>
+		
+</tr>
+	
+</table>
 
 
-- [Watchexec 1.20.4](./1.20.4/index.md) 2022-07-01
-- [Watchexec 1.20.3](./1.20.3/index.md) 2022-06-29
-- [Watchexec 1.20.2](./1.20.2/index.md) 2022-06-28
-- [Watchexec 1.20.1](./1.20.1/index.md) 2022-06-28
-- [Watchexec 1.20.0](./1.20.0/index.md) 2022-06-23
-- [Watchexec 1.19.0](./1.19.0/index.md) 2022-04-15
-- [Watchexec 1.18.12](./1.18.12/index.md) 2022-04-12
-- [Watchexec 1.18.11](./1.18.11/index.md) 2022-03-27
-- [Watchexec 1.18.10](./1.18.10/index.md) 2022-03-27
-- [Watchexec 1.18.9](./1.18.9/index.md) 2022-03-18
-- [Watchexec 1.18.8](./1.18.8/index.md) 2022-03-16
-- [Watchexec 1.18.7](./1.18.7/index.md) 2022-03-07
-- [Watchexec 1.18.6](./1.18.6/index.md) 2022-02-07
-- [Watchexec 1.18.5](./1.18.5/index.md) 2022-01-30
-- [Watchexec 1.18.4](./1.18.4/index.md) 2022-01-25
-- [Watchexec 1.18.3](./1.18.3/index.md) 2022-01-25
-- [Watchexec 1.18.2](./1.18.2/index.md) 2022-01-24
-- [Watchexec 1.18.1](./1.18.1/index.md) 2022-01-23
-- [Watchexec 1.18.0](./1.18.0/index.md) 2022-01-18
-- [Watchexec 1.17.1](./1.17.1/index.md) 2021-07-30
-- [Watchexec 1.17.0](./1.17.0/index.md) 2021-07-21
-- [Watchexec 1.16.2](./1.16.2/index.md) 2021-07-10
-- [Watchexec 1.16.1](./1.16.1/index.md) 2021-05-22
-- [Watchexec 1.16.0](./1.16.0/index.md) 2021-05-08
-- [Watchexec 1.15.3](./1.15.3/index.md) 2021-04-30
-- [Watchexec 1.15.2](./1.15.2/index.md) 2021-04-26
-- [Watchexec 1.15.1](./1.15.1/index.md) 2021-04-17
-- [Watchexec 1.15.0](./1.15.0/index.md) 2021-04-10
-- [Watchexec 1.14.1](./1.14.1/index.md) 2020-09-30
-- [Watchexec 1.14.0](./1.14.0/index.md) 2020-07-03
-- [Watchexec 1.13.1](./1.13.1/index.md) 2020-06-06
-- [Watchexec 1.13.0](./1.13.0/index.md) 2020-06-04
-- [Watchexec 1.12.0](./1.12.0/index.md) 2019-11-19
-- [Watchexec 1.11.1](./1.11.1/index.md) 2019-10-28
-- [Watchexec 1.11.0](./1.11.0/index.md) 2019-10-28
-- [Watchexec 1.10.3](./1.10.3/index.md) 2019-07-29
-- [Watchexec 1.10.2](./1.10.2/index.md) 2019-05-29
-- [Watchexec 1.10.1](./1.10.1/index.md) 2019-02-18
-- [Watchexec 1.10.0](./1.10.0/index.md) 2019-01-26
-- [Watchexec 1.9.2](./1.9.2/index.md) 2018-09-09
-- [Watchexec 1.9.1](./1.9.1/index.md) 2018-09-09
-- [Watchexec 1.9.0](./1.9.0/index.md) 2018-08-19
-- [Watchexec 1.8.6](./1.8.6/index.md) 2017-10-09
-- [Watchexec 1.8.5](./1.8.5/index.md) 2017-09-08
-- [Watchexec 1.8.4](./1.8.4/index.md) 2017-05-18
-- [Watchexec 1.8.3](./1.8.3/index.md) 2017-04-27
-- [Watchexec 1.8.2](./1.8.2/index.md) 2017-04-27
-- [Watchexec 1.8.1](./1.8.1/index.md) 2017-04-26
-- [Watchexec 1.8.0](./1.8.0/index.md) 2017-04-19
-- [Watchexec 1.7.0](./1.7.0/index.md) 2017-02-05
-- [Watchexec 1.6.1](./1.6.1/index.md) 2017-01-16
-- [Watchexec 1.6.0](./1.6.0/index.md) 2016-12-19
-- [Watchexec 1.5.0](./1.5.0/index.md) 2016-11-23
-- [Watchexec 1.4.0](./1.4.0/index.md) 2016-11-08
-- [Watchexec 1.3.0](./1.3.0/index.md) 2016-11-03
-- [Watchexec 1.2.3](./1.2.3/index.md) 2016-10-29
-- [Watchexec 1.2.2](./1.2.2/index.md) 2016-10-28
-- [Watchexec 1.2.1](./1.2.1/index.md) 2016-10-26
-- [Watchexec 1.2.0](./1.2.0/index.md) 2016-10-25
-- [Watchexec 1.0.0](./1.0.0/index.md) 2016-10-15
-- [Watchexec 0.11.0](./0.11.0/index.md) 2016-10-12
-- [Watchexec 0.10.0](./0.10.0/index.md) 2016-09-24
-- [Watchexec 0.9.0](./0.9.0/index.md) 2016-09-24
-- [Watchexec 0.8.0](./0.8.0/index.md) 2016-09-22
-- [Watchexec 0.7.0](./0.7.0/index.md) 2016-09-19
 
 
->	
->	this page built on 2022-07-01 at 15:49
+>	 version released on 2022-07-01
+>	|
+>	this page built on 2022-07-01 at 15:48
 >	| generator v0.0.2
->	| [latest meta](latest.json)
+>	| [json metadata](meta.json)
 

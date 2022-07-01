@@ -2,15 +2,16 @@
 
 ## Watchexec CLI
 
-Latest release: [1.20.3](./watchexec/1.20.3/index.md) (2022-06-29)
+Latest release: [1.20.4](./watchexec/1.20.4/index.md) (2022-07-01)
 
 ### Release notes
 
 <ul dir="auto">
-<li>Dependencies are set manually for first-party deb and rpm packages, so they should install without error. A note that these are provided on a best-effort basis and not tested; when available you should prefer your distribution's packaging. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1258178675" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/292" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/292/hovercard" href="https://github.com/watchexec/watchexec/issues/292">#292</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1288064819" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/358" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/358/hovercard" href="https://github.com/watchexec/watchexec/pull/358">#358</a>)</li>
+<li>Remove CLI help tests. They'll be replaced with brand new integration testing that's not obnoxious. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1290482783" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/362" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/362/hovercard" href="https://github.com/watchexec/watchexec/issues/362">#362</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1291411749" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/363" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/363/hovercard" href="https://github.com/watchexec/watchexec/pull/363">#363</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1291446393" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/365" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/365/hovercard" href="https://github.com/watchexec/watchexec/pull/365">#365</a>)</li>
+<li>Fix the install filenames for first-party RPM packagings, and possibly for DEBs as well. (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1258178675" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/292" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/292/hovercard" href="https://github.com/watchexec/watchexec/issues/292">#292</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1291413928" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/364" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/364/hovercard" href="https://github.com/watchexec/watchexec/pull/364">#364</a>)</li>
 </ul>
 
-**[→ Download this release](./watchexec/1.20.3/index.md)**
+**[→ Download this release](./watchexec/1.20.4/index.md)**
 
 [→ Previous releases](./watchexec/index.md)
 
