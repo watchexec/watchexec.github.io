@@ -11,7 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: Swatinem/rust-cache@v2
-        working-directory: generator
+        with:
+          workspaces: "generator -> generator/target"
       - name: Prep generator
         run: bin/generator lint
 
