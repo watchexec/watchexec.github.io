@@ -43,7 +43,6 @@
             
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-aarch64-unknown-linux-gnu.deb">DEB</a> (5.8 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -52,7 +51,6 @@
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-aarch64-unknown-linux-gnu.rpm">RPM</a> (6.4 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -60,7 +58,6 @@
 						
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-aarch64-unknown-linux-gnu.tar.xz">XZ</a> (5.8 MB)</td>
-						
 						
 </tr>
 					
@@ -72,7 +69,6 @@
             
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-aarch64-unknown-linux-musl.deb">DEB</a> (6.1 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -81,7 +77,6 @@
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-aarch64-unknown-linux-musl.rpm">RPM</a> (6.7 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -89,7 +84,6 @@
 						
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-aarch64-unknown-linux-musl.tar.xz">XZ</a> (6.1 MB)</td>
-						
 						
 </tr>
 					
@@ -103,7 +97,6 @@
             
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-armv7-unknown-linux-gnueabihf.deb">DEB</a> (6 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -112,7 +105,6 @@
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-armv7-unknown-linux-gnueabihf.rpm">RPM</a> (6.6 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -120,7 +112,6 @@
 						
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-armv7-unknown-linux-gnueabihf.tar.xz">XZ</a> (5.9 MB)</td>
-						
 						
 </tr>
 					
@@ -134,7 +125,6 @@
             
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-s390x-unknown-linux-gnu.deb">DEB</a> (6.9 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -143,7 +133,6 @@
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-s390x-unknown-linux-gnu.rpm">RPM</a> (7.8 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -151,7 +140,6 @@
 						
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-s390x-unknown-linux-gnu.tar.xz">XZ</a> (6.9 MB)</td>
-						
 						
 </tr>
 					
@@ -165,7 +153,6 @@
             
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-powerpc64le-unknown-linux-gnu.deb">DEB</a> (6 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -174,7 +161,6 @@
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-powerpc64le-unknown-linux-gnu.rpm">RPM</a> (6.5 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -182,7 +168,6 @@
 						
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-powerpc64le-unknown-linux-gnu.tar.xz">XZ</a> (5.9 MB)</td>
-						
 						
 </tr>
 					
@@ -196,7 +181,6 @@
             
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-i686-unknown-linux-musl.deb">DEB</a> (8.9 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -205,7 +189,6 @@
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-i686-unknown-linux-musl.rpm">RPM</a> (9 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -213,7 +196,6 @@
 						
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-i686-unknown-linux-musl.tar.xz">XZ</a> (8.9 MB)</td>
-						
 						
 </tr>
 					
@@ -227,7 +209,6 @@
             
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-x86_64-unknown-linux-gnu.deb">DEB</a> (8.3 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -236,7 +217,6 @@
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-x86_64-unknown-linux-gnu.rpm">RPM</a> (8.5 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -244,7 +224,6 @@
 						
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-x86_64-unknown-linux-gnu.tar.xz">XZ</a> (8.3 MB)</td>
-						
 						
 </tr>
 					
@@ -256,7 +235,6 @@
             
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-x86_64-unknown-linux-musl.deb">DEB</a> (8.7 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -265,7 +243,6 @@
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-x86_64-unknown-linux-musl.rpm">RPM</a> (8.9 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -273,7 +250,6 @@
 						
 						
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-x86_64-unknown-linux-musl.tar.xz">XZ</a> (8.7 MB)</td>
-						
 						
 </tr>
 					
@@ -287,7 +263,6 @@
             
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-x86_64-pc-windows-msvc.zip">Zip</a> (1.9 MB)</td>
 						
-						
 </tr>
 					
 <tr>
@@ -299,7 +274,6 @@
 <td rowspan="1"></td>
             
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v1.20.6/watchexec-1.20.6-x86_64-apple-darwin.tar.xz">XZ</a> (1.4 MB)</td>
-						
 						
 </tr>
 					</tbody>
@@ -339,7 +313,7 @@ View release [on GitHub](https://github.com/watchexec/watchexec/releases/v1.20.6
 
 >	 version released on 2022-09-07
 >	|
->	this page built on 2026-03-30 at 18:17
+>	this page built on 2026-03-30 at 18:36
 >	| generator v0.0.2
 >	| [json metadata](meta.json)
 
