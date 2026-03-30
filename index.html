@@ -73,58 +73,6 @@
 	</nav>
 </section>
 
-<section id="cargo-watch">
-	<h2>
-		<img class="logo-icon" src="/logo:cargo-watch.svg" alt="Logo">
-		Cargo Watch
-	</h2>
-
-	<div class="alternatives">
-		<code class="alt oneline shell">
-			<span class="prompt">$&gt;</span>
-			<span class="command">cargo</span>
-			<span class="subcommand">watch</span>
-		</code>
-		<code class="alt oneline shell">
-			<span class="prompt">$&gt;</span>
-			<span class="command">cargo</span>
-			<span class="subcommand">watch</span>
-			<span class="wbr" aria-hidden="true">\<br></span
-			><span class="sigil">--</span>
-			<span class="command">cargo</span>
-			<span class="subcommand">test</span>
-		</code>
-		<code class="alt oneline shell">
-			<span class="prompt">$&gt;</span>
-			<span class="command">cargo</span>
-			<span class="subcommand">watch</span>
-			<span class="wbr" aria-hidden="true">\<br></span
-			><span class="option">-x</span>
-			<span class="subcommand">clippy</span>
-			<span class="wbr" aria-hidden="true">\<br></span
-			><span class="option">-x</span>
-			<span class="string"
-				>"<span class="subcommand">test</span>
-				<span class="option">--exact</span>
-				<span class="argument">ice_cream</span
-			>"</span>
-		</code>
-	</div>
-
-	<p class="pitch">
-		Build your <a href="https://rust-lang.org">Rust</a> project. Two words
-		to get going, more opportunities at your fingertips. Fit for Cargo, fit
-		for life. Your code is in good hands. <em>Oxidise it!</em>
-	</p>
-
-	<nav class="places">
-		<a class="primary" href="/downloads/cargo-watch/">📦 Download</a>
-		<a href="https://github.com/watchexec/cargo-watch">📜 Source</a>
-		<a href="https://github.com/watchexec/cargo-watch/issues">🐞 Issues</a>
-		<a href="/docs/cargo-watch/">📖 Documentation</a>
-	</nav>
-</section>
-
 <section id="watchexec-lib">
 	<h2>
 		<img class="logo-icon" src="/logo:watchexec.svg" alt="Logo">
@@ -177,49 +125,107 @@
 	</nav>
 </section>
 
-<section id="command-group">
+<section id="process-wrap">
 	<h2>
 		<img class="logo-icon" src="/logo:command-group.svg" alt="Logo">
-		Command Group
+		Process Wrap
 	</h2>
 
 	<code class="rust">
 		<ol class="codeblock">
-			<li><span class="keyword">use</span> <span class="path">std</span
-				><span class="punct">::</span><span class="path">process</span
-				><span class="punct">::</span><span class="type">Command</span
-				><span class="punct">;</span></li>
-			<li><span class="keyword">use</span> <span class="path">command_group</span
-				><span class="punct">::</span><span class="trait">CommandGroup</span
-				><span class="punct">;</span></li>
+			<li><span class="keyword">use</span> <span class="path">process_wrap</span
+				><span class="punct">::</span><span class="trait">tokio</span
+				><span class="punct">::</span><span class="sigil">*</span><span class="punct">;</span></li>
 			<li></li>
 			<li><span class="keyword">let mut</span>
 				<span class="binding">child</span>
 				<span class="punct">=</span>
-				<span class="type">Command</span><span class="punct">::</span
-				><span class="fn">new</span><span class="punct">(</span
-				><span class="string">"watch"</span><span class="punct">).</span
-				><span class="fn">arg</span><span class="punct">(</span><span class="string">"ls"</span><span class="punct">).</span
-				><span class="fn">group_spawn</span><span class="punct">()<span class="sigil">?</span>;</span></li>
+				<span class="type">CommandWrap</span><span class="punct">::</span
+				><span class="fn">with_new</span><span class="punct">(</span
+				><span class="string">"watch"</span><span class="punct">, |</span
+				><span class="binding">command</span><span class="punct">| {</span>
+				<span class="fn">command</span><span class="punct">.</span><span class="fn">arg</span
+				><span class="punct">(</span><span class="string">"ls"</span><span class="punct">)</span>
+				<span class="punct">})</span></li>
+			<li><span class="punct">.</span><span class="fn">wrap</span><span class="punct">(</span
+				><span class="type">ProcessSession</span><span class="punct">)</span></li>
+			<li><span class="punct">.</span><span class="fn">wrap</span><span class="punct">(</span
+				><span class="type">KillOnDrop</span><span class="punct">)</span></li>
+			<li><span class="punct">.</span><span class="fn">spawn</span
+				><span class="punct">()<span class="sigil">?</span>;</span></li>
 			<li><span class="keyword">let</span>
 				<span class="binding">status</span>
 				<span class="punct">=</span>
 				<span class="binding">child</span><span class="punct">.</span
-				><span class="fn">wait</span><span class="punct">()<span class="sigil">?</span>;</span></li>
+				><span class="fn">wait</span><span class="punct">().</span
+				><span class="keyword">await</span><span class="punct"><span class="sigil">?</span>;</span></li>
 			<li><span class="macro">dbg!</span><span class="punct">(</span
 				><span class="binding">status</span><span class="punct">);</span></li>
 		</ol>
 	</code>
 
 	<p class="pitch">
-		Run commands in process groups. Stop creating zombies.
+		Run commands in sessions and job objects. Stop creating zombies.
 		Avoid unwanted detachment. <em>Regain control!</em>
 	</p>
 
 	<nav class="places">
-		<a class="primary" href="https://docs.rs/command-group">📖 Documentation</a>
-		<a href="https://github.com/watchexec/command-group">📜 Source</a>
-		<a href="https://github.com/watchexec/command-group/issues">🐞 Issues</a>
+		<a class="primary" href="https://docs.rs/process-wrap">📖 Documentation</a>
+		<a href="https://github.com/watchexec/process-wrap">📜 Source</a>
+		<a href="https://github.com/watchexec/process-wrap/issues">🐞 Issues</a>
+	</nav>
+</section>
+
+<section id="cargo-watch">
+	<h2>
+		<img class="logo-icon" src="/logo:cargo-watch.svg" alt="Logo">
+		<del>Cargo Watch</del>
+	</h2>
+
+	<div class="alternatives">
+		<code class="alt oneline shell">
+			<span class="prompt">$&gt;</span>
+			<span class="command">cargo</span>
+			<span class="subcommand">watch</span>
+		</code>
+		<code class="alt oneline shell">
+			<span class="prompt">$&gt;</span>
+			<span class="command">cargo</span>
+			<span class="subcommand">watch</span>
+			<span class="wbr" aria-hidden="true">\<br></span
+			><span class="sigil">--</span>
+			<span class="command">cargo</span>
+			<span class="subcommand">test</span>
+		</code>
+		<code class="alt oneline shell">
+			<span class="prompt">$&gt;</span>
+			<span class="command">cargo</span>
+			<span class="subcommand">watch</span>
+			<span class="wbr" aria-hidden="true">\<br></span
+			><span class="option">-x</span>
+			<span class="subcommand">clippy</span>
+			<span class="wbr" aria-hidden="true">\<br></span
+			><span class="option">-x</span>
+			<span class="string"
+				>"<span class="subcommand">test</span>
+				<span class="option">--exact</span>
+				<span class="argument">ice_cream</span
+			>"</span>
+		</code>
+	</div>
+
+	<p class="pitch">
+		<del>Build your <a href="https://rust-lang.org">Rust</a> project. Two words
+		to get going, more opportunities at your fingertips. Fit for Cargo, fit
+		for life. Your code is in good hands.</del>
+		<em style="background: red; color: white">Deprecated!</em>
+	</p>
+
+	<nav class="places">
+		<a class="primary" href="/downloads/cargo-watch/">📦 Download</a>
+		<a href="https://github.com/watchexec/cargo-watch">📜 Source</a>
+		<a href="https://github.com/watchexec/cargo-watch/issues">🐞 Issues</a>
+		<a href="/docs/cargo-watch/">📖 Documentation</a>
 	</nav>
 </section>
 
