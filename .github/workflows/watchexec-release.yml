@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: Swatinem/rust-cache@v2
         with:
-          workspaces: "generator -> generator/target"
+          workspaces: "generator -> target"
       - name: Prep generator
         run: bin/generator lint
 
