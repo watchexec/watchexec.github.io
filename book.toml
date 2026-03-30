@@ -14,7 +14,7 @@ additional-css = ["colours.css"]
 no-section-label = true
 git-repository-url = "https://github.com/watchexec"
 edit-url-template = "https://github.com/watchexec/watchexec.github.io/edit/master/{path}"
-curly-quotes = true
+smart-punctuation = true
 mathjax-support = true
 print = { enable = false }
 
