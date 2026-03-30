@@ -92,7 +92,7 @@ checksums:
     url: https://blake3.io/
 
   SHA256:
-    filename: SHA512SUMS
+    filename: SHA256SUMS
     tool: sha256sum
     url: https://en.wikipedia.org/wiki/SHA-2
 
