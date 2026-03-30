@@ -1,6 +1,13 @@
 # Watchexec 2.5.1
 
+## Release notes
 
+<p dir="auto">No changes, but two new builds:</p>
+<ul dir="auto">
+<li>RISC-V (RV64GC)</li>
+<li>FreeBSD (x86-64)</li>
+</ul>
+<p dir="auto">The website has also been refreshed, it's also lot easier to figure out which file to download there: <a href="https://watchexec.github.io/downloads/watchexec/2.5.1/" rel="nofollow">https://watchexec.github.io/downloads/watchexec/2.5.1/</a>.</p>
 
 ## Packages
 
@@ -343,7 +350,7 @@ View release [on GitHub](https://github.com/watchexec/watchexec/releases/v2.5.1)
 
 >	 version released on 2026-03-30
 >	|
->	this page built on 2026-03-30 at 06:36
+>	this page built on 2026-03-30 at 19:40
 >	| generator v0.0.2
 >	| [json metadata](meta.json)
 
