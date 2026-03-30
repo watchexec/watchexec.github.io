@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="light sidebar-visible" dir="ltr">
+<html lang="en" class="rust sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -43,12 +43,12 @@
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
-            const default_light_theme = "light";
+            const default_light_theme = "rust";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-c88219f5.js";
+            window.path_to_searchindex_js = "../searchindex-c8e46eea.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-e2572de8.js"></script>
+        <script src="../toc-3d244622.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -86,7 +86,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
-            html.classList.remove('light')
+            html.classList.remove('rust')
             html.classList.add(theme);
             html.classList.add("js");
         </script>
@@ -205,18 +205,39 @@
 <p><strong><a href="./watchexec/2.5.0/index.html">→ Download this release</a></strong></p>
 <p><a href="./watchexec/index.html">→ Previous releases</a></p>
 <h2 id="cargo-watch"><a class="header" href="#cargo-watch">Cargo Watch</a></h2>
-<p>Latest release: <a href="./cargo-watch/8.1.2/index.html">8.1.2</a> (2021-11-16)</p>
+<p>Latest release: <a href="./cargo-watch/8.5.3/index.html">8.5.3</a> (2024-10-02)</p>
 <h3 id="release-notes-1"><a class="header" href="#release-notes-1">Release notes</a></h3>
-<p dir="auto"><strong>Never released to crates.io</strong></p>
+<p dir="auto">This is the final release of Cargo Watch.</p>
 
-<p><strong><a href="./cargo-watch/8.1.2/index.html">→ Download this release</a></strong></p>
+<hr>
+<p dir="auto">Cargo Watch is now dormant: it will not receive further updates, but does remain available.</p>
+
+<p dir="auto">I (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/passcod/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/passcod">@passcod</a>) currently have very little time to dedicate to unpaid OSS. There is a significant amount of work I deem required to get Watchexec (the library) to a good-enough state to bring its improvements to Cargo Watch, and that has been the case for years without a realistic end in sight. I have had dwindling motivation in the face of having spent 10 years on or around this project and its dependencies (it was a long while ago, but once upon a time the Notify library was spun off from Cargo Watch!), when at the very start, this tool was only made to clear a quick hurdle that I'd encountered while trying to code <em>other, probably more interesting, yet now long-forgotten</em> Rust adventures.</p>
+
+<p dir="auto">However, not all is lost, dear users. For almost the entire life of the project, I have had a thought: that someone with more resources, skill, time, and/or the benefit of hindsight would come around and make something <em>better</em>. Granted, I thought this would happen to Notify. But Notify has persisted, has been passed on to live a long life, and instead the contender is <a href="https://dystroy.org/bacon/" rel="nofollow">Bacon</a>.</p>
+
+<p dir="auto">I have had no involvement in Bacon. Yet it is everything I have wanted to achieve in Cargo Watch. Indeed some five years ago I started development on a Cargo Watch replacement I called "Overwatch", which would have a TUI, a tasks file, a rich pager, and more long-desired features. That never eventuated, though a lot of the low-level improvements that I wrote in preparation for Overwatch "made it" into Notify version 5 and the Watchexec library version 2.<br>
+Bacon today is what I wanted Overwatch to be.</p>
+
+<p dir="auto">Let's face it: Cargo Watch has gone through too many incremental changes, with too little overarching design. It sports no less than four different syntaxes to run commands. Its lackluster filtering options can be obnoxious to use. Pager support is non-existent, sometimes requiring arcane invocations to get right. It can conflict with Rust Analyzer (which didn't exist 10 years ago!), though that has improved a lot over the years.</p>
+
+<p dir="auto">It's time to let it go.<br>
+Use <a href="https://dystroy.org/bacon/" rel="nofollow">Bacon</a>.<br>
+Remember Cargo Watch.</p>
+
+<hr>
+<p dir="auto"><a href="https://github.com/watchexec/watchexec">Watchexec</a> is also available for a similar experience that will continue to be maintained, albeit slowly.</p>
+
+<p dir="auto">Discuss at <a href="https://www.reddit.com/r/rust/comments/1ftc7cj/cargo_watch_is_on_life_support/" rel="nofollow">https://www.reddit.com/r/rust/comments/1ftc7cj/cargo_watch_is_on_life_support/</a></p>
+
+<p><strong><a href="./cargo-watch/8.5.3/index.html">→ Download this release</a></strong></p>
 <p><a href="./cargo-watch/index.html">→ Previous releases</a></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../blog/road-to-watchexec-2-tokio.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../docs/macos-fsevents.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
@@ -230,7 +251,7 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../blog/road-to-watchexec-2-tokio.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../docs/macos-fsevents.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 

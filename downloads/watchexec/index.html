@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="light sidebar-visible" dir="ltr">
+<html lang="en" class="rust sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -43,12 +43,12 @@
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../../";
-            const default_light_theme = "light";
+            const default_light_theme = "rust";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../../searchindex-c88219f5.js";
+            window.path_to_searchindex_js = "../../searchindex-c8e46eea.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-e2572de8.js"></script>
+        <script src="../../toc-3d244622.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -86,7 +86,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
-            html.classList.remove('light')
+            html.classList.remove('rust')
             html.classList.add(theme);
             html.classList.add("js");
         </script>
@@ -202,7 +202,7 @@
 
 <tbody>
 <tr>
-						<td rowspan="18">Linux</td>
+						<td rowspan="24">Linux</td>
 <td rowspan="6">AArch64</td>
 <td rowspan="3">glibc</td>
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-aarch64-unknown-linux-gnu.deb">DEB</a> (2.3 MB)</td>
@@ -241,6 +241,34 @@
 
 <tr>
 <td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-armv7-unknown-linux-gnueabihf.tar.xz">XZ</a> (2.4 MB)</td>
+</tr>
+
+<tr>
+<td rowspan="3">IBM Z</td>
+<td rowspan="3">glibc</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-s390x-unknown-linux-gnu.deb">DEB</a> (2.5 MB)</td>
+</tr>
+
+<tr>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-s390x-unknown-linux-gnu.rpm">RPM</a> (2.9 MB)</td>
+</tr>
+
+<tr>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-s390x-unknown-linux-gnu.tar.xz">XZ</a> (2.5 MB)</td>
+</tr>
+
+<tr>
+<td rowspan="3">PowerPC 64-bit LE</td>
+<td rowspan="3">glibc</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-powerpc64le-unknown-linux-gnu.deb">DEB</a> (2.5 MB)</td>
+</tr>
+
+<tr>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-powerpc64le-unknown-linux-gnu.rpm">RPM</a> (2.9 MB)</td>
+</tr>
+
+<tr>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-powerpc64le-unknown-linux-gnu.tar.xz">XZ</a> (2.5 MB)</td>
 </tr>
 
 <tr>
@@ -295,9 +323,36 @@
 
 </table>
 
-<h2 id="67-releases-available"><a class="header" href="#67-releases-available">67 releases available:</a></h2>
+<h2 id="94-releases-available"><a class="header" href="#94-releases-available">94 releases available:</a></h2>
 <ul>
 <li><a href="./2.5.0/index.html">Watchexec 2.5.0</a> 2026-02-25</li>
+<li><a href="./2.4.3/index.html">Watchexec 2.4.3</a> 2026-02-24</li>
+<li><a href="./2.4.2/index.html">Watchexec 2.4.2</a> 2026-02-24</li>
+<li><a href="./2.4.1/index.html">Watchexec 2.4.1</a> 2026-02-22</li>
+<li><a href="./2.4.0/index.html">Watchexec 2.4.0</a> 2026-02-22</li>
+<li><a href="./2.3.3/index.html">Watchexec 2.3.3</a> 2026-01-20</li>
+<li><a href="./2.3.2/index.html">Watchexec 2.3.2</a> 2025-05-18</li>
+<li><a href="./2.3.1/index.html">Watchexec 2.3.1</a> 2025-05-15</li>
+<li><a href="./2.3.0/index.html">Watchexec 2.3.0</a> 2025-02-09</li>
+<li><a href="./2.2.1/index.html">Watchexec 2.2.1</a> 2024-12-16</li>
+<li><a href="./2.2.0/index.html">Watchexec 2.2.0</a> 2024-10-14</li>
+<li><a href="./2.1.2/index.html">Watchexec 2.1.2</a> 2024-07-02</li>
+<li><a href="./2.1.1/index.html">Watchexec 2.1.1</a> 2024-04-30</li>
+<li><a href="./2.1.0/index.html">Watchexec 2.1.0</a> 2024-04-28</li>
+<li><a href="./2.0.0/index.html">Watchexec 2.0.0</a> 2024-04-20</li>
+<li><a href="./1.25.1/index.html">Watchexec 1.25.1</a> 2024-01-05</li>
+<li><a href="./1.25.0/index.html">Watchexec 1.25.0</a> 2024-01-01</li>
+<li><a href="./1.24.2/index.html">Watchexec 1.24.2</a> 2023-12-20</li>
+<li><a href="./1.24.1/index.html">Watchexec 1.24.1</a> 2023-12-11</li>
+<li><a href="./1.24.0/index.html">Watchexec 1.24.0</a> 2023-12-09</li>
+<li><a href="./1.23.0/index.html">Watchexec 1.23.0</a> 2023-08-30</li>
+<li><a href="./1.22.3/index.html">Watchexec 1.22.3</a> 2023-05-14</li>
+<li><a href="./1.22.2/index.html">Watchexec 1.22.2</a> 2023-03-22</li>
+<li><a href="./1.22.1/index.html">Watchexec 1.22.1</a> 2023-03-22</li>
+<li><a href="./1.22.0/index.html">Watchexec 1.22.0</a> 2023-03-18</li>
+<li><a href="./1.21.1/index.html">Watchexec 1.21.1</a> 2023-02-15</li>
+<li><a href="./1.21.0/index.html">Watchexec 1.21.0</a> 2023-01-09</li>
+<li><a href="./1.20.6/index.html">Watchexec 1.20.6</a> 2022-09-07</li>
 <li><a href="./1.20.5/index.html">Watchexec 1.20.5</a> 2022-08-03</li>
 <li><a href="./1.20.4/index.html">Watchexec 1.20.4</a> 2022-07-01</li>
 <li><a href="./1.20.3/index.html">Watchexec 1.20.3</a> 2022-06-29</li>
@@ -366,7 +421,7 @@
 <li><a href="./0.7.0/index.html">Watchexec 0.7.0</a> 2016-09-19</li>
 </ul>
 <blockquote>
-<p>this page built on 2026-03-30 at 04:13
+<p>this page built on 2026-03-30 at 18:18
 | generator v0.0.2
 | <a href="latest.json">latest meta</a></p>
 </blockquote>
