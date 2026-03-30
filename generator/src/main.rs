@@ -1,4 +1,4 @@
-use std::{collections::BTreeMap, path::PathBuf};
+use std::{collections::{BTreeMap, BTreeSet}, path::PathBuf};
 
 use async_std::{
 	fs::{create_dir_all, read_dir, remove_file, File},
@@ -240,8 +240,9 @@ async fn main() -> Result<()> {
 			let mut versions = tags
 				.into_iter()
 				.flat_map(|tag| app.version_from_tag(&tag).transpose())
-				.collect::<Result<Vec<_>>>()?;
-			versions.sort();
+				.collect::<Result<BTreeSet<_>>>()?
+                                .into_iter()
+                                .collect::<Vec<_>>();
 
 			if let Some(n) = last {
 				versions = versions[versions.len() - n.min(versions.len())..].to_vec();
