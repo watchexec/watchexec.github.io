@@ -17,6 +17,7 @@
 - [Downloads](./downloads/index.md)
   - [Watchexec](./downloads/watchexec/index.md)
     
+    - [Watchexec 2.5.0](./downloads/watchexec/2.5.0/index.md)
     - [Watchexec 1.20.5](./downloads/watchexec/1.20.5/index.md)
     - [Watchexec 1.20.4](./downloads/watchexec/1.20.4/index.md)
     - [Watchexec 1.20.3](./downloads/watchexec/1.20.3/index.md)
