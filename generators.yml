@@ -82,6 +82,11 @@ checksums:
     tool: b3sum
     url: https://blake3.io/
 
+  SHA256:
+    filename: SHA512SUMS
+    tool: sha256sum
+    url: https://en.wikipedia.org/wiki/SHA-2
+
   SHA512:
     filename: SHA512SUMS
     tool: sha512sum

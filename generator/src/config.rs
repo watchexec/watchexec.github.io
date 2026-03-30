@@ -73,6 +73,9 @@ pub enum SumAlgo {
 	#[serde(rename = "BLAKE3")]
 	Blake3,
 
+	#[serde(rename = "SHA256")]
+	Sha256,
+
 	#[serde(rename = "SHA512")]
 	Sha512,
 }
