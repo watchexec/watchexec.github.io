@@ -26,7 +26,16 @@ triples:
   "*-i686-*": { arch: x86 }
   "*-aarch64-*": { arch: AArch64 }
   "*-armv7-*eabihf.*": { arch: ARMv7 HF }
+  "*-powerpc64le-*": { arch: PowerPC 64-bit LE }
+  "*-s390x-*": { arch: IBM Z }
+  "*-riscv64*": { arch: RISC-V 64-bit }
+  "*-loongarch*": { arch: LoongArch }
   "*-linux-*": { os: Linux }
+  "*-illumos.*": { os: illumos }
+  "*-freebsd.*": { os: FreeBSD }
+  "*-openbsd.*": { os: OpenBSD }
+  "*-netbsd.*": { os: NetBSD }
+  "*-redox.*": { os: Redox }
   "*-apple-darwin.*": { os: macOS }
   "*-aarch64-apple-darwin.*": { arch: M1 }
   "*-windows-*": { os: Windows }

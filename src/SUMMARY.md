@@ -8,16 +8,21 @@
 - [Linux inotify limits](./docs/inotify-limits.md)
 - [Mac FSEvents limitations](./docs/macos-fsevents.md)
 
-# Project Updates
-
-- [The road to Watchexec 2: Tokio](./blog/road-to-watchexec-2-tokio.md)
-
 # Releases
 
 - [Downloads](./downloads/index.md)
   - [Watchexec](./downloads/watchexec/index.md)
     
     - [Watchexec 2.5.0](./downloads/watchexec/2.5.0/index.md)
+    - [Watchexec 1.24.0](./downloads/watchexec/1.24.0/index.md)
+    - [Watchexec 1.23.0](./downloads/watchexec/1.23.0/index.md)
+    - [Watchexec 1.22.3](./downloads/watchexec/1.22.3/index.md)
+    - [Watchexec 1.22.2](./downloads/watchexec/1.22.2/index.md)
+    - [Watchexec 1.22.1](./downloads/watchexec/1.22.1/index.md)
+    - [Watchexec 1.22.0](./downloads/watchexec/1.22.0/index.md)
+    - [Watchexec 1.21.1](./downloads/watchexec/1.21.1/index.md)
+    - [Watchexec 1.21.0](./downloads/watchexec/1.21.0/index.md)
+    - [Watchexec 1.20.6](./downloads/watchexec/1.20.6/index.md)
     - [Watchexec 1.20.5](./downloads/watchexec/1.20.5/index.md)
     - [Watchexec 1.20.4](./downloads/watchexec/1.20.4/index.md)
     - [Watchexec 1.20.3](./downloads/watchexec/1.20.3/index.md)

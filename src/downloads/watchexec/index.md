@@ -193,10 +193,19 @@
 </table>
 
 
-## 67 releases available:
+## 76 releases available:
 
 
 - [Watchexec 2.5.0](./2.5.0/index.md) 2026-02-25
+- [Watchexec 1.24.0](./1.24.0/index.md) 2023-12-09
+- [Watchexec 1.23.0](./1.23.0/index.md) 2023-08-30
+- [Watchexec 1.22.3](./1.22.3/index.md) 2023-05-14
+- [Watchexec 1.22.2](./1.22.2/index.md) 2023-03-22
+- [Watchexec 1.22.1](./1.22.1/index.md) 2023-03-22
+- [Watchexec 1.22.0](./1.22.0/index.md) 2023-03-18
+- [Watchexec 1.21.1](./1.21.1/index.md) 2023-02-15
+- [Watchexec 1.21.0](./1.21.0/index.md) 2023-01-09
+- [Watchexec 1.20.6](./1.20.6/index.md) 2022-09-07
 - [Watchexec 1.20.5](./1.20.5/index.md) 2022-08-03
 - [Watchexec 1.20.4](./1.20.4/index.md) 2022-07-01
 - [Watchexec 1.20.3](./1.20.3/index.md) 2022-06-29
@@ -266,7 +275,7 @@
 
 
 >	
->	this page built on 2026-03-30 at 04:13
+>	this page built on 2026-03-30 at 17:29
 >	| generator v0.0.2
 >	| [latest meta](latest.json)
 
