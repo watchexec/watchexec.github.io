@@ -7,9 +7,12 @@ apps:
   watchexec:
     name: Watchexec
     repo: watchexec/watchexec
-    tag_template: cli-v{version}
+    tag_template: v{version}
 
     priors:
+      - before: "1.20.6"
+        tag_template: "cli-v{version}"
+
       - before: "1.16.0"
         tag_template: "{version}"
 
