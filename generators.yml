@@ -101,6 +101,11 @@ checksums:
     tool: sha512sum
     url: https://en.wikipedia.org/wiki/SHA-2
 
+perfile_checksums:
+  "*.b3": BLAKE3
+  "*.sha256": SHA256
+  "*.sha512": SHA512
+
 maintainers:
   - username: passcod
     name: Félix

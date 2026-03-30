@@ -56,6 +56,14 @@ pub struct Download {
 	pub format: Format,
 	pub sums: Vec<DownloadSum>,
 	pub cats: (String, String, Option<String>),
+	#[serde(default)]
+	pub checksum_files: Vec<DownloadChecksumFile>,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct DownloadChecksumFile {
+	pub algo: SumAlgo,
+	pub url: Url,
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -95,6 +103,7 @@ impl Download {
 			format: config.match_format(&filename)?.clone(),
 			sums: Vec::new(),
 			cats: (os, arch, variant),
+			checksum_files: Vec::new(),
 		})
 	}
 }

@@ -156,6 +156,7 @@ async fn main() -> Result<()> {
 			context.try_insert("genver", &env!("CARGO_PKG_VERSION"))?;
 			context.try_insert("meta", &meta)?;
 			context.try_insert("tag", &app.tag(&meta.version)?)?;
+			context.try_insert("has_checksum_files", &meta.downloads.iter().any(|d| !d.checksum_files.is_empty()))?;
 			let page = tera.render("release.md", &context)?;
 
 			let dirpath = app.dir(&meta.version);

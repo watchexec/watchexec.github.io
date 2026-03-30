@@ -20,6 +20,8 @@ pub struct Config {
 	pub triples: IndexMap<Glob, Cat>,
 	pub formats: IndexMap<Glob, Format>,
 	pub checksums: HashMap<SumAlgo, ChecksumDetail>,
+	#[serde(default)]
+	pub perfile_checksums: IndexMap<Glob, SumAlgo>,
 	pub maintainers: Vec<Maintainer>,
 }
 
@@ -356,6 +358,13 @@ impl Config {
 		}
 
 		Ok(app)
+	}
+
+	pub fn match_perfile_checksum(&self, filename: &str) -> Option<(SumAlgo, &str)> {
+		self.perfile_checksums
+			.iter()
+			.find(|(glob, _)| glob.compile_matcher().is_match(filename))
+			.map(|(glob, algo)| (*algo, glob.glob().trim_start_matches('*')))
 	}
 
 	pub fn match_format(&self, filename: &str) -> Result<&Format> {

@@ -6,7 +6,7 @@
 
 ## Packages
 
-{{ tables::downloads(downloads=meta.downloads, sums=[]) }}
+{{ tables::downloads(downloads=meta.downloads, sums=[], has_checksum_files=has_checksum_files) }}
 
 View release [on GitHub](https://github.com/{{ app.repo.owner }}/{{ app.repo.repo }}/releases/{{ tag }}).
 

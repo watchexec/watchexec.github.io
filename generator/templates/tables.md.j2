@@ -6,7 +6,7 @@
 {%- endif -%}
 {% endmacro notes %}
 
-{% macro downloads(downloads, sums) %}
+{% macro downloads(downloads, sums, has_checksum_files=false) %}
 {%- set has_sums = 0 < sums | length -%}
 <table class="downloads">
 <thead>
@@ -16,6 +16,7 @@
 <th>Variant</th>
 <th>Download</th>
 {% if has_sums %}<th>BLAKE3 checksum</th>{% endif %}
+{% if has_checksum_files %}<th>Checksums</th>{% endif %}
 </tr>
 </thead>
 <tbody>
@@ -44,6 +45,11 @@
 							{%- else -%}
 <em class="missing-checksum">missing checksum</em>
 							{%- endif -%}
+</td>{% endif %}
+						{% if has_checksum_files %}<td>
+							{%- for cf in dl.checksum_files -%}
+<small><a href="{{ cf.url }}">{{ cf.algo }}</a></small>{% if not loop.last %} {% endif %}
+							{%- endfor -%}
 </td>{% endif %}
 </tr>
 					{% endfor %}

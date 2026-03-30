@@ -11,7 +11,7 @@ use semver::Version;
 use url::Url;
 
 use crate::config::{App, Config, SumAlgo};
-use crate::meta::{Download, DownloadSum, Meta, Sign, SignedSum};
+use crate::meta::{Download, DownloadChecksumFile, DownloadSum, Meta, Sign, SignedSum};
 
 pub async fn get_meta(config: Config, app: App, version: Version) -> Result<Meta> {
 	let release = octocrab::instance()
@@ -22,6 +22,7 @@ pub async fn get_meta(config: Config, app: App, version: Version) -> Result<Meta
 
 	let mut downloads = Vec::new();
 	let mut sums = Vec::new();
+	let mut perfile_checksum_assets: Vec<(_, url::Url, String)> = Vec::new();
 	'assets: for asset in &release.assets {
 		let url = &asset.browser_download_url;
 		let filename = url
@@ -34,6 +35,13 @@ pub async fn get_meta(config: Config, app: App, version: Version) -> Result<Meta
 				sums.push((*algo, url, filename));
 				continue 'assets;
 			}
+		}
+
+		if let Some((algo, suffix)) = config.match_perfile_checksum(filename) {
+			if let Some(base) = filename.strip_suffix(suffix) {
+				perfile_checksum_assets.push((algo, url.clone(), base.to_string()));
+			}
+			continue 'assets;
 		}
 
 		match Download::new(&config, url, filename, asset.size.try_into()?) {
@@ -74,6 +82,17 @@ pub async fn get_meta(config: Config, app: App, version: Version) -> Result<Meta
 			}
 		})
 		.finish();
+
+	for (algo, url, base) in perfile_checksum_assets {
+		for dl in &mut downloads {
+			if dl.filename == base {
+				dl.checksum_files.push(DownloadChecksumFile { algo, url: url.clone() });
+			}
+		}
+	}
+	for dl in &mut downloads {
+		dl.checksum_files.sort();
+	}
 
 	let http = HttpClientBuilder::new()
 		.redirect_policy(RedirectPolicy::Follow)
