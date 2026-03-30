@@ -7,7 +7,6 @@
 <li>RISC-V (RV64GC)</li>
 <li>FreeBSD (x86-64)</li>
 </ul>
-<p dir="auto">The website has also been refreshed, it's also lot easier to figure out which file to download there: <a href="https://watchexec.github.io/downloads/watchexec/2.5.1/" rel="nofollow">https://watchexec.github.io/downloads/watchexec/2.5.1/</a>.</p>
 
 ## Packages
 
