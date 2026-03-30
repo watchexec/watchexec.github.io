@@ -1,1 +1,0 @@
-generator/templates/SUMMARY.md
