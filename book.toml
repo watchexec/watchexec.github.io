@@ -8,7 +8,7 @@ title = "Watchexec"
 edition = "2021"
 
 [output.html]
-default-theme = "light"
+default-theme = "rust"
 preferred-dark-theme = "ayu"
 additional-css = ["colours.css"]
 no-section-label = true
