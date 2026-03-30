@@ -91,9 +91,20 @@ enum Mode {
 	},
 }
 
+fn init_github() -> Result<()> {
+	let builder = if let Ok(token) = std::env::var("GITHUB_TOKEN") {
+		octocrab::OctocrabBuilder::new().personal_token(token)
+	} else {
+		octocrab::OctocrabBuilder::new()
+	};
+	octocrab::initialise(builder)?;
+	Ok(())
+}
+
 #[async_std::main]
 async fn main() -> Result<()> {
 	color_eyre::install()?;
+	init_github()?;
 	match Mode::from_args() {
 		Mode::Lint { config_file, print } => {
 			let config = Config::load(&config_file).await?;
