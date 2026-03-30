@@ -45,8 +45,7 @@
 							{%- else -%}
 <em class="missing-checksum">missing checksum</em>
 							{%- endif -%}
-</td>{% endif %}
-						{% if has_checksum_files %}<td>
+</td>{% endif %}       {% if has_checksum_files %}<td>
 							{%- for cf in dl.checksum_files -%}
 <small><a href="{{ cf.url }}">{{ cf.algo }}</a></small>{% if not loop.last %} {% endif %}
 							{%- endfor -%}
