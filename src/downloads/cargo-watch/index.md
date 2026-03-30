@@ -1,7 +1,7 @@
 # Download Cargo Watch
 {{#title Download Cargo Watch - Watchexec}}
 
-## Latest release: 8.1.2
+## Latest release: 8.5.3
 
 <table class="downloads">
 <thead>
@@ -10,6 +10,7 @@
 <th>Arch</th>
 <th>Variant</th>
 <th>Download</th>
+
 
 </tr>
 </thead>
@@ -22,7 +23,8 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-aarch64-unknown-linux-gnu.deb">DEB</a> (1 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-aarch64-unknown-linux-gnu.deb">DEB</a> (1.2 MB)</td>
+						
 						
 </tr>
 					
@@ -30,7 +32,8 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-aarch64-unknown-linux-gnu.rpm">RPM</a> (1.2 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-aarch64-unknown-linux-gnu.rpm">RPM</a> (1.4 MB)</td>
+						
 						
 </tr>
 					
@@ -38,7 +41,8 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-aarch64-unknown-linux-gnu.tar.xz">XZ</a> (1 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-aarch64-unknown-linux-gnu.tar.xz">XZ</a> (1.2 MB)</td>
+						
 						
 </tr>
 					
@@ -50,7 +54,8 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-armv7-unknown-linux-gnueabihf.deb">DEB</a> (1.1 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-armv7-unknown-linux-gnueabihf.deb">DEB</a> (1.3 MB)</td>
+						
 						
 </tr>
 					
@@ -58,7 +63,8 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-armv7-unknown-linux-gnueabihf.rpm">RPM</a> (1.3 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-armv7-unknown-linux-gnueabihf.rpm">RPM</a> (1.5 MB)</td>
+						
 						
 </tr>
 					
@@ -66,7 +72,8 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-armv7-unknown-linux-gnueabihf.tar.xz">XZ</a> (1.1 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-armv7-unknown-linux-gnueabihf.tar.xz">XZ</a> (1.3 MB)</td>
+						
 						
 </tr>
 					
@@ -78,7 +85,8 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-gnu.deb">DEB</a> (805 KB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-x86_64-unknown-linux-gnu.deb">DEB</a> (1.3 MB)</td>
+						
 						
 </tr>
 					
@@ -86,7 +94,8 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-gnu.rpm">RPM</a> (875 KB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-x86_64-unknown-linux-gnu.rpm">RPM</a> (1.4 MB)</td>
+						
 						
 </tr>
 					
@@ -94,7 +103,8 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-gnu.tar.xz">XZ</a> (791 KB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-x86_64-unknown-linux-gnu.tar.xz">XZ</a> (1.3 MB)</td>
+						
 						
 </tr>
 					
@@ -104,7 +114,8 @@
 						
 <td rowspan="3">musl</td>
             
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-musl.deb">DEB</a> (823 KB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-x86_64-unknown-linux-musl.deb">DEB</a> (1.4 MB)</td>
+						
 						
 </tr>
 					
@@ -112,7 +123,8 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-musl.rpm">RPM</a> (884 KB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-x86_64-unknown-linux-musl.rpm">RPM</a> (1.5 MB)</td>
+						
 						
 </tr>
 					
@@ -120,28 +132,53 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-unknown-linux-musl.tar.xz">XZ</a> (809 KB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-x86_64-unknown-linux-musl.tar.xz">XZ</a> (1.4 MB)</td>
+						
 						
 </tr>
 					
 <tr>
-						<td rowspan="1">Windows</td>
+						<td rowspan="2">Windows</td>
+						
+<td rowspan="1">AArch64</td>
+            
+						
+<td rowspan="1">MSVC</td>
+            
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-aarch64-pc-windows-msvc.zip">Zip</a> (959 KB)</td>
+						
+						
+</tr>
+					
+<tr>
+						
 						
 <td rowspan="1">x86-64</td>
             
 						
 <td rowspan="1">MSVC</td>
             
-<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.1.2/cargo-watch-v8.1.2-x86_64-pc-windows-msvc.zip">Zip</a> (816 KB)</td>
+<td><a class="download" href="https://github.com/watchexec/cargo-watch/releases/download/v8.5.3/cargo-watch-v8.5.3-x86_64-pc-windows-msvc.zip">Zip</a> (1 MB)</td>
+						
 						
 </tr>
 					</tbody>
 </table>
 
 
-## 43 releases available:
+## 53 releases available:
 
 
+- [Cargo Watch 8.5.3](./8.5.3/index.md) 2024-10-02
+- [Cargo Watch 8.5.2](./8.5.2/index.md) 2024-01-05
+- [Cargo Watch 8.5.1](./8.5.1/index.md) 2024-01-04
+- [Cargo Watch 8.5.0](./8.5.0/index.md) 2024-01-04
+- [Cargo Watch 8.4.1](./8.4.1/index.md) 2023-08-30
+- [Cargo Watch 8.4.0](./8.4.0/index.md) 2023-02-13
+- [Cargo Watch 8.3.0](./8.3.0/index.md) 2023-01-11
+- [Cargo Watch 8.2.2](./8.2.2/index.md) 2023-01-11
+- [Cargo Watch 8.2.1](./8.2.1/index.md) 2022-12-29
+- [Cargo Watch 8.2.0](./8.2.0/index.md) 2022-12-29
 - [Cargo Watch 8.1.2](./8.1.2/index.md) 2021-11-16
 - [Cargo Watch 8.1.1](./8.1.1/index.md) 2021-09-22
 - [Cargo Watch 8.1.0](./8.1.0/index.md) 2021-09-21
@@ -188,7 +225,7 @@
 
 
 >	
->	this page built on 2022-02-19 at 19:53
+>	this page built on 2026-03-30 at 18:20
 >	| generator v0.0.2
 >	| [latest meta](latest.json)
 
