@@ -28,4 +28,3 @@ level = 1
 "/docs/watchexec/index.html" = "/docs/glob-patterns.html"
 "/docs/cargo-watch/index.html" = "/docs/glob-patterns.html"
 
-[output.linkcheck]
