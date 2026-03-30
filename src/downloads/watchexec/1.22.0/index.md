@@ -150,7 +150,7 @@
 <tr>
 						
 						
-<td rowspan="3">PowerPC 64-bit LE</td>
+<td rowspan="3">PowerPC</td>
             
 						
 <td rowspan="3">glibc</td>
@@ -324,7 +324,7 @@ View release [on GitHub](https://github.com/watchexec/watchexec/releases/v1.22.0
 
 >	 version released on 2023-03-18
 >	|
->	this page built on 2026-03-30 at 18:36
+>	this page built on 2026-03-30 at 18:52
 >	| generator v0.0.2
 >	| [json metadata](meta.json)
 
