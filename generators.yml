@@ -26,9 +26,9 @@ triples:
   "*-i686-*": { arch: x86 }
   "*-aarch64-*": { arch: AArch64 }
   "*-armv7-*eabihf.*": { arch: ARMv7 HF }
-  "*-powerpc64le-*": { arch: PowerPC 64-bit LE }
+  "*-powerpc64le-*": { arch: PowerPC }
   "*-s390x-*": { arch: IBM Z }
-  "*-riscv64*": { arch: RISC-V 64-bit }
+  "*-riscv64*": { arch: RISC-V }
   "*-loongarch*": { arch: LoongArch }
   "*-linux-*": { os: Linux }
   "*-illumos.*": { os: illumos }
