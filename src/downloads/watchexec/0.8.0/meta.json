@@ -1,0 +1,1 @@
+{"generated":"2021-06-22T13:29:22.846078314Z","published":"2016-09-22T03:37:14Z","app":"watchexec","version":"0.8.0","notes":"<ul>\n<li>Support <code>-f</code> for filter patterns, and <code>-i</code> for ignore patterns</li>\n<li>All arguments after directory to watch are interpreted as command to run</li>\n</ul>","downloads":[],"sums":[]}

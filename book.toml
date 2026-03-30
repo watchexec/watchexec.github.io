@@ -1,0 +1,32 @@
+[book]
+authors = ["Félix Saparelli"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Watchexec"
+
+[rust]
+edition = "2021"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "ayu"
+additional-css = ["colours.css"]
+no-section-label = true
+git-repository-url = "https://github.com/watchexec"
+edit-url-template = "https://github.com/watchexec/watchexec.github.io/edit/master/{path}"
+curly-quotes = true
+mathjax-support = true
+print = { enable = false }
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.redirect]
+# temporarily until more appropriate content is written
+"/docs/index.html" = "/docs/glob-patterns.html"
+"/docs/watchexec/index.html" = "/docs/glob-patterns.html"
+"/docs/cargo-watch/index.html" = "/docs/glob-patterns.html"
+
+[output.linkcheck]

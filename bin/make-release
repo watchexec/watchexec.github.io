@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+app="${1:-}"
+version="${2:-}"
+
+if [[ -z "$app" ]]; then
+	echo "Usage: $0 APP [VERSION]"
+	exit 1
+fi
+
+if [[ -z "$version" ]]; then
+	echo -e "\n> fetching version list"
+	version=$(bin/generator version-list --app "$app" -n1)
+fi
+
+metapath="src/downloads/$app/$version/meta.json"
+
+echo -e "\n> fetching release data"
+bin/generator release-meta --app "$app" --version "$version"
+
+echo -e "\n> generating release page"
+bin/generator release-page --meta "$metapath"
+
+echo -e "\n> rebuilding release index"
+bin/generator release-index --app "$app"
+
+echo -e "\n> rebuilding downloads page"
+bin/generator downloads-page
