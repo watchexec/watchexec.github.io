@@ -1,7 +1,7 @@
 # Download Watchexec
 {{#title Download Watchexec - Watchexec}}
 
-## Latest release: 2.5.0
+## Latest release: 2.5.1
 
 <table class="downloads">
 <thead>
@@ -16,14 +16,14 @@
 </thead>
 <tbody>
 <tr>
-						<td rowspan="24">Linux</td>
+						<td rowspan="27">Linux</td>
 						
 <td rowspan="6">AArch64</td>
             
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-aarch64-unknown-linux-gnu.deb">DEB</a> (2.3 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-aarch64-unknown-linux-gnu.deb">DEB</a> (2.3 MB)</td>
 						
 </tr>
 					
@@ -31,7 +31,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-aarch64-unknown-linux-gnu.rpm">RPM</a> (2.7 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-aarch64-unknown-linux-gnu.rpm">RPM</a> (2.7 MB)</td>
 						
 </tr>
 					
@@ -39,7 +39,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-aarch64-unknown-linux-gnu.tar.xz">XZ</a> (2.3 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-aarch64-unknown-linux-gnu.tar.xz">XZ</a> (2.3 MB)</td>
 						
 </tr>
 					
@@ -49,7 +49,7 @@
 						
 <td rowspan="3">musl</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-aarch64-unknown-linux-musl.deb">DEB</a> (2.4 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-aarch64-unknown-linux-musl.deb">DEB</a> (2.4 MB)</td>
 						
 </tr>
 					
@@ -57,7 +57,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-aarch64-unknown-linux-musl.rpm">RPM</a> (2.7 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-aarch64-unknown-linux-musl.rpm">RPM</a> (2.8 MB)</td>
 						
 </tr>
 					
@@ -65,7 +65,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-aarch64-unknown-linux-musl.tar.xz">XZ</a> (2.4 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-aarch64-unknown-linux-musl.tar.xz">XZ</a> (2.4 MB)</td>
 						
 </tr>
 					
@@ -77,7 +77,7 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-armv7-unknown-linux-gnueabihf.deb">DEB</a> (2.4 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-armv7-unknown-linux-gnueabihf.deb">DEB</a> (2.4 MB)</td>
 						
 </tr>
 					
@@ -85,7 +85,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-armv7-unknown-linux-gnueabihf.rpm">RPM</a> (2.8 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-armv7-unknown-linux-gnueabihf.rpm">RPM</a> (2.8 MB)</td>
 						
 </tr>
 					
@@ -93,7 +93,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-armv7-unknown-linux-gnueabihf.tar.xz">XZ</a> (2.4 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-armv7-unknown-linux-gnueabihf.tar.xz">XZ</a> (2.4 MB)</td>
 						
 </tr>
 					
@@ -105,7 +105,7 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-s390x-unknown-linux-gnu.deb">DEB</a> (2.5 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-s390x-unknown-linux-gnu.deb">DEB</a> (2.5 MB)</td>
 						
 </tr>
 					
@@ -113,7 +113,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-s390x-unknown-linux-gnu.rpm">RPM</a> (2.9 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-s390x-unknown-linux-gnu.rpm">RPM</a> (2.9 MB)</td>
 						
 </tr>
 					
@@ -121,7 +121,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-s390x-unknown-linux-gnu.tar.xz">XZ</a> (2.5 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-s390x-unknown-linux-gnu.tar.xz">XZ</a> (2.5 MB)</td>
 						
 </tr>
 					
@@ -133,7 +133,7 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-powerpc64le-unknown-linux-gnu.deb">DEB</a> (2.5 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-powerpc64le-unknown-linux-gnu.deb">DEB</a> (2.5 MB)</td>
 						
 </tr>
 					
@@ -141,7 +141,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-powerpc64le-unknown-linux-gnu.rpm">RPM</a> (2.9 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-powerpc64le-unknown-linux-gnu.rpm">RPM</a> (2.9 MB)</td>
 						
 </tr>
 					
@@ -149,7 +149,35 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-powerpc64le-unknown-linux-gnu.tar.xz">XZ</a> (2.5 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-powerpc64le-unknown-linux-gnu.tar.xz">XZ</a> (2.5 MB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+<td rowspan="3">RISC-V</td>
+            
+						
+<td rowspan="3">glibc</td>
+            
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-riscv64gc-unknown-linux-gnu.deb">DEB</a> (2.7 MB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+						
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-riscv64gc-unknown-linux-gnu.rpm">RPM</a> (3 MB)</td>
+						
+</tr>
+					
+<tr>
+						
+						
+						
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-riscv64gc-unknown-linux-gnu.tar.xz">XZ</a> (2.7 MB)</td>
 						
 </tr>
 					
@@ -161,7 +189,7 @@
 						
 <td rowspan="3">musl</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-i686-unknown-linux-musl.deb">DEB</a> (2.8 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-i686-unknown-linux-musl.deb">DEB</a> (2.8 MB)</td>
 						
 </tr>
 					
@@ -169,7 +197,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-i686-unknown-linux-musl.rpm">RPM</a> (3 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-i686-unknown-linux-musl.rpm">RPM</a> (3 MB)</td>
 						
 </tr>
 					
@@ -177,7 +205,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-i686-unknown-linux-musl.tar.xz">XZ</a> (2.8 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-i686-unknown-linux-musl.tar.xz">XZ</a> (2.8 MB)</td>
 						
 </tr>
 					
@@ -189,7 +217,7 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-x86_64-unknown-linux-gnu.deb">DEB</a> (2.7 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-x86_64-unknown-linux-gnu.deb">DEB</a> (2.7 MB)</td>
 						
 </tr>
 					
@@ -197,7 +225,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-x86_64-unknown-linux-gnu.rpm">RPM</a> (2.9 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-x86_64-unknown-linux-gnu.rpm">RPM</a> (2.9 MB)</td>
 						
 </tr>
 					
@@ -205,7 +233,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-x86_64-unknown-linux-gnu.tar.xz">XZ</a> (2.7 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-x86_64-unknown-linux-gnu.tar.xz">XZ</a> (2.7 MB)</td>
 						
 </tr>
 					
@@ -215,7 +243,7 @@
 						
 <td rowspan="3">musl</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-x86_64-unknown-linux-musl.deb">DEB</a> (2.8 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-x86_64-unknown-linux-musl.deb">DEB</a> (2.8 MB)</td>
 						
 </tr>
 					
@@ -223,7 +251,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-x86_64-unknown-linux-musl.rpm">RPM</a> (3 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-x86_64-unknown-linux-musl.rpm">RPM</a> (3 MB)</td>
 						
 </tr>
 					
@@ -231,7 +259,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-x86_64-unknown-linux-musl.tar.xz">XZ</a> (2.8 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-x86_64-unknown-linux-musl.tar.xz">XZ</a> (2.8 MB)</td>
 						
 </tr>
 					
@@ -243,16 +271,17 @@
 						
 <td rowspan="1">MSVC</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.0/watchexec-2.5.0-x86_64-pc-windows-msvc.zip">Zip</a> (3.2 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-x86_64-pc-windows-msvc.zip">Zip</a> (3.2 MB)</td>
 						
 </tr>
 					</tbody>
 </table>
 
 
-## 94 releases available:
+## 95 releases available:
 
 
+- [Watchexec 2.5.1](./2.5.1/index.md) 2026-03-30
 - [Watchexec 2.5.0](./2.5.0/index.md) 2026-02-25
 - [Watchexec 2.4.3](./2.4.3/index.md) 2026-02-24
 - [Watchexec 2.4.2](./2.4.2/index.md) 2026-02-24
@@ -350,7 +379,7 @@
 
 
 >	
->	this page built on 2026-03-30 at 18:53
+>	this page built on 2026-03-30 at 06:36
 >	| generator v0.0.2
 >	| [latest meta](latest.json)
 
