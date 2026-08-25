@@ -6,7 +6,6 @@
 
 - [Glob pattern syntax and issues](./docs/glob-patterns.md)
 - [Linux inotify limits](./docs/inotify-limits.md)
-- [Mac FSEvents limitations](./docs/macos-fsevents.md)
 
 # Releases
 
