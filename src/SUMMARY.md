@@ -6,12 +6,14 @@
 
 - [Glob pattern syntax and issues](./docs/glob-patterns.md)
 - [Linux inotify limits](./docs/inotify-limits.md)
+- [Mac FSEvents limitations](./docs/macos-fsevents.md)
 
 # Releases
 
 - [Downloads](./downloads/index.md)
   - [Watchexec](./downloads/watchexec/index.md)
     
+    - [Watchexec 2.7.1](./downloads/watchexec/2.7.1/index.md)
     - [Watchexec 2.7.0](./downloads/watchexec/2.7.0/index.md)
     - [Watchexec 2.6.1](./downloads/watchexec/2.6.1/index.md)
     - [Watchexec 2.5.1](./downloads/watchexec/2.5.1/index.md)
