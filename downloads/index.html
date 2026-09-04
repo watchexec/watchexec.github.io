@@ -45,10 +45,10 @@
             const path_to_root = "../";
             const default_light_theme = "rust";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-d91db542.js";
+            window.path_to_searchindex_js = "../searchindex-5a27844e.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-9f5dd509.js"></script>
+        <script src="../toc-0fb4a904.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -189,41 +189,12 @@
                     <main>
                         <h1 id="downloads"><a class="header" href="#downloads">Downloads</a></h1>
 <h2 id="watchexec-cli"><a class="header" href="#watchexec-cli">Watchexec CLI</a></h2>
-<p>Latest release: <a href="./watchexec/2.7.0/index.html">2.7.0</a> (2026-08-24)</p>
-<h3 id="release-notes"><a class="header" href="#release-notes">Release notes</a></h3>
-<p dir="auto">Watchexec now only traverses and watches directories that are expected to produce events (according to filter/ignore files and patterns). This means that if you have a very large directory tree, and 90% of it is gitignored, Watchexec will no longer go through and add watches to that 90% at all. Thus:</p>
-
-<ul dir="auto">
-<li>startup in those cases should be much faster and less resource-intensive</li>
-
-<li>ongoing performance should also improve (as there will be vastly fewer events to process), though that may be less perceptible</li>
-
-</ul>
-
-<p dir="auto">The way this is achieved is by handling all directory traversal/recursion within Watchexec, instead of letting the Notify library handle it. This is a large amount of work and code, and it's expected that there will be new bugs as a result. However, this limitation was also the underlying source of a number of long-standing bugs, and I quite look forward to close some very old issues as a result.</p>
-
-<pre class="notranslate"><code class="notranslate">:; hyperfine 'watchexec-2.7.0 -1 echo' 'watchexec-2.6.1 -1 echo'
-Benchmark 1: watchexec-2.7.0 -1 echo
-  Time (mean ± σ):     158.9 ms ±   2.2 ms    [User: 199.6 ms, System: 63.3 ms]
-  Range (min … max):   155.8 ms … 163.1 ms    18 runs
-<p>Benchmark 2: watchexec-2.6.1 -1 echo
-Time (mean ± σ):     387.1 ms ±   2.4 ms    [User: 157.5 ms, System: 366.3 ms]
-Range (min … max):   382.0 ms … 390.0 ms    10 runs</p>
-<p>Summary
-watchexec-2.7.0 -1 echo ran
-2.44 ± 0.04 times faster than watchexec-2.6.1 -1 echo
-</p>
-<p dir="auto"><sup>(The <code class="notranslate">-1</code> option is a hidden test-only option which starts watchexec normally, runs the command, and exits.)</sup></p>
-
-<p dir="auto">On BSD, the kqueue backend has been disabled; those platforms will use polling instead. kqueue is not designed for this kind of thing, and using it thus has significant downsides, such as heavy kernel resource usage, as well as correctness bugs. FreeBSD 14 and up have native inotify support; Watchexec does not yet take advantage of this but will in the future (it comes in with Notify 9, which is currently in RC).</p>
-
-<p dir="auto">Watching a single file no longer stops watching it when it is replaced (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="860633319" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/190" data-hovercard-type="issue" data-hovercard-url="/watchexec/watchexec/issues/190/hovercard" href="https://github.com/watchexec/watchexec/issues/190">#190</a>). Similarly, though this is less common, if a folder being watched (using <code class="notranslate">-W</code> or <code class="notranslate">-w</code>) is deleted and recreated, Watchexec used to lose the watch and no longer produce events. That was because the watch was placed on the file (or folder) object, not on a pathname string, and replacing the object naturally makes the watch disappear along with the old version of the object. Watchexec now watches from one path segment above, so it can notice when a watch gets replaced; because it also does directory tree filtering, this is not significantly more expensive.</p>
-
-<p><strong><a href="./watchexec/2.7.0/index.html">→ Download this release</a></strong></p>
+<p>Latest release: <a href="./watchexec/2.7.1/index.html">2.7.1</a> (2026-09-03)</p>
+<p><strong><a href="./watchexec/2.7.1/index.html">→ Download this release</a></strong></p>
 <p><a href="./watchexec/index.html">→ Previous releases</a></p>
 <h2 id="cargo-watch"><a class="header" href="#cargo-watch">Cargo Watch</a></h2>
 <p>Latest release: <a href="./cargo-watch/8.5.3/index.html">8.5.3</a> (2024-10-02)</p>
-<h3 id="release-notes-1"><a class="header" href="#release-notes-1">Release notes</a></h3>
+<h3 id="release-notes"><a class="header" href="#release-notes">Release notes</a></h3>
 <p dir="auto">This is the final release of Cargo Watch.</p>
 
 <hr>
@@ -249,13 +220,12 @@ Remember Cargo Watch.</p>
 
 <p><strong><a href="./cargo-watch/8.5.3/index.html">→ Download this release</a></strong></p>
 <p><a href="./cargo-watch/index.html">→ Previous releases</a></p>
-</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../docs/inotify-limits.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../docs/macos-fsevents.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
@@ -269,7 +239,7 @@ Remember Cargo Watch.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../docs/inotify-limits.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../docs/macos-fsevents.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
