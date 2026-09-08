@@ -2,11 +2,19 @@
 
 ## Watchexec CLI
 
-Latest release: [2.7.1](./watchexec/2.7.1/index.md) (2026-09-03)
+Latest release: [2.7.2](./watchexec/2.7.2/index.md) (2026-09-06)
 
+### Release notes
 
+<p dir="auto">Fixes a panic (at CLI construction, so it's really more a UI cleanup):</p>
+<pre class="notranslate"><code class="notranslate">$ watchexec --shell=notashell -1 -- echo hi
+thread 'main' panicked at crates/cli/src/config.rs:1268:5:
+  The parsed shell path "notashell" does not exist on this system, and could not be resolved from your PATH.
+  note: run with RUST_BACKTRACE=1 to display a backtrace
+</code></pre>
+<p dir="auto">thanks <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/hktitof/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/hktitof">@hktitof</a> (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5321936280" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/1105" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/1105/hovercard" href="https://github.com/watchexec/watchexec/pull/1105">#1105</a>)</p>
 
-**[→ Download this release](./watchexec/2.7.1/index.md)**
+**[→ Download this release](./watchexec/2.7.2/index.md)**
 
 [→ Previous releases](./watchexec/index.md)
 
