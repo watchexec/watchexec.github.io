@@ -1,7 +1,7 @@
 # Download Watchexec
 {{#title Download Watchexec - Watchexec}}
 
-## Latest release: 2.7.3
+## Latest release: 2.7.4
 
 <table class="downloads">
 <thead>
@@ -23,7 +23,7 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-aarch64-unknown-linux-gnu.deb">DEB</a> (2.4 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-aarch64-unknown-linux-gnu.deb">DEB</a> (2.4 MB)</td>
 						
 </tr>
 					
@@ -31,7 +31,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-aarch64-unknown-linux-gnu.rpm">RPM</a> (2.8 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-aarch64-unknown-linux-gnu.rpm">RPM</a> (2.8 MB)</td>
 						
 </tr>
 					
@@ -39,7 +39,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-aarch64-unknown-linux-gnu.tar.xz">XZ</a> (2.4 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-aarch64-unknown-linux-gnu.tar.xz">XZ</a> (2.4 MB)</td>
 						
 </tr>
 					
@@ -49,7 +49,7 @@
 						
 <td rowspan="3">musl</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-aarch64-unknown-linux-musl.deb">DEB</a> (2.5 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-aarch64-unknown-linux-musl.deb">DEB</a> (2.5 MB)</td>
 						
 </tr>
 					
@@ -57,7 +57,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-aarch64-unknown-linux-musl.rpm">RPM</a> (2.9 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-aarch64-unknown-linux-musl.rpm">RPM</a> (2.9 MB)</td>
 						
 </tr>
 					
@@ -65,7 +65,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-aarch64-unknown-linux-musl.tar.xz">XZ</a> (2.5 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-aarch64-unknown-linux-musl.tar.xz">XZ</a> (2.5 MB)</td>
 						
 </tr>
 					
@@ -77,7 +77,7 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-armv7-unknown-linux-gnueabihf.deb">DEB</a> (2.5 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-armv7-unknown-linux-gnueabihf.deb">DEB</a> (2.5 MB)</td>
 						
 </tr>
 					
@@ -85,7 +85,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-armv7-unknown-linux-gnueabihf.rpm">RPM</a> (2.9 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-armv7-unknown-linux-gnueabihf.rpm">RPM</a> (2.9 MB)</td>
 						
 </tr>
 					
@@ -93,7 +93,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-armv7-unknown-linux-gnueabihf.tar.xz">XZ</a> (2.5 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-armv7-unknown-linux-gnueabihf.tar.xz">XZ</a> (2.5 MB)</td>
 						
 </tr>
 					
@@ -105,7 +105,7 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-s390x-unknown-linux-gnu.deb">DEB</a> (2.7 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-s390x-unknown-linux-gnu.deb">DEB</a> (2.7 MB)</td>
 						
 </tr>
 					
@@ -113,7 +113,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-s390x-unknown-linux-gnu.rpm">RPM</a> (3 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-s390x-unknown-linux-gnu.rpm">RPM</a> (3 MB)</td>
 						
 </tr>
 					
@@ -121,7 +121,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-s390x-unknown-linux-gnu.tar.xz">XZ</a> (2.7 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-s390x-unknown-linux-gnu.tar.xz">XZ</a> (2.7 MB)</td>
 						
 </tr>
 					
@@ -133,7 +133,7 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-powerpc64le-unknown-linux-gnu.deb">DEB</a> (2.7 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-powerpc64le-unknown-linux-gnu.deb">DEB</a> (2.7 MB)</td>
 						
 </tr>
 					
@@ -141,7 +141,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-powerpc64le-unknown-linux-gnu.rpm">RPM</a> (3.1 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-powerpc64le-unknown-linux-gnu.rpm">RPM</a> (3.1 MB)</td>
 						
 </tr>
 					
@@ -149,7 +149,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-powerpc64le-unknown-linux-gnu.tar.xz">XZ</a> (2.7 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-powerpc64le-unknown-linux-gnu.tar.xz">XZ</a> (2.6 MB)</td>
 						
 </tr>
 					
@@ -161,7 +161,7 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-riscv64gc-unknown-linux-gnu.deb">DEB</a> (2.8 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-riscv64gc-unknown-linux-gnu.deb">DEB</a> (2.7 MB)</td>
 						
 </tr>
 					
@@ -169,7 +169,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-riscv64gc-unknown-linux-gnu.rpm">RPM</a> (3.1 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-riscv64gc-unknown-linux-gnu.rpm">RPM</a> (3 MB)</td>
 						
 </tr>
 					
@@ -177,7 +177,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-riscv64gc-unknown-linux-gnu.tar.xz">XZ</a> (2.8 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-riscv64gc-unknown-linux-gnu.tar.xz">XZ</a> (2.7 MB)</td>
 						
 </tr>
 					
@@ -189,7 +189,7 @@
 						
 <td rowspan="3">musl</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-i686-unknown-linux-musl.deb">DEB</a> (3 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-i686-unknown-linux-musl.deb">DEB</a> (3 MB)</td>
 						
 </tr>
 					
@@ -197,7 +197,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-i686-unknown-linux-musl.rpm">RPM</a> (3.2 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-i686-unknown-linux-musl.rpm">RPM</a> (3.2 MB)</td>
 						
 </tr>
 					
@@ -205,7 +205,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-i686-unknown-linux-musl.tar.xz">XZ</a> (3 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-i686-unknown-linux-musl.tar.xz">XZ</a> (3 MB)</td>
 						
 </tr>
 					
@@ -217,7 +217,7 @@
 						
 <td rowspan="3">glibc</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-x86_64-unknown-linux-gnu.deb">DEB</a> (2.8 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-x86_64-unknown-linux-gnu.deb">DEB</a> (2.8 MB)</td>
 						
 </tr>
 					
@@ -225,7 +225,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-x86_64-unknown-linux-gnu.rpm">RPM</a> (3 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-x86_64-unknown-linux-gnu.rpm">RPM</a> (3 MB)</td>
 						
 </tr>
 					
@@ -233,7 +233,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-x86_64-unknown-linux-gnu.tar.xz">XZ</a> (2.8 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-x86_64-unknown-linux-gnu.tar.xz">XZ</a> (2.8 MB)</td>
 						
 </tr>
 					
@@ -243,7 +243,7 @@
 						
 <td rowspan="3">musl</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-x86_64-unknown-linux-musl.deb">DEB</a> (2.9 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-x86_64-unknown-linux-musl.deb">DEB</a> (2.9 MB)</td>
 						
 </tr>
 					
@@ -251,7 +251,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-x86_64-unknown-linux-musl.rpm">RPM</a> (3.1 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-x86_64-unknown-linux-musl.rpm">RPM</a> (3.1 MB)</td>
 						
 </tr>
 					
@@ -259,7 +259,7 @@
 						
 						
 						
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-x86_64-unknown-linux-musl.tar.xz">XZ</a> (2.9 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-x86_64-unknown-linux-musl.tar.xz">XZ</a> (2.9 MB)</td>
 						
 </tr>
 					
@@ -271,7 +271,7 @@
 						
 <td rowspan="1">MSVC</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-aarch64-pc-windows-msvc.zip">Zip</a> (3.1 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-aarch64-pc-windows-msvc.zip">Zip</a> (3.1 MB)</td>
 						
 </tr>
 					
@@ -283,16 +283,17 @@
 						
 <td rowspan="1">MSVC</td>
             
-<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-x86_64-pc-windows-msvc.zip">Zip</a> (3.4 MB)</td>
+<td><a class="download" href="https://github.com/watchexec/watchexec/releases/download/v2.7.4/watchexec-2.7.4-x86_64-pc-windows-msvc.zip">Zip</a> (3.4 MB)</td>
 						
 </tr>
 					</tbody>
 </table>
 
 
-## 100 releases available:
+## 101 releases available:
 
 
+- [Watchexec 2.7.4](./2.7.4/index.md) 2026-10-02
 - [Watchexec 2.7.3](./2.7.3/index.md) 2026-09-15
 - [Watchexec 2.7.2](./2.7.2/index.md) 2026-09-06
 - [Watchexec 2.7.1](./2.7.1/index.md) 2026-09-03
@@ -396,7 +397,7 @@
 
 
 >	
->	this page built on 2026-09-15 at 19:08
+>	this page built on 2026-10-02 at 20:04
 >	| generator v0.0.2
 >	| [latest meta](latest.json)
 

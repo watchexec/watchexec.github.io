@@ -2,11 +2,20 @@
 
 ## Watchexec CLI
 
-Latest release: [2.7.3](./watchexec/2.7.3/index.md) (2026-09-15)
+Latest release: [2.7.4](./watchexec/2.7.4/index.md) (2026-10-02)
 
+### Release notes
 
+<ul dir="auto">
+<li>docs: clarify opt-in event emission in the CLI README (by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Likio3000/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Likio3000">@Likio3000</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5545099897" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/1123" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/1123/hovercard" href="https://github.com/watchexec/watchexec/pull/1123">#1123</a>)</li>
+<li>fix: error instead of panicking on an unreadable <code class="notranslate">@argfile</code> (by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/00200200/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/00200200">@00200200</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5629187879" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/1129" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/1129/hovercard" href="https://github.com/watchexec/watchexec/pull/1129">#1129</a>)</li>
+<li>fix: infer file type of removed paths from the event kind (by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/lsh4711/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/lsh4711">@lsh4711</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5636185762" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/1130" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/1130/hovercard" href="https://github.com/watchexec/watchexec/pull/1130">#1130</a>)</li>
+<li>fix: eliminate a potential race in the keyboard watcher (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5676528218" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/1133" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/1133/hovercard" href="https://github.com/watchexec/watchexec/pull/1133">#1133</a>)</li>
+<li>fix: exclude more shell constructs from the exec optimisation (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5676566571" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/1135" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/1135/hovercard" href="https://github.com/watchexec/watchexec/pull/1135">#1135</a>)</li>
+<li>deps: gix-config 0.61, process-wrap 9.1.1, clearscreen 5.0.0 (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5679077608" data-permission-text="Title is private" data-url="https://github.com/watchexec/watchexec/issues/1136" data-hovercard-type="pull_request" data-hovercard-url="/watchexec/watchexec/pull/1136/hovercard" href="https://github.com/watchexec/watchexec/pull/1136">#1136</a>)</li>
+</ul>
 
-**[→ Download this release](./watchexec/2.7.3/index.md)**
+**[→ Download this release](./watchexec/2.7.4/index.md)**
 
 [→ Previous releases](./watchexec/index.md)
 
